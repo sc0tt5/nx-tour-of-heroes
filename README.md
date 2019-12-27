@@ -96,5 +96,7 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 
 ## ToDo
 
+- Libs README
+- Compodoc
 - Data fetching using DataPersistence (ngrx)
 - e2e

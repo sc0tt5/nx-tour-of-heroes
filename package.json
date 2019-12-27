@@ -28,7 +28,7 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@nrwl/angular": "8.9.0",
     "@angular/animations": "^8.2.0",
