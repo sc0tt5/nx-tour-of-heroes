@@ -17,8 +17,8 @@
     "api": {
       "tags": []
     },
-    "api-interfaces": {
-      "tags": []
+    "shared-models": {
+      "tags": ["scope:shared"]
     }
   }
 }

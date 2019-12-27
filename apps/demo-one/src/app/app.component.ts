@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@nx-demo/api-interfaces';
+import { Component } from '@angular/core';
+import { Message } from '@nx-demo/shared/models';
 
 @Component({
   selector: 'nx-demo-root',
