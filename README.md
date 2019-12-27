@@ -66,7 +66,7 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 │   ├── demo-one           # demo-one lib
 │   │   └── data-access
 │   │   │   └── ...
-│   │   └── feature
+│   │   └── features
 │   │   │   └── page-one
 │   │   │   │   └── ...
 │   │   │   └── page-two
@@ -74,7 +74,7 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 │   ├── demo-two           # demo-two lib
 │   │   └── data-access
 │   │   │   └── ...
-│   │   └── feature
+│   │   └── features
 │   │   │   └── page-one
 │   │   │   │   └── ...
 │   │   │   └── page-two

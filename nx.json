@@ -12,10 +12,10 @@
       "tags": []
     },
     "demo-one": {
-      "tags": []
+      "tags": ["scope:frontend"]
     },
     "api": {
-      "tags": []
+      "tags": ["scope:backend"]
     },
     "shared-models": {
       "tags": ["scope:shared"]
