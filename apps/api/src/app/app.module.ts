@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
+import { SharedDataAccessModule } from '@nx-demo/shared/data-access';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService]
+  imports: [SharedDataAccessModule],
+  controllers: [AppController]
 })
 export class AppModule {}

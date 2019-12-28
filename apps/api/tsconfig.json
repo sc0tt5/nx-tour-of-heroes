@@ -4,5 +4,5 @@
     "types": ["node", "jest"],
     "emitDecoratorMetadata": true
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "../../libs/shared/data-access/src/lib/app.service.spec.ts"]
 }

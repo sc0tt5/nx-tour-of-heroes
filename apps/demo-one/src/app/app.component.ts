@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Message } from '@nx-demo/shared/models';
+import { Message, Page } from '@nx-demo/shared/models';
 
 @Component({
   selector: 'nx-demo-root',
@@ -8,6 +8,7 @@ import { Message } from '@nx-demo/shared/models';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  hello$ = this.http.get<Message>('/api/message');
+  pages$ = this.http.get<Page[]>('/api/pages');
   constructor(private http: HttpClient) {}
 }

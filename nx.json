@@ -19,6 +19,9 @@
     },
     "shared-models": {
       "tags": ["scope:shared"]
+    },
+    "shared-data-access": {
+      "tags": ["scope:shared"]
     }
   }
 }
