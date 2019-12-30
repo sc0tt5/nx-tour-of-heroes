@@ -42,22 +42,47 @@
     "triple-equals": [true, "allow-null-check"],
     "unified-signatures": true,
     "variable-name": false,
+    "ordered-imports": true,
     "nx-enforce-module-boundaries": [
       true,
       {
         "allow": [],
         "depConstraints": [
           {
-            "sourceTag": "scope:shared",
-            "onlyDependOnLibsWithTags": ["scope:shared"]
+            "sourceTag": "type:app",
+            "onlyDependOnLibsWithTags": ["type:feature", "type:ui"]
           },
           {
-            "sourceTag": "scope:frontend",
-            "onlyDependOnLibsWithTags": ["scope:frontend", "scope:shared"]
+            "sourceTag": "type:feature",
+            "onlyDependOnLibsWithTags": ["type:ui", "type:data", "type:types", "type:state"]
           },
           {
-            "sourceTag": "scope:backend",
-            "onlyDependOnLibsWithTags": ["scope:backend", "scope:shared"]
+            "sourceTag": "type:types",
+            "onlyDependOnLibsWithTags": ["type:types"]
+          },
+          {
+            "sourceTag": "type:state",
+            "onlyDependOnLibsWithTags": ["type:state", "type:types", "type:data"]
+          },
+          {
+            "sourceTag": "type:data",
+            "onlyDependOnLibsWithTags": ["type:types"]
+          },
+          {
+            "sourceTag": "type:e2e",
+            "onlyDependOnLibsWithTags": ["type:e2e-utils"]
+          },
+          {
+            "sourceTag": "type:ui",
+            "onlyDependOnLibsWithTags": ["type:types", "type:ui"]
+          },
+          {
+            "sourceTag": "scope:demo-one",
+            "onlyDependOnLibsWithTags": ["scope:demo-one", "scope:shared"]
+          },
+          {
+            "sourceTag": "scope:api",
+            "onlyDependOnLibsWithTags": ["scope:api", "scope:shared"]
           }
         ]
       }
