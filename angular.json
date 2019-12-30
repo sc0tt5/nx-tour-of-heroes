@@ -231,6 +231,68 @@
           "styleext": "scss"
         }
       }
+    },
+    "demo-one-data-access": {
+      "projectType": "library",
+      "root": "libs/demo-one/data-access",
+      "sourceRoot": "libs/demo-one/data-access/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/demo-one/data-access/tsconfig.lib.json",
+              "libs/demo-one/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/demo-one/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/demo-one/data-access/jest.config.js",
+            "tsConfig": "libs/demo-one/data-access/tsconfig.spec.json",
+            "setupFile": "libs/demo-one/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "demo-one-feature-page-one": {
+      "projectType": "library",
+      "root": "libs/demo-one/feature/page-one",
+      "sourceRoot": "libs/demo-one/feature/page-one/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/demo-one/feature/page-one/tsconfig.lib.json",
+              "libs/demo-one/feature/page-one/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/demo-one/feature/page-one/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/demo-one/feature/page-one/jest.config.js",
+            "tsConfig": "libs/demo-one/feature/page-one/tsconfig.spec.json",
+            "setupFile": "libs/demo-one/feature/page-one/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -9,19 +9,26 @@
   },
   "projects": {
     "demo-one-e2e": {
-      "tags": []
+      "tags": ["scope:demo-one", "type:e2e"],
+      "implicitDependencies": ["demo-one"]
     },
     "demo-one": {
-      "tags": ["scope:frontend"]
+      "tags": ["scope:demo-one", "type:app"]
     },
     "api": {
-      "tags": ["scope:backend"]
+      "tags": ["scope:api"]
     },
     "shared-models": {
-      "tags": ["scope:shared"]
+      "tags": ["scope:shared", "type:types"]
     },
     "shared-data-access": {
-      "tags": ["scope:shared"]
+      "tags": ["scope:shared", "type:data"]
+    },
+    "demo-one-data-access": {
+      "tags": ["scope:demo-one", "type:data"]
+    },
+    "demo-one-feature-page-one": {
+      "tags": ["scope:demo-one", "type:feature"]
     }
   }
 }

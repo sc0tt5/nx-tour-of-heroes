@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { SharedDataAccessController } from './shared-data-access.controller';
-import { SharedDataAccessService } from './shared-data-access.service';
+import { SharedDataAccessController } from './data-access/data-access.controller';
+import { SharedDataAccessService } from './data-access/data-access.service';
 
 @Module({
   controllers: [SharedDataAccessController],

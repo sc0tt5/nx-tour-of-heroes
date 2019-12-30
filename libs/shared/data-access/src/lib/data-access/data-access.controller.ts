@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { Message, Page } from '@nx-demo/shared/models';
-import { SharedDataAccessService } from './shared-data-access.service';
+import { SharedDataAccessService } from './data-access.service';
 
 @Controller()
 export class SharedDataAccessController {

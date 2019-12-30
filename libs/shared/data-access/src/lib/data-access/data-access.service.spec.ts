@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { SharedDataAccessService } from './shared-data-access.service';
+import { SharedDataAccessService } from './data-access.service';
 
 describe('SharedDataAccessService', () => {
   let service: SharedDataAccessService;
