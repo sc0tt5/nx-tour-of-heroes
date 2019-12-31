@@ -1,14 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
+import { Observable, of } from 'rxjs';
 
 @Controller()
 export class AppController {
   @Get('/')
-  getMessage(): string {
-    return '/api/message';
+  getMessage(): Observable<string> {
+    return of('/api/message');
   }
 
   @Get('/')
-  getPages(): string {
-    return '/api/pages';
+  getPages(): Observable<string> {
+    return of('/api/pages');
   }
 }

@@ -1,3 +1,24 @@
-<div>
-  <router-outlet></router-outlet>
-</div>
+<main>
+  <!-- TODO: loading indicator -- create in shared components? -->
+  <!--  <div *ngIf="loading" [@loadingIndicator] class="loading-indicator">
+    <span class="loading-indicator-bar">
+      <span class="loading-indicator-progress"></span>
+    </span>
+  </div> -->
+
+  <!-- TODO: nav -- move to feature lib? -->
+  <nav>
+    <button class="animation-triggers" routerLink="/page-one" routerLinkActive="active">
+      Page One
+    </button>
+    <button class="animation-triggers" routerLink="/page-two" routerLinkActive="active">
+      Page Two
+    </button>
+  </nav>
+
+  <!-- pages / router-outlet -->
+  <!-- TODO:  [@pageLoad]="getState(o)" -->
+  <div class="router-wrapper">
+    <router-outlet #o="outlet"></router-outlet>
+  </div>
+</main>

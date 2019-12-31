@@ -16,19 +16,25 @@
       "tags": ["scope:demo-one", "type:app"]
     },
     "api": {
-      "tags": ["scope:api"]
+      "tags": ["scope:api", "type:api"]
     },
     "shared-models": {
       "tags": ["scope:shared", "type:types"]
     },
     "shared-data-access": {
-      "tags": ["scope:shared", "type:data"]
-    },
-    "demo-one-data-access": {
-      "tags": ["scope:demo-one", "type:data"]
+      "tags": ["scope:shared", "type:data-access"]
     },
     "demo-one-feature-page-one": {
       "tags": ["scope:demo-one", "type:feature"]
+    },
+    "demo-one-data-access": {
+      "tags": ["scope:demo-one", "type:data-access"]
+    },
+    "shared-ui": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "demo-one-feature-page-two": {
+      "tags": ["scope:demo-two", "type:feature"]
     }
   }
 }

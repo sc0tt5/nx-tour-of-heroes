@@ -232,6 +232,37 @@
         }
       }
     },
+    "demo-one-feature-page-one": {
+      "projectType": "library",
+      "root": "libs/demo-one/feature/page-one",
+      "sourceRoot": "libs/demo-one/feature/page-one/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/demo-one/feature/page-one/tsconfig.lib.json",
+              "libs/demo-one/feature/page-one/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/demo-one/feature/page-one/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/demo-one/feature/page-one/jest.config.js",
+            "tsConfig": "libs/demo-one/feature/page-one/tsconfig.spec.json",
+            "setupFile": "libs/demo-one/feature/page-one/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "demo-one-data-access": {
       "projectType": "library",
       "root": "libs/demo-one/data-access",
@@ -263,28 +294,56 @@
         }
       }
     },
-    "demo-one-feature-page-one": {
+    "shared-ui": {
       "projectType": "library",
-      "root": "libs/demo-one/feature/page-one",
-      "sourceRoot": "libs/demo-one/feature/page-one/src",
+      "root": "libs/shared/ui",
+      "sourceRoot": "libs/shared/ui/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/shared/ui/tsconfig.lib.json", "libs/shared/ui/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui/jest.config.js",
+            "tsConfig": "libs/shared/ui/tsconfig.spec.json",
+            "setupFile": "libs/shared/ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "demo-one-feature-page-two": {
+      "projectType": "library",
+      "root": "libs/demo-one/feature/page-two",
+      "sourceRoot": "libs/demo-one/feature/page-two/src",
       "prefix": "nx-demo",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/demo-one/feature/page-one/tsconfig.lib.json",
-              "libs/demo-one/feature/page-one/tsconfig.spec.json"
+              "libs/demo-one/feature/page-two/tsconfig.lib.json",
+              "libs/demo-one/feature/page-two/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/demo-one/feature/page-one/**"]
+            "exclude": ["**/node_modules/**", "!libs/demo-one/feature/page-two/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/demo-one/feature/page-one/jest.config.js",
-            "tsConfig": "libs/demo-one/feature/page-one/tsconfig.spec.json",
-            "setupFile": "libs/demo-one/feature/page-one/src/test-setup.ts"
+            "jestConfig": "libs/demo-one/feature/page-two/jest.config.js",
+            "tsConfig": "libs/demo-one/feature/page-two/tsconfig.spec.json",
+            "setupFile": "libs/demo-one/feature/page-two/src/test-setup.ts"
           }
         }
       },
