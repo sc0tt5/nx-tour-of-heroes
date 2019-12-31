@@ -4,12 +4,12 @@ import { Page } from '@nx-demo/shared/models';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'nx-demo-page-one',
-  templateUrl: './page-one.component.html',
-  styleUrls: ['./page-one.component.scss'],
+  selector: 'nx-demo-page-two',
+  templateUrl: './page-two.component.html',
+  styleUrls: ['./page-two.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PageOneComponent implements OnInit, OnDestroy {
+export class PageTwoComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
   page: Page;
 

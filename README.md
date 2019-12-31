@@ -64,17 +64,13 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 │   ├── ...
 ├── libs
 │   ├── demo-one           # demo-one lib
-│   │   └── data-access
-│   │   │   └── ...
-│   │   └── features
+│   │   └── feature
 │   │   │   └── page-one
 │   │   │   │   └── ...
 │   │   │   └── page-two
 │   │   │   │   └── ...
 │   ├── demo-two           # demo-two lib
-│   │   └── data-access
-│   │   │   └── ...
-│   │   └── features
+│   │   └── feature
 │   │   │   └── page-one
 │   │   │   │   └── ...
 │   │   │   └── page-two
@@ -93,6 +89,34 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 │   │   └── ...
 └── ...
 ```
+
+Here's a [great article](https://medium.com/showpad-engineering/how-to-organize-and-name-applications-and-libraries-in-an-nx-monorepo-for-immediate-team-wide-9876510dbe28) used for this project structure and naming convention.
+
+```bash
+
+# Applications
+/apps/<scope-1>
+/apps/<scope-2>
+
+# Libraries
+/libs/<scope-1>/<type-1>/<lib-name>
+/libs/<scope-1>/<type-2>/<lib-name>
+/libs/<scope-2>/<type-1>/<lib-name>
+/libs/<scope-2>/<type-2>/<lib-name>
+```
+
+Scopes
+
+- demo-one
+- demo-two
+- shared
+
+Types
+
+- data-access
+- feature
+- ui
+- utils
 
 ## ToDo
 

@@ -1,0 +1,14 @@
+// page content for each demo component
+.demo-content {
+  margin: auto;
+  & h1 {
+    text-align: center;
+    font-size: 125px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  & p {
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}

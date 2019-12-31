@@ -21,7 +21,9 @@
       "data-access/data-access/*": ["libs/shared/data-access/src/*"],
       "@nx-demo/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@nx-demo/demo-one/data-access": ["libs/demo-one/data-access/src/index.ts"],
-      "@nx-demo/demo-one/feature/page-one": ["libs/demo-one/feature/page-one/src/index.ts"]
+      "@nx-demo/demo-one/feature/page-one": ["libs/demo-one/feature/page-one/src/index.ts"],
+      "@nx-demo/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@nx-demo/demo-one/feature/page-two": ["libs/demo-one/feature/page-two/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
