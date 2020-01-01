@@ -7,6 +7,6 @@ import { AccordionComponent } from './accordion.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [AccordionComponent, AccordionOneComponent, AccordionTwoComponent],
-  exports: [CommonModule, AccordionComponent, AccordionOneComponent, AccordionTwoComponent]
+  exports: [AccordionComponent, AccordionOneComponent, AccordionTwoComponent]
 })
 export class AccordionModule {}

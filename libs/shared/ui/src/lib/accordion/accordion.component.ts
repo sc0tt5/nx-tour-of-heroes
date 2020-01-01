@@ -3,7 +3,7 @@ import { AfterContentInit, Component, ContentChildren, ViewEncapsulation } from 
 import { AccordionItem, AccordionWrapper, ACCORDION_ITEM } from './accordion.model';
 
 @Component({
-  selector: 'app-accordion',
+  selector: 'nx-demo-accordion',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
   encapsulation: ViewEncapsulation.None // required to update accordion shared styles

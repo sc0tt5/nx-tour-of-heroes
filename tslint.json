@@ -78,7 +78,11 @@
           },
           {
             "sourceTag": "type:ui",
-            "onlyDependOnLibsWithTags": ["type:types", "type:ui"]
+            "onlyDependOnLibsWithTags": ["type:types", "type:ui", "type:animations"]
+          },
+          {
+            "sourceTag": "type:animations",
+            "onlyDependOnLibsWithTags": ["type:types", "type:ui", "type:animations"]
           },
           {
             "sourceTag": "scope:demo-one",

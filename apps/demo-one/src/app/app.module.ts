@@ -1,7 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { LoadingIndicatorModule } from '@nx-demo/shared/ui';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -25,9 +27,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes, { initialNavigation: 'enabled' })
+    LoadingIndicatorModule,
+    RouterModule.forRoot(routes)
   ],
   bootstrap: [AppComponent]
 })

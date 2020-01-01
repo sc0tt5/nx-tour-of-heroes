@@ -28,23 +28,3 @@ button {
     /* border-color: darken(#1c79b8, 5%); */
   }
 }
-
-// loading indicator
-.loading-indicator {
-  overflow: hidden;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  span {
-    display: block;
-  }
-
-  &-progress {
-    background: #1c79b8;
-    color: #fff;
-    padding: 2px;
-    width: 0;
-  }
-}

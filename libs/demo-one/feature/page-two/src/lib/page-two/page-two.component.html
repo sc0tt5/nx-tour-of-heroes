@@ -3,7 +3,10 @@
   <h1 [innerHTML]="page.name"></h1>
   <p [innerHTML]="page.content"></p>
 
-  <app-accordion>
-    <app-accordion-two *ngFor="let item of page.accordionItems" [item]="item"></app-accordion-two>
-  </app-accordion>
+  <nx-demo-accordion>
+    <nx-demo-accordion-two
+      *ngFor="let item of page.accordionItems"
+      [item]="item"
+    ></nx-demo-accordion-two>
+  </nx-demo-accordion>
 </nx-demo-demo-content>

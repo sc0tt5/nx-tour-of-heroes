@@ -27,8 +27,3 @@ export class PageOneComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 }
-/* export class PageOneComponent {
-  hello$ = this.http.get<Message>('/api/message');
-  pages$ = this.http.get<Page[]>('/api/pages');
-  constructor(private http: HttpClient) {}
-} */

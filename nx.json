@@ -35,6 +35,9 @@
     },
     "demo-one-feature-page-two": {
       "tags": ["scope:demo-two", "type:feature"]
+    },
+    "shared-animations": {
+      "tags": ["scope:shared", "type:animations"]
     }
   }
 }
