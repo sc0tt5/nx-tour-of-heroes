@@ -11,7 +11,7 @@ export const ROUTES: Routes = [
     pathMatch: 'full',
     component: PageOneComponent,
     data: { state: 'page-one' },
-    resolve: { page: PageResolver } // get data first }
+    resolve: { page: PageResolver } // get data first
   }
 ];
 
