@@ -1,0 +1,28 @@
+$main: #39a1e7;
+$secondary: #3292d3;
+
+// scoped to this item only
+.accordion-item {
+  // header label
+  &-label {
+    border-color: $secondary;
+    background: $main;
+
+    // header icon
+    &::after {
+      content: '\276F';
+    }
+
+    // header icon
+    &:hover {
+      background: darken($main, 10%);
+    }
+
+    &.open {
+      background: darken($main, 10%);
+      &::after {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

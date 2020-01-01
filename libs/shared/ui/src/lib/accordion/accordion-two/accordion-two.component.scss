@@ -1,0 +1,27 @@
+$main: #2c3e50;
+$secondary: #222f3d;
+
+.accordion-item {
+  // header label
+  &-label {
+    border-color: $secondary;
+    background: $main;
+
+    // header icon
+    &::after {
+      content: '\002B';
+    }
+
+    // header icon
+    &:hover {
+      background: darken($main, 10%);
+    }
+
+    &.open {
+      background: darken($main, 10%);
+      &::after {
+        content: '\002D';
+      }
+    }
+  }
+}

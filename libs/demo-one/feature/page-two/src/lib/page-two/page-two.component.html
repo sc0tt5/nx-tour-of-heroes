@@ -2,14 +2,8 @@
 <nx-demo-demo-content>
   <h1 [innerHTML]="page.name"></h1>
   <p [innerHTML]="page.content"></p>
+
+  <app-accordion>
+    <app-accordion-two *ngFor="let item of page.accordionItems" [item]="item"></app-accordion-two>
+  </app-accordion>
 </nx-demo-demo-content>
-
-<!--   <app-accordion>
-    <app-accordion-one *ngFor="let item of page.accordionItems" [item]="item"></app-accordion-one>
-  </app-accordion> -->
-<!-- </div> -->
-
-<!-- <div style="text-align:center">
-  <h1>Welcome to demo-one!</h1>
-</div>
-<div>Pages: {{ pages$ | async | json }}</div> -->
