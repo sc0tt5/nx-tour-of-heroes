@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@env/*": ["src/environments/*"],
       "@nx-demo/shared/models": ["libs/shared/models/src/index.ts"],
       "data-access/data-access": ["libs/shared/data-access/src"],
       "data-access/data-access/*": ["libs/shared/data-access/src/*"],

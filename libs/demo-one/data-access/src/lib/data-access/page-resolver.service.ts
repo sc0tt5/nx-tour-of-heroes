@@ -1,3 +1,5 @@
+// TODO: remove from page - two
+
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { Page } from '@nx-demo/shared/models';

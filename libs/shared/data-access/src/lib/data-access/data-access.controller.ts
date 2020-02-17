@@ -12,7 +12,7 @@ export class SharedDataAccessController {
   }
 
   @Get('pages')
-  getPages(): Page[] {
-    return this.sharedDataAccessService.getPages();
+  getPages(param: string): Page {
+    return this.sharedDataAccessService.getPages(param);
   }
 }

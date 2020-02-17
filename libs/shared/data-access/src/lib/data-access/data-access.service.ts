@@ -7,8 +7,8 @@ export class SharedDataAccessService {
     return { message: 'Welcome to api!' };
   }
 
-  getPages(): Page[] {
-    return [
+  getPages(param: string): Page {
+    const pages = [
       {
         param: 'page-one',
         name: 'Page 1',
@@ -30,5 +30,7 @@ export class SharedDataAccessService {
         ]
       }
     ];
+
+    return pages.find(page => page.param === param);
   }
 }

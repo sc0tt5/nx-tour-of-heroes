@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { MetaReducer, StoreModule } from '@ngrx/store';
 import { LoadingIndicatorModule } from '@nx-demo/shared/ui';
+import { storeFreeze } from 'ngrx-store-freeze';
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -24,6 +27,8 @@ const routes: Routes = [
   }
 ];
 
+export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -31,7 +36,8 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     LoadingIndicatorModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot({}, { metaReducers })
   ],
   bootstrap: [AppComponent]
 })
