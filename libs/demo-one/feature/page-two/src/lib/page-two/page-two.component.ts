@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Page } from '@nx-demo/shared/models';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { PageTwoFacade } from './+state/page-two.facade';
+import { PageTwoState } from './+state/page-two.reducer';
 
 @Component({
   selector: 'nx-demo-page-two',
@@ -10,20 +12,18 @@ import { Subject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageTwoComponent implements OnInit, OnDestroy {
-  private unsubscribe$: Subject<void> = new Subject<void>();
-  page: Page;
+  page$: Observable<Page>;
+  private unsubscribe$ = new Subject<void>();
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private facade: PageTwoFacade, private store: Store<PageTwoState>) {}
 
   ngOnInit() {
-    // from page resolver
-    this.route.data.subscribe((data: Data) => {
-      this.page = data.page;
-    });
+    this.page$ = this.facade.page$;
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+    this.facade.initializePageTwo();
   }
 }

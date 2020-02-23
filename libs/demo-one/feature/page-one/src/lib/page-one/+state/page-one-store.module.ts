@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PageOneEffects } from './page-one.effects';
-import { PageFacade } from './page-one.facade';
+import { PageOneFacade } from './page-one.facade';
 import { initialState, pageOneReducer } from './page-one.reducer';
 
 @NgModule({
@@ -13,6 +13,6 @@ import { initialState, pageOneReducer } from './page-one.reducer';
     EffectsModule.forFeature([PageOneEffects])
   ],
   exports: [StoreModule, EffectsModule],
-  providers: [PageFacade]
+  providers: [PageOneFacade]
 })
 export class PageOneStoreModule {}

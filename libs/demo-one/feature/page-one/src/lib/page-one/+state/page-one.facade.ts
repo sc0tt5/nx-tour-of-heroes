@@ -5,7 +5,7 @@ import { PageOneState } from './page-one.reducer';
 import { pageOneSelectors } from './page-one.selectors';
 
 @Injectable()
-export class PageFacade {
+export class PageOneFacade {
   page$ = this.store.select(pageOneSelectors.getPageOne);
   pageLoaded$ = this.store.select(pageOneSelectors.getPageOneLoaded);
 

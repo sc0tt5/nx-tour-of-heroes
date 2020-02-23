@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { Store } from '@ngrx/store';
 import { Page } from '@nx-demo/shared/models';
 import { Observable, Subject } from 'rxjs';
-import { PageFacade } from './+state/page-one.facade';
+import { PageOneFacade } from './+state/page-one.facade';
 import { PageOneState } from './+state/page-one.reducer';
 
 @Component({
@@ -13,9 +13,9 @@ import { PageOneState } from './+state/page-one.reducer';
 })
 export class PageOneComponent implements OnInit, OnDestroy {
   page$: Observable<Page>;
-  unsubscribe$ = new Subject<void>();
+  private unsubscribe$ = new Subject<void>();
 
-  constructor(private facade: PageFacade, private store: Store<PageOneState>) {}
+  constructor(private facade: PageOneFacade, private store: Store<PageOneState>) {}
 
   ngOnInit() {
     this.page$ = this.facade.page$;
