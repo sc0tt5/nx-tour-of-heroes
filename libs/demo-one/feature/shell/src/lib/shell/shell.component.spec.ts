@@ -1,17 +1,17 @@
 import { HttpClientModule } from '@angular/common/http';
 import { async, TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { ShellComponent } from './shell.component';
 
-describe('AppComponent', () => {
+describe('ShellComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      declarations: [ShellComponent],
       imports: [HttpClientModule]
     }).compileComponents();
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(ShellComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });

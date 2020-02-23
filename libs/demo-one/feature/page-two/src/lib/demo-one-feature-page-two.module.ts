@@ -10,8 +10,8 @@ export const ROUTES: Routes = [
     path: '',
     pathMatch: 'full',
     component: PageTwoComponent,
-    data: { state: 'page-two' },
-    resolve: { page: PageResolver } // get data first
+    data: { title: 'Page Two' },
+    resolve: { page: PageResolver }
   }
 ];
 

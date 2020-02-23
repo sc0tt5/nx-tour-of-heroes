@@ -1,20 +1,8 @@
-<main>
-  <!-- loading indicator -->
-  <nx-demo-loading-indicator></nx-demo-loading-indicator>
+<!-- loading indicator -->
+<nx-demo-loading-indicator></nx-demo-loading-indicator>
 
-  <!-- TODO: nav -- move to feature lib? -->
-  <nav>
-    <button class="animation-triggers" routerLink="/page-one" routerLinkActive="active">
-      Page One
-    </button>
-    <button class="animation-triggers" routerLink="/page-two" routerLinkActive="active">
-      Page Two
-    </button>
-  </nav>
-
-  <!-- pages -->
-  <!-- TODO: make this a component wrapper and move animation -->
+<nx-demo-shell>
   <div class="router-wrapper" [@pageLoad]="getState(o)">
     <router-outlet #o="outlet"></router-outlet>
   </div>
-</main>
+</nx-demo-shell>

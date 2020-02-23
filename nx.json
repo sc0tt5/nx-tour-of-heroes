@@ -38,6 +38,9 @@
     },
     "shared-animations": {
       "tags": ["scope:shared", "type:animations"]
+    },
+    "demo-one-feature-shell": {
+      "tags": ["scope:demo-one", "type:feature"]
     }
   }
 }

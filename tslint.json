@@ -54,7 +54,7 @@
           },
           {
             "sourceTag": "type:app",
-            "onlyDependOnLibsWithTags": ["type:feature", "type:ui"]
+            "onlyDependOnLibsWithTags": ["type:feature", "type:ui", "type:animations"]
           },
           {
             "sourceTag": "type:feature",
@@ -86,7 +86,7 @@
           },
           {
             "sourceTag": "scope:demo-one",
-            "onlyDependOnLibsWithTags": ["scope:demo-one", "scope:shared"]
+            "onlyDependOnLibsWithTags": ["scope:demo-one", "scope:demo-one-shell", "scope:shared"]
           },
           {
             "sourceTag": "scope:api",

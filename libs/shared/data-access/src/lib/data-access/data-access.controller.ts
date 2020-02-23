@@ -1,18 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
-import { Message, Page } from '@nx-demo/shared/models';
+import { Controller, Get, Query } from '@nestjs/common';
+import { Page } from '@nx-demo/shared/models';
 import { SharedDataAccessService } from './data-access.service';
 
 @Controller()
 export class SharedDataAccessController {
   constructor(private readonly sharedDataAccessService: SharedDataAccessService) {}
 
-  @Get('message')
-  getMessage(): Message {
-    return this.sharedDataAccessService.getMessage();
-  }
-
   @Get('pages')
-  getPages(param: string): Page {
-    return this.sharedDataAccessService.getPages(param);
+  getPages(@Query('page') page: string): Page {
+    return this.sharedDataAccessService.getPages(page);
   }
 }

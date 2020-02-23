@@ -1,33 +1,26 @@
-import { createSelector } from '@ngrx/store';
-import * as fromFeature from './page-one.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { PageOneState } from './page-one.reducer';
 
-// page state
-export const getPageOneState = createSelector(
-  fromFeature.getPageOneState,
-  (state: fromFeature.PageOneState) => state
-);
+// feature
+const pageOneFeatureSelector = createFeatureSelector<PageOneState>('page-one');
 
-export const getPageOneEntities = createSelector(
-  getPageOneState,
-  fromFeature.getPageOneEntities
-);
-
-export const getAllPageOne = createSelector(
-  getPageOneEntities,
-  entities => Object.keys(entities).map(id => entities[parseInt(id, 10)])
+export const getPageOne = createSelector(
+  pageOneFeatureSelector,
+  (state: PageOneState) => state.page
 );
 
 export const getPageOneLoaded = createSelector(
-  getPageOneState,
-  fromFeature.getPageOneLoaded
+  pageOneFeatureSelector,
+  (state: PageOneState) => state.loaded
 );
 
 export const getPageOneLoading = createSelector(
-  getPageOneState,
-  fromFeature.getPageOneLoading
+  pageOneFeatureSelector,
+  (state: PageOneState) => state.loading
 );
 
-export const getPageOne = createSelector(
-  getPageOneState,
-  fromFeature.getPageOne
-);
+export const pageOneSelectors = {
+  getPageOne,
+  getPageOneLoaded,
+  getPageOneLoading
+};

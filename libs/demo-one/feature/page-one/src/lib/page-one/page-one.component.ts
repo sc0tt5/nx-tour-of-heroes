@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Page } from '@nx-demo/shared/models';
 import { Observable, Subject } from 'rxjs';
 import { PageFacade } from './+state/page-one.facade';
+import { PageOneState } from './+state/page-one.reducer';
 
 @Component({
   selector: 'nx-demo-page-one',
@@ -9,13 +11,19 @@ import { PageFacade } from './+state/page-one.facade';
   styleUrls: ['./page-one.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PageOneComponent implements OnInit {
-  private unsubscribe$: Subject<void> = new Subject<void>();
+export class PageOneComponent implements OnInit, OnDestroy {
   page$: Observable<Page>;
+  unsubscribe$ = new Subject<void>();
 
-  constructor(private facade: PageFacade) {}
+  constructor(private facade: PageFacade, private store: Store<PageOneState>) {}
 
   ngOnInit() {
     this.page$ = this.facade.page$;
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+    this.facade.initializePageOne();
   }
 }

@@ -383,6 +383,37 @@
           "styleext": "scss"
         }
       }
+    },
+    "demo-one-feature-shell": {
+      "projectType": "library",
+      "root": "libs/demo-one/feature/shell",
+      "sourceRoot": "libs/demo-one/feature/shell/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/demo-one/feature/shell/tsconfig.lib.json",
+              "libs/demo-one/feature/shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/demo-one/feature/shell/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/demo-one/feature/shell/jest.config.js",
+            "tsConfig": "libs/demo-one/feature/shell/tsconfig.spec.json",
+            "setupFile": "libs/demo-one/feature/shell/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
