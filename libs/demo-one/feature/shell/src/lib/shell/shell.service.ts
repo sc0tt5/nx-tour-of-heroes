@@ -14,12 +14,17 @@ export class ShellService {
   }
 
   setCanonicalURL(): HTMLLinkElement {
-    // create canonical element
-    const link: HTMLLinkElement = this.doc.createElement('link');
-    link.setAttribute('rel', 'canonical');
+    // check if already exists
+    let link: HTMLLinkElement = this.doc.querySelector('link[rel="canonical"]');
 
-    // append to dom
-    this.doc.head.appendChild(link);
+    if (!link) {
+      // create canonical element
+      link = this.doc.createElement('link');
+      link.setAttribute('rel', 'canonical');
+
+      // append to dom
+      this.doc.head.appendChild(link);
+    }
 
     // set current url
     link.setAttribute('href', `${this.doc.location.host}${this.doc.location.pathname}`); // URL without querystring
