@@ -1,11 +1,5 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   routerTransitionLoadingEnd,

@@ -10,17 +10,10 @@ describe('AppController', () => {
     }).compile();
   });
 
-  describe('getMessage', () => {
-    it('should return "Welcome to api!"', () => {
-      const appController = app.get<AppController>(AppController);
-      expect(appController.getMessage()).toEqual({ message: 'Welcome to api!' });
-    });
-  });
-
   describe('getPages', () => {
     it('should return 2 pages', () => {
       const appController = app.get<AppController>(AppController);
-      expect(appController.getPages().length).toBe(2);
+      expect(appController.getPages()).toBe(2);
     });
   });
 });

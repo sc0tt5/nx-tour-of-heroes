@@ -6,5 +6,16 @@ module.exports = {
   resolver: '@nrwl/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageReporters: ['html'],
-  passWithNoTests: true
+  passWithNoTests: true,
+  reporters: [
+    'default',
+    [
+      'jest-html-reporters',
+      {
+        publicPath: './tmp/results',
+        filename: 'report.html',
+        expand: true
+      }
+    ]
+  ]
 };

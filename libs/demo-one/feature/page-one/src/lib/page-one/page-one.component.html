@@ -1,11 +1,12 @@
 <nx-demo-demo-content>
-  <h1 [innerHTML]="page.name"></h1>
-  <p [innerHTML]="page.content"></p>
-
-  <nx-demo-accordion>
-    <nx-demo-accordion-one
-      *ngFor="let item of page.accordionItems"
-      [item]="item"
-    ></nx-demo-accordion-one>
-  </nx-demo-accordion>
+  <ng-container *ngIf="page$ | async as page">
+    <h1 [innerHTML]="page.name"></h1>
+    <p [innerHTML]="page.content"></p>
+    <nx-demo-accordion>
+      <nx-demo-accordion-one
+        *ngFor="let item of page.accordionItems"
+        [item]="item"
+      ></nx-demo-accordion-one>
+    </nx-demo-accordion>
+  </ng-container>
 </nx-demo-demo-content>

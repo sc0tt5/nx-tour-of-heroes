@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Page } from '@nx-demo/shared/models';
 import { Observable, of } from 'rxjs';
@@ -13,9 +13,12 @@ export class PageService {
   constructor(private http: HttpClient) {}
 
   // TODO: unit test getPage
-  getPage(param: string): Observable<Page> {
-    return this.http.get<Page[]>(this.api).pipe(
-      map(pages => pages.find(page => page.param === param)),
+  getPage(pageName: string): Observable<Page> {
+    let params = new HttpParams();
+    params = params.append('page', pageName);
+
+    return this.http.get<Page>(this.api, { params }).pipe(
+      map(page => page),
       catchError((error: any) => of(error))
     );
   }
