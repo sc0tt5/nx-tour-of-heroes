@@ -1,5 +1,13 @@
 <div class="accordion-item" (click)="itemToggled.emit()">
-  <label class="accordion-item-label" [class.open]="isOpen">{{ item.header }}</label>
+  <!-- TODO: https://angular.io/guide/attribute-directives -->
+  <label
+    class="accordion-item-label gtm-event"
+    [attr.data-gtm-action]="'click'"
+    [attr.data-gtm-category]="'Accordion'"
+    [attr.data-gtm-label]="'Accordion - ' + item.header"
+    [class.open]="isOpen"
+    >{{ item.header }}</label
+  >
   <div class="accordion-item-content" [class.open]="isOpen">
     {{ item.content }}
   </div>
