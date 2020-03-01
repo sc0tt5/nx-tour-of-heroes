@@ -41,6 +41,9 @@
     },
     "demo-one-feature-shell": {
       "tags": ["scope:demo-one", "type:feature"]
+    },
+    "shared-utils": {
+      "tags": ["type:utils"]
     }
   }
 }

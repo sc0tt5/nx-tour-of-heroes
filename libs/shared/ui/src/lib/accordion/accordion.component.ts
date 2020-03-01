@@ -1,6 +1,6 @@
-// ref: https://stackblitz.com/edit/github-madr3a?file=src%2Fapp%2Faccordion%2Faccordion-item2%2Faccordion-item2.component.ts
 import { AfterContentInit, Component, ContentChildren, ViewEncapsulation } from '@angular/core';
-import { AccordionItem, AccordionWrapper, ACCORDION_ITEM } from './accordion.model';
+import { trackEvent } from '@nx-demo/shared/utils';
+import { ACCORDION_ITEM, AccordionItem, AccordionWrapper } from './accordion.model';
 
 @Component({
   selector: 'nx-demo-accordion',
@@ -18,11 +18,14 @@ export class AccordionComponent implements AfterContentInit, AccordionWrapper {
     });
   }
 
-  // TODO: unit test itemToggledHandler
   itemToggledHandler(i: number) {
     this.activeIndex = this.activeIndex === i ? null : i;
     this.items.forEach((item: AccordionItem, index) => {
       item.isOpen = index === this.activeIndex;
+      if (index === this.activeIndex) {
+        // ga event tracking - action, category, label
+        trackEvent('click', 'Accordion', `Accordion - ${item.item.header}`);
+      }
     });
   }
 }
