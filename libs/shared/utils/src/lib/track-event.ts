@@ -11,11 +11,11 @@ export function trackEvent(
 ): void {
   try {
     let isEventDone = false; // prevent double tracking when applicable
-    const isValidEvent: boolean = !!action && !!category && !!label;
+    const isValidEvent = !!action && !!category && !!label;
 
     if (isValidEvent && !isEventDone) {
       // check if dataLayer loaded, if not then create it
-      const dataLayer: any = ((<any>window).dataLayer = (<any>window).dataLayer || []);
+      const dataLayer = ((<any>window).dataLayer = (<any>window).dataLayer || []);
       // event data
       const data: Event = {
         action,
