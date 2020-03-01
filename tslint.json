@@ -102,6 +102,10 @@
           {
             "sourceTag": "scope:api",
             "onlyDependOnLibsWithTags": ["scope:api", "scope:shared"]
+          },
+          {
+            "sourceTag": "type:utils",
+            "onlyDependOnLibsWithTags": ["type:types"]
           }
         ]
       }
