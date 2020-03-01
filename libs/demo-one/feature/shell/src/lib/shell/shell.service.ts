@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivationEnd } from '@angular/router';
+import { trackEvent } from '@nx-demo/shared/utils';
 
 @Injectable()
 export class ShellService {
@@ -26,5 +27,10 @@ export class ShellService {
 
     // return it so will be pure fn
     return link;
+  }
+
+  // for demo purposes - you wouldn't call track event like this
+  trackEvent(action: string, category: string, label: string): void {
+    trackEvent(action, category, label);
   }
 }
