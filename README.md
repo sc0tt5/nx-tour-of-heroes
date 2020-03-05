@@ -14,7 +14,7 @@ This project was generated using [Nx](https://nx.dev).
 
 ## Development server
 
-Run `ng serve nx-demo` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `ng serve api` to run the API server. Then run `ng serve --open` for the dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -66,14 +66,18 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 │   ├── demo-one           # demo-one lib
 │   │   └── feature
 │   │   │   └── page-one
+│   │   │   │   └── +state
 │   │   │   │   └── ...
 │   │   │   └── page-two
+│   │   │   │   └── +state
 │   │   │   │   └── ...
 │   ├── demo-two           # demo-two lib
 │   │   └── feature
 │   │   │   └── page-one
+│   │   │   │   └── +state
 │   │   │   │   └── ...
 │   │   │   └── page-two
+│   │   │   │   └── +state
 │   │   │   │   └── ...
 │   ├── shared             # shared libs
 │   │   └── animations
@@ -85,6 +89,8 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 │   │   ├── ui             # presentational components
 │   │   │   └── accordion
 │   │   │       └── ...
+│   │   └── utils
+│   │   │   └── ...
 ├── tools
 │   │   └── ...
 └── ...
@@ -118,9 +124,6 @@ Types
 - ui
 - utils
 
-## ToDo
+## NGRX
 
-- Libs README
-- Compodoc
-- Data fetching using DataPersistence (ngrx)
-- e2e
+Install [Redux Devtools Extension](https://github.com/zalmoxisus/redux-devtools-extension) for Chrome. Invaluable tool for debugging your store.
