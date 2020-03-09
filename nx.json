@@ -44,6 +44,9 @@
     },
     "shared-utils": {
       "tags": ["type:utils"]
+    },
+    "shared-theme": {
+      "tags": ["type:theme"]
     }
   }
 }
