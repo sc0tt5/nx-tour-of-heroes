@@ -1,3 +1,5 @@
+@import 'variables';
+
 // loading indicator
 .loading-indicator {
   overflow: hidden;
@@ -11,8 +13,8 @@
   }
 
   &-progress {
-    background: #1c79b8;
-    color: #fff;
+    background: $blue;
+    color: $white;
     padding: 2px;
     width: 0;
   }
