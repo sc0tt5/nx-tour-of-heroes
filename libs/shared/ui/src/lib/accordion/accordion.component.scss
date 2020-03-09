@@ -1,3 +1,5 @@
+@import 'variables';
+
 // ref: https://codepen.io/raubaca/pen/PZzpVe
 
 // layout
@@ -20,7 +22,7 @@
   // accordion items (shared)
   & .accordion-item {
     width: 100%;
-    color: white;
+    color: $white;
     overflow: hidden;
 
     // header label
@@ -46,8 +48,8 @@
     &-content {
       max-height: 0;
       padding: 0 1em;
-      color: #000;
-      background: white;
+      color: $black;
+      background: $white;
       transition: all 0.35s;
 
       &.open {
