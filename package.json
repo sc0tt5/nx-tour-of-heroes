@@ -27,7 +27,8 @@
     "update:check": "ng update",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "private": false,
   "dependencies": {
@@ -47,7 +48,7 @@
     "@ngrx/router-store": "^8.6.0",
     "@ngrx/store": "^8.6.0",
     "@ngrx/store-devtools": "^8.6.0",
-    "@nrwl/angular": "8.12.9",
+    "@nrwl/angular": "9.0.0",
     "core-js": "^2.5.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
@@ -55,18 +56,18 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.900.5",
-    "@angular/cli": "9.0.5",
+    "@angular-devkit/build-angular": "0.900.1",
+    "@angular/cli": "9.0.1",
     "@angular/compiler-cli": "^9.0.5",
     "@angular/language-service": "^9.0.5",
     "@compodoc/compodoc": "^1.1.11",
     "@nestjs/schematics": "^6.7.0",
     "@nestjs/testing": "^6.8.3",
-    "@nrwl/cypress": "8.12.9",
-    "@nrwl/jest": "8.12.9",
-    "@nrwl/nest": "8.12.9",
-    "@nrwl/node": "8.12.9",
-    "@nrwl/workspace": "8.12.9",
+    "@nrwl/cypress": "9.0.0",
+    "@nrwl/jest": "9.0.0",
+    "@nrwl/nest": "9.0.0",
+    "@nrwl/node": "9.0.0",
+    "@nrwl/workspace": "9.0.0",
     "@types/jest": "24.0.9",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
@@ -75,12 +76,12 @@
     "eslint": "6.1.0",
     "jest": "24.1.0",
     "jest-html-reporters": "^1.2.1",
-    "jest-preset-angular": "7.0.0",
+    "jest-preset-angular": "8.0.0",
     "ngrx-store-freeze": "^0.2.4",
     "prettier": "1.18.2",
     "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.7.5"
+    "typescript": "3.7.5"
   }
 }
