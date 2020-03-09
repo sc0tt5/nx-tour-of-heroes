@@ -31,5 +31,9 @@
       "@nx-demo/shared/theme": ["libs/shared/theme/src/index.ts"]
     }
   },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictTemplates": true
+  },
   "exclude": ["node_modules", "tmp"]
 }

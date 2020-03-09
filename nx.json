@@ -10,7 +10,7 @@
   "projects": {
     "demo-one-e2e": {
       "tags": ["scope:demo-one", "type:e2e"],
-      "implicitDependencies": ["demo-one"]
+      "implicitDependencies": ["demo-one", "demo-one"]
     },
     "demo-one": {
       "tags": ["scope:demo-one", "type:app"]

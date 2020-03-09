@@ -13,7 +13,7 @@ describe('PageOne Selectors', () => {
       providers: [provideMockStore({ initialState })]
     });
 
-    store = TestBed.get(Store);
+    store = TestBed.inject(Store);
   });
 
   describe('getPageOne', () => {
