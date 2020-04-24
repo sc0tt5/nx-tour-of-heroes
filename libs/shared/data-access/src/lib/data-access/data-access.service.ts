@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Message, Page } from '@nx-demo/shared/models';
+import { PageOne, PageTwo } from '@nx-demo/shared/models';
 
 @Injectable()
 export class SharedDataAccessService {
-  getPages(param: string): Page {
+  getPages(param: string): PageOne | PageTwo {
     const pages = [
       {
         param: 'page-one',

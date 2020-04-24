@@ -12,17 +12,10 @@ describe('SharedDataAccessController', () => {
     }).compile();
   });
 
-  describe('getMessage', () => {
-    it('should return "Welcome to api!"', () => {
-      const appController = app.get<SharedDataAccessController>(SharedDataAccessController);
-      expect(appController.getMessage()).toEqual('Welcome to api!');
-    });
-  });
-
   describe('getPages', () => {
     it('should return 2 pages"', () => {
       const appController = app.get<SharedDataAccessController>(SharedDataAccessController);
-      expect(appController.getPages().length).toBe(2);
+      expect(appController.getPages('page-one')).toBeTruthy();
     });
   });
 });

@@ -3,9 +3,9 @@ $secondary: #222f3d;
 
 .accordion-item {
   // header label
-  &-label {
-    border-color: $secondary;
+  &__label {
     background: $main;
+    border-color: $secondary;
 
     // header icon
     &::after {
@@ -17,7 +17,7 @@ $secondary: #222f3d;
       background: darken($main, 10%);
     }
 
-    &.open {
+    &--open {
       background: darken($main, 10%);
       &::after {
         content: '\002D';

@@ -34,7 +34,7 @@ export class LoadingIndicatorComponent implements OnInit, OnDestroy {
       } else {
         setTimeout(() => {
           this.loading = loading;
-        }, 500); // dealy to kind of simulate api call (just for demo)
+        }, 500); // delay to kind of simulate api call (just for demo)
       }
     });
   }

@@ -1,9 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { Page } from '@nx-demo/shared/models';
+import { PageOne } from '@nx-demo/shared/models';
 import * as PageOneAction from './page-one.actions';
 
 export interface PageOneState {
-  page: Page;
+  page: PageOne;
   loading: boolean;
   loaded: boolean;
 }
