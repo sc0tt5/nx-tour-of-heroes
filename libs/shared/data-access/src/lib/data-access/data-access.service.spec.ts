@@ -12,15 +12,9 @@ describe('SharedDataAccessService', () => {
     service = app.get<SharedDataAccessService>(SharedDataAccessService);
   });
 
-  describe('getMessage', () => {
-    it('should return "Welcome to api!"', () => {
-      expect(service.getMessage()).toEqual({ message: 'Welcome to api!' });
-    });
-  });
-
   describe('getPages', () => {
     it('should return an array of pages', () => {
-      expect(service.getPages().length).toBe(2);
+      expect(service.getPages('page-one')).toBeTruthy();
     });
   });
 });

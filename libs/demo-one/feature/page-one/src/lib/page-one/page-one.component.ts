@@ -1,29 +1,22 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Page } from '@nx-demo/shared/models';
+import { PageOne } from '@nx-demo/shared/models';
 import { Observable, Subject } from 'rxjs';
 import { PageOneFacade } from './+state/page-one.facade';
-import { PageOneState } from './+state/page-one.reducer';
 
 @Component({
-  selector: 'nx-demo-page-one',
   templateUrl: './page-one.component.html',
-  styleUrls: ['./page-one.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageOneComponent implements OnInit, OnDestroy {
-  page$: Observable<Page>;
-  private unsubscribe$ = new Subject<void>();
+  page$: Observable<PageOne>;
 
-  constructor(private facade: PageOneFacade, private store: Store<PageOneState>) {}
+  constructor(private facade: PageOneFacade) {}
 
   ngOnInit() {
     this.page$ = this.facade.page$;
   }
 
   ngOnDestroy() {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
     this.facade.initializePageOne();
   }
 }

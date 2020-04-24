@@ -2,17 +2,17 @@
 
 // loading indicator
 .loading-indicator {
+  left: 0;
   overflow: hidden;
-  width: 100%;
   position: fixed;
   top: 0;
-  left: 0;
+  width: 100%;
 
   span {
     display: block;
   }
 
-  &-progress {
+  &__bar--progress {
     background: $blue;
     color: $white;
     padding: 2px;

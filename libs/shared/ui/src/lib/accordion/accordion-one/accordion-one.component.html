@@ -1,8 +1,12 @@
 <div class="accordion-item">
-  <label class="accordion-item-label" [class.open]="isOpen" (click)="itemToggled.emit()">
+  <label
+    class="accordion-item__label"
+    [class.accordion-item__label--open]="isOpen"
+    (click)="itemToggled.emit()"
+  >
     {{ item.header }}
   </label>
-  <div class="accordion-item-content" [class.open]="isOpen">
+  <div class="accordion-item__content" [class.accordion-item__content--open]="isOpen">
     {{ item.content }}
   </div>
 </div>

@@ -5,6 +5,7 @@ import { AccordionModule, DemoContentModule } from '@nx-demo/shared/ui';
 import { PageOneStoreModule } from './page-one/+state/page-one-store.module';
 import { PageOneResolverService } from './page-one/page-one-resolver.service';
 import { PageOneComponent } from './page-one/page-one.component';
+import { PageOneService } from './page-one/page-one.service';
 
 export const ROUTES: Routes = [
   {
@@ -24,6 +25,6 @@ export const ROUTES: Routes = [
     PageOneStoreModule
   ],
   declarations: [PageOneComponent],
-  providers: [PageOneResolverService]
+  providers: [PageOneResolverService, PageOneService]
 })
 export class DemoOneFeaturePageOneModule {}

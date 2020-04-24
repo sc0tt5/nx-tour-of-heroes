@@ -4,9 +4,9 @@ $secondary: #3292d3;
 // scoped to this item only
 .accordion-item {
   // header label
-  &-label {
-    border-color: $secondary;
+  &__label {
     background: $main;
+    border-color: $secondary;
 
     // header icon
     &::after {
@@ -18,7 +18,7 @@ $secondary: #3292d3;
       background: darken($main, 10%);
     }
 
-    &.open {
+    &--open {
       background: darken($main, 10%);
       &::after {
         transform: rotate(90deg);
