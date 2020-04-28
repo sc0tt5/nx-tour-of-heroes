@@ -1,56 +1,75 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { inject, TestBed } from '@angular/core/testing';
+import { Injectable } from '@angular/core';
+import { async, TestBed } from '@angular/core/testing';
 import { PageOne } from '@nx-demo/shared/models';
 import { ResourceService } from './resource.service';
 
+@Injectable()
 export class MockService extends ResourceService<PageOne> {
   constructor(private httpClient: HttpClient) {
     super(httpClient, '/api/pages');
   }
 }
 
+/**
+ * The API for matching requests is built around three methods:
+ * - expectOne(expr): expect exactly one request that matches
+ * - expectNone(expr): expect that no requests matches
+ * - match(expr): match the request but do not verify / assert
+ * kudos/ref: https://medium.com/sparkles-blog/angular-testing-snippets-httpclient-d1dc2f035eb8
+ */
+
 describe('ResourceService', () => {
+  let service: MockService;
+  let httpMock: HttpTestingController;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MockService],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientModule, HttpClientTestingModule],
+      providers: [MockService]
     });
+    service = TestBed.inject(MockService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
-  // check all expectations - URL called, HTTP method, etc.
-  afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
+  afterEach(() => {
     httpMock.verify();
-  }));
+  });
 
-  it('should fetch the page data', () => {
-    inject(
-      [HttpTestingController, MockService],
-      (httpMock: HttpTestingController, service: MockService) => {
-        // call the service
-        service.read('page-one').subscribe(data => {
-          expect(data).toBeDefined();
-          expect(data.accordionItems.length).toBeGreaterThan(0);
-        });
+  describe('read', () => {
+    it('should fetch the page data', async(() => {
+      const params = new HttpParams({ fromObject: { page: 'page-one' } });
+      const url = `/api/pages?${params}`;
 
-        // set the expectations for the HttpClient mock
-        const http = httpMock.expectOne('/api/pages');
-        expect(http.request.method).toEqual('GET');
+      service.read(params).subscribe();
 
-        // set the fake data to be returned by the mock
-        http.flush({
-          data: {
-            param: 'page-one',
-            name: 'Page 1',
-            content: 'Page 1 content...',
-            accordionItems: [
-              { header: 'header 1', content: 'content 1' },
-              { header: 'header 2', content: 'content 2' },
-              { header: 'header 3', content: 'content 3' }
-            ]
-          }
-        });
-      }
-    );
+      const request = httpMock.expectOne(url).request;
+
+      expect(request.url).toEqual('/api/pages');
+      expect(request.method).toEqual('GET');
+      expect(request.responseType).toEqual('json');
+      expect(request.params).toEqual(params);
+
+      expect(request.url).not.toEqual('/api/test');
+      expect(request.method).not.toEqual('POST');
+    }));
+
+    it('should emit "true" for 200 Ok', async(() => {
+      const params = new HttpParams({ fromObject: { page: 'page-one' } });
+      const url = `/api/pages?${params}`;
+      let response = null;
+
+      service.read(params).subscribe((receivedResponse: any) => {
+        response = receivedResponse;
+      });
+
+      const requestWrapper = httpMock.expectOne(url);
+      requestWrapper.flush({ status: 200, statusText: 'Ok' });
+      const request = requestWrapper.request;
+
+      expect(request.method).toEqual('GET');
+      expect(response.status).toBe(200);
+    }));
   });
 });

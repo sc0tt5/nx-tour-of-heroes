@@ -1,7 +1,7 @@
 module.exports = {
   name: 'shared-data-access',
   preset: '../../../jest.config.js',
-  coverageDirectory: '../../../coverage/libs/shared/data-access',
+  coverageDirectory: '../../../tmp/coverage/libs/shared/data-access',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

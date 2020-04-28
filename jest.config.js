@@ -13,9 +13,12 @@ module.exports = {
       'jest-html-reporters',
       {
         publicPath: './tmp/results',
-        filename: 'report.html',
-        expand: true
+        filename: 'index.html',
+        expand: true,
+        hideIcon: true,
+        pageTitle: 'Results'
       }
     ]
-  ]
+  ],
+  verbose: false
 };

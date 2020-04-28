@@ -5,5 +5,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../../coverage/libs/shared/theme'
+  coverageDirectory: '../../../tmp/coverage/libs/shared/theme'
 };
