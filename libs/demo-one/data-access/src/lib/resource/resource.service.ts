@@ -41,11 +41,10 @@ export class ResourceService<T extends Resource> {
 
   /**
    * Fetches all pages.
-   * @param queryOptions
    */
-  list(queryOptions: any): Observable<T[]> {
-    return this.http.get(`${this.endpoint}?${queryOptions.toQueryString()}`).pipe(
-      map((data: any) => this.convertData(data.items)),
+  list(): Observable<T[]> {
+    return this.http.get(this.endpoint).pipe(
+      map((data: any) => data as T),
       catchError((error: any) => of(error))
     );
   }
@@ -58,13 +57,5 @@ export class ResourceService<T extends Resource> {
     return this.http
       .delete(`${this.endpoint}/${param}`)
       .pipe(catchError((error: any) => of(error)));
-  }
-
-  /**
-   * Helper function to map data object.
-   * @param data
-   */
-  private convertData(data: any): T[] {
-    return data.map(item => item);
   }
 }
