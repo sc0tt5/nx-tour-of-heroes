@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResourceService } from '@nx-demo/shared/data-access';
+import { ResourceService } from '@nx-demo/demo-one/data-access';
 import { PageTwo } from '@nx-demo/shared/models';
 
 @Injectable()
