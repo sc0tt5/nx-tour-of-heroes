@@ -1,7 +1,7 @@
 module.exports = {
   name: 'shared-animations',
   preset: '../../../jest.config.js',
-  coverageDirectory: '../../../coverage/libs/shared/animations',
+  coverageDirectory: '../../../tmp/coverage/libs/shared/animations',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

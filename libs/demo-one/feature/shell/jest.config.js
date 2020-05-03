@@ -1,7 +1,7 @@
 module.exports = {
   name: 'demo-one-feature-shell',
   preset: '../../../../jest.config.js',
-  coverageDirectory: '../../../../coverage/libs/demo-one/feature/shell',
+  coverageDirectory: '../../../../tmp/coverage/libs/demo-one/feature/shell',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
