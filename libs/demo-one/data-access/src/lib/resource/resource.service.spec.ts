@@ -25,10 +25,21 @@ const mockPage = {
 
 /**
  * The HttpTestingController API for matching requests is built around three methods:
- * - expectOne(expr): expect exactly one request that matches
+ * - expectOne(expr): expect exactly one request that matches (will test for a url and close the backend call)
  * - expectNone(expr): expect that no requests matches
  * - match(expr): match the request but do not verify / assert
  * kudos/ref: https://medium.com/sparkles-blog/angular-testing-snippets-httpclient-d1dc2f035eb8
+ *
+ * See also: https://stackoverflow.com/questions/49430213/error-expected-no-open-requests-found-1
+ * Subscribing to a mock request calls it as far as the client side is concerned but does not 'complete' it as far as the backend
+ * is concerned. 'Completing' a request can be done in a number of ways;
+ *
+ * backend = TestBed.get(HttpTestingController)
+ * -- backend.expectOne(URL) - this will both test for a url, and 'close' the backend call. This will not test for params, and will fail if your query has params in it.
+ * -- backend.expectNone(URL) - in case you're testing for urls that have params, expectOne() wont work. You'll have to use backend.match(). Match does not auto close the backend api call, so you can expectNone() after it to close it out.
+ * --.flush(RESPONSE) - flush will force-send a response for the http call, and subsequently close the call. Note: if calling flush on a match(), watch out for match returning an array, i.e. backend.match(...)[0].flush({})
+ *
+ * Any of these methods will close out the http request, and make backend.verify() behave.
  */
 
 describe('ResourceService', () => {
@@ -142,7 +153,7 @@ describe('ResourceService', () => {
 
   describe('read', () => {
     const params = new HttpParams({ fromObject: { page: 'page-one' } });
-    const url = `/api/pages?${params}`;
+    const url = `/api/pages?page=${mockPage.param}`;
 
     it('should fetch the page data', () => {
       service.read(params).subscribe();
@@ -171,6 +182,20 @@ describe('ResourceService', () => {
 
       expect(request.method).toEqual('GET');
       expect(response.status).toBe(200);
+    });
+
+    it('should emit failure for 400 error', () => {
+      let response = null;
+
+      service.read(params).subscribe((receivedResponse: any) => {
+        response = receivedResponse;
+      });
+
+      const requestWrapper = httpMock.expectOne(url);
+      requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
+
+      expect(response.error).toBe('test');
+      expect(response.status).toBe(400);
     });
   });
 
@@ -204,6 +229,20 @@ describe('ResourceService', () => {
       expect(request.method).toEqual('GET');
       expect(response.status).toBe(200);
     });
+
+    it('should emit failure for 400 error', () => {
+      let response = null;
+
+      service.list().subscribe((receivedResponse: any) => {
+        response = receivedResponse;
+      });
+
+      const requestWrapper = httpMock.expectOne(url);
+      requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
+
+      expect(response.error).toBe('test');
+      expect(response.status).toBe(400);
+    });
   });
 
   describe('delete', () => {
@@ -235,6 +274,20 @@ describe('ResourceService', () => {
 
       expect(request.method).toEqual('DELETE');
       expect(response.status).toBe(200);
+    });
+
+    it('should emit failure for 400 error', () => {
+      let response = null;
+
+      service.delete(mockPage.param).subscribe((receivedResponse: any) => {
+        response = receivedResponse;
+      });
+
+      const requestWrapper = httpMock.expectOne(url);
+      requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
+
+      expect(response.error).toBe('test');
+      expect(response.status).toBe(400);
     });
   });
 });
