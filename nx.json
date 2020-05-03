@@ -8,45 +8,42 @@
     "nx.json": "*"
   },
   "projects": {
-    "demo-one-e2e": {
-      "tags": ["scope:demo-one", "type:e2e"],
-      "implicitDependencies": ["demo-one", "demo-one"]
+    "api": {
+      "tags": ["scope:api", "type:api"]
     },
     "demo-one": {
       "tags": ["scope:demo-one", "type:app"]
     },
-    "api": {
-      "tags": ["scope:api", "type:api"]
-    },
-    "shared-models": {
-      "tags": ["scope:shared", "type:types"]
-    },
-    "shared-data-access": {
-      "tags": ["scope:shared", "type:data-access"]
+    "demo-one-e2e": {
+      "tags": ["scope:demo-one", "type:e2e"],
+      "implicitDependencies": ["demo-one", "demo-one"]
     },
     "demo-one-feature-page-one": {
       "tags": ["scope:demo-one", "type:feature"]
     },
-    "demo-one-data-access": {
-      "tags": ["scope:demo-one", "type:data-access"]
-    },
-    "shared-ui": {
-      "tags": ["scope:shared", "type:ui"]
-    },
     "demo-one-feature-page-two": {
       "tags": ["scope:demo-two", "type:feature"]
-    },
-    "shared-animations": {
-      "tags": ["scope:shared", "type:animations"]
     },
     "demo-one-feature-shell": {
       "tags": ["scope:demo-one", "type:feature"]
     },
-    "shared-utils": {
-      "tags": ["type:utils"]
+    "shared-animations": {
+      "tags": ["scope:shared", "type:animations"]
+    },
+    "shared-data-access": {
+      "tags": ["scope:shared", "type:data-access"]
+    },
+    "shared-models": {
+      "tags": ["scope:shared", "type:types"]
     },
     "shared-theme": {
       "tags": ["type:theme"]
+    },
+    "shared-ui": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-utils": {
+      "tags": ["type:utils"]
     }
   }
 }
