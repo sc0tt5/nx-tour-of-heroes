@@ -44,9 +44,6 @@
     },
     "shared-utils": {
       "tags": ["type:utils"]
-    },
-    "demo-one-data-access": {
-      "tags": ["scope:demo-one", "type:data-access"]
     }
   }
 }

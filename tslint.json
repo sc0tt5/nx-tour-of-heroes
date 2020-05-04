@@ -50,7 +50,7 @@
         "depConstraints": [
           {
             "sourceTag": "scope:api",
-            "onlyDependOnLibsWithTags": ["scope:api", "scope:shared"]
+            "onlyDependOnLibsWithTags": ["scope:api"]
           },
           {
             "sourceTag": "scope:demo-one",
@@ -63,15 +63,11 @@
           },
           {
             "sourceTag": "type:animations",
-            "onlyDependOnLibsWithTags": ["type:types", "type:ui", "type:animations"]
-          },
-          {
-            "sourceTag": "type:api",
-            "onlyDependOnLibsWithTags": ["type:api", "type:data-access"]
+            "onlyDependOnLibsWithTags": ["type:animations", "type:types", "type:ui"]
           },
           {
             "sourceTag": "type:app",
-            "onlyDependOnLibsWithTags": ["type:feature", "type:ui", "type:animations"]
+            "onlyDependOnLibsWithTags": ["type:animations", "type:feature", "type:ui"]
           },
           {
             "sourceTag": "type:data-access",
@@ -84,16 +80,16 @@
           {
             "sourceTag": "type:feature",
             "onlyDependOnLibsWithTags": [
-              "type:ui",
               "type:data-access",
-              "type:types",
               "type:state",
+              "type:types",
+              "type:ui",
               "type:utils"
             ]
           },
           {
             "sourceTag": "type:state",
-            "onlyDependOnLibsWithTags": ["type:state", "type:types", "type:data-access"]
+            "onlyDependOnLibsWithTags": ["type:data-access", "type:state", "type:types"]
           },
           {
             "sourceTag": "type:types",
@@ -101,7 +97,7 @@
           },
           {
             "sourceTag": "type:ui",
-            "onlyDependOnLibsWithTags": ["type:types", "type:ui", "type:animations", "type:utils"]
+            "onlyDependOnLibsWithTags": ["type:animations", "type:types", "type:ui", "type:utils"]
           },
           {
             "sourceTag": "type:utils",
