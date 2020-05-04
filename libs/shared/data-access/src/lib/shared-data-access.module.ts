@@ -1,9 +1,4 @@
-import { Module } from '@nestjs/common';
-import { SharedDataAccessController } from './data-access/data-access.controller';
-import { SharedDataAccessService } from './data-access/data-access.service';
+import { NgModule } from '@angular/core';
 
-@Module({
-  controllers: [SharedDataAccessController],
-  providers: [SharedDataAccessService]
-})
+@NgModule()
 export class SharedDataAccessModule {}

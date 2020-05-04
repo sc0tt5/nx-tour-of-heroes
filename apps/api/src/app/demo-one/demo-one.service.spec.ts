@@ -1,15 +1,15 @@
 import { Test } from '@nestjs/testing';
-import { SharedDataAccessService } from './data-access.service';
+import { DemoOneService } from './demo-one.service';
 
-describe('SharedDataAccessService', () => {
-  let service: SharedDataAccessService;
+describe('DemoOneService', () => {
+  let service: DemoOneService;
 
   beforeAll(async () => {
     const app = await Test.createTestingModule({
-      providers: [SharedDataAccessService]
+      providers: [DemoOneService]
     }).compile();
 
-    service = app.get<SharedDataAccessService>(SharedDataAccessService);
+    service = app.get<DemoOneService>(DemoOneService);
   });
 
   describe('getPages', () => {
