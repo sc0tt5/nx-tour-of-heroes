@@ -5,14 +5,13 @@ import { EffectsMetadata, getEffectsMetadata } from '@ngrx/effects';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action, Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { PageOne } from '@nx-demo/shared/models';
 import { cold, hot } from 'jest-marbles';
 import { Observable, of, throwError } from 'rxjs';
-
-import { PageOne } from '@nx-demo/shared/models';
 import { PageOneService } from '../page-one.service';
 import * as PageOneAction from './page-one.actions';
 import { PageOneEffects } from './page-one.effects';
-import * as fromThings from './page-one.reducer';
+import { initialState, PageOneState } from './page-one.reducer';
 
 describe('PageOneEffects', () => {
   let actions: Observable<Action>;
@@ -23,11 +22,9 @@ describe('PageOneEffects', () => {
 
   // Additional providers - very basic effects tests may not even need these
   let service: PageOneService;
-  let store: MockStore<fromThings.PageOneState>;
+  let store: MockStore<PageOneState>;
 
   beforeEach(async(() => {
-    const initialState = fromThings.initialState;
-
     TestBed.configureTestingModule({
       imports: [HttpClientModule, HttpClientTestingModule],
       providers: [
@@ -41,9 +38,10 @@ describe('PageOneEffects', () => {
     effects = TestBed.inject(PageOneEffects);
     metadata = getEffectsMetadata(effects);
     service = TestBed.inject(PageOneService);
-    store = TestBed.inject(Store) as MockStore<fromThings.PageOneState>;
+    store = TestBed.inject(Store) as MockStore<PageOneState>;
   }));
 
+  // TODO: wrap these in ??? describe('getPageOne', () => { });
   it('should get the items and emit when the service call is successful', () => {
     // set up the initial action that triggers the effect
     const action = PageOneAction.loadPageOne({ param: 'page-one' });
@@ -68,10 +66,10 @@ describe('PageOneEffects', () => {
     // set up the initial action that triggers the effect
     const action = PageOneAction.loadPageOne({ param: 'page-one' });
 
-    const error = 'There was an error';
+    const error = 1;
 
     // spy on the service call and return an error this time
-    spyOn(service, 'read').and.returnValue(throwError(error));
+    spyOn(service, 'read').and.returnValue(throwError({ error }));
 
     // set up our action list
     actions = hot('a', { a: action });
