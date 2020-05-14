@@ -1,3 +1,4 @@
+// kudos: https://dev.to/jdpearce/how-to-test-five-common-ngrx-effect-patterns-26cb
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, TestBed } from '@angular/core/testing';
@@ -16,11 +17,11 @@ import { initialState, PageOneState } from './page-one.reducer';
 describe('PageOneEffects', () => {
   let actions: Observable<Action>;
 
-  // These are the effects under test
+  // effects under test
   let effects: PageOneEffects;
   let metadata: EffectsMetadata<PageOneEffects>;
 
-  // Additional providers - very basic effects tests may not even need these
+  // providers
   let service: PageOneService;
   let store: MockStore<PageOneState>;
 
@@ -41,42 +42,43 @@ describe('PageOneEffects', () => {
     store = TestBed.inject(Store) as MockStore<PageOneState>;
   }));
 
-  // TODO: wrap these in ??? describe('getPageOne', () => { });
-  it('should get the items and emit when the service call is successful', () => {
-    // set up the initial action that triggers the effect
-    const action = PageOneAction.loadPageOne({ param: 'page-one' });
+  describe('loadPage$', () => {
+    it('should get the items and emit when the service call is successful', () => {
+      // set up the initial action that triggers the effect
+      const action = PageOneAction.loadPageOne({ param: 'page-one' });
 
-    // set up our dummy list of things to return
-    // (we could create real things here if necessary)
-    const page: PageOne = { name: null, content: null, param: null, accordionItems: [] };
+      // set up our dummy list of things to return
+      // (we could create real things here if necessary)
+      const page: PageOne = { name: null, content: null, param: null, accordionItems: [] };
 
-    // spy on the service call and return our dummy list
-    jest.spyOn(service, 'read').mockReturnValue(of(page));
+      // spy on the service call and return our dummy list
+      jest.spyOn(service, 'read').mockReturnValue(of(page));
 
-    // set up our action list
-    actions = hot('a', { a: action });
+      // set up our action list
+      actions = hot('a', { a: action });
 
-    // check that the observable output of the effect is what we expect it to be
-    expect(effects.loadPage$).toBeObservable(
-      cold('a', { a: PageOneAction.loadPageOneSuccess({ page }) })
-    );
-  });
+      // check that the observable output of the effect is what we expect it to be
+      expect(effects.loadPage$).toBeObservable(
+        cold('a', { a: PageOneAction.loadPageOneSuccess({ page }) })
+      );
+    });
 
-  it('should emit an error action when the service call is unsuccessful', () => {
-    // set up the initial action that triggers the effect
-    const action = PageOneAction.loadPageOne({ param: 'page-one' });
+    it('should emit an error action when the service call is unsuccessful', () => {
+      // set up the initial action that triggers the effect
+      const action = PageOneAction.loadPageOne({ param: 'page-one' });
 
-    const error = 1;
+      const error = 1;
 
-    // spy on the service call and return an error this time
-    spyOn(service, 'read').and.returnValue(throwError({ error }));
+      // spy on the service call and return an error this time
+      spyOn(service, 'read').and.returnValue(throwError({ error }));
 
-    // set up our action list
-    actions = hot('a', { a: action });
+      // set up our action list
+      actions = hot('a', { a: action });
 
-    // check that the output of the effect is what we expect it to be
-    expect(effects.loadPage$).toBeObservable(
-      cold('a', { a: PageOneAction.loadPageOneFail({ error }) })
-    );
+      // check that the output of the effect is what we expect it to be
+      expect(effects.loadPage$).toBeObservable(
+        cold('a', { a: PageOneAction.loadPageOneFail({ error }) })
+      );
+    });
   });
 });
