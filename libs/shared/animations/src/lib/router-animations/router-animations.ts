@@ -36,7 +36,7 @@ export const routerTransitionPageLoad: AnimationReferenceMetadata = animation([
 // loading indicator start
 export const routerTransitionLoadingStart: AnimationReferenceMetadata = animation([
   query(
-    '.loading-indicator-progress',
+    '.loading-indicator__bar--progress',
     [style({ width: '0%' }), animate('15s linear', style({ width: '95%' }))],
     {
       optional: true
@@ -46,7 +46,7 @@ export const routerTransitionLoadingStart: AnimationReferenceMetadata = animatio
 
 // loading indicator end
 export const routerTransitionLoadingEnd: AnimationReferenceMetadata = animation([
-  query('.loading-indicator-progress', [animate('250ms linear', style({ width: '100%' }))], {
+  query('.loading-indicator__bar--progress', [animate('250ms linear', style({ width: '100%' }))], {
     optional: true
   })
 ]);
