@@ -4,17 +4,17 @@ import { PageOneState } from './page-one.reducer';
 // feature
 const pageOneFeatureSelector = createFeatureSelector<PageOneState>('page-one');
 
-export const getPageOne = createSelector(
+const getPageOne = createSelector(
   pageOneFeatureSelector,
   (state: PageOneState) => state.page
 );
 
-export const getPageOneLoaded = createSelector(
+const getPageOneLoaded = createSelector(
   pageOneFeatureSelector,
   (state: PageOneState) => state.loaded
 );
 
-export const getPageOneLoading = createSelector(
+const getPageOneLoading = createSelector(
   pageOneFeatureSelector,
   (state: PageOneState) => state.loading
 );
