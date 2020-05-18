@@ -24,7 +24,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  private subscribeToRouterEvents() {
+  private subscribeToRouterEvents(): void {
     this.router.events
       .pipe(
         takeUntil(this.unsubscribe$),
@@ -32,7 +32,6 @@ export class ShellComponent implements OnInit, OnDestroy {
       )
       .subscribe(event => {
         if (event instanceof ActivationEnd && event.snapshot.routeConfig.data) {
-          // only allow when data.state is available
           if (event.snapshot.routeConfig.data.title) {
             this.shellService.setPageTitle(event);
             this.shellService.setCanonicalURL();

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Resource } from '@nx-demo/shared/models';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, delay, map } from 'rxjs/operators';
 
 export class ResourceService<T extends Resource> {
   constructor(private http: HttpClient, private endpoint: string) {}
@@ -34,6 +34,7 @@ export class ResourceService<T extends Resource> {
    */
   read(params: any): Observable<T> {
     return this.http.get(this.endpoint, { params }).pipe(
+      delay(1000), // for demonstration purposes only, simulate slower server response
       map((data: any) => data as T),
       catchError((error: any) => of(error))
     );

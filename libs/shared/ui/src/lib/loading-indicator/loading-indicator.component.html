@@ -1,5 +1,5 @@
-<div *ngIf="loading" [@loadingIndicator] class="loading-indicator">
+<div class="loading-indicator">
   <span class="loading-indicator__bar">
-    <span class="loading-indicator__bar--progress"></span>
+    <span *ngIf="!pageLoaded" [@growWidth] class="loading-indicator__bar--progress"></span>
   </span>
 </div>
