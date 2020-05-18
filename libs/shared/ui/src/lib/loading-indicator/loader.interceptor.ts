@@ -1,3 +1,4 @@
+// ?? archive
 // source: https://www.freakyjolly.com
 // prettier-ignore
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
@@ -13,7 +14,6 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   constructor(private loaderService: LoaderService) {}
 
-  // TODO: unit test removeRequest
   removeRequest(req: HttpRequest<any>) {
     const i = this.requests.indexOf(req);
     if (i >= 0) {
@@ -22,7 +22,6 @@ export class LoaderInterceptor implements HttpInterceptor {
     this.loaderService.isLoading.next(this.requests.length > 0);
   }
 
-  // TODO: unit test intercept
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.requests.push(req);
     this.loaderService.isLoading.next(true);

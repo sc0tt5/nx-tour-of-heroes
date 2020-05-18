@@ -12,7 +12,7 @@ export const ROUTES: Routes = [
     path: '',
     component: PageTwoComponent,
     data: { title: 'Page Two' },
-    resolve: { page: PageTwoResolverService }
+    resolve: { PageTwoResolverService }
   }
 ];
 

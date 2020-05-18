@@ -1,46 +1,13 @@
-import { transition, trigger, useAnimation } from '@angular/animations';
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
-import {
-  routerTransitionLoadingEnd,
-  routerTransitionLoadingStart
-} from '@nx-demo/shared/animations';
-import { Subject } from 'rxjs';
-import { LoaderService } from './loader.service';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { growWidthAnimation } from '@nx-demo/shared/animations';
 
 @Component({
   selector: 'nx-demo-loading-indicator',
   templateUrl: './loading-indicator.component.html',
   styleUrls: ['./loading-indicator.component.scss'],
   encapsulation: ViewEncapsulation.None, // required to update accordion shared styles
-  animations: [
-    trigger('loadingIndicator', [
-      transition(':enter', [useAnimation(routerTransitionLoadingStart)]),
-      transition(':leave', [useAnimation(routerTransitionLoadingEnd)])
-    ])
-  ]
+  animations: [growWidthAnimation()]
 })
-export class LoadingIndicatorComponent implements OnInit, OnDestroy {
-  private unsubscribe$: Subject<void> = new Subject<void>();
-  loading: boolean;
-
-  constructor(private loaderService: LoaderService, private router: Router) {}
-
-  ngOnInit() {
-    // subscribe to loader/interceptor
-    this.loaderService.isLoading.subscribe(loading => {
-      if (loading) {
-        this.loading = loading;
-      } else {
-        setTimeout(() => {
-          this.loading = loading;
-        }, 500); // delay to kind of simulate api call (just for demo)
-      }
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
-  }
+export class LoadingIndicatorComponent {
+  @Input() pageLoaded = false;
 }
