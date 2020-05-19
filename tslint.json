@@ -80,6 +80,7 @@
           {
             "sourceTag": "type:feature",
             "onlyDependOnLibsWithTags": [
+              "type:animations",
               "type:data-access",
               "type:state",
               "type:types",

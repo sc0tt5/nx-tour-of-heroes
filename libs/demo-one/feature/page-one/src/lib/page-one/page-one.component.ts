@@ -9,11 +9,13 @@ import { PageOneFacade } from './+state/page-one.facade';
 })
 export class PageOneComponent implements OnInit, OnDestroy {
   page$: Observable<PageOne>;
+  pageLoaded$: Observable<boolean>;
 
   constructor(private facade: PageOneFacade) {}
 
   ngOnInit() {
     this.page$ = this.facade.page$;
+    this.pageLoaded$ = this.facade.pageLoaded$;
   }
 
   ngOnDestroy() {
