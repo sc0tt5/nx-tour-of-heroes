@@ -8,7 +8,7 @@ describe('DemoOneFeaturePageOneModule', () => {
     }).compileComponents();
   }));
 
-  it('should create', () => {
+  it('should create the module', () => {
     expect(DemoOneFeaturePageOneModule).toBeDefined();
   });
 });

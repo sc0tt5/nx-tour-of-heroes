@@ -50,7 +50,7 @@
         "depConstraints": [
           {
             "sourceTag": "scope:api",
-            "onlyDependOnLibsWithTags": ["scope:api"]
+            "onlyDependOnLibsWithTags": ["scope:api", "type:types"]
           },
           {
             "sourceTag": "scope:demo-one",

@@ -13,8 +13,8 @@ describe('DemoOneService', () => {
   });
 
   describe('getPages', () => {
-    it('should return an array of pages', () => {
-      expect(service.getPages('page-one')).toBeTruthy();
+    it('should return a single page', () => {
+      expect(service.getPages('page-one').accordionItems.length).toBeTruthy();
     });
   });
 });

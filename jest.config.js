@@ -1,11 +1,7 @@
 module.exports = {
-  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-  transform: {
-    '^.+\\.(ts|js|html)$': 'ts-jest'
-  },
-  resolver: '@nrwl/jest/plugins/resolver',
-  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: './tmp/coverage',
   coverageReporters: ['html'],
+  moduleFileExtensions: ['ts', 'js', 'html'],
   passWithNoTests: true,
   reporters: [
     'default',
@@ -20,5 +16,10 @@ module.exports = {
       }
     ]
   ],
+  resolver: '@nrwl/jest/plugins/resolver',
+  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
+  transform: {
+    '^.+\\.(ts|js|html)$': 'ts-jest'
+  },
   verbose: false
 };
