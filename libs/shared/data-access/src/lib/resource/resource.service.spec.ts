@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Injectable } from '@angular/core';
-import { async, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { async, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { PageOne } from '@nx-demo/shared/models';
 import { ResourceService } from './resource.service';
 
