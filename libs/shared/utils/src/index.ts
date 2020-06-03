@@ -1,1 +1,1 @@
-export * from './lib/track-event';
+export * from './lib/analytics/analytics.service';

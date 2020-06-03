@@ -3,5 +3,5 @@ export interface Event {
   category: string;
   label: string;
   event?: string;
-  eventCallback?: () => void;
+  callback?: () => void;
 }
