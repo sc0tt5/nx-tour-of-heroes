@@ -8,7 +8,6 @@ export class DataLayerEvent implements Event {
     public readonly action: string = '',
     public readonly category: string = '',
     public readonly label: string = '',
-    public readonly event: string = 'ngTrackEvent',
-    public readonly callback?: () => void
+    public readonly event: string = 'ngTrackEvent'
   ) {}
 }

@@ -22,7 +22,6 @@ export class AnalyticsService {
    */
   trackEvent(event: Event): void {
     const dataLayerEvent = new DataLayerEvent(event.action, event.category, event.label);
-
     let isEventDone = false; // prevent double tracking when applicable
     const isValidEvent = this.validateEventData(event.action, event.category, event.label);
 
