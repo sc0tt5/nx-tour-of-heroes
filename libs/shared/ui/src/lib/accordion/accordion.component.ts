@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, ContentChildren, ViewEncapsulation } from '@angular/core';
-import { trackEvent } from '@nx-demo/shared/utils';
+import { AnalyticsService } from '@nx-demo/shared/utils';
 import { ACCORDION_ITEM, AccordionItem, AccordionWrapper } from './accordion.model';
 
 @Component({
@@ -11,6 +11,8 @@ import { ACCORDION_ITEM, AccordionItem, AccordionWrapper } from './accordion.mod
 export class AccordionComponent implements AfterContentInit, AccordionWrapper {
   private activeIndex: number;
   @ContentChildren(ACCORDION_ITEM as any) items: AccordionItem[];
+
+  constructor(private analyticsService: AnalyticsService) {}
 
   ngAfterContentInit(): void {
     this.items.forEach((item: AccordionItem, index) => {
@@ -24,7 +26,12 @@ export class AccordionComponent implements AfterContentInit, AccordionWrapper {
       item.isOpen = index === this.activeIndex;
       if (index === this.activeIndex) {
         // ga event tracking - action, category, label
-        trackEvent('click', 'Accordion', `Accordion - ${item.item.header}`);
+        const dataLayerEvent = {
+          action: 'click',
+          category: 'Accordion',
+          label: `Accordion - ${item.item.header}`
+        };
+        this.analyticsService.trackEvent(dataLayerEvent);
       }
     });
   }

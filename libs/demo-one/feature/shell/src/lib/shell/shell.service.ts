@@ -2,11 +2,15 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivationEnd } from '@angular/router';
-import { trackEvent } from '@nx-demo/shared/utils';
+import { AnalyticsService } from '@nx-demo/shared/utils';
 
 @Injectable()
 export class ShellService {
-  constructor(private title: Title, @Inject(DOCUMENT) private doc: Document) {}
+  constructor(
+    @Inject(DOCUMENT) private doc: Document,
+    private analyticsService: AnalyticsService,
+    private title: Title
+  ) {}
 
   setPageTitle(event: ActivationEnd): void {
     const lastChild = event.snapshot;
@@ -36,6 +40,7 @@ export class ShellService {
 
   // for demo purposes - you wouldn't call track event like this
   trackEvent(action: string, category: string, label: string): void {
-    trackEvent(action, category, label);
+    const dataLayerEvent = { action, category, label };
+    this.analyticsService.trackEvent(dataLayerEvent);
   }
 }
