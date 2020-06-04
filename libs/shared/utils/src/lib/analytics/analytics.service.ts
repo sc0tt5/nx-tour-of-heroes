@@ -10,7 +10,7 @@ import { DataLayerEvent } from './data-layer-event';
   providedIn: 'root'
 })
 export class AnalyticsService {
-  private readonly dataLayer: DataLayerEvent[];
+  private readonly dataLayer: object[];
 
   constructor() {
     this.dataLayer = (<any>window).dataLayer = (<any>window).dataLayer || [];
