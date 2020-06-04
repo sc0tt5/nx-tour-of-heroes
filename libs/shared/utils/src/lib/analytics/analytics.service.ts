@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Event } from '@nx-demo/shared/models';
-import { DataLayerEvent } from './data-layer-event';
+import { GoogleAnalyticsEvent } from '@nx-demo/shared/models';
 
 /**
- * Google Analytics event tracking via Google Tag Manager datalayer.
+ * Google Analytics event tracking via Google Tag Manager dataLayer.
  * @class AnalyticsService
  */
 @Injectable({
   providedIn: 'root'
 })
 export class AnalyticsService {
-  private readonly dataLayer: object[];
+  private readonly dataLayer: any[];
 
   constructor() {
     this.dataLayer = (<any>window).dataLayer = (<any>window).dataLayer || [];
@@ -18,12 +17,12 @@ export class AnalyticsService {
 
   /**
    * Send event to Google Tag Manager dataLayer.
-   * @param {DataLayerEvent} event The event data object to push to the dataLayer.
+   * @param {GoogleAnalyticsEvent} event The event data object to push to the dataLayer.
    */
-  trackEvent(event: Event): void {
-    const dataLayerEvent = new DataLayerEvent(event.action, event.category, event.label);
+  trackEvent(event: GoogleAnalyticsEvent): void {
+    const dataLayerEvent = this.setEvent(event);
+    const isValidEvent = this.validateEventData(event);
     let isEventDone = false; // prevent double tracking when applicable
-    const isValidEvent = this.validateEventData(event.action, event.category, event.label);
 
     if (isValidEvent && !isEventDone) {
       this.dataLayer.push(dataLayerEvent);
@@ -32,12 +31,28 @@ export class AnalyticsService {
   }
 
   /**
-   * Check if valid event.
-   * @param {string} action The action to check.
-   * @param {string} category The category to check.
-   * @param {string} label The label to check.
+   * Build data object that will be pushed to the dataLayer.
+   * @param {GoogleAnalyticsEvent} event The event action, category, and label to set.
    */
-  private validateEventData(action: string, category: string, label: string): boolean {
-    return !!action && !!category && !!label;
+  private setEvent(event: GoogleAnalyticsEvent) {
+    const dataLayerEvent: GoogleAnalyticsEvent = {
+      event: 'ngTrackEvent',
+      ...event
+    };
+
+    // only add callback if requested
+    if (event.eventCallback) {
+      dataLayerEvent.eventCallback = event.eventCallback;
+    }
+
+    return dataLayerEvent;
+  }
+
+  /**
+   * Check if valid event.
+   * @param {GoogleAnalyticsEvent} event The event action, category, and label to validate.
+   */
+  private validateEventData(event: GoogleAnalyticsEvent): boolean {
+    return !!event.action && !!event.category && !!event.label;
   }
 }
