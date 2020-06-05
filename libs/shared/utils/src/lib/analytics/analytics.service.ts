@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GoogleAnalyticsEvent } from '@nx-demo/shared/models';
+import { GoogleAnalyticsEvent, GoogleAnalyticsEventGroup } from '@nx-demo/shared/models';
 
 /**
  * Google Analytics event tracking via Google Tag Manager dataLayer.
@@ -19,15 +19,17 @@ export class AnalyticsService {
    * Send event to Google Tag Manager dataLayer.
    * @param {GoogleAnalyticsEvent} event The event data object to push to the dataLayer.
    */
-  trackEvent(event: GoogleAnalyticsEvent): void {
+  trackEvent(event: GoogleAnalyticsEvent): GoogleAnalyticsEventGroup {
     const dataLayerEvent = this.setEvent(event);
-    const isValidEvent = this.validateEventData(event);
+    const isValid = this.validateEventData(event);
     let isEventDone = false; // prevent double tracking when applicable
 
-    if (isValidEvent && !isEventDone) {
+    if (isValid && !isEventDone) {
       this.dataLayer.push(dataLayerEvent);
       isEventDone = true;
     }
+
+    return { dataLayerEvent, isValid };
   }
 
   /**

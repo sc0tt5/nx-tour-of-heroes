@@ -414,7 +414,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/utils/jest.config.js",
-            "tsConfig": "libs/shared/utils/tsconfig.spec.json"
+            "tsConfig": "libs/shared/utils/tsconfig.spec.json",
+            "setupFile": "libs/shared/utils/src/test-setup.ts"
           }
         }
       }
