@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "lib": ["es2017", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "rootDir": ".",
+    "sourceMap": true,
+    "target": "es2015",
+    "typeRoots": ["node_modules/@types"],
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@env/*": ["src/environments/*"],
+      "@nx-demo/demo-one/feature/page-one": ["libs/demo-one/feature/page-one/src/index.ts"],
+      "@nx-demo/demo-one/feature/page-two": ["libs/demo-one/feature/page-two/src/index.ts"],
+      "@nx-demo/demo-one/feature/shell": ["libs/demo-one/feature/shell/src/index.ts"],
+      "@nx-demo/shared/animations": ["libs/shared/animations/src/index.ts"],
+      "@nx-demo/shared/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@nx-demo/shared/models": ["libs/shared/models/src/index.ts"],
+      "@nx-demo/shared/theme": ["libs/shared/theme/src/index.ts"],
+      "@nx-demo/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@nx-demo/shared/utils": ["libs/shared/utils/src/index.ts"]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "strictTemplates": true
+  },
+  "exclude": ["node_modules", "tmp"]
+}

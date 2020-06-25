@@ -18,9 +18,9 @@ export class ShellService {
     this.title.setTitle(title);
   }
 
-  setCanonicalURL(): HTMLLinkElement {
+  setCanonicalURL(): Element {
     // check if already exists
-    let link: HTMLLinkElement = this.doc.querySelector('link[rel="canonical"]');
+    let link = this.doc.querySelector('link[rel="canonical"]');
 
     if (!link) {
       // create canonical element
