@@ -27,6 +27,6 @@ export class DemoOneService {
       }
     ];
 
-    return pages.find(page => page.param === param);
+    return (<any>pages).find((page: PageOne | PageTwo) => page.param === param);
   }
 }
