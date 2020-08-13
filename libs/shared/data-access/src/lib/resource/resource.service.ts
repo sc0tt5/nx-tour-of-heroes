@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Resource } from '@nx-demo/shared/models';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 
 export class ResourceService<T extends Resource> {
@@ -63,6 +63,6 @@ export class ResourceService<T extends Resource> {
    * @param {HttpErrorResponse} error
    */
   private handleError(error: HttpErrorResponse): Observable<never> {
-    return throwError(error);
+    return throwError(error); // NGXLogger will automatically trigger here
   }
 }

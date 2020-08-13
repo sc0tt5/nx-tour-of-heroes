@@ -7,6 +7,7 @@ import { MetaReducer, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { DemoOneFeatureShellModule } from '@nx-demo/demo-one/feature/shell';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { LoggerModule } from 'ngx-logger';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,12 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [store
     BrowserModule,
     HttpClientModule,
     DemoOneFeatureShellModule,
+    LoggerModule.forRoot({
+      serverLoggingUrl: `${environment.apiUrl}/logs`,
+      level: environment.logLevel,
+      serverLogLevel: environment.serverLogLevel,
+      disableConsoleLogging: environment.disableConsoleLogging
+    }),
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
