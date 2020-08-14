@@ -23,7 +23,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [store
     HttpClientModule,
     DemoOneFeatureShellModule,
     LoggerModule.forRoot({
-      serverLoggingUrl: `${environment.apiUrl}/logs`,
+      serverLoggingUrl: `${environment.apiUrl}/log`,
       level: environment.logLevel,
       serverLogLevel: environment.serverLogLevel,
       disableConsoleLogging: environment.disableConsoleLogging
