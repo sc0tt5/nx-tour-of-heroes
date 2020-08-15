@@ -1,12 +1,9 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { Logger } from 'nestjs-pino';
+import { Body, Controller, Logger, Post } from '@nestjs/common';
 
 @Controller()
 export class LoggerController {
-  constructor(private readonly logger: Logger) {}
-
   @Post('log')
   logError(@Body() error: any): void {
-    this.logger.error(error);
+    Logger.error(error, null, 'ClientError');
   }
 }

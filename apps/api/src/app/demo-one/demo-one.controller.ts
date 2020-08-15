@@ -1,13 +1,21 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, HttpException, HttpStatus, Query, UseFilters } from '@nestjs/common';
 import { PageOne, PageTwo } from '@nx-demo/shared/models';
+import { HttpErrorFilter } from '../http-error/http-error.filter';
 import { DemoOneService } from './demo-one.service';
 
 @Controller()
+@UseFilters(new HttpErrorFilter())
 export class DemoOneController {
   constructor(private readonly demoOneService: DemoOneService) {}
 
   @Get('pages')
-  getPages(@Query('page') page: string): PageOne | PageTwo {
-    return this.demoOneService.getPages(page);
+  getPages(@Query('page') pageName: string): PageOne | PageTwo {
+    const page = this.demoOneService.getPages(pageName);
+
+    if (page) {
+      return page;
+    } else {
+      throw new HttpException('Not Found', HttpStatus.NOT_FOUND); // real http request would not require
+    }
   }
 }
