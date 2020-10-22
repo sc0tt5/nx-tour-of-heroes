@@ -7,6 +7,14 @@
     {{ item.header }}
   </label>
   <div class="accordion-item__content" [class.accordion-item__content--open]="isOpen">
-    {{ item.content }}
+    <ng-container [ngSwitch]="item.content.type">
+      <ng-container *ngSwitchCase="0">
+        <nx-demo-form [fieldset]="item.content.body"></nx-demo-form>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="1">
+        {{ item.content.body }}
+      </ng-container>
+    </ng-container>
   </div>
 </div>
