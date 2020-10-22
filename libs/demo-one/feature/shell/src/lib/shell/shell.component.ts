@@ -27,8 +27,8 @@ export class ShellComponent implements OnInit, OnDestroy {
   private subscribeToRouterEvents(): void {
     this.router.events
       .pipe(
-        takeUntil(this.unsubscribe$),
-        filter(event => event instanceof ActivationEnd || event instanceof NavigationEnd)
+        filter(event => event instanceof ActivationEnd || event instanceof NavigationEnd),
+        takeUntil(this.unsubscribe$)
       )
       .subscribe(event => {
         if (event instanceof ActivationEnd && event.snapshot.routeConfig.data) {
