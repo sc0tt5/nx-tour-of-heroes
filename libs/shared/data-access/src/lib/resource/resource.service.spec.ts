@@ -1,14 +1,20 @@
+// todo: update unit test for client and server
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { async, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TransferState } from '@angular/platform-browser';
 import { PageOne } from '@nx-demo/shared/models';
 import { ResourceService } from './resource.service';
 
 @Injectable()
 export class MockService extends ResourceService<PageOne> {
-  constructor(private httpClient: HttpClient) {
-    super(httpClient, '/api/pages');
+  constructor(
+    @Inject(PLATFORM_ID) protected platformId: Object,
+    protected httpClient: HttpClient,
+    protected transferState: TransferState
+  ) {
+    super(platformId, httpClient, transferState, '/api/pages', 'item', 'items');
   }
 }
 

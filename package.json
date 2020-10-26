@@ -1,17 +1,17 @@
 {
   "name": "nx-demo",
-  "version": "0.0.0",
-  "license": "MIT",
+  "version": "1.0.0",
+  "author": "Scott Robertson (https://github.com/sc0tt5)",
+  "license": "SEE LICENSE",
   "scripts": {
     "ng": "ng",
     "nx": "nx",
-    "api": "ng serve api",
     "start": "ng serve --open --watch",
     "build": "ng build",
     "test": "npx jest --coverage",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
-    "doc": "compodoc -p tsconfig.json -d tmp/documentation -s -o",
+    "doc": "compodoc -p apps/demo-one/tsconfig.json -d tmp/documentation -s -o",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
@@ -28,9 +28,14 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "dev:ssr": "ng run demo-one:serve-ssr",
+    "serve:ssr": "node dist/demo-one/server/main.js",
+    "build:ssr": "ng build --prod && ng run demo-one:server:production",
+    "prerender": "ng run demo-one:prerender",
+    "prebuild:ssr": "ngcc",
+    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
-  "private": false,
+  "private": true,
   "dependencies": {
     "@angular/animations": "10.2.0",
     "@angular/common": "10.2.0",
