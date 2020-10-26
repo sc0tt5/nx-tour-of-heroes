@@ -8,7 +8,7 @@ import { DemoOneService } from './demo-one.service';
 export class DemoOneController {
   constructor(private readonly demoOneService: DemoOneService) {}
 
-  @Get('pages')
+  @Get('/pages')
   getPages(@Query('page') pageName: string): PageOne | PageTwo {
     const page = this.demoOneService.getPages(pageName);
 

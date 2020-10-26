@@ -1,5 +1,4 @@
-import { async, TestBed } from '@angular/core/testing';
-import { GoogleAnalyticsEvent } from '@nx-demo/shared/models';
+import { TestBed } from '@angular/core/testing';
 import { AnalyticsService } from './analytics.service';
 
 describe('AnalyticsService', () => {

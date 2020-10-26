@@ -1,10 +1,30 @@
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Inject, PLATFORM_ID } from '@angular/core';
+import { makeStateKey, StateKey, TransferState } from '@angular/platform-browser';
 import { Resource } from '@nx-demo/shared/models';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 
 export class ResourceService<T extends Resource> {
-  constructor(private http: HttpClient, private endpoint: string) {}
+  public itemKey: StateKey<T>;
+  public itemsKey: StateKey<T[]>;
+  public isBrowser: boolean;
+  public isServer: boolean;
+
+  constructor(
+    @Inject(PLATFORM_ID) protected platformId: Object,
+    protected http: HttpClient,
+    protected transferState: TransferState,
+    private endpoint: string,
+    private itemKeyName?: string,
+    private itemsKeyName?: string
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+    this.isServer = isPlatformServer(platformId);
+    this.itemKey = makeStateKey<T>(itemKeyName);
+    this.itemsKey = makeStateKey<T[]>(itemsKeyName);
+  }
 
   /**
    * Creates a new page.
@@ -33,21 +53,51 @@ export class ResourceService<T extends Resource> {
    * @param {any} params
    */
   read(params: any): Observable<T> {
-    return this.http.get(this.endpoint, { params }).pipe(
-      delay(1000), // for demonstration purposes only, simulate slower server response
-      map((data: any) => data as T),
-      catchError(this.handleError)
-    );
+    const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
+    const getFromApi = this.isServer || (this.isBrowser && !transferStateHasKey);
+    const getFromTransferState = this.isBrowser && transferStateHasKey;
+
+    if (getFromApi) {
+      return this.http.get(this.endpoint, { params }).pipe(
+        delay(1000), // for demonstration purposes only, simulate slower server response
+        map((data: any) => {
+          if (this.isServer) {
+            this.transferState.set<T>(this.itemKey, data);
+          }
+          return data as T;
+        }),
+        catchError(this.handleError)
+      );
+    } else if (getFromTransferState) {
+      const item = this.transferState.get<T>(this.itemKey, undefined);
+      this.transferState.remove<T>(this.itemKey);
+      return of(item);
+    }
   }
 
   /**
    * Fetches all pages.
    */
   list(): Observable<T[]> {
-    return this.http.get(this.endpoint).pipe(
-      map((data: any) => data as T[]),
-      catchError(this.handleError)
-    );
+    const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
+    const getFromApi = this.isServer || (this.isBrowser && !transferStateHasKey);
+    const getFromTransferState = this.isBrowser && transferStateHasKey;
+
+    if (getFromApi) {
+      return this.http.get(this.endpoint).pipe(
+        map((data: any) => {
+          if (this.isServer) {
+            this.transferState.set<T[]>(this.itemsKey, data);
+          }
+          return data as T[];
+        }),
+        catchError(this.handleError)
+      );
+    } else if (getFromTransferState) {
+      const items = this.transferState.get<T[]>(this.itemsKey, undefined);
+      this.transferState.remove<T>(this.itemsKey);
+      return of(items);
+    }
   }
 
   /**

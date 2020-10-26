@@ -4,7 +4,7 @@
     "demo-one": {
       "projectType": "application",
       "schematics": {
-        "@nrwl/angular:component": {
+        "@schematics/angular:component": {
           "style": "scss"
         }
       },
@@ -15,7 +15,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/demo-one",
+            "outputPath": "dist/demo-one/browser",
             "index": "apps/demo-one/src/index.html",
             "main": "apps/demo-one/src/main.ts",
             "polyfills": "apps/demo-one/src/polyfills.ts",
@@ -32,7 +32,7 @@
             ],
             "styles": ["apps/demo-one/src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/theme/src/lib/styles/"]
+              "includePaths": ["libs/shared/theme/src/lib/styles"]
             },
             "scripts": []
           },
@@ -98,6 +98,63 @@
             "jestConfig": "apps/demo-one/jest.config.js",
             "tsConfig": "apps/demo-one/tsconfig.spec.json",
             "setupFile": "apps/demo-one/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/demo-one/server",
+            "main": "apps/demo-one/server.ts",
+            "tsConfig": "apps/demo-one/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/theme/src/lib/styles"]
+            },
+            "externalDependencies": [
+              "@nestjs/microservices",
+              "@nestjs/microservices/microservices-module",
+              "@nestjs/websockets",
+              "@nestjs/websockets/socket-module",
+              "cache-manager",
+              "class-transformer",
+              "class-validator"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/demo-one/src/environments/environment.ts",
+                  "with": "apps/demo-one/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": false
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "demo-one:build",
+            "serverTarget": "demo-one:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "demo-one:build:production",
+              "serverTarget": "demo-one:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "demo-one:build:production",
+            "serverTarget": "demo-one:server:production",
+            "routes": ["/"]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
@@ -283,7 +340,10 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["libs/shared/ui/tsconfig.lib.json", "libs/shared/ui/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/**"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/theme/src/lib/styles/"]
+            }
           }
         },
         "test": {

@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { GoogleAnalyticsEvent, GoogleAnalyticsEventGroup } from '@nx-demo/shared/models';
 
 /**
@@ -11,8 +12,13 @@ import { GoogleAnalyticsEvent, GoogleAnalyticsEventGroup } from '@nx-demo/shared
 export class AnalyticsService {
   private readonly dataLayer: any[];
 
-  constructor() {
-    this.dataLayer = (<any>window).dataLayer = (<any>window).dataLayer || [];
+  /**
+   * Should not run server-side, but in case it does this. will return an empty array.
+   */
+  constructor(@Inject(PLATFORM_ID) protected platformId: Object) {
+    this.dataLayer = isPlatformBrowser(this.platformId)
+      ? ((<any>window).dataLayer = (<any>window).dataLayer || [])
+      : [];
   }
 
   /**

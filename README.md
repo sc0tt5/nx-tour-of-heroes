@@ -12,9 +12,16 @@ This project was generated using [Nx](https://nx.dev).
 
 [Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
 
-## Development server
+## Development server (client-side only rendering)
 
 Run `ng serve api` to run the API server. Then run `ng serve --open` for the dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+
+## Production (also for testing SSR and pre-rendering locally)
+
+**`npm run build:ssr && npm run serve:ssr`** - Compiles your application and spins up Node Express (NestJS) to serve your Universal application on `http://localhost:3333`.
+
+**`npm run prerender`** - Compiles your application and prerenders your applications files.
+**Note**: To deploy your static site to a static hosting platform you will have to deploy the `dist/browser` folder, rather than the usual `dist`
 
 ## Code scaffolding
 
