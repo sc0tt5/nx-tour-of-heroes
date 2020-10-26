@@ -3,5 +3,16 @@
   "compilerOptions": {
     "types": ["node", "jest"]
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "references": [
+      {
+        "path": "./tsconfig.app.json"
+      },
+      {
+        "path": "./tsconfig.server.json"
+      },
+      {
+        "path": "./tsconfig.spec.json"
+      }
+  ]
 }

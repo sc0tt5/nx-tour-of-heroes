@@ -2,5 +2,13 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "types": ["node", "jest"]
-  }
+  },
+  "references": [
+      {
+        "path": "./tsconfig.app.json"
+      },
+      {
+        "path": "./tsconfig.spec.json"
+      }
+  ]
 }
