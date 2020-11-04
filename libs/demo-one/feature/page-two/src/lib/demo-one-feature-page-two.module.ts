@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AccordionModule, DemoContentModule } from '@nx-demo/shared/ui';
+
 import { PageTwoStoreModule } from './page-two/+state/page-two-store.module';
 import { PageTwoResolverService } from './page-two/page-two-resolver.service';
 import { PageTwoComponent } from './page-two/page-two.component';

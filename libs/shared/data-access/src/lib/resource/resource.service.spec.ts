@@ -2,9 +2,11 @@
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { async, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { TransferState } from '@angular/platform-browser';
+
 import { PageOne } from '@nx-demo/shared/models';
+
 import { ResourceService } from './resource.service';
 
 @Injectable()
@@ -52,18 +54,22 @@ describe('ResourceService', () => {
   let service: MockService;
   let httpMock: HttpTestingController;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientModule, HttpClientTestingModule],
-      providers: [MockService]
-    });
-    service = TestBed.inject(MockService);
-    httpMock = TestBed.inject(HttpTestingController);
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [HttpClientModule, HttpClientTestingModule],
+        providers: [MockService]
+      });
+      service = TestBed.inject(MockService);
+      httpMock = TestBed.inject(HttpTestingController);
+    })
+  );
 
-  afterEach(async(() => {
-    httpMock.verify();
-  }));
+  afterEach(
+    waitForAsync(() => {
+      httpMock.verify();
+    })
+  );
 
   describe('create', () => {
     const url = `/api/pages`;
@@ -181,22 +187,25 @@ describe('ResourceService', () => {
       expect(request.method).not.toEqual('POST');
     });
 
-    it('should emit "true" for 200 Ok', fakeAsync(() => {
-      let response = null;
+    it(
+      'should emit "true" for 200 Ok',
+      fakewaitForAsync(() => {
+        let response = null;
 
-      service.read(params).subscribe((receivedResponse: any) => {
-        console.log({ receivedResponse });
-        response = receivedResponse;
-      });
+        service.read(params).subscribe((receivedResponse: any) => {
+          console.log({ receivedResponse });
+          response = receivedResponse;
+        });
 
-      const requestWrapper = httpMock.expectOne(url);
-      requestWrapper.flush({ status: 200, statusText: 'Ok' });
-      const request = requestWrapper.request;
+        const requestWrapper = httpMock.expectOne(url);
+        requestWrapper.flush({ status: 200, statusText: 'Ok' });
+        const request = requestWrapper.request;
 
-      expect(request.method).toEqual('GET');
-      tick(1500); // the service has a mocked delay of 1000 (add 500 buffer here)
-      expect(response.status).toBe(200);
-    }));
+        expect(request.method).toEqual('GET');
+        tick(1500); // the service has a mocked delay of 1000 (add 500 buffer here)
+        expect(response.status).toBe(200);
+      })
+    );
 
     it('should emit failure for 400 error', () => {
       let response = null;

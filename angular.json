@@ -151,7 +151,7 @@
           "options": {
             "browserTarget": "demo-one:build:production",
             "serverTarget": "demo-one:server:production",
-            "routes": ["/"]
+            "routes": ["/demo/page-one", "/demo/page-two"]
           },
           "configurations": {
             "production": {}

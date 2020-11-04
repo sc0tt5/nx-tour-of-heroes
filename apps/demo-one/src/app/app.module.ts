@@ -7,9 +7,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { MetaReducer, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TransferHttpCacheModule } from '@nguniversal/common';
-import { DemoOneFeatureShellModule } from '@nx-demo/demo-one/feature/shell';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { LoggerModule } from 'ngx-logger';
+
+import { DemoOneFeatureShellModule } from '@nx-demo/demo-one/feature/shell';
+
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

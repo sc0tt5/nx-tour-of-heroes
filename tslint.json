@@ -42,7 +42,30 @@
     "triple-equals": [true, "allow-null-check"],
     "unified-signatures": true,
     "variable-name": false,
-    "ordered-imports": true,
+    "ordered-imports": [
+      true,
+      {
+        "module-source-path": "full",
+        "grouped-imports": true,
+        "groups": [
+          {
+            "name": "internal modules",
+            "match": "^@nx-demo.*",
+            "order": 2
+          },
+          {
+            "name": "relative directory",
+            "match": "^[.].*",
+            "order": 3
+          },
+          {
+            "name": "node_modules",
+            "match": ".*",
+            "order": 1
+          }
+        ]
+      }
+    ],
     "nx-enforce-module-boundaries": [
       true,
       {

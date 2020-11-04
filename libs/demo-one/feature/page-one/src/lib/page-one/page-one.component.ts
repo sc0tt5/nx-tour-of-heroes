@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { PageOne } from '@nx-demo/shared/models';
 import { Observable } from 'rxjs';
+
+import { PageOne } from '@nx-demo/shared/models';
+
 import { PageOneFacade } from './+state/page-one.facade';
 
 @Component({

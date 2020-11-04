@@ -1,6 +1,8 @@
 import { AfterContentInit, Component, ContentChildren, ViewEncapsulation } from '@angular/core';
+
 import { AnalyticsService } from '@nx-demo/shared/utils';
-import { ACCORDION_ITEM, AccordionItem, AccordionWrapper } from './accordion.model';
+
+import { AccordionItem, AccordionWrapper, ACCORDION_ITEM } from './accordion.model';
 
 @Component({
   selector: 'nx-demo-accordion',

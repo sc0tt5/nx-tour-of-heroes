@@ -1,4 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+
 import { growWidthAnimation } from '@nx-demo/shared/animations';
 
 @Component({
