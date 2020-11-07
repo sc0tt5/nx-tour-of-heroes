@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+
 import { fadeInDownAnimation } from '@nx-demo/shared/animations';
 
 @Component({

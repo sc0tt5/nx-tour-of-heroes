@@ -1,12 +1,15 @@
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
+
 import { DemoOneFeaturePageTwoModule } from './demo-one-feature-page-two.module';
 
 describe('DemoOneFeaturePageTwoModule', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [DemoOneFeaturePageTwoModule]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [DemoOneFeaturePageTwoModule]
+      }).compileComponents();
+    })
+  );
 
   it('should create', () => {
     expect(DemoOneFeaturePageTwoModule).toBeDefined();

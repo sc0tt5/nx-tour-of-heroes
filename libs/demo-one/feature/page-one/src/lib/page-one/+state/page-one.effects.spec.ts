@@ -1,14 +1,16 @@
 // kudos: https://dev.to/jdpearce/how-to-test-five-common-ngrx-effect-patterns-26cb
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { EffectsMetadata, getEffectsMetadata } from '@ngrx/effects';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action, Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { PageOne } from '@nx-demo/shared/models';
 import { cold, hot } from 'jest-marbles';
 import { Observable, of, throwError } from 'rxjs';
+
+import { PageOne } from '@nx-demo/shared/models';
+
 import { PageOneService } from '../page-one.service';
 import * as PageOneAction from './page-one.actions';
 import { PageOneEffects } from './page-one.effects';
@@ -25,22 +27,24 @@ describe('PageOneEffects', () => {
   let service: PageOneService;
   let store: MockStore<PageOneState>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientModule, HttpClientTestingModule],
-      providers: [
-        PageOneEffects,
-        PageOneService,
-        provideMockActions(() => actions),
-        provideMockStore({ initialState })
-      ]
-    });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [HttpClientModule, HttpClientTestingModule],
+        providers: [
+          PageOneEffects,
+          PageOneService,
+          provideMockActions(() => actions),
+          provideMockStore({ initialState })
+        ]
+      });
 
-    effects = TestBed.inject(PageOneEffects);
-    metadata = getEffectsMetadata(effects);
-    service = TestBed.inject(PageOneService);
-    store = TestBed.inject(Store) as MockStore<PageOneState>;
-  }));
+      effects = TestBed.inject(PageOneEffects);
+      metadata = getEffectsMetadata(effects);
+      service = TestBed.inject(PageOneService);
+      store = TestBed.inject(Store) as MockStore<PageOneState>;
+    })
+  );
 
   describe('loadPage$', () => {
     it('should get the items and emit when the service call is successful', () => {

@@ -1,13 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { PageOneState } from './page-one.reducer';
 
 // feature
 const pageOneFeatureSelector = createFeatureSelector<PageOneState>('page-one');
 
-const getPageOne = createSelector(
-  pageOneFeatureSelector,
-  (state: PageOneState) => state.page
-);
+const getPageOne = createSelector(pageOneFeatureSelector, (state: PageOneState) => state.page);
 
 const getPageOneLoaded = createSelector(
   pageOneFeatureSelector,

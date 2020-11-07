@@ -1,5 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input } from '@angular/core';
-import { ACCORDION_ITEM, AccordionItem } from '../accordion.model';
+
+import { AccordionItem, ACCORDION_ITEM } from '../accordion.model';
 
 @Component({
   selector: 'nx-demo-accordion-one',

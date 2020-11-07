@@ -14,7 +14,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": ["build", "lint", "test", "build-storybook"]
       }
     }
   },
@@ -24,10 +24,6 @@
     },
     "demo-one": {
       "tags": ["scope:demo-one", "type:app"]
-    },
-    "demo-one-e2e": {
-      "tags": ["scope:demo-one", "type:e2e"],
-      "implicitDependencies": ["demo-one", "demo-one"]
     },
     "demo-one-feature-page-one": {
       "tags": ["scope:demo-one", "type:feature"]

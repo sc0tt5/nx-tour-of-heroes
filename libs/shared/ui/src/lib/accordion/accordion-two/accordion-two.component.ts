@@ -1,4 +1,5 @@
 import { Component, EventEmitter, forwardRef, Input } from '@angular/core';
+
 import { AccordionItem, ACCORDION_ITEM } from '../accordion.model';
 
 @Component({

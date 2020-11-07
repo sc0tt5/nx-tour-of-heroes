@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { PageOne } from '@nx-demo/shared/models';
 
 // load products

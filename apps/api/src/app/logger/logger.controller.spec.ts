@@ -1,5 +1,6 @@
 import { Logger } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { LoggerController } from './logger.controller';
 
 describe('LoggerController', () => {

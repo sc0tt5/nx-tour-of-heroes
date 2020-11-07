@@ -37,12 +37,6 @@ Run `ng test nx-demo` to execute the unit tests via [Jest](https://jestjs.io).
 
 Run `nx affected:test` to execute the unit tests affected by a change.
 
-## Running end-to-end tests
-
-Run `ng e2e nx-demo` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
 ## Understand your workspace
 
 Run `nx dep-graph` to see a diagram of the dependencies of your projects.
@@ -57,49 +51,36 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 <project-root>
 
 ├── apps
-│   ├── api               # public api to retrieve data from backend
-│   │   └── ...
-│   ├── demo-one          # independently-deployable build
-│   │   └── ...
-│   ├── demo-one-e2e
-│   │   └── ...
-│   ├── demo-two          # independently-deployable build
-│   │   └── ...
-│   ├── demo-two-e2e
-│   │   └── ...
-├── docs
-│   ├── ...
+│   ├── api
+│   ├── demo-one
+│   └── demo-two
 ├── libs
-│   ├── demo-one           # demo-one lib
+│   ├── demo-one
 │   │   └── feature
-│   │   │   └── page-one
-│   │   │   │   └── +state
-│   │   │   │   └── ...
-│   │   │   └── page-two
-│   │   │   │   └── +state
-│   │   │   │   └── ...
-│   ├── demo-two           # demo-two lib
+│   │       └── page-one
+│   │       │   └── +state
+│   │       │   └── ...
+│   │       └── page-two
+│   │           └── +state
+│   │           └── ...
+│   ├── demo-two
 │   │   └── feature
-│   │   │   └── page-one
-│   │   │   │   └── +state
-│   │   │   │   └── ...
-│   │   │   └── page-two
-│   │   │   │   └── +state
-│   │   │   │   └── ...
-│   ├── shared             # shared libs
-│   │   └── animations
-│   │   │   └── ...
-│   │   └── data-access
-│   │   │   └── ...
-│   │   └── models
-│   │   │   └── ...
-│   │   ├── ui             # presentational components
-│   │   │   └── accordion
-│   │   │       └── ...
-│   │   └── utils
-│   │   │   └── ...
+│   │       └── page-one
+│   │       │   └── +state
+│   │       │   └── ...
+│   │       └── page-two
+│   │           └── +state
+│   │           └── ...
+│   └── shared
+│       └── animations
+│       └── data-access
+│       └── models
+│       └── theme
+│       ├── ui
+│       │   └── accordion
+│       │   └── ...
+│       └── utils
 ├── tools
-│   │   └── ...
 └── ...
 ```
 

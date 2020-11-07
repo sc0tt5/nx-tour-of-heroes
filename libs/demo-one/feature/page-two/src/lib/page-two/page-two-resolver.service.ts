@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { PageTwo } from '@nx-demo/shared/models';
 import { Observable, of } from 'rxjs';
+
+import { PageTwo } from '@nx-demo/shared/models';
+
 import { PageTwoFacade } from './+state/page-two.facade';
 
 @Injectable()

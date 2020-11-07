@@ -2,9 +2,10 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { makeStateKey, StateKey, TransferState } from '@angular/platform-browser';
-import { Resource } from '@nx-demo/shared/models';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
+
+import { Resource } from '@nx-demo/shared/models';
 
 export class ResourceService<T extends Resource> {
   public itemKey: StateKey<T>;

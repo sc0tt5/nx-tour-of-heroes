@@ -5,13 +5,12 @@ import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { PageOne } from '@nx-demo/shared/models';
+
 import { initialState, PageOneState } from './page-one.reducer';
 import { pageOneSelectors } from './page-one.selectors';
 
 @Component({
-  template: `
-    <div>{{ (page$ | async)?.name }}</div>
-  `
+  template: ` <div>{{ (page$ | async)?.name }}</div> `
 })
 export class MockComponent {
   page$ = this.store.select(pageOneSelectors.getPageOne);

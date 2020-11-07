@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Field } from '@nx-demo/shared/models';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
+
+import { Field } from '@nx-demo/shared/models';
 
 // kudos to Bonnie (https://github.com/bcarson/dynamic-reactive-form)
 

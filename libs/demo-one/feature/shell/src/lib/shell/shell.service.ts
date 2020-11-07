@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivationEnd } from '@angular/router';
+
 import { AnalyticsService } from '@nx-demo/shared/utils';
 
 @Injectable()

@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+
 import { GoogleAnalyticsEvent, GoogleAnalyticsEventGroup } from '@nx-demo/shared/models';
 
 /**
