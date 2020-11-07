@@ -10,12 +10,10 @@
     "build": "ng build",
     "test": "npx jest --coverage",
     "lint": "nx workspace-lint && ng lint",
-    "e2e": "ng e2e",
     "doc": "compodoc -p apps/demo-one/tsconfig.json -d tmp/documentation -s -o",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
-    "affected:e2e": "nx affected:e2e",
     "affected:test": "nx affected:test",
     "affected:lint": "nx affected:lint",
     "affected:dep-graph": "nx affected:dep-graph",
@@ -28,12 +26,27 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
+    "build:storybook": "build-storybook -o dist/storybook",
+    "serve:storybook": "start-storybook",
     "dev:ssr": "ng run demo-one:serve-ssr",
     "serve:ssr": "node dist/demo-one/server/main.js",
     "build:ssr": "ng build --prod && ng run demo-one:server:production",
     "prerender": "ng run demo-one:prerender",
     "prebuild:ssr": "ngcc",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tslint --fix",
+      "prettier --write"
+    ],
+    "*.{js,jsx,html,json,css,scss,md}": "prettier --write"
   },
   "private": true,
   "dependencies": {
@@ -72,15 +85,17 @@
     "@nestjs/schematics": "7.1.2",
     "@nestjs/testing": "7.4.4",
     "@nguniversal/builders": "10.1.0",
-    "@nrwl/cypress": "10.3.1",
     "@nrwl/jest": "10.3.1",
     "@nrwl/nest": "10.3.1",
     "@nrwl/node": "10.3.1",
+    "@nrwl/storybook": "10.3.2",
     "@nrwl/workspace": "10.3.1",
+    "@storybook/addon-knobs": "6.0.21",
+    "@storybook/angular": "6.0.21",
     "@types/jest": "26.0.15",
     "@types/node": "14.14.5",
+    "@types/webpack": "4.41.21",
     "codelyzer": "6.0.1",
-    "cypress": "4.9.0",
     "dotenv": "8.2.0",
     "eslint": "7.12.1",
     "express": "4.17.1",

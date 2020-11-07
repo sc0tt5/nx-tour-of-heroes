@@ -159,33 +159,6 @@
         }
       }
     },
-    "demo-one-e2e": {
-      "root": "apps/demo-one-e2e",
-      "sourceRoot": "apps/demo-one-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/demo-one-e2e/cypress.json",
-            "tsConfig": "apps/demo-one-e2e/tsconfig.e2e.json",
-            "devServerTarget": "demo-one:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "demo-one:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/demo-one-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/demo-one-e2e/**"]
-          }
-        }
-      }
-    },
     "api": {
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
@@ -339,7 +312,11 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/shared/ui/tsconfig.lib.json", "libs/shared/ui/tsconfig.spec.json"],
+            "tsConfig": [
+              "libs/shared/ui/tsconfig.lib.json",
+              "libs/shared/ui/tsconfig.spec.json",
+              ".storybook/tsconfig.json"
+            ],
             "exclude": ["**/node_modules/**", "!libs/shared/ui/**"],
             "stylePreprocessorOptions": {
               "includePaths": ["libs/shared/theme/src/lib/styles/"]
@@ -352,6 +329,36 @@
             "jestConfig": "libs/shared/ui/jest.config.js",
             "tsConfig": "libs/shared/ui/tsconfig.spec.json",
             "setupFile": "libs/shared/ui/src/test-setup.ts"
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": ".storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/shared-ui",
+            "config": {
+              "configFolder": ".storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
           }
         }
       },
@@ -511,8 +518,7 @@
   },
   "schematics": {
     "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "unitTestRunner": "jest"
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"

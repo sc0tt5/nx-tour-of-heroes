@@ -97,10 +97,6 @@
             "onlyDependOnLibsWithTags": ["type:types"]
           },
           {
-            "sourceTag": "type:e2e",
-            "onlyDependOnLibsWithTags": ["type:e2e-utils"]
-          },
-          {
             "sourceTag": "type:feature",
             "onlyDependOnLibsWithTags": [
               "type:animations",
