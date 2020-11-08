@@ -53,24 +53,37 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 ├── apps
 │   ├── api
 │   ├── demo-one
-│   └── demo-two
+│   └── tour-of-heroes # maybe do in ionic???
 ├── libs
-│   ├── demo-one
-│   │   └── feature
-│   │       └── page-one
-│   │       │   └── +state
-│   │       │   └── ...
-│   │       └── page-two
-│   │           └── +state
-│   │           └── ...
-│   ├── demo-two
-│   │   └── feature
-│   │       └── page-one
-│   │       │   └── +state
-│   │       │   └── ...
-│   │       └── page-two
-│   │           └── +state
-│   │           └── ...
+│   ├── demo-one # app namespace, e.g. gmail, hangouts, etc.
+│   │   ├── feature-one # an app feature, e.g. inbox, search, etc.
+│   │   │   └── data-access # feature-level shared data-access
+│   │   │   └── feature # components, e.g. email list, email view, etc.
+│   │   │       └── component-one # could include service, state, etc.
+│   │   │       │   └── +state
+│   │   │       │   └── ...
+│   │   │       └── component-two
+│   │   │       └── ...
+│   │   ├── feature-two
+│   │   └── ...
+│   ├── tour-of-heroes
+│   │   ├── heroes
+│   │   │   └── data-access
+│   │   │       └── +state
+│   │   │       └── ...
+│   │   │   └── feature
+│   │   │       └── hero-detail
+│   │   │       └── hero-list
+│   │   │       └── ...
+│   │   ├── villains
+│   │   │   └── data-access
+│   │   │       └── +state
+│   │   │       └── ...
+│   │   │   └── feature
+│   │   │       └── villain-detail
+│   │   │       └── villain-list
+│   │   │       └── ...
+│   │   └── ...
 │   └── shared
 │       └── animations
 │       └── data-access

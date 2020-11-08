@@ -511,6 +511,99 @@
           }
         }
       }
+    },
+    "tour-of-heroes": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/tour-of-heroes",
+      "sourceRoot": "apps/tour-of-heroes/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/tour-of-heroes",
+            "index": "apps/tour-of-heroes/src/index.html",
+            "main": "apps/tour-of-heroes/src/main.ts",
+            "polyfills": "apps/tour-of-heroes/src/polyfills.ts",
+            "tsConfig": "apps/tour-of-heroes/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/tour-of-heroes/src/favicon.ico", "apps/tour-of-heroes/src/assets"],
+            "styles": ["apps/tour-of-heroes/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/tour-of-heroes/src/environments/environment.ts",
+                  "with": "apps/tour-of-heroes/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "tour-of-heroes:build",
+            "proxyConfig": "apps/tour-of-heroes/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tour-of-heroes:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "tour-of-heroes:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/tour-of-heroes/tsconfig.app.json",
+              "apps/tour-of-heroes/tsconfig.spec.json",
+              "apps/tour-of-heroes/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/tour-of-heroes/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/tour-of-heroes/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -518,7 +611,9 @@
   },
   "schematics": {
     "@nrwl/angular:application": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none",
+      "strict": true
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"

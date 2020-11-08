@@ -51,6 +51,9 @@
     },
     "shared-utils": {
       "tags": ["type:utils"]
+    },
+    "tour-of-heroes": {
+      "tags": ["scope:tour-of-heroes", "type:app"]
     }
   }
 }
