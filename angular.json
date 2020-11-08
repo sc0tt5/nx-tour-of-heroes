@@ -604,6 +604,36 @@
           }
         }
       }
+    },
+    "tour-of-heroes-heroes-feature": {
+      "projectType": "library",
+      "root": "libs/tour-of-heroes/heroes/feature",
+      "sourceRoot": "libs/tour-of-heroes/heroes/feature/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/tour-of-heroes/heroes/feature/tsconfig.lib.json",
+              "libs/tour-of-heroes/heroes/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/tour-of-heroes/heroes/feature/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/tour-of-heroes/heroes/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
@@ -616,7 +646,8 @@
       "strict": true
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": true
     }
   },
   "defaultProject": "demo-one"

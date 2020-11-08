@@ -54,6 +54,9 @@
     },
     "tour-of-heroes": {
       "tags": ["scope:tour-of-heroes", "type:app"]
+    },
+    "tour-of-heroes-heroes-feature": {
+      "tags": ["scope:tour-of-heroes", "type:feature"]
     }
   }
 }

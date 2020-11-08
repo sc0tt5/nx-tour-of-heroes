@@ -16,7 +16,6 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "paths": {
-      "@env/*": ["src/environments/*"],
       "@nx-demo/demo-one/feature/page-one": ["libs/demo-one/feature/page-one/src/index.ts"],
       "@nx-demo/demo-one/feature/page-two": ["libs/demo-one/feature/page-two/src/index.ts"],
       "@nx-demo/demo-one/feature/shell": ["libs/demo-one/feature/shell/src/index.ts"],
@@ -25,7 +24,8 @@
       "@nx-demo/shared/models": ["libs/shared/models/src/index.ts"],
       "@nx-demo/shared/theme": ["libs/shared/theme/src/index.ts"],
       "@nx-demo/shared/ui": ["libs/shared/ui/src/index.ts"],
-      "@nx-demo/shared/utils": ["libs/shared/utils/src/index.ts"]
+      "@nx-demo/shared/utils": ["libs/shared/utils/src/index.ts"],
+      "@nx-demo/tour-of-heroes/heroes": ["libs/tour-of-heroes/heroes/feature/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
