@@ -23,8 +23,8 @@ export class ResourceService<T extends Resource> {
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.isServer = isPlatformServer(platformId);
-    this.itemKey = makeStateKey<T>(itemKeyName);
-    this.itemsKey = makeStateKey<T[]>(itemsKeyName);
+    this.itemKey = makeStateKey<T>(itemKeyName || '');
+    this.itemsKey = makeStateKey<T[]>(itemsKeyName || '');
   }
 
   /**
@@ -53,7 +53,7 @@ export class ResourceService<T extends Resource> {
    * Fetches an existing page
    * @param {any} params
    */
-  read(params: any): Observable<T> {
+  read(params: any): Observable<T | undefined> {
     const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
     const getFromApi = this.isServer || (this.isBrowser && !transferStateHasKey);
     const getFromTransferState = this.isBrowser && transferStateHasKey;
@@ -70,16 +70,17 @@ export class ResourceService<T extends Resource> {
         catchError(this.handleError)
       );
     } else if (getFromTransferState) {
-      const item = this.transferState.get<T>(this.itemKey, undefined);
+      const item = this.transferState.get<T | undefined>(this.itemKey, undefined);
       this.transferState.remove<T>(this.itemKey);
       return of(item);
     }
+    return of();
   }
 
   /**
    * Fetches all pages.
    */
-  list(): Observable<T[]> {
+  list(): Observable<T[] | undefined> {
     const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
     const getFromApi = this.isServer || (this.isBrowser && !transferStateHasKey);
     const getFromTransferState = this.isBrowser && transferStateHasKey;
@@ -95,10 +96,11 @@ export class ResourceService<T extends Resource> {
         catchError(this.handleError)
       );
     } else if (getFromTransferState) {
-      const items = this.transferState.get<T[]>(this.itemsKey, undefined);
+      const items = this.transferState.get<T[] | undefined>(this.itemsKey, undefined);
       this.transferState.remove<T>(this.itemsKey);
       return of(items);
     }
+    return of();
   }
 
   /**
@@ -114,6 +116,7 @@ export class ResourceService<T extends Resource> {
    * @param {HttpErrorResponse} error
    */
   private handleError(error: HttpErrorResponse): Observable<never> {
+    console.log('error from the resource service', error);
     return throwError(error); // NGXLogger will automatically trigger here
   }
 }

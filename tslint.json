@@ -73,7 +73,7 @@
         "depConstraints": [
           {
             "sourceTag": "scope:api",
-            "onlyDependOnLibsWithTags": ["scope:api", "type:types"]
+            "onlyDependOnLibsWithTags": ["scope:api", "type:data-access", "type:types"]
           },
           {
             "sourceTag": "scope:demo-one",
@@ -85,6 +85,10 @@
             ]
           },
           {
+            "sourceTag": "scope:tour-of-heroes",
+            "onlyDependOnLibsWithTags": ["scope:tour-of-heroes", "scope:shared", "type:utils"]
+          },
+          {
             "sourceTag": "type:animations",
             "onlyDependOnLibsWithTags": ["type:animations", "type:types", "type:ui"]
           },
@@ -94,7 +98,7 @@
           },
           {
             "sourceTag": "type:data-access",
-            "onlyDependOnLibsWithTags": ["type:types"]
+            "onlyDependOnLibsWithTags": ["type:data-access", "type:types"]
           },
           {
             "sourceTag": "type:feature",

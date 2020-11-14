@@ -1,7 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
-  "files": [],
-  "include": [],
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  },
   "references": [
     {
       "path": "./tsconfig.app.json"
@@ -12,15 +14,5 @@
     {
       "path": "./tsconfig.editor.json"
     }
-  ],
-  "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "angularCompilerOptions": {
-    "strictInjectionParameters": true,
-    "strictTemplates": true
-  }
+  ]
 }

@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nx-demo-heroes-list',
-  templateUrl: './heroes-list.component.html',
-  styleUrls: ['./heroes-list.component.scss'],
+  selector: 'nx-demo-hero-detail',
+  templateUrl: './hero-detail.component.html',
+  styleUrls: ['./hero-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeroesListComponent implements OnInit {
+export class HeroDetailComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

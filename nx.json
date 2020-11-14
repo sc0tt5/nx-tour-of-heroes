@@ -57,6 +57,9 @@
     },
     "tour-of-heroes-heroes-feature": {
       "tags": ["scope:tour-of-heroes", "type:feature"]
+    },
+    "tour-of-heroes-heroes-data-access": {
+      "tags": ["scope:tour-of-heroes", "type:data-access"]
     }
   }
 }

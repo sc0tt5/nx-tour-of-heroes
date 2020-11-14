@@ -5,7 +5,8 @@ export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'heroes' },
   {
     path: 'heroes',
-    loadChildren: () => import('@nx-demo/tour-of-heroes/heroes').then(m => m.HeroesFeatureModule)
+    loadChildren: () =>
+      import('@nx-demo/tour-of-heroes/heroes/feature').then(m => m.HeroesFeatureModule)
   }
 ];
 

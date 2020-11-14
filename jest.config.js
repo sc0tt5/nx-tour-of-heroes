@@ -22,5 +22,5 @@ module.exports = {
     '^.+\\.(ts|js|html)$': 'ts-jest'
   },
   verbose: false,
-  projects: '<rootDir>/libs/tour-of-heroes/heroes/feature'
+  projects: '<rootDir>/libs/tour-of-heroes/heroes/data-access'
 };

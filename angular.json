@@ -171,8 +171,7 @@
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
-            "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "tsConfig": "apps/api/tsconfig.app.json"
           },
           "configurations": {
             "production": {
@@ -526,7 +525,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/tour-of-heroes",
+            "outputPath": "dist/apps/tour-of-heroes/browser",
             "index": "apps/tour-of-heroes/src/index.html",
             "main": "apps/tour-of-heroes/src/main.ts",
             "polyfills": "apps/tour-of-heroes/src/polyfills.ts",
@@ -602,6 +601,63 @@
             "jestConfig": "apps/tour-of-heroes/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/apps/tour-of-heroes/server",
+            "main": "apps/tour-of-heroes/server.ts",
+            "tsConfig": "apps/tour-of-heroes/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/theme/src/lib/styles"]
+            },
+            "externalDependencies": [
+              "@nestjs/microservices",
+              "@nestjs/microservices/microservices-module",
+              "@nestjs/websockets",
+              "@nestjs/websockets/socket-module",
+              "cache-manager",
+              "class-transformer",
+              "class-validator"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/tour-of-heroes/src/environments/environment.ts",
+                  "with": "apps/tour-of-heroes/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": false
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "tour-of-heroes:build",
+            "serverTarget": "tour-of-heroes:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tour-of-heroes:build:production",
+              "serverTarget": "tour-of-heroes:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "tour-of-heroes:build:production",
+            "serverTarget": "tour-of-heroes:server:production",
+            "routes": ["/heroes"]
+          },
+          "configurations": {
+            "production": {}
+          }
         }
       }
     },
@@ -625,6 +681,36 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/tour-of-heroes/heroes/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "tour-of-heroes-heroes-data-access": {
+      "projectType": "library",
+      "root": "libs/tour-of-heroes/heroes/data-access",
+      "sourceRoot": "libs/tour-of-heroes/heroes/data-access/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/tour-of-heroes/heroes/data-access/tsconfig.lib.json",
+              "libs/tour-of-heroes/heroes/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/tour-of-heroes/heroes/data-access/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/tour-of-heroes/heroes/data-access/jest.config.js",
             "passWithNoTests": true
           }
         }

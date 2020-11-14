@@ -13,8 +13,8 @@ import { LoggerModule } from 'ngx-logger';
 import { DemoOneFeatureShellModule } from '@nx-demo/demo-one/feature/shell';
 
 import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing.module';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
 

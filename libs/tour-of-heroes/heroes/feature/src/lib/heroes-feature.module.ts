@@ -2,17 +2,27 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HeroesListComponent } from './heroes-list/heroes-list.component';
+import {
+  HeroesResolver,
+  HeroesService,
+  HeroesStoreModule
+} from '@nx-demo/tour-of-heroes/heroes/data-access';
 
-const routes: Routes = [
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroListComponent } from './hero-list/hero-list.component';
+import { HeroShellComponent } from './hero-shell/hero-shell.component';
+
+const ROUTES: Routes = [
   {
     path: '',
-    component: HeroesListComponent
+    component: HeroShellComponent,
+    resolve: { HeroesResolver }
   }
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
-  declarations: [HeroesListComponent]
+  imports: [CommonModule, HeroesStoreModule, RouterModule.forChild(ROUTES)],
+  declarations: [HeroListComponent, HeroDetailComponent, HeroShellComponent],
+  providers: [HeroesResolver, HeroesService]
 })
 export class HeroesFeatureModule {}
