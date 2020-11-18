@@ -11,7 +11,7 @@ export class HeroesResolver implements Resolve<Hero[]> {
   constructor(private facade: HeroesFacade) {}
 
   resolve(): Observable<any> | Promise<any> | any {
-    this.facade.loadHeroes('heroes');
+    this.facade.loadHeroes();
     return of(true);
   }
 }

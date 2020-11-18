@@ -5,12 +5,12 @@ import { StoreModule } from '@ngrx/store';
 
 import { HeroesEffects } from './heroes.effects';
 import { HeroesFacade } from './heroes.facade';
-import { heroesReducer, initialState } from './heroes.reducer';
+import { initialState, reducer } from './heroes.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature('heroes', heroesReducer, { initialState }),
+    StoreModule.forFeature('heroes', reducer, { initialState }),
     EffectsModule.forFeature([HeroesEffects])
   ],
   exports: [StoreModule, EffectsModule],

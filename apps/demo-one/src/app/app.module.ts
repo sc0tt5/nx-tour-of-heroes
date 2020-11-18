@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { APP_ID, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { MetaReducer, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -35,7 +36,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [store
     }),
     StoreModule.forRoot({}, { metaReducers }),
     TransferHttpCacheModule,
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    FontAwesomeModule
   ],
   exports: [StoreModule],
   bootstrap: [AppComponent]

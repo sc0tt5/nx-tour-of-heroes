@@ -49,7 +49,7 @@ describe('HeroesEffects', () => {
   describe('loadPage$', () => {
     it('should get the items and emit when the service call is successful', () => {
       // set up the initial action that triggers the effect
-      const action = HeroesAction.loadHeroes({ param: 'heroes' });
+      const action = HeroesAction.loadHeroes();
 
       // set up our dummy list of things to return
       // (we could create real things here if necessary)
@@ -69,7 +69,7 @@ describe('HeroesEffects', () => {
 
     it('should emit an error action when the service call is unsuccessful', () => {
       // set up the initial action that triggers the effect
-      const action = HeroesAction.loadHeroes({ param: 'heroes' });
+      const action = HeroesAction.loadHeroes();
 
       const error = 1;
 

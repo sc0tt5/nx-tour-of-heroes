@@ -18,8 +18,8 @@ export class HeroesEffects {
   loadPage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(HeroesAction.loadHeroes),
-      concatMap(payload =>
-        this.heroesService.read({ heroes: payload.param }).pipe(
+      concatMap(() =>
+        this.heroesService.read().pipe(
           map(heroes => HeroesAction.loadHeroesSuccess({ heroes })),
           catchError(error => {
             this.log.error(error);

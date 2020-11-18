@@ -1,7 +1,34 @@
 <ul class="list">
-  <li *ngFor="let hero of heroes" role="presentation">
+  <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index" role="presentation">
     <div class="card">
-      {{ hero.name }}
+      <!-- card main content -->
+      <div class="card-content">
+        <div class="content">
+          <div class="name" [innerHTML]="hero.name"></div>
+          <div class="description" [innerHTML]="hero.description"></div>
+        </div>
+      </div>
+      <!-- card footer - delete and edit buttons -->
+      <footer class="card-footer">
+        <button
+          class="link card-footer-item"
+          attr.aria-label="Delete"
+          tabindex="0"
+          [attr.data-id]="hero.id"
+          (click)="deleteHero(hero)"
+        >
+          <fa-icon [icon]="faTrash"></fa-icon> Delete
+        </button>
+        <button
+          class="link card-footer-item"
+          attr.aria-label="Edit"
+          tabindex="1"
+          [attr.data-id]="hero.id"
+          (click)="selectHero(hero)"
+        >
+          <fa-icon [icon]="faEdit"></fa-icon> Edit
+        </button>
+      </footer>
     </div>
   </li>
 </ul>

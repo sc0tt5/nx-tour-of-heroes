@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {
   HeroesResolver,
@@ -18,10 +19,11 @@ const ROUTES: Routes = [
     component: HeroShellComponent,
     resolve: { HeroesResolver }
   }
+  // todo: adjust routes to allow for hero/:id
 ];
 
 @NgModule({
-  imports: [CommonModule, HeroesStoreModule, RouterModule.forChild(ROUTES)],
+  imports: [CommonModule, FontAwesomeModule, HeroesStoreModule, RouterModule.forChild(ROUTES)],
   declarations: [HeroListComponent, HeroDetailComponent, HeroShellComponent],
   providers: [HeroesResolver, HeroesService]
 })

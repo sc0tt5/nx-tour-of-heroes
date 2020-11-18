@@ -10,10 +10,14 @@ import { HeroesFacade } from '@nx-demo/tour-of-heroes/heroes/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroShellComponent implements OnInit, OnDestroy {
-  selected: Hero;
+  message = '?';
+  showModal = false;
 
   heroes$: Observable<Hero[]>;
   heroesLoaded$: Observable<boolean>;
+
+  private heroToDelete: Hero;
+  private selected: Hero;
 
   constructor(private facade: HeroesFacade) {}
 
@@ -23,10 +27,20 @@ export class HeroShellComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.facade.initializeHeroes();
+    this.facade.resetHeroesState();
+  }
+
+  askToDelete(hero: Hero) {
+    console.log('[DELETE]');
+    this.heroToDelete = hero;
+    this.showModal = true;
+    if (this.heroToDelete.name) {
+      this.message = `Would you like to delete ${this.heroToDelete.name}?`;
+    }
   }
 
   select(hero: Hero) {
+    console.log('[EDIT]');
     this.selected = hero;
   }
 }

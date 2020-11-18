@@ -1,10 +1,11 @@
-<!-- todo: ionic and custom styles ...don't use bulma -->
-<!-- todo: @ngrx/entity to store before you get too far down a path -->
-<!-- ? focus on the above two before creating additional complexity, components, etc. -->
 <div class="content-container">
   <div class="columns is-multiline is-variable">
     <div class="column is-8" *ngIf="heroes$ | async as heroes">
-      <nx-demo-hero-list [heroes]="heroes" (selected)="select($event)"></nx-demo-hero-list>
+      <nx-demo-hero-list
+        [heroes]="heroes"
+        (selected)="select($event)"
+        (deleted)="askToDelete($event)"
+      ></nx-demo-hero-list>
     </div>
   </div>
 </div>

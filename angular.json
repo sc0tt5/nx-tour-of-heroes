@@ -531,8 +531,30 @@
             "polyfills": "apps/tour-of-heroes/src/polyfills.ts",
             "tsConfig": "apps/tour-of-heroes/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/tour-of-heroes/src/favicon.ico", "apps/tour-of-heroes/src/assets"],
-            "styles": ["apps/tour-of-heroes/src/styles.scss"],
+            "assets": [
+              "apps/tour-of-heroes/src/favicon.ico",
+              "apps/tour-of-heroes/src/assets",
+              {
+                "glob": "**/*",
+                "input": "../libs/shared/theme",
+                "output": "./assets/"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              "node_modules/bulma/css/bulma.min.css",
+              "node_modules/bulma/bulma.sass",
+              "apps/tour-of-heroes/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {

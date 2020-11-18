@@ -12,11 +12,11 @@ export class HeroesFacade {
 
   constructor(private store: Store<HeroesState>) {}
 
-  loadHeroes(param: string) {
-    this.store.dispatch(HeroesActions.loadHeroes({ param }));
+  loadHeroes() {
+    this.store.dispatch(HeroesActions.loadHeroes());
   }
 
-  initializeHeroes() {
-    this.store.dispatch(HeroesActions.initializeHeroes());
+  resetHeroesState() {
+    this.store.dispatch(HeroesActions.resetHeroesState());
   }
 }
