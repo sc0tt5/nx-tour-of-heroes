@@ -22,6 +22,9 @@
     "api": {
       "tags": ["scope:api", "type:api"]
     },
+    "api-data-access": {
+      "tags": ["scope:api", "type:api"]
+    },
     "demo-one": {
       "tags": ["scope:demo-one", "type:app"]
     },

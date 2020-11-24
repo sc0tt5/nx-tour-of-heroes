@@ -19,6 +19,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
+      "@nx-demo/api": ["libs/api/src/index.ts"],
       "@nx-demo/demo-one/feature/page-one": ["libs/demo-one/feature/page-one/src/index.ts"],
       "@nx-demo/demo-one/feature/page-two": ["libs/demo-one/feature/page-two/src/index.ts"],
       "@nx-demo/demo-one/feature/shell": ["libs/demo-one/feature/shell/src/index.ts"],
