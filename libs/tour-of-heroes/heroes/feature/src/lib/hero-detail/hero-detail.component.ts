@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-demo/shared/models';
@@ -21,7 +21,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   private heroToDelete: Hero;
 
-  constructor(private facade: HeroDetailFacade) {}
+  constructor(private facade: HeroDetailFacade, private router: Router) {}
 
   ngOnInit(): void {
     this.hero$ = this.facade.hero$;
@@ -33,27 +33,25 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   }
 
   askToDelete(hero: Hero): void {
-    console.log('askToDelete', hero);
     this.heroToDelete = hero;
     this.message = `Would you like to delete ${this.heroToDelete.name}?`;
     this.showModal = true;
   }
 
   closeModal(): void {
-    // this.facade.selectHeroId(null);
     this.showModal = false;
   }
 
   deleteHero(): void {
     this.closeModal();
     if (this.heroToDelete) {
-      console.log('[DELETE] ...should pope the modal');
+      console.log('[DELETE] ...should delete hero and return to list');
       // todo: build out this functionality in the store
+      this.router.navigate(['/heroes']);
     }
   }
 
   editHero(hero: Hero): void {
-    console.log('editHero clicked....');
     this.showEditor = true;
   }
 }

@@ -3,7 +3,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { heroDetailFeatureKey, HeroDetailState } from './hero-detail.reducer';
 
 // from reducer
-const heroDetailEntities = (state: HeroDetailState) => state.entities; // todo: ? entities?
+const heroDetailEntities = (state: HeroDetailState) => state.entities;
 const heroDetailLoaded = (state: HeroDetailState) => state.loaded;
 const heroDetailLoading = (state: HeroDetailState) => state.loading;
 const selectedHero = (state: HeroDetailState) => state.entities[state.selectedHeroId];
@@ -16,7 +16,6 @@ const getHeroDetailState = createSelector(
   heroDetailFeatureSelector,
   (state: HeroDetailState) => state
 );
-// const getHeroesEntities = createSelector(getHeroDetailState, heroDetailEntities);
 
 // single
 const getHero = createSelector(getHeroDetailState, heroDetailEntities);

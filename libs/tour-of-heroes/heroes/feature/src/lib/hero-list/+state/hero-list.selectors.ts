@@ -1,25 +1,25 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { HeroesState, heroListFeatureKey } from './hero-list.reducer';
+import { heroListFeatureKey, HeroListState } from './hero-list.reducer';
 
 // from reducer
-const heroesEntities = (state: HeroesState) => state.entities;
-const heroesLoaded = (state: HeroesState) => state.loaded;
-const heroesLoading = (state: HeroesState) => state.loading;
+const heroesEntities = (state: HeroListState) => state.entities;
+const heroesLoaded = (state: HeroListState) => state.loaded;
+const heroesLoading = (state: HeroListState) => state.loading;
 
 // feature
-const heroesFeatureSelector = createFeatureSelector<HeroesState>(heroListFeatureKey);
+const heroesFeatureSelector = createFeatureSelector<HeroListState>(heroListFeatureKey);
 
 // heroes state and entities
-const getHeroesState = createSelector(heroesFeatureSelector, (state: HeroesState) => state);
-const getHeroesEntities = createSelector(getHeroesState, heroesEntities);
+const getHeroListState = createSelector(heroesFeatureSelector, (state: HeroListState) => state);
+const getHeroListEntities = createSelector(getHeroListState, heroesEntities);
 
 // list
-const getHeroes = createSelector(getHeroesEntities, entities =>
+const getHeroes = createSelector(getHeroListEntities, entities =>
   Object.keys(entities).map(id => entities[parseInt(id, 10)])
 );
-const getHeroesLoaded = createSelector(getHeroesState, heroesLoaded);
-const getHeroesLoading = createSelector(getHeroesState, heroesLoading);
+const getHeroesLoaded = createSelector(getHeroListState, heroesLoaded);
+const getHeroesLoading = createSelector(getHeroListState, heroesLoading);
 
 export const heroListSelectors = {
   getHeroes,

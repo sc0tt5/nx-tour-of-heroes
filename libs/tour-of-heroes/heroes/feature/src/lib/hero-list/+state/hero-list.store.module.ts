@@ -5,12 +5,14 @@ import { StoreModule } from '@ngrx/store';
 
 import { HeroListEffects } from './hero-list.effects';
 import { HeroListFacade } from './hero-list.facade';
-import { heroListFeatureKey, initialState, reducer } from './hero-list.reducer';
+import { heroListFeatureKey, heroListInitialState, heroListReducer } from './hero-list.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature(heroListFeatureKey, reducer, { initialState }),
+    StoreModule.forFeature(heroListFeatureKey, heroListReducer, {
+      initialState: heroListInitialState
+    }),
     EffectsModule.forFeature([HeroListEffects])
   ],
   exports: [StoreModule, EffectsModule],

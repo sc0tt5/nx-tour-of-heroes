@@ -15,16 +15,16 @@ export interface HeroDetailState extends EntityState<Hero> {
 
 const adapter: EntityAdapter<Hero> = createEntityAdapter<Hero>();
 
-export const initialState: HeroDetailState = adapter.getInitialState({
+export const heroDetailInitialState: HeroDetailState = adapter.getInitialState({
   selectedHeroId: null,
   loaded: false,
   loading: false
 });
 
 // todo: fix adaptor/entity or rollback to original structure for store
-const heroDetailReducer = createReducer(
-  initialState,
-  // list
+const reducer = createReducer(
+  heroDetailInitialState,
+  // one
   on(heroDetailActions.loadHero, state => ({ ...state, loading: true })),
   on(heroDetailActions.loadHeroSuccess, (state, payload) =>
     adapter.setOne(payload.hero, { ...state, loading: false, loaded: true })
@@ -36,10 +36,13 @@ const heroDetailReducer = createReducer(
   })),
   // select id
   on(heroDetailActions.selectHeroId, (state, { id }) => ({ ...state, selectedHeroId: id })),
-  // reset fallback
-  on(heroDetailActions.resetHeroState, state => ({ ...state, ...initialState }))
+  // reset
+  on(heroDetailActions.resetHeroState, state => ({ ...state, ...heroDetailInitialState }))
 );
 
-export function reducer(state: HeroDetailState | undefined, action: Action): HeroDetailState {
-  return heroDetailReducer(state, action);
+export function heroDetailReducer(
+  state: HeroDetailState | undefined,
+  action: Action
+): HeroDetailState {
+  return reducer(state, action);
 }

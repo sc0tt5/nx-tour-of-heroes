@@ -3,7 +3,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { AngularUniversalModule } from '@nestjs/ng-universal';
 import { join } from 'path';
 
-import { AppServerModule as TourOfHeroesAppServerModule } from '../../../tour-of-heroes/src/main.server';
+import { AppServerModule as TourOfHeroesAppServerModule } from '../../../tour-of-heroes/src/main.server'; // todo: ?
 import { DemoOneController } from './demo-one/demo-one.controller';
 import { DemoOneService } from './demo-one/demo-one.service';
 import { HttpErrorFilter } from './http-error/http-error.filter';

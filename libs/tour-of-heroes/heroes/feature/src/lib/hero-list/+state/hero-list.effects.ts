@@ -6,7 +6,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { HeroesService } from '@nx-demo/tour-of-heroes/heroes/data-access';
 
-import * as HeroListAction from './hero-list.actions';
+import { heroListActions } from './hero-list.actions';
 
 @Injectable()
 export class HeroListEffects {
@@ -18,13 +18,13 @@ export class HeroListEffects {
 
   loadHeroes$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(HeroListAction.loadHeroes),
+      ofType(heroListActions.loadHeroes),
       switchMap(() =>
         this.heroesService.list().pipe(
-          map(heroes => HeroListAction.loadHeroesSuccess({ heroes })),
+          map(heroes => heroListActions.loadHeroesSuccess({ heroes })),
           catchError(error => {
             this.log.error(error);
-            return of(HeroListAction.loadHeroesFail(error));
+            return of(heroListActions.loadHeroesFail(error));
           })
         )
       )
