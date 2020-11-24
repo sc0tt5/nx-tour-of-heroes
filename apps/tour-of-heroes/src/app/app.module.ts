@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { LoggerModule } from 'ngx-logger';
 
+import { HeroesHeaderModule } from '@nx-demo/shared/ui';
+
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
@@ -15,6 +17,7 @@ import { AppStoreModule } from './app.store.module';
   imports: [
     AppRoutingModule,
     BrowserModule.withServerTransition({ appId: 'tour-of-heroes' }),
+    HeroesHeaderModule,
     HttpClientModule,
     LoggerModule.forRoot({
       serverLoggingUrl: `${environment.apiUrl}/log`,

@@ -3,10 +3,11 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 import { Hero } from '@nx-demo/shared/models';
 
-import * as HeroesAction from './heroes.actions';
+import * as HeroListAction from './hero-list.actions';
+
+export const heroListFeatureKey = 'hero-list';
 
 export interface HeroesState extends EntityState<Hero> {
-  selectedHeroId: number | null;
   loaded: boolean;
   loading: boolean;
 }
@@ -14,7 +15,6 @@ export interface HeroesState extends EntityState<Hero> {
 const adapter: EntityAdapter<Hero> = createEntityAdapter<Hero>();
 
 export const initialState: HeroesState = adapter.getInitialState({
-  selectedHeroId: null,
   loaded: false,
   loading: false
 });
@@ -22,16 +22,16 @@ export const initialState: HeroesState = adapter.getInitialState({
 // todo: fix adaptor/entity or rollback to original structure for store
 const heroesReducer = createReducer(
   initialState,
-  on(HeroesAction.loadHeroes, state => ({ ...state, loading: true })),
-  on(HeroesAction.loadHeroesSuccess, (state, payload) =>
+  // list
+  on(HeroListAction.loadHeroes, state => ({ ...state, loading: true })),
+  on(HeroListAction.loadHeroesSuccess, (state, payload) =>
     adapter.setAll(payload.heroes, { ...state, loading: false, loaded: true })
   ),
-  on(HeroesAction.loadHeroesFail, state => ({
+  on(HeroListAction.loadHeroesFail, state => ({
     ...state,
     loading: false,
     loaded: false
-  })),
-  on(HeroesAction.resetHeroesState, state => initialState)
+  }))
 );
 
 export function reducer(state: HeroesState | undefined, action: Action): HeroesState {

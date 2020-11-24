@@ -4,7 +4,11 @@ import { TransferState } from '@angular/platform-browser';
 
 import { ResourceService } from '@nx-demo/shared/data-access';
 
-@Injectable()
+const HEROES_API = '/api/heroes';
+const HEROES_DETAIL = 'hero';
+const HEROES_LIST = 'heroes';
+
+@Injectable({ providedIn: 'root' })
 export class HeroesService extends ResourceService<any> {
   // todo: change from any
   constructor(
@@ -12,6 +16,6 @@ export class HeroesService extends ResourceService<any> {
     protected httpClient: HttpClient,
     protected transferState: TransferState
   ) {
-    super(platformId, httpClient, transferState, '/api/heroes', 'hero');
+    super(platformId, httpClient, transferState, HEROES_API, HEROES_DETAIL, HEROES_LIST);
   }
 }

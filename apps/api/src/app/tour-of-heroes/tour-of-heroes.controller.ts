@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseFilters } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-demo/shared/models';
 
@@ -15,14 +16,13 @@ export class TourOfHeroesController {
   }
 
   @Get()
-  findAll() {
+  findAll(): Observable<Hero[]> {
     return this.tourOfHeroesService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    // todo:
-    // return this.tourOfHeroesService.findOne(id);
+  findOne(@Param('id') id: number): Observable<Hero> {
+    return this.tourOfHeroesService.findOne(id);
   }
 
   @Put(':id')

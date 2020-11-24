@@ -1,1 +1,82 @@
-<p>hero-detail works!</p>
+<!-- todo: dynamic form fields -->
+<ng-container *ngIf="heroLoaded$ | async; else loading">
+  <ng-container
+    [ngTemplateOutlet]="showEditor ? heroForm : heroCard"
+    [ngTemplateOutletContext]="{ hero: hero$ | async }"
+  >
+  </ng-container>
+</ng-container>
+
+<!-- card view -->
+<ng-template #heroCard let-hero="hero">
+  <div class="card">
+    <!-- card main content -->
+    <nx-demo-card-content
+      [name]="hero.name"
+      [description]="hero.description"
+    ></nx-demo-card-content>
+
+    <!-- card footer - delete and edit buttons -->
+    <nx-demo-card-footer
+      [item]="hero"
+      (deleted)="askToDelete($event)"
+      (selected)="editHero($event)"
+    ></nx-demo-card-footer>
+  </div>
+
+  <!-- delete confirmation modal  -->
+  <nx-demo-heroes-modal
+    class="modal-hero"
+    [message]="message"
+    [isOpen]="showModal"
+    (handleNo)="closeModal()"
+    (handleYes)="deleteHero()"
+  ></nx-demo-heroes-modal>
+</ng-template>
+
+<!-- todo: moved to shared lib? -->
+<!-- editor -->
+<ng-template #heroForm let-hero="hero">
+  <div class="card edit-detail">
+    <header class="card-header">
+      <p class="card-header-title">
+        {{ hero.name }}
+        &nbsp;
+      </p>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <div class="field">
+          <label class="label" for="name"> name </label>
+          <input
+            name="name"
+            class="input"
+            type="text"
+            placeholder="e.g. Colleen"
+            [(ngModel)]="hero.name"
+          />
+        </div>
+        <div class="field">
+          <label class="label" for="description"> description </label>
+          <input
+            name="description"
+            class="input"
+            type="text"
+            placeholder="dance fight!"
+            [(ngModel)]="hero.description"
+          />
+          <!-- <nx-demo-field [field]="field"></nx-demo-field> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- todo: build this and move to shared lib -->
+<!-- loading indicator -->
+<ng-template #loading>
+  <div class="message">
+    <!-- <img src="/img/loading.svg" /> -->
+    Fetching hero...
+  </div>
+</ng-template>

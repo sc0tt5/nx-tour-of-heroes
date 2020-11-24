@@ -1,30 +1,41 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import {
-  HeroesResolver,
-  HeroesService,
-  HeroesStoreModule
-} from '@nx-demo/tour-of-heroes/heroes/data-access';
+import { CardContentModule, CardFooterModule, HeroesModalModule } from '@nx-demo/shared/ui';
 
+import { HeroDetailStoreModule } from './hero-detail/+state/hero-detail.store.module';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroDetailResolver } from './hero-detail/hero-detail.resolver';
+import { HeroListStoreModule } from './hero-list/+state/hero-list.store.module';
 import { HeroListComponent } from './hero-list/hero-list.component';
-import { HeroShellComponent } from './hero-shell/hero-shell.component';
+import { HeroListResolver } from './hero-list/hero-list.resolver';
 
 const ROUTES: Routes = [
   {
     path: '',
-    component: HeroShellComponent,
-    resolve: { HeroesResolver }
+    component: HeroListComponent,
+    resolve: { HeroListResolver }
+  },
+  {
+    path: ':id',
+    component: HeroDetailComponent,
+    resolve: { HeroDetailResolver }
   }
-  // todo: adjust routes to allow for hero/:id
 ];
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule, HeroesStoreModule, RouterModule.forChild(ROUTES)],
-  declarations: [HeroListComponent, HeroDetailComponent, HeroShellComponent],
-  providers: [HeroesResolver, HeroesService]
+  imports: [
+    CardContentModule,
+    CardFooterModule,
+    CommonModule,
+    FormsModule,
+    HeroDetailStoreModule,
+    HeroListStoreModule,
+    HeroesModalModule,
+    RouterModule.forChild(ROUTES)
+  ],
+  declarations: [HeroListComponent, HeroDetailComponent]
 })
 export class HeroesFeatureModule {}

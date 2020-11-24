@@ -53,14 +53,14 @@ export class ResourceService<T extends Resource> {
    * Fetches an existing page
    * @param {any} params
    */
-  read(params?: any): Observable<T | undefined> {
+  read(params?: any, path?: string): Observable<T | undefined> {
     const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
     const getFromApi = this.isServer || (this.isBrowser && !transferStateHasKey);
     const getFromTransferState = this.isBrowser && transferStateHasKey;
     const parameters = params ? { params } : {};
 
     if (getFromApi) {
-      return this.http.get(this.endpoint, parameters).pipe(
+      return this.http.get(`${this.endpoint}${path ? '/' + path : ''}`, parameters).pipe(
         delay(1000), // for demonstration purposes only, simulate slower server response
         map((data: any) => {
           if (this.isServer) {

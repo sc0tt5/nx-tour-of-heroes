@@ -1,34 +1,14 @@
-<ul class="list">
-  <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index" role="presentation">
-    <div class="card">
-      <!-- card main content -->
-      <div class="card-content">
-        <div class="content">
-          <div class="name" [innerHTML]="hero.name"></div>
-          <div class="description" [innerHTML]="hero.description"></div>
-        </div>
+<div class="column is-8" *ngIf="heroes$ | async as heroes">
+  <ul class="list">
+    <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index" role="presentation">
+      <div class="card">
+        <!-- card main content -->
+        <nx-demo-card-content
+          [name]="hero.name"
+          [description]="hero.description"
+          (selected)="select(hero.id)"
+        ></nx-demo-card-content>
       </div>
-      <!-- card footer - delete and edit buttons -->
-      <footer class="card-footer">
-        <button
-          class="link card-footer-item"
-          attr.aria-label="Delete"
-          tabindex="0"
-          [attr.data-id]="hero.id"
-          (click)="deleteHero(hero)"
-        >
-          <fa-icon [icon]="faTrash"></fa-icon> Delete
-        </button>
-        <button
-          class="link card-footer-item"
-          attr.aria-label="Edit"
-          tabindex="1"
-          [attr.data-id]="hero.id"
-          (click)="selectHero(hero)"
-        >
-          <fa-icon [icon]="faEdit"></fa-icon> Edit
-        </button>
-      </footer>
-    </div>
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>

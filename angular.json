@@ -525,6 +525,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "optimization": true,
+            "outputHashing": "all",
+            "sourceMap": false,
+            "extractCss": true,
+            "namedChunks": false,
+            "extractLicenses": true,
+            "vendorChunk": false,
+            "buildOptimizer": true,
             "outputPath": "dist/apps/tour-of-heroes/browser",
             "index": "apps/tour-of-heroes/src/index.html",
             "main": "apps/tour-of-heroes/src/main.ts",
@@ -558,6 +566,18 @@
             "scripts": []
           },
           "configurations": {
+            "local": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "vendorChunk": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/tour-of-heroes/src/environments/environment.ts",
+                  "with": "apps/tour-of-heroes/src/environments/environment.local.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -565,14 +585,6 @@
                   "with": "apps/tour-of-heroes/src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -627,6 +639,9 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
+            "sourceMap": false,
+            "optimization": false,
+            "outputHashing": "media",
             "outputPath": "dist/apps/tour-of-heroes/server",
             "main": "apps/tour-of-heroes/server.ts",
             "tsConfig": "apps/tour-of-heroes/tsconfig.server.json",
@@ -644,16 +659,21 @@
             ]
           },
           "configurations": {
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/tour-of-heroes/src/environments/environment.ts",
+                  "with": "apps/tour-of-heroes/src/environments/environment.local.ts"
+                }
+              ]
+            },
             "production": {
-              "outputHashing": "media",
               "fileReplacements": [
                 {
                   "replace": "apps/tour-of-heroes/src/environments/environment.ts",
                   "with": "apps/tour-of-heroes/src/environments/environment.prod.ts"
                 }
-              ],
-              "sourceMap": false,
-              "optimization": false
+              ]
             }
           }
         },
@@ -664,6 +684,10 @@
             "serverTarget": "tour-of-heroes:server"
           },
           "configurations": {
+            "local": {
+              "browserTarget": "tour-of-heroes:build:local",
+              "serverTarget": "tour-of-heroes:server:local"
+            },
             "production": {
               "browserTarget": "tour-of-heroes:build:production",
               "serverTarget": "tour-of-heroes:server:production"
