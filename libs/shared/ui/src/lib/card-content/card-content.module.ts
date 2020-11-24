@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { CardContentComponent } from './card-content.component';
 
 @NgModule({
-  imports: [CommonModule],
   declarations: [CardContentComponent],
+  imports: [CommonModule],
   exports: [CardContentComponent]
 })
 export class CardContentModule {}

@@ -5,8 +5,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CardFooterComponent } from './card-footer.component';
 
 @NgModule({
-  imports: [CommonModule, FontAwesomeModule],
   declarations: [CardFooterComponent],
+  imports: [CommonModule, FontAwesomeModule],
   exports: [CardFooterComponent]
 })
 export class CardFooterModule {}

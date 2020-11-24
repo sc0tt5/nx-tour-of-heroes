@@ -5,6 +5,7 @@ export * from './lib/card-footer/card-footer.module';
 export * from './lib/demo-content/demo-content.component';
 export * from './lib/demo-content/demo-content.module';
 export * from './lib/form/dynamic-reactive-form.module';
+export * from './lib/heroes-editor/heroes-editor.module';
 export * from './lib/heroes-header/heroes-header.module';
 export * from './lib/heroes-modal/heroes-modal.module';
 export * from './lib/loading-indicator/loading-indicator.component';

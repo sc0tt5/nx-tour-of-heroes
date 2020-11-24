@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CardContentModule, CardFooterModule, HeroesModalModule } from '@nx-demo/shared/ui';
+// prettier-ignore
+import { CardContentModule, CardFooterModule, HeroesEditorModule, HeroesModalModule } from '@nx-demo/shared/ui';
 
 import { HeroDetailStoreModule } from './hero-detail/+state/hero-detail.store.module';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
@@ -33,6 +34,7 @@ const ROUTES: Routes = [
     FormsModule,
     HeroDetailStoreModule,
     HeroListStoreModule,
+    HeroesEditorModule,
     HeroesModalModule,
     RouterModule.forChild(ROUTES)
   ],
