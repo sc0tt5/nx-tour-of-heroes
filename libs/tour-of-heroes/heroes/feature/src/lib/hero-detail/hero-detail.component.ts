@@ -43,10 +43,10 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
     this.showModal = false;
   }
 
-  deleteHero(): void {
+  deleteHero(id: number): void {
     this.closeModal();
     console.log('[DELETE] ...should delete hero and return to list');
-    // todo: build out this functionality in the store
+    this.facade.removeHero(id);
     this.router.navigate(['/heroes']);
   }
 

@@ -17,12 +17,9 @@ const getHeroDetailState = createSelector(
   (state: HeroDetailState) => state
 );
 
-// single
 const getHero = createSelector(getHeroDetailState, heroDetailEntities);
 const getHeroLoaded = createSelector(getHeroDetailState, heroDetailLoaded);
 const getHeroLoading = createSelector(getHeroDetailState, heroDetailLoading);
-
-// selected hero
 const getSelectedHero = createSelector(getHeroDetailState, selectedHero);
 
 export const heroDetailSelectors = {

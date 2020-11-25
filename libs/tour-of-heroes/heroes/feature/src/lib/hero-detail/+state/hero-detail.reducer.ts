@@ -35,16 +35,17 @@ const reducer = createReducer(
     adapter.setOne(payload.hero, { ...state, ...LOADED })
   ),
   on(heroDetailActions.loadHeroFail, state => ({ ...state, ...FAIL })),
-  // select id
+  on(heroDetailActions.removeHero, state => ({ ...state, ...LOADING })),
+  on(heroDetailActions.removeHeroSuccess, (state, { id }) =>
+    adapter.removeOne(id, { ...state, ...LOADED })
+  ),
+  on(heroDetailActions.removeHeroFail, state => ({ ...state, ...FAIL })),
   on(heroDetailActions.selectHeroId, (state, { id }) => ({ ...state, selectedHeroId: id })),
-  // reset
   on(heroDetailActions.resetHeroState, state => ({ ...state, ...heroDetailInitialState })),
-  // update
   on(heroDetailActions.updateHero, state => ({ ...state, ...LOADING })),
-  on(heroDetailActions.updateHeroSuccess, (state, { hero }) => {
-    console.log({ hero });
-    return adapter.updateOne(hero, { ...state, ...LOADED });
-  }),
+  on(heroDetailActions.updateHeroSuccess, (state, { hero }) =>
+    adapter.updateOne(hero, { ...state, ...LOADED })
+  ),
   on(heroDetailActions.updateHeroFail, state => ({ ...state, ...FAIL }))
 );
 

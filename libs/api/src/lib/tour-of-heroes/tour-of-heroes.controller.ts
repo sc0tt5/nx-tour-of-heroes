@@ -11,8 +11,7 @@ export class TourOfHeroesController {
 
   @Post()
   create(@Body() hero: Hero) {
-    // todo:
-    // return this.tourOfHeroesService.create(hero);
+    return this.tourOfHeroesService.create(hero);
   }
 
   @Get()
@@ -26,13 +25,12 @@ export class TourOfHeroesController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() hero: Hero) {
+  update(@Param('id') id: number, @Body() hero: Hero): Observable<Hero> {
     return this.tourOfHeroesService.update(id, hero);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    // todo:
-    // return this.tourOfHeroesService.remove(+id);
+  remove(@Param('id') id: number): Observable<Hero> {
+    return this.tourOfHeroesService.remove(id);
   }
 }

@@ -109,8 +109,8 @@ export class ResourceService<T extends Resource> {
    * Deletes an item.
    * @param {string} param
    */
-  delete(param: string) {
-    return this.http.delete(`${this.endpoint}/${param}`).pipe(catchError(this.handleError));
+  delete(id: string | number): Observable<any> {
+    return this.http.delete(`${this.endpoint}/${id}`).pipe(catchError(this.handleError));
   }
 
   /**

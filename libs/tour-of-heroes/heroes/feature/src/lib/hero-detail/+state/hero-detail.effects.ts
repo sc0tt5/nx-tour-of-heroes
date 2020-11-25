@@ -33,6 +33,21 @@ export class HeroDetailEffects {
     )
   );
 
+  removeHero$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(heroDetailActions.removeHero),
+      switchMap(action =>
+        this.heroesService.delete(action.id).pipe(
+          map(id => heroDetailActions.removeHeroSuccess({ id })),
+          catchError(error => {
+            this.log.error(error);
+            return of(heroDetailActions.removeHeroFail(error));
+          })
+        )
+      )
+    )
+  );
+
   updateHero$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroDetailActions.updateHero),

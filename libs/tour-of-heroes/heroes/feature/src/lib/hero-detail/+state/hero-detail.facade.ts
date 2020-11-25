@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Update } from '@ngrx/entity';
 import { Store } from '@ngrx/store';
 
 import { Hero } from '@nx-demo/shared/models';
@@ -17,6 +16,10 @@ export class HeroDetailFacade {
 
   loadHero(id: number): void {
     this.store.dispatch(heroDetailActions.loadHero({ id }));
+  }
+
+  removeHero(id: number): void {
+    this.store.dispatch(heroDetailActions.removeHero({ id }));
   }
 
   resetHeroState(): void {

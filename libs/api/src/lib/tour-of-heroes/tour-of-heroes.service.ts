@@ -13,6 +13,10 @@ export class TourOfHeroesService {
 
   constructor(private http: HttpService) {}
 
+  create(hero: Hero): Observable<Hero> {
+    return this.http.post(`${this.BASE_URL}heroes`, hero).pipe(map(response => response.data));
+  }
+
   findAll(): Observable<Hero[]> {
     return this.http.get(`${this.BASE_URL}heroes`).pipe(map(response => response.data));
   }
@@ -21,7 +25,11 @@ export class TourOfHeroesService {
     return this.http.get(`${this.BASE_URL}heroes/${id}`).pipe(map(response => response.data));
   }
 
-  update(id: number, hero: Hero): Observable<any> {
+  update(id: number, hero: Hero): Observable<Hero> {
     return this.http.put(`${this.BASE_URL}heroes/${id}`, hero).pipe(map(response => response.data));
+  }
+
+  remove(id: number): Observable<Hero> {
+    return this.http.delete(`${this.BASE_URL}heroes/${id}`).pipe(map(response => response.data));
   }
 }
