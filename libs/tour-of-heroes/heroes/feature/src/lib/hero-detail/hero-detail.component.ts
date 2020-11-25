@@ -19,8 +19,6 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   hero$: Observable<Hero>;
   heroLoaded$: Observable<boolean>;
 
-  private heroToDelete: Hero;
-
   constructor(private facade: HeroDetailFacade, private router: Router) {}
 
   ngOnInit(): void {
@@ -33,9 +31,12 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   }
 
   askToDelete(hero: Hero): void {
-    this.heroToDelete = hero;
-    this.message = `Would you like to delete ${this.heroToDelete.name}?`;
+    this.message = `Would you like to delete ${hero.name}?`;
     this.showModal = true;
+  }
+
+  closeEditor(): void {
+    this.showEditor = false;
   }
 
   closeModal(): void {
@@ -44,14 +45,17 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   deleteHero(): void {
     this.closeModal();
-    if (this.heroToDelete) {
-      console.log('[DELETE] ...should delete hero and return to list');
-      // todo: build out this functionality in the store
-      this.router.navigate(['/heroes']);
-    }
+    console.log('[DELETE] ...should delete hero and return to list');
+    // todo: build out this functionality in the store
+    this.router.navigate(['/heroes']);
   }
 
-  editHero(hero: Hero): void {
+  editHero(): void {
     this.showEditor = true;
+  }
+
+  saveHero(hero: Hero): void {
+    this.facade.updateHero(hero);
+    this.closeEditor();
   }
 }

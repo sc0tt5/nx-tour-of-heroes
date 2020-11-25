@@ -21,23 +21,31 @@ export const heroDetailInitialState: HeroDetailState = adapter.getInitialState({
   loading: false
 });
 
+// helpers ?
+const LOADING = { loading: true, loaded: false };
+const LOADED = { loading: false, loaded: true };
+const FAIL = { loading: false, loaded: false };
+
 // todo: fix adaptor/entity or rollback to original structure for store
 const reducer = createReducer(
   heroDetailInitialState,
-  // one
-  on(heroDetailActions.loadHero, state => ({ ...state, loading: true })),
+  // load
+  on(heroDetailActions.loadHero, state => ({ ...state, ...LOADING })),
   on(heroDetailActions.loadHeroSuccess, (state, payload) =>
-    adapter.setOne(payload.hero, { ...state, loading: false, loaded: true })
+    adapter.setOne(payload.hero, { ...state, ...LOADED })
   ),
-  on(heroDetailActions.loadHeroFail, state => ({
-    ...state,
-    loading: false,
-    loaded: false
-  })),
+  on(heroDetailActions.loadHeroFail, state => ({ ...state, ...FAIL })),
   // select id
   on(heroDetailActions.selectHeroId, (state, { id }) => ({ ...state, selectedHeroId: id })),
   // reset
-  on(heroDetailActions.resetHeroState, state => ({ ...state, ...heroDetailInitialState }))
+  on(heroDetailActions.resetHeroState, state => ({ ...state, ...heroDetailInitialState })),
+  // update
+  on(heroDetailActions.updateHero, state => ({ ...state, ...LOADING })),
+  on(heroDetailActions.updateHeroSuccess, (state, { hero }) => {
+    console.log({ hero });
+    return adapter.updateOne(hero, { ...state, ...LOADED });
+  }),
+  on(heroDetailActions.updateHeroFail, state => ({ ...state, ...FAIL }))
 );
 
 export function heroDetailReducer(

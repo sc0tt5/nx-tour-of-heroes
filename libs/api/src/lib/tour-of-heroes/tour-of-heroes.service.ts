@@ -20,4 +20,8 @@ export class TourOfHeroesService {
   findOne(id: number): Observable<Hero> {
     return this.http.get(`${this.BASE_URL}heroes/${id}`).pipe(map(response => response.data));
   }
+
+  update(id: number, hero: Hero): Observable<any> {
+    return this.http.put(`${this.BASE_URL}heroes/${id}`, hero).pipe(map(response => response.data));
+  }
 }

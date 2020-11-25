@@ -26,9 +26,8 @@ export class TourOfHeroesController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() hero: Hero) {
-    // todo: hero update dto
-    // return this.tourOfHeroesService.update(hero);
+  update(@Param('id') id: number, @Body() hero: Hero) {
+    return this.tourOfHeroesService.update(id, hero);
   }
 
   @Delete(':id')

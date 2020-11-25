@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Update } from '@ngrx/entity';
 import { Store } from '@ngrx/store';
+
+import { Hero } from '@nx-demo/shared/models';
 
 import { heroDetailActions } from './hero-detail.actions';
 import { HeroDetailState } from './hero-detail.reducer';
@@ -22,5 +25,9 @@ export class HeroDetailFacade {
 
   selectHeroId(id: number): void {
     this.store.dispatch(heroDetailActions.selectHeroId({ id }));
+  }
+
+  updateHero(hero: Hero): void {
+    this.store.dispatch(heroDetailActions.updateHero({ hero }));
   }
 }

@@ -19,7 +19,7 @@
     <nx-demo-card-footer
       [item]="hero"
       (deleted)="askToDelete($event)"
-      (selected)="editHero($event)"
+      (selected)="editHero()"
     ></nx-demo-card-footer>
   </div>
 
@@ -33,12 +33,12 @@
   ></nx-demo-heroes-modal>
 </ng-template>
 
-<!-- todo: updates to nx-demo-form to include saving/button -->
 <!-- editor -->
 <ng-template #heroForm let-hero="hero">
   <nx-demo-heroes-editor
-    [name]="hero.name"
-    [description]="hero.description"
+    [hero]="hero"
+    (cancel)="closeEditor()"
+    (save)="saveHero($event)"
   ></nx-demo-heroes-editor>
 </ng-template>
 

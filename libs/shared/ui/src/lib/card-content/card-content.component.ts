@@ -10,7 +10,6 @@ export class CardContentComponent {
   @Output() selected = new EventEmitter();
 
   selectItem() {
-    console.log('you clicked me....');
     this.selected.emit();
   }
 }

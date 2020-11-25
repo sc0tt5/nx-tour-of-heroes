@@ -1,6 +1,7 @@
 // prettier-ignore
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+import { Hero } from '@nx-demo/shared/models';
 import { Field, FieldType } from '@nx-demo/shared/models';
 
 @Component({
@@ -10,32 +11,46 @@ import { Field, FieldType } from '@nx-demo/shared/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroesEditorComponent implements OnInit {
-  @Input() name: string;
-  @Input() description: string;
-  @Output() selected = new EventEmitter();
+  @Input() hero: Hero;
+  @Output() cancel = new EventEmitter();
+  @Output() save = new EventEmitter();
 
   fieldset: Field[];
+  heroToSave: Hero;
 
-  private set heroesFieldset({ name, description }) {
+  ngOnInit(): void {
+    this.heroesFieldset = this.hero;
+    this.heroToSave = { ...this.heroToSave, ...this.hero };
+  }
+
+  closeEditor(): void {
+    this.cancel.emit();
+  }
+
+  saveHero(): void {
+    this.save.emit(this.heroToSave);
+  }
+
+  updateHeroToSave(hero: Hero): void {
+    this.heroToSave = { ...this.heroToSave, ...hero };
+  }
+
+  private set heroesFieldset(hero: Hero) {
     this.fieldset = [
       {
-        name: 'firstName',
+        name: 'name',
         type: FieldType.TEXTFIELD,
         placeholder: 'Name',
-        value: name,
+        value: hero.name,
         required: true
       },
       {
         name: 'description',
         type: FieldType.TEXTFIELD,
         placeholder: 'Description',
-        value: description,
+        value: hero.description,
         required: true
       }
     ];
-  }
-
-  ngOnInit(): void {
-    this.heroesFieldset = { name: this.name, description: this.description };
   }
 }

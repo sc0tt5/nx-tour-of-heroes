@@ -28,7 +28,7 @@ export class ResourceService<T extends Resource> {
   }
 
   /**
-   * Creates a new page.
+   * Creates a new item.
    * @param {T} item
    */
   create(item: T): Observable<T> {
@@ -39,18 +39,19 @@ export class ResourceService<T extends Resource> {
   }
 
   /**
-   * Updates an existing page.
+   * Updates an existing item.
    * @param {T} item
    */
   update(item: T): Observable<T> {
-    return this.http.put<T>(`${this.endpoint}/${item.param}`, item).pipe(
+    return this.http.put<T>(`${this.endpoint}/${item.param || item.id}`, item).pipe(
+      delay(1000), // for demonstration purposes only, simulate slower server response
       map(data => data as T),
       catchError(this.handleError)
     );
   }
 
   /**
-   * Fetches an existing page
+   * Fetches an existing item.
    * @param {any} params
    */
   read(params?: any, path?: string): Observable<T | undefined> {
@@ -79,7 +80,7 @@ export class ResourceService<T extends Resource> {
   }
 
   /**
-   * Fetches all pages.
+   * Fetches all items.
    */
   list(): Observable<T[] | undefined> {
     const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
@@ -105,7 +106,7 @@ export class ResourceService<T extends Resource> {
   }
 
   /**
-   * Deletes a page.
+   * Deletes an item.
    * @param {string} param
    */
   delete(param: string) {
