@@ -29,7 +29,7 @@ export class TourOfHeroesService {
     return this.http.put(`${this.BASE_URL}heroes/${id}`, hero).pipe(map(response => response.data));
   }
 
-  remove(id: number): Observable<Hero> {
-    return this.http.delete(`${this.BASE_URL}heroes/${id}`).pipe(map(response => response.data));
+  remove(id: number): Observable<number> {
+    return this.http.delete(`${this.BASE_URL}heroes/${id}`).pipe(map(() => id));
   }
 }

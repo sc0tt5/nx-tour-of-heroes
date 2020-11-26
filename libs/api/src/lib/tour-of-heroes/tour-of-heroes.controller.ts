@@ -30,7 +30,7 @@ export class TourOfHeroesController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number): Observable<Hero> {
+  remove(@Param('id') id: number): Observable<number> {
     return this.tourOfHeroesService.remove(id);
   }
 }

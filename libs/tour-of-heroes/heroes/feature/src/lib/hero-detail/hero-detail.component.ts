@@ -44,10 +44,12 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   }
 
   deleteHero(id: number): void {
-    this.closeModal();
-    console.log('[DELETE] ...should delete hero and return to list');
+    console.log('[DELETE] ...should delete hero and return to list', id);
     this.facade.removeHero(id);
-    this.router.navigate(['/heroes']);
+    this.closeModal();
+    // todo: check if removeHeroSuccess then redirect
+    // ? how to do with facade pattern
+    // this.router.navigate(['/heroes']);
   }
 
   editHero(): void {
