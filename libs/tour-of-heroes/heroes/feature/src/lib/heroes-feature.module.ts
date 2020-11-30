@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 // prettier-ignore
-import { CardContentModule, CardFooterModule, HeroesEditorModule, HeroesModalModule } from '@nx-demo/shared/ui';
+import { CardContentModule, CardFooterModule, HeroesEditorModule, HeroesModalModule, LoadingIndicatorModule } from '@nx-demo/shared/ui';
+import { RouterStoreModule } from '@nx-demo/shared/utils';
 
 import { HeroDetailStoreModule } from './hero-detail/+state/hero-detail.store.module';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
@@ -23,6 +24,10 @@ const ROUTES: Routes = [
     path: ':id',
     component: HeroDetailComponent,
     resolve: { HeroDetailResolver }
+  },
+  {
+    path: 'new',
+    component: HeroDetailComponent
   }
 ];
 
@@ -34,8 +39,10 @@ const ROUTES: Routes = [
     FormsModule,
     HeroDetailStoreModule,
     HeroListStoreModule,
+    RouterStoreModule,
     HeroesEditorModule,
     HeroesModalModule,
+    LoadingIndicatorModule,
     RouterModule.forChild(ROUTES)
   ],
   declarations: [HeroListComponent, HeroDetailComponent]

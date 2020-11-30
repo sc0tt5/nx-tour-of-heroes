@@ -15,4 +15,9 @@ export class HeroListFacade {
   loadHeroes(): void {
     this.store.dispatch(heroListActions.loadHeroes());
   }
+
+  selectHero(id: number): void {
+    // todo: will nav in effects
+    this.store.dispatch(heroListActions.selectHero({ id }));
+  }
 }

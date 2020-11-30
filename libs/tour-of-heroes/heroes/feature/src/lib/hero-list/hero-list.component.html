@@ -1,4 +1,4 @@
-<div class="column is-8" *ngIf="heroes$ | async as heroes">
+<div class="column is-fluid" *ngIf="heroes$ | async as heroes">
   <ul class="list">
     <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index" role="presentation">
       <div class="card">

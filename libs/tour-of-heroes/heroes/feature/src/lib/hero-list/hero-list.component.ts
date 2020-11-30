@@ -23,7 +23,7 @@ export class HeroListComponent implements OnInit {
   }
 
   select(id: number) {
-    this.router.navigate([`/heroes/${id}`]);
+    this.facade.selectHero(id);
   }
 
   trackByHero(index: number, hero: Hero): number {

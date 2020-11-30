@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { Hero } from '@nx-demo/shared/models';
+import { routerActions } from '@nx-demo/shared/utils';
 import { HeroesService } from '@nx-demo/tour-of-heroes/heroes/data-access';
 
 import { heroDetailActions } from './hero-detail.actions';
@@ -39,6 +40,7 @@ export class HeroDetailEffects {
       switchMap(action =>
         this.heroesService.delete(action.id).pipe(
           map(id => heroDetailActions.removeHeroSuccess({ id })),
+          map(() => routerActions.go({ path: ['/heroes'] })),
           catchError(error => {
             this.log.error(error);
             return of(heroDetailActions.removeHeroFail(error));

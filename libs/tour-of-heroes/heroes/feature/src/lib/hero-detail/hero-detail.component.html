@@ -42,11 +42,8 @@
   ></nx-demo-heroes-editor>
 </ng-template>
 
-<!-- todo: move to shared lib -->
+<!-- todo: fix -->
 <!-- loading indicator -->
 <ng-template #loading>
-  <div class="message">
-    <!-- <img src="/img/loading.svg" /> -->
-    Fetching hero...
-  </div>
+  <nx-demo-loading-indicator [pageLoaded]="heroLoaded$ | async"></nx-demo-loading-indicator>
 </ng-template>
