@@ -2,55 +2,53 @@
   "heroes": [
     {
       "id": 1,
-      "name": "Aslaug",
-      "description": "warrior queen"
+      "name": "Mr. Nice",
+      "rating": 1
     },
     {
       "id": 2,
-      "name": "Bjorn Ironside",
-      "description": "king of 9th century Sweden"
+      "name": "Narco",
+      "rating": 2
     },
     {
       "id": 3,
-      "name": "Ivar the Boneless",
-      "description": "commander of the Great Heathen Army"
+      "name": "Bombasto",
+      "rating": 3
     },
     {
       "id": 4,
-      "name": "Lagertha the Shieldmaiden",
-      "description": "aka Hlaðgerðr"
+      "name": "Celeritas",
+      "rating": 4
     },
     {
       "id": 5,
-      "name": "Ragnar Lothbrok",
-      "description": "aka Ragnar Sigurdsson"
+      "name": "Magneta",
+      "rating": 5
     },
     {
       "id": 6,
-      "name": "Thora Town-hart",
-      "description": "daughter of Earl Herrauðr of Götaland"
-    }
-  ],
-  "villains": [
-    {
-      "id": 1,
-      "name": "Madelyn",
-      "description": "the cat whisperer"
+      "name": "RubberMan",
+      "rating": 6
     },
     {
-      "id": 2,
-      "name": "Haley",
-      "description": "pen wielder"
+      "id": 7,
+      "name": "Dynama",
+      "rating": 7
     },
     {
-      "id": 3,
-      "name": "Ella",
-      "description": "fashionista"
+      "id": 8,
+      "name": "Dr IQ",
+      "rating": 8
     },
     {
-      "id": 4,
-      "name": "Landon",
-      "description": "Mandalorian mauler"
+      "id": 9,
+      "name": "Magma",
+      "rating": 9
+    },
+    {
+      "id": 10,
+      "name": "Tornado",
+      "rating": 10
     }
   ]
 }

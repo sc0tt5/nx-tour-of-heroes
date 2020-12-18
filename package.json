@@ -40,6 +40,22 @@
     "prebuild:ssr": "ngcc",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
+  "lint-staged": {
+    "*.ts": [
+      "tslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,html,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "10.2.0",
