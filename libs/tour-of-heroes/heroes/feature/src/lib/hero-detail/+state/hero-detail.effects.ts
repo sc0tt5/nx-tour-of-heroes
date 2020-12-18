@@ -5,9 +5,9 @@ import { NGXLogger } from 'ngx-logger';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
-import { Hero } from '@nx-demo/shared/models';
-import { routerActions } from '@nx-demo/shared/utils';
-import { HeroesService } from '@nx-demo/tour-of-heroes/heroes/data-access';
+import { Hero } from '@nx-toh/shared/models';
+import { routerActions } from '@nx-toh/shared/utils';
+import { HeroesService } from '@nx-toh/tour-of-heroes/heroes/data-access';
 
 import { heroDetailActions } from './hero-detail.actions';
 
@@ -19,6 +19,22 @@ export class HeroDetailEffects {
     private log: NGXLogger
   ) {}
 
+  createHero$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(heroDetailActions.createHero),
+      switchMap(action =>
+        this.heroesService.create(action.hero).pipe(
+          map(hero => ({ id: hero.id, changes: hero })), // todo: two maps?
+          map((hero: Update<Hero>) => heroDetailActions.createHeroSuccess({ hero })),
+          catchError(error => {
+            this.log.error(error);
+            return of(heroDetailActions.createHeroFail(error));
+          })
+        )
+      )
+    )
+  );
+
   loadHero$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroDetailActions.loadHero),
@@ -28,22 +44,6 @@ export class HeroDetailEffects {
           catchError(error => {
             this.log.error(error);
             return of(heroDetailActions.loadHeroFail(error));
-          })
-        )
-      )
-    )
-  );
-
-  removeHero$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(heroDetailActions.removeHero),
-      switchMap(action =>
-        this.heroesService.delete(action.id).pipe(
-          map(id => heroDetailActions.removeHeroSuccess({ id })),
-          map(() => routerActions.go({ path: ['/heroes'] })),
-          catchError(error => {
-            this.log.error(error);
-            return of(heroDetailActions.removeHeroFail(error));
           })
         )
       )

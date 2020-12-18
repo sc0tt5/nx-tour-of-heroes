@@ -5,7 +5,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { TransferState } from '@angular/platform-browser';
 
-import { PageOne } from '@nx-demo/shared/models';
+import { PageOne } from '@nx-toh/shared/models';
 
 import { ResourceService } from './resource.service';
 

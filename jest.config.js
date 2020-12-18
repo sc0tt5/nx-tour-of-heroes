@@ -22,5 +22,5 @@ module.exports = {
     '^.+\\.(ts|js|html)$': 'ts-jest'
   },
   verbose: false,
-  projects: '<rootDir>/libs/api'
+  projects: '<rootDir>/libs/ui-heroes'
 };

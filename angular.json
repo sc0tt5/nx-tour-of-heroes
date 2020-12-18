@@ -11,15 +11,15 @@
         "build": {
           "builder": "@nrwl/node:build",
           "options": {
-            "outputPath": "dist/apps/api",
+            "extractLicenses": true,
+            "inspect": false,
             "main": "apps/api/src/main.ts",
+            "optimization": true,
+            "outputPath": "dist/api",
             "tsConfig": "apps/api/tsconfig.app.json"
           },
           "configurations": {
             "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
               "fileReplacements": [
                 {
                   "replace": "apps/api/src/environments/environment.ts",
@@ -60,7 +60,7 @@
       },
       "root": "apps/demo-one",
       "sourceRoot": "apps/demo-one/src",
-      "prefix": "nx-demo",
+      "prefix": "demo-one",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -218,7 +218,7 @@
       },
       "root": "apps/tour-of-heroes",
       "sourceRoot": "apps/tour-of-heroes/src",
-      "prefix": "nx-demo",
+      "prefix": "toh",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -231,7 +231,7 @@
             "extractLicenses": true,
             "vendorChunk": false,
             "buildOptimizer": true,
-            "outputPath": "dist/apps/tour-of-heroes/browser",
+            "outputPath": "dist/tour-of-heroes/browser",
             "index": "apps/tour-of-heroes/src/index.html",
             "main": "apps/tour-of-heroes/src/main.ts",
             "polyfills": "apps/tour-of-heroes/src/polyfills.ts",
@@ -244,23 +244,9 @@
                 "glob": "**/*",
                 "input": "../libs/shared/theme",
                 "output": "./assets/"
-              },
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
-              },
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
               }
             ],
-            "styles": [
-              "node_modules/bulma/css/bulma.min.css",
-              "node_modules/bulma/bulma.sass",
-              "apps/tour-of-heroes/src/styles.scss"
-            ],
+            "styles": ["apps/tour-of-heroes/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -340,7 +326,7 @@
             "sourceMap": false,
             "optimization": false,
             "outputHashing": "media",
-            "outputPath": "dist/apps/tour-of-heroes/server",
+            "outputPath": "dist/tour-of-heroes/server",
             "main": "apps/tour-of-heroes/server.ts",
             "tsConfig": "apps/tour-of-heroes/tsconfig.server.json",
             "stylePreprocessorOptions": {
@@ -431,7 +417,7 @@
       "projectType": "library",
       "root": "libs/demo-one/feature/page-one",
       "sourceRoot": "libs/demo-one/feature/page-one/src",
-      "prefix": "nx-demo",
+      "prefix": "demo-one-ft-pgo",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -462,7 +448,7 @@
       "projectType": "library",
       "root": "libs/demo-one/feature/page-two",
       "sourceRoot": "libs/demo-one/feature/page-two/src",
-      "prefix": "nx-demo",
+      "prefix": "demo-one-ft-pgt",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -493,7 +479,7 @@
       "projectType": "library",
       "root": "libs/demo-one/feature/shell",
       "sourceRoot": "libs/demo-one/feature/shell/src",
-      "prefix": "nx-demo",
+      "prefix": "demo-one-ft-sh",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -524,7 +510,7 @@
       "projectType": "library",
       "root": "libs/shared/animations",
       "sourceRoot": "libs/shared/animations/src",
-      "prefix": "nx-demo",
+      "prefix": "shrd-anim",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -555,7 +541,7 @@
       "projectType": "library",
       "root": "libs/shared/data-access",
       "sourceRoot": "libs/shared/data-access/src",
-      "prefix": "nx-demo",
+      "prefix": "shrd-da",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -586,7 +572,7 @@
       "projectType": "library",
       "root": "libs/shared/models",
       "sourceRoot": "libs/shared/models/src",
-      "prefix": "nx-demo",
+      "prefix": "shrd-mdl",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -638,21 +624,21 @@
         }
       }
     },
-    "shared-ui": {
+    "shared-ui-core": {
       "projectType": "library",
-      "root": "libs/shared/ui",
-      "sourceRoot": "libs/shared/ui/src",
-      "prefix": "nx-demo",
+      "root": "libs/shared/ui-core",
+      "sourceRoot": "libs/shared/ui-core/src",
+      "prefix": "shrd-ui",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/shared/ui/tsconfig.lib.json",
-              "libs/shared/ui/tsconfig.spec.json",
+              "libs/shared/ui-core/tsconfig.lib.json",
+              "libs/shared/ui-core/tsconfig.spec.json",
               ".storybook/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/**"],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-core/**"],
             "stylePreprocessorOptions": {
               "includePaths": ["libs/shared/theme/src/lib/styles/"]
             }
@@ -661,9 +647,10 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/shared/ui/jest.config.js",
-            "tsConfig": "libs/shared/ui/tsconfig.spec.json",
-            "setupFile": "libs/shared/ui/src/test-setup.ts"
+            "jestConfig": "libs/shared/ui-core/jest.config.js",
+            "tsConfig": "libs/shared/ui-core/tsconfig.spec.json",
+            "setupFile": "libs/shared/ui-core/src/test-setup.ts",
+            "passWithNoTests": true
           }
         },
         "storybook": {
@@ -703,6 +690,41 @@
         }
       }
     },
+    "shared-ui-heroes": {
+      "projectType": "library",
+      "root": "libs/shared/ui-heroes",
+      "sourceRoot": "libs/shared/ui-heroes/src",
+      "prefix": "shrd-ui-toh",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui-heroes/tsconfig.lib.json",
+              "libs/shared/ui-heroes/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-heroes/**/*"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/theme/src/lib/styles/"]
+            }
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/ui-heroes/jest.config.js",
+            "tsConfig": "libs/shared/ui-core/tsconfig.spec.json",
+            "setupFile": "libs/shared/ui-core/src/test-setup.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "shared-utils": {
       "root": "libs/shared/utils",
       "sourceRoot": "libs/shared/utils/src",
@@ -733,7 +755,7 @@
       "projectType": "library",
       "root": "libs/tour-of-heroes/heroes/data-access",
       "sourceRoot": "libs/tour-of-heroes/heroes/data-access/src",
-      "prefix": "nx-demo",
+      "prefix": "toh-da-heroes",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -763,7 +785,7 @@
       "projectType": "library",
       "root": "libs/tour-of-heroes/heroes/feature",
       "sourceRoot": "libs/tour-of-heroes/heroes/feature/src",
-      "prefix": "nx-demo",
+      "prefix": "toh-ft-heroes",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -804,5 +826,5 @@
       "strict": true
     }
   },
-  "defaultProject": "demo-one"
+  "defaultProject": "tour-of-heroes"
 }

@@ -5,7 +5,7 @@ import { makeStateKey, StateKey, TransferState } from '@angular/platform-browser
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 
-import { Resource } from '@nx-demo/shared/models';
+import { Resource } from '@nx-toh/shared/models';
 
 export class ResourceService<T extends Resource> {
   public itemKey: StateKey<T>;

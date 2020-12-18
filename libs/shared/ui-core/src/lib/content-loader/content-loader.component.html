@@ -1,0 +1,11 @@
+<!-- loading indicator -->
+<shrd-ui-loading-indicator [pageLoaded]="pageLoaded"></shrd-ui-loading-indicator>
+
+<!-- page content -->
+<section>
+  <div class="content-loader">
+    <div [@fadeInDown]="pageLoaded">
+      <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+    </div>
+  </div>
+</section>

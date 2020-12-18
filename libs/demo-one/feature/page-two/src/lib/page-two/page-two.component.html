@@ -1,12 +1,12 @@
-<nx-demo-demo-content [pageLoaded]="pageLoaded$ | async">
+<shrd-ui-content-loader [pageLoaded]="pageLoaded$ | async">
   <ng-container *ngIf="page$ | async as page">
     <h1 [innerHTML]="page.name"></h1>
     <p [innerHTML]="page.content"></p>
-    <nx-demo-accordion>
-      <nx-demo-accordion-two
+    <shrd-ui-accordion>
+      <shrd-ui-accordion-two
         *ngFor="let item of page.accordionItems"
         [item]="item"
-      ></nx-demo-accordion-two>
-    </nx-demo-accordion>
+      ></shrd-ui-accordion-two>
+    </shrd-ui-accordion>
   </ng-container>
-</nx-demo-demo-content>
+</shrd-ui-content-loader>

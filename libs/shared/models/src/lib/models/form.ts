@@ -2,6 +2,7 @@ import { Validators } from '@angular/forms';
 
 export enum FieldType {
   CHECKBOX,
+  NUMBER,
   RADIO,
   SELECTDROPDOWN,
   TEXTAREA,

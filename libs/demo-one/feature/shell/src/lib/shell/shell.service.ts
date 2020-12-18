@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivationEnd } from '@angular/router';
 
-import { AnalyticsService } from '@nx-demo/shared/utils';
+import { AnalyticsService } from '@nx-toh/shared/utils';
 
 @Injectable()
 export class ShellService {

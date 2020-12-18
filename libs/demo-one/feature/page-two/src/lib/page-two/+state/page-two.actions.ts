@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { PageTwo } from '@nx-demo/shared/models';
+import { PageTwo } from '@nx-toh/shared/models';
 
 // load products
 export const loadPageTwo = createAction('[PageTwo] Load PageTwo', props<{ param: string }>());

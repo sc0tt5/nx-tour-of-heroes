@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { PageTwo } from '@nx-demo/shared/models';
+import { PageTwo } from '@nx-toh/shared/models';
 
 import * as PageTwoAction from './page-two.actions';
 

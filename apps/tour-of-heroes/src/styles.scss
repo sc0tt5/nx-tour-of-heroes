@@ -1,5 +1,8 @@
+/*
+
 @import '~bulma//bulma.sass';
 @import '~@fortawesome/fontawesome-svg-core/styles.css'; // to prevent icon flicker when SSR
+*/
 
 $angular: #b52e31;
 $angular-light: #eb7a7c;
@@ -48,6 +51,69 @@ $color-light-contrast: #000000;
 $color-light-shade: #d7d8da;
 $color-light-tint: #f5f6f9;
 
+/* Global Styles */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+
+/* Master Styles */
+/*h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}*/
+h2,
+h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+body {
+  margin: 2em;
+}
+body,
+input[text],
+button {
+  color: #888;
+  font-family: Cambria, Georgia;
+}
+a {
+  cursor: pointer;
+}
+
+/* items class */
+
+/*.items li.selected {
+  background-color: #cfd8dc;
+  color: white;
+}
+.items li.selected:hover {
+  background-color: #bbd8dc;
+}
+.items .text {
+  position: relative;
+  top: -3px;
+}
+.items .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607d8b;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: 0.8em;
+  border-radius: 4px 0 0 4px;
+}*/
+
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
 .menu-list .router-link-active {
   color: #fff;
   background-color: $link;
@@ -205,3 +271,4 @@ button.link {
   border: none;
   cursor: pointer;
 }
+*/

@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-// prettier-ignore
-import { CardContentModule, CardFooterModule, HeroesEditorModule, HeroesModalModule, LoadingIndicatorModule } from '@nx-demo/shared/ui';
-import { RouterStoreModule } from '@nx-demo/shared/utils';
+import { ContentLoaderModule, LoadingIndicatorModule } from '@nx-toh/shared/ui-core';
+import { HeroesCardModule, HeroesEditorModule } from '@nx-toh/shared/ui-heroes';
+import { RouterStoreModule } from '@nx-toh/shared/utils';
 
 import { HeroDetailStoreModule } from './hero-detail/+state/hero-detail.store.module';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
@@ -21,27 +21,26 @@ const ROUTES: Routes = [
     resolve: { HeroListResolver }
   },
   {
+    path: 'new',
+    component: HeroDetailComponent
+  },
+  {
     path: ':id',
     component: HeroDetailComponent,
     resolve: { HeroDetailResolver }
-  },
-  {
-    path: 'new',
-    component: HeroDetailComponent
   }
 ];
 
 @NgModule({
   imports: [
-    CardContentModule,
-    CardFooterModule,
     CommonModule,
+    ContentLoaderModule,
     FormsModule,
     HeroDetailStoreModule,
     HeroListStoreModule,
     RouterStoreModule,
+    HeroesCardModule,
     HeroesEditorModule,
-    HeroesModalModule,
     LoadingIndicatorModule,
     RouterModule.forChild(ROUTES)
   ],

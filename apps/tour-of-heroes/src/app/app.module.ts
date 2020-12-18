@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { LoggerModule } from 'ngx-logger';
 
-import { HeroesHeaderModule } from '@nx-demo/shared/ui';
+import { HeroesHeaderModule } from '@nx-toh/shared/ui-heroes';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';

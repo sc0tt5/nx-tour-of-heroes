@@ -1,0 +1,21 @@
+<div class="card edit-detail">
+  <!--   <header class="card-header">
+    <p class="card-header-title" [innerHTML]="editorHeader"></p>
+  </header> -->
+  <div class="card-content">
+    <div class="content">
+      <!-- dynamic form -->
+      <shrd-ui-form [fieldset]="fieldset" (formValues)="editHero($event)"></shrd-ui-form>
+      <div class="card-footer">
+        <!-- cancel -->
+        <button class="link card-footer-item" attr.aria-label="Back" (click)="closeEditor()">
+          Cancel
+        </button>
+        <!-- save -->
+        <button class="link card-footer-item" attr.aria-label="Save" (click)="saveHero()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

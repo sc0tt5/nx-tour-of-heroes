@@ -1,5 +1,5 @@
 import { getSelectors, RouterReducerState } from '@ngrx/router-store';
-import { createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { routerFeatureKey, RouterState, RouterStateUrl } from './router.reducer';
 
@@ -9,28 +9,19 @@ const routerFeatureSelector = createFeatureSelector<
   RouterReducerState<RouterStateUrl>
 >(routerFeatureKey);
 
-// built-in selectors
-const {
-  selectCurrentRoute, // select the current route
-  selectFragment, // select the current route fragment
-  selectQueryParams, // select the current route query params
-  selectQueryParam, // factory function to select a query param
-  selectRouteParams, // select the current route params
-  selectRouteParam, // factory function to select a route param
-  selectRouteData, // select the current route data
-  selectUrl // select the current url
-} = getSelectors(routerFeatureSelector);
+const PARAMS = params => (Object.keys(params).length ? params : undefined);
 
+// selectors
+const getRouterState = createSelector(routerFeatureSelector, router => router.state);
+const getParams = createSelector(getRouterState, routerState => PARAMS(routerState.params));
+const getQueryParams = createSelector(getRouterState, routerState =>
+  PARAMS(routerState.queryParams)
+);
+const getUrl = createSelector(getRouterState, routerState => routerState.url);
+
+// public
 export const routerSelectors = {
-  selectCurrentRoute,
-  selectFragment,
-  selectQueryParams,
-  selectQueryParam,
-  selectRouteParams,
-  selectRouteParam,
-  selectRouteData,
-  selectUrl
+  getParams,
+  getQueryParams,
+  getUrl
 };
-
-// custom selectors can also be created
-// see: https://ngrx.io/guide/router-store/selectors

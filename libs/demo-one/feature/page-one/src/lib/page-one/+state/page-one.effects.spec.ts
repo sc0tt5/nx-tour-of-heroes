@@ -9,7 +9,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { cold, hot } from 'jest-marbles';
 import { Observable, of, throwError } from 'rxjs';
 
-import { PageOne } from '@nx-demo/shared/models';
+import { PageOne } from '@nx-toh/shared/models';
 
 import { PageOneService } from '../page-one.service';
 import * as PageOneAction from './page-one.actions';

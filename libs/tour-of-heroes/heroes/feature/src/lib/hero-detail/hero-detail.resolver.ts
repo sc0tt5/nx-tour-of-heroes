@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
-import { Hero } from '@nx-demo/shared/models';
+import { Hero } from '@nx-toh/shared/models';
 
 import { HeroDetailFacade } from './+state/hero-detail.facade';
 

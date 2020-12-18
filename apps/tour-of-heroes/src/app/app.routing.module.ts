@@ -6,15 +6,15 @@ export const routes: Routes = [
   {
     path: 'heroes',
     loadChildren: () =>
-      import('@nx-demo/tour-of-heroes/heroes/feature').then(m => m.HeroesFeatureModule)
+      import('@nx-toh/tour-of-heroes/heroes/feature').then(m => m.HeroesFeatureModule)
   }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules,
-      initialNavigation: 'enabled'
+      preloadingStrategy: PreloadAllModules, // not good for slower/3G connections
+      initialNavigation: 'enabled' // will become enabledBlocking in ng11
     })
   ],
   exports: [RouterModule]

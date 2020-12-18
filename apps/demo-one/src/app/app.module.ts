@@ -11,7 +11,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { LoggerModule } from 'ngx-logger';
 
-import { DemoOneFeatureShellModule } from '@nx-demo/demo-one/feature/shell';
+import { DemoOneFeatureShellModule } from '@nx-toh/demo-one/feature/shell';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';

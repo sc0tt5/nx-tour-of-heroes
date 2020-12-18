@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { PageOne } from '@nx-demo/shared/models';
+import { PageOne } from '@nx-toh/shared/models';
 
 import { DemoOneController } from './demo-one.controller';
 import { DemoOneService } from './demo-one.service';

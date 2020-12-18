@@ -1,10 +1,10 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 
-import { WindowRefService } from '@nx-demo/shared/utils';
+import { WindowRefService } from '@nx-toh/shared/utils';
 
 @Component({
-  selector: 'nx-demo-root',
+  selector: 'toh-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

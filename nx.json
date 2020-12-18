@@ -49,7 +49,10 @@
     "shared-theme": {
       "tags": ["type:theme"]
     },
-    "shared-ui": {
+    "shared-ui-core": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-ui-heroes": {
       "tags": ["scope:shared", "type:ui"]
     },
     "shared-utils": {

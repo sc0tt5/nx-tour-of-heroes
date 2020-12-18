@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { DemoOneFeatureShellModule } from '@nx-demo/demo-one/feature/shell';
-import { LoadingIndicatorModule } from '@nx-demo/shared/ui';
+import { DemoOneFeatureShellModule } from '@nx-toh/demo-one/feature/shell';
+import { LoadingIndicatorModule } from '@nx-toh/shared/ui-core';
 
 import { AppComponent } from './app.component';
 

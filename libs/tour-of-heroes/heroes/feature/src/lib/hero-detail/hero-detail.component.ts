@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { Hero } from '@nx-demo/shared/models';
+import { Hero } from '@nx-toh/shared/models';
+import { RouterFacade } from '@nx-toh/shared/utils';
 
 import { HeroDetailFacade } from './+state/hero-detail.facade';
 
@@ -12,72 +12,43 @@ import { HeroDetailFacade } from './+state/hero-detail.facade';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
-  heroExists = true;
-  message = '?';
-  showEditor = false;
-  showModal = false;
+  heroToSave: Hero;
 
   hero$: Observable<Hero>;
   heroLoaded$: Observable<boolean>;
+  params$: Observable<boolean>;
 
-  constructor(
-    private facade: HeroDetailFacade,
-    // private route: ActivatedRouteSnapshot,
-    private router: Router
-  ) {}
+  constructor(private facade: HeroDetailFacade, private router: RouterFacade) {}
 
   ngOnInit(): void {
-    // todo: router-store? ...but where to put +state ???
-    // this.heroExists = !!this.route.params.id;
-
-    // if (this.heroExists) {
     this.loadHero();
-    /* } else {
-      this.showEditor = true; // create new
-    } */
   }
 
   ngOnDestroy(): void {
     this.facade.resetHeroState();
   }
 
-  askToDelete(hero: Hero): void {
-    this.message = `Would you like to delete ${hero.name}?`;
-    this.showModal = true;
-  }
-
   closeEditor(): void {
-    this.showEditor = false;
+    this.facade.goBack();
   }
 
-  closeModal(): void {
-    this.showModal = false;
+  onHeroChange(hero: Hero): void {
+    this.heroToSave = { ...hero };
   }
 
-  deleteHero(id: number): void {
-    this.closeModal();
-    this.facade.removeHero(id);
+  saveHero(): void {
+    this.facade.saveHero(this.heroToSave);
+    this.closeEditor();
   }
 
-  editHero(): void {
-    this.showEditor = true;
+  updateHero(): void {
+    this.facade.updateHero(this.heroToSave);
+    this.closeEditor();
   }
 
-  loadHero() {
+  private loadHero(): void {
     this.hero$ = this.facade.hero$;
     this.heroLoaded$ = this.facade.heroLoaded$;
-  }
-
-  saveHero(hero: Hero): void {
-    if (this.heroExists) {
-      this.facade.updateHero(hero); // should this be upsert instead?
-      this.closeEditor();
-    } else {
-      // save new hero
-      // todo: this.facade.saveHero
-      // display new hero
-      // todo: this.loadHero()
-      // todo: this.heroExists = true
-    }
+    this.params$ = this.router.params$;
   }
 }

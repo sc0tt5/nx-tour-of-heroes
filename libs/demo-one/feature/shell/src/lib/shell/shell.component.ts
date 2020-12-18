@@ -6,7 +6,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { ShellService } from './shell.service';
 
 @Component({
-  selector: 'nx-demo-shell',
+  selector: 'demo-one-ft-sh-shell',
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

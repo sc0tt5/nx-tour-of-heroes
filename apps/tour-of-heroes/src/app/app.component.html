@@ -1,14 +1,2 @@
-<div>
-  <nx-demo-heroes-header></nx-demo-heroes-header>
-  <div class="section columns">
-    <!-- todo: when doing villains feature -->
-    <!-- <app-nav class="column is-2"></app-nav> -->
-    <main class="column">
-      <div class="content-container">
-        <div class="columns is-multiline is-variable">
-          <router-outlet (activate)="onActivate()"></router-outlet>
-        </div>
-      </div>
-    </main>
-  </div>
-</div>
+<shrd-ui-toh-header></shrd-ui-toh-header>
+<router-outlet (activate)="onActivate()"></router-outlet>

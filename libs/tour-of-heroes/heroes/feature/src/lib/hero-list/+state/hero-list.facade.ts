@@ -16,8 +16,11 @@ export class HeroListFacade {
     this.store.dispatch(heroListActions.loadHeroes());
   }
 
+  removeHero(id: number): void {
+    this.store.dispatch(heroListActions.removeHero({ id }));
+  }
+
   selectHero(id: number): void {
-    // todo: will nav in effects
     this.store.dispatch(heroListActions.selectHero({ id }));
   }
 }

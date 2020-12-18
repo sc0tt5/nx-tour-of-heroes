@@ -1,0 +1,20 @@
+<div class="accordion-item">
+  <label
+    class="accordion-item__label"
+    [class.accordion-item__label--open]="isOpen"
+    (click)="itemToggled.emit()"
+  >
+    {{ item.header }}
+  </label>
+  <div class="accordion-item__content" [class.accordion-item__content--open]="isOpen">
+    <ng-container [ngSwitch]="item.content.type">
+      <ng-container *ngSwitchCase="0">
+        <shrd-ui-form [fieldset]="item.content.body"></shrd-ui-form>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="1">
+        {{ item.content.body }}
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { Hero } from '@nx-demo/shared/models';
+import { Hero } from '@nx-toh/shared/models';
 
 import { heroDetailActions } from './hero-detail.actions';
 
@@ -28,17 +28,16 @@ const RESET = { loading: false, loaded: false };
 
 const reducer = createReducer(
   heroDetailInitialState,
-  // load
+  on(heroDetailActions.createHero, state => ({ ...state, ...LOADING })),
+  on(heroDetailActions.createHeroSuccess, (state, { hero }) =>
+    adapter.updateOne(hero, { ...state, ...LOADED })
+  ),
+  on(heroDetailActions.createHeroFail, state => ({ ...state, ...RESET })),
   on(heroDetailActions.loadHero, state => ({ ...state, ...LOADING })),
   on(heroDetailActions.loadHeroSuccess, (state, payload) =>
     adapter.setOne(payload.hero, { ...state, ...LOADED })
   ),
   on(heroDetailActions.loadHeroFail, state => ({ ...state, ...RESET })),
-  on(heroDetailActions.removeHero, state => ({ ...state, ...LOADING })),
-  on(heroDetailActions.removeHeroSuccess, (state, { id }) =>
-    adapter.removeOne(id, { ...state, ...heroDetailInitialState })
-  ),
-  on(heroDetailActions.removeHeroFail, state => ({ ...state, ...RESET })),
   on(heroDetailActions.selectHeroId, (state, { id }) => ({ ...state, selectedHeroId: id })),
   on(heroDetailActions.resetHeroState, state => ({ ...state, ...heroDetailInitialState })),
   on(heroDetailActions.updateHero, state => ({ ...state, ...LOADING })),

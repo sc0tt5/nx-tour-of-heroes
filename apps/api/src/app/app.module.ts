@@ -2,17 +2,17 @@ import { Module } from '@nestjs/common';
 import { AngularUniversalModule } from '@nestjs/ng-universal';
 import { join } from 'path';
 
-import { ApiModule } from '@nx-demo/api';
+import { ApiModule } from '@nx-toh/api';
 
-import { AppServerModule as TourOfHeroesAppServerModule } from '../../../tour-of-heroes/src/main.server'; // todo: ?
+import { AppServerModule } from '../../../tour-of-heroes/src/main.server'; // todo: ?
 
 // todo: multiple apps
 
 @Module({
   imports: [
     AngularUniversalModule.forRoot({
-      bootstrap: TourOfHeroesAppServerModule,
-      viewsPath: join(process.cwd(), 'dist/apps/tour-of-heroes/browser')
+      bootstrap: AppServerModule,
+      viewsPath: join(process.cwd(), 'dist/tour-of-heroes/browser')
     }),
     ApiModule
   ]

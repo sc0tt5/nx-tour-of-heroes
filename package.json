@@ -1,16 +1,18 @@
 {
-  "name": "nx-demo",
+  "name": "nx-tour-of-heroes",
   "version": "1.0.0",
   "author": "Scott Robertson (https://github.com/sc0tt5)",
   "license": "SEE LICENSE",
   "scripts": {
     "ng": "nx",
     "nx": "nx",
-    "start": "ng serve --open --watch",
+    "start": "concurrently \"npm:serve:database\"  \"npm:serve:api\" \"npm:serve\"",
+    "serve": "ng serve --configuration=local --open --watch",
     "build": "ng build",
     "test": "npx jest --coverage",
     "lint": "nx workspace-lint && ng lint",
-    "doc": "compodoc -p apps/demo-one/tsconfig.json -d tmp/documentation -s -o",
+    "doc:api": "compodoc -p apps/api/tsconfig.json -d tmp/documentation/api -s -o",
+    "doc:tour-of-heroes": "compodoc -p apps/tour-of-heroes/tsconfig.json -d tmp/documentation/tour-of-heroes -s -o",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
@@ -26,36 +28,17 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
+    "serve:api": "ng serve api",
     "serve:database": "json-server --watch apps/tour-of-heroes/db.json --port 8800 --middlewares ./node_modules/json-server-reset",
-    "build:storybook": "build-storybook -o dist/apps/storybook",
+    "build:storybook": "build-storybook -o dist/storybook",
     "serve:storybook": "start-storybook",
-    "dev:ssr": "ng run demo-one:serve-ssr",
-    "build:ssr": "ng build --prod && ng run demo-one:server:production",
-    "serve:ssr": "node dist/apps/demo-one/server/main.js",
-    "dev:tour-of-heroes:ssr:local": "ng run tour-of-heroes:serve-ssr:local",
-    "dev:tour-of-heroes:ssr:production": "ng run tour-of-heroes:serve-ssr:production",
-    "build:tour-of-heroes:ssr": "ng build tour-of-heroes --prod && ng run tour-of-heroes:server:production",
-    "serve:tour-of-heroes:ssr": "node dist/apps/tour-of-heroes/server/main.js",
+    "dev:ssr:local": "ng run tour-of-heroes:serve-ssr:local",
+    "dev:ssr:production": "ng run tour-of-heroes:serve-ssr:production",
+    "build:ssr:production": "ng build --prod && ng run tour-of-heroes:server:production",
+    "serve:ssr:production": "node dist/tour-of-heroes/server/main.js",
     "prerender": "ng run demo-one:prerender",
     "prebuild:ssr": "ngcc",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
-    "e2e": "ng e2e"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "tslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,html,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "private": true,
   "dependencies": {
@@ -68,9 +51,6 @@
     "@angular/platform-browser-dynamic": "10.2.0",
     "@angular/platform-server": "10.2.0",
     "@angular/router": "10.2.0",
-    "@fortawesome/angular-fontawesome": "^0.7.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.28",
-    "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@nestjs/common": "7.4.4",
     "@nestjs/core": "7.4.4",
     "@nestjs/ng-universal": "4.0.1",
@@ -81,7 +61,6 @@
     "@ngrx/store": "10.0.1",
     "@ngrx/store-devtools": "10.0.1",
     "@nrwl/angular": "10.3.1",
-    "bulma": "0.9.1",
     "core-js": "3.6.5",
     "ngx-logger": "4.1.9",
     "reflect-metadata": "0.1.13",
@@ -111,6 +90,7 @@
     "@types/node": "14.14.5",
     "@types/webpack": "4.41.21",
     "codelyzer": "6.0.1",
+    "concurrently": "^5.3.0",
     "dotenv": "8.2.0",
     "eslint": "7.12.1",
     "express": "4.17.1",

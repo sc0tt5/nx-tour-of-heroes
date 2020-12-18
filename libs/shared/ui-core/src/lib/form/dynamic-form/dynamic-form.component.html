@@ -1,0 +1,7 @@
+<ng-container *ngIf="formReady">
+  <form [formGroup]="form">
+    <ng-container *ngFor="let field of fieldset">
+      <shrd-ui-field [field]="field"></shrd-ui-field>
+    </ng-container>
+  </form>
+</ng-container>

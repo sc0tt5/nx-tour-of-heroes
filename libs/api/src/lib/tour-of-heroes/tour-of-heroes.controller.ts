@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
-import { Hero } from '@nx-demo/shared/models';
+import { Hero } from '@nx-toh/shared/models';
 
 import { TourOfHeroesService } from './tour-of-heroes.service';
 

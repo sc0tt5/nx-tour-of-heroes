@@ -1,14 +1,22 @@
-<div class="column is-fluid" *ngIf="heroes$ | async as heroes">
-  <ul class="list">
-    <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index" role="presentation">
-      <div class="card">
+<shrd-ui-content-loader
+  [pageLoaded]="heroesLoaded$ | async"
+  [templateRef]="heroList"
+></shrd-ui-content-loader>
+
+<ng-template #heroList>
+  <h2>Heroes</h2>
+
+  <ng-container *ngIf="heroes$ | async as heroes">
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index">
         <!-- card main content -->
-        <nx-demo-card-content
+        <shrd-ui-toh-heroes-card
           [name]="hero.name"
-          [description]="hero.description"
-          (selected)="select(hero.id)"
-        ></nx-demo-card-content>
-      </div>
-    </li>
-  </ul>
-</div>
+          [rating]="hero.rating"
+          (deleted)="delete(hero.id)"
+          (selected)="select(hero)"
+        ></shrd-ui-toh-heroes-card>
+      </li>
+    </ul>
+  </ng-container>
+</ng-template>

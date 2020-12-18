@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { ContentType, FieldType, PageOne, PageTwo } from '@nx-demo/shared/models';
+import { ContentType, FieldType, PageOne, PageTwo } from '@nx-toh/shared/models';
 
 @Injectable()
 export class DemoOneService {

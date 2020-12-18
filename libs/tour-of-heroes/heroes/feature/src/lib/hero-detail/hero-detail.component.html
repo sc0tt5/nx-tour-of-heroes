@@ -1,49 +1,42 @@
-<ng-container *ngIf="heroLoaded$ | async; else loading">
-  <ng-container
-    [ngTemplateOutlet]="showEditor ? heroForm : heroCard"
-    [ngTemplateOutletContext]="{ hero: hero$ | async }"
-  >
-  </ng-container>
+<ng-container
+  *ngIf="!(params$ | async); else contentLoader"
+  [ngTemplateOutlet]="heroNew"
+></ng-container>
+
+<!--
+<ng-container
+  [ngTemplateOutlet]="heroDetail"
+  [ngTemplateOutletContext]="{ hero: hero$ | async">
 </ng-container>
+ -->
 
-<!-- card view -->
-<ng-template #heroCard let-hero="hero">
-  <div class="card">
-    <!-- card main content -->
-    <nx-demo-card-content
-      [name]="hero.name"
-      [description]="hero.description"
-    ></nx-demo-card-content>
-
-    <!-- card footer - delete and edit buttons -->
-    <nx-demo-card-footer
-      [item]="hero"
-      (deleted)="askToDelete($event)"
-      (selected)="editHero()"
-    ></nx-demo-card-footer>
-  </div>
-
-  <!-- delete confirmation modal  -->
-  <nx-demo-heroes-modal
-    class="modal-hero"
-    [message]="message"
-    [isOpen]="showModal"
-    (handleNo)="closeModal()"
-    (handleYes)="deleteHero(hero.id)"
-  ></nx-demo-heroes-modal>
+<!-- content loader for hero detail -->
+<ng-template #contentLoader>
+  <shrd-ui-content-loader
+    [pageLoaded]="heroLoaded$ | async"
+    [templateRef]="heroDetail"
+  ></shrd-ui-content-loader>
 </ng-template>
 
-<!-- editor -->
-<ng-template #heroForm let-hero="hero">
-  <nx-demo-heroes-editor
-    [hero]="hero"
+<!-- view existing hero -->
+<ng-template #heroDetail>
+  <ng-container *ngIf="hero$ | async as hero">
+    <h2 [innerHTML]="hero.name"></h2>
+    <shrd-ui-toh-editor
+      [hero]="hero"
+      (cancel)="closeEditor()"
+      (save)="updateHero()"
+      (edit)="onHeroChange($event)"
+    ></shrd-ui-toh-editor>
+  </ng-container>
+</ng-template>
+
+<!-- create new hero -->
+<ng-template #heroNew>
+  <h2>Create new hero</h2>
+  <shrd-ui-toh-editor
     (cancel)="closeEditor()"
-    (save)="saveHero($event)"
-  ></nx-demo-heroes-editor>
-</ng-template>
-
-<!-- todo: fix -->
-<!-- loading indicator -->
-<ng-template #loading>
-  <nx-demo-loading-indicator [pageLoaded]="heroLoaded$ | async"></nx-demo-loading-indicator>
+    (save)="saveHero()"
+    (edit)="onHeroChange($event)"
+  ></shrd-ui-toh-editor>
 </ng-template>

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { PageTwo } from '@nx-demo/shared/models';
+import { PageTwo } from '@nx-toh/shared/models';
 
 import { PageTwoFacade } from './+state/page-two.facade';
 

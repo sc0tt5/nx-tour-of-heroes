@@ -2,7 +2,7 @@ import { HttpService, Injectable, UseFilters } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Hero } from '@nx-demo/shared/models';
+import { Hero } from '@nx-toh/shared/models';
 
 import { HttpErrorFilter } from '../http-error/http-error.filter';
 

@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { PageOne } from '@nx-demo/shared/models';
+import { PageOne } from '@nx-toh/shared/models';
 
 import { initialState, PageOneState } from './page-one.reducer';
 import { pageOneSelectors } from './page-one.selectors';

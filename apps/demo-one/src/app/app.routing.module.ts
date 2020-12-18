@@ -13,12 +13,12 @@ const routes: Routes = [
       {
         path: 'page-one',
         loadChildren: () =>
-          import('@nx-demo/demo-one/feature/page-one').then(m => m.DemoOneFeaturePageOneModule)
+          import('@nx-toh/demo-one/feature/page-one').then(m => m.DemoOneFeaturePageOneModule)
       },
       {
         path: 'page-two',
         loadChildren: () =>
-          import('@nx-demo/demo-one/feature/page-two').then(m => m.DemoOneFeaturePageTwoModule)
+          import('@nx-toh/demo-one/feature/page-two').then(m => m.DemoOneFeaturePageTwoModule)
       }
     ]
   },

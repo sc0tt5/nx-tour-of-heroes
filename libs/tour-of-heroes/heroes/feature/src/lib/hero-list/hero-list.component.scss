@@ -1,44 +1,25 @@
-:host {
-  display: block;
+// todo: use theme
+
+.heroes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
 }
 
-/*
-ul.list {
-  box-shadow: none;
+.heroes li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #eee;
+  margin: 0.5em 0;
+  padding: 0.2em 0 0.4em;
+  height: 1.6em;
+  border-radius: 4px;
 }
 
-div.card-content {
-  background-color: color-light-shade;
-  .name {
-    font-size: 28px;
-    color: color-light-contrast;
-  }
-  .description {
-    font-size: 20px;
-    color: color-medium-tint;
-  }
-  background-color: color-light-shade;
+.heroes li:hover {
+  color: #607d8b;
+  background-color: #ddd;
+  left: 0.1em;
 }
-.card {
-  margin-bottom: 2em;
-}
-
-p.card-header-title {
-  background-color: color-primary;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: color-primary-contrast;
-  display: block;
-  padding-left: 24px;
-}
-.card-footer button {
-  font-size: 16px;
-  i {
-    margin-right: 10px;
-  }
-  color: color-medium-shade;
-  &:hover {
-    color: color-secondary;
-  }
-}
-*/

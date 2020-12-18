@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AccordionModule, DemoContentModule } from '@nx-demo/shared/ui';
+import { AccordionModule, ContentLoaderModule } from '@nx-toh/shared/ui-core';
 
 import { PageTwoStoreModule } from './page-two/+state/page-two-store.module';
 import { PageTwoResolverService } from './page-two/page-two-resolver.service';
@@ -22,7 +22,7 @@ export const ROUTES: Routes = [
   imports: [
     AccordionModule,
     CommonModule,
-    DemoContentModule,
+    ContentLoaderModule,
     RouterModule.forChild(ROUTES),
     PageTwoStoreModule
   ],

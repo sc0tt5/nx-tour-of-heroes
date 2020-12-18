@@ -1,0 +1,54 @@
+.dynamic-field {
+  // all fields
+  // font: 13px 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  // padding: 0;
+  display: block;
+  // list-style: none;
+  margin: 10px 0 0 0;
+
+  & input,
+  textarea,
+  select {
+    // border: 1px solid #bebebe;
+    box-sizing: border-box;
+    margin: 0px;
+    outline: none;
+    // padding: 7px;
+    transition: all 0.3s ease-in-out;
+    // width: 100%; // todo
+
+    /*  &:focus {
+      box-shadow: 0 0 8px #88d5e9;
+      border: 1px solid #88d5e9;
+    } */
+  }
+
+  // buttons
+  /*   & input[type='submit'],
+  input[type='button'] {
+    background: #4b99ad;
+    border: none;
+    color: #fff;
+    padding: 8px 15px 8px 15px;
+
+    &:hover {
+      background: #4691a4;
+      box-shadow: none;
+    }
+  } */
+
+  & label {
+    // margin: 0 0 3px 0;
+    padding: 0px;
+    // display: block;
+    font-weight: bold;
+  }
+
+  & textarea {
+    height: 100px;
+  }
+
+  &__error {
+    color: red;
+  }
+}

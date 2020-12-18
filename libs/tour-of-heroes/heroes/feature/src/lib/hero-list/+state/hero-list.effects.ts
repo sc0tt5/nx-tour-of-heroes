@@ -4,8 +4,8 @@ import { NGXLogger } from 'ngx-logger';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
-import { routerActions } from '@nx-demo/shared/utils';
-import { HeroesService } from '@nx-demo/tour-of-heroes/heroes/data-access';
+import { routerActions } from '@nx-toh/shared/utils';
+import { HeroesService } from '@nx-toh/tour-of-heroes/heroes/data-access';
 
 import { heroListActions } from './hero-list.actions';
 
@@ -26,6 +26,21 @@ export class HeroListEffects {
           catchError(error => {
             this.log.error(error);
             return of(heroListActions.loadHeroesFail(error));
+          })
+        )
+      )
+    )
+  );
+
+  removeHero$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(heroListActions.removeHero),
+      switchMap(action =>
+        this.heroesService.delete(action.id).pipe(
+          map(id => heroListActions.removeHeroSuccess({ id })),
+          catchError(error => {
+            this.log.error(error);
+            return of(heroListActions.removeHeroFail(error));
           })
         )
       )
