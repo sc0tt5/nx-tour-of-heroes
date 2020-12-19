@@ -6,7 +6,6 @@ import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { Hero } from '@nx-toh/shared/models';
-import { routerActions } from '@nx-toh/shared/utils';
 import { HeroesService } from '@nx-toh/tour-of-heroes/heroes/data-access';
 
 import { heroDetailActions } from './hero-detail.actions';
