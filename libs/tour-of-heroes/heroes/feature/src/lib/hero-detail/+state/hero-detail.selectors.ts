@@ -3,10 +3,9 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { heroDetailFeatureKey, HeroDetailState } from './hero-detail.reducer';
 
 // from reducer
-const heroDetailEntities = (state: HeroDetailState) => state.entities;
+const selectedHero = (state: HeroDetailState) => state.hero;
 const heroDetailLoaded = (state: HeroDetailState) => state.loaded;
 const heroDetailLoading = (state: HeroDetailState) => state.loading;
-const selectedHero = (state: HeroDetailState) => state.entities[state.selectedHeroId];
 
 // feature
 const heroDetailFeatureSelector = createFeatureSelector<HeroDetailState>(heroDetailFeatureKey);
@@ -17,14 +16,12 @@ const getHeroDetailState = createSelector(
   (state: HeroDetailState) => state
 );
 
-const getHero = createSelector(getHeroDetailState, heroDetailEntities);
+const getSelectedHero = createSelector(getHeroDetailState, selectedHero);
 const getHeroLoaded = createSelector(getHeroDetailState, heroDetailLoaded);
 const getHeroLoading = createSelector(getHeroDetailState, heroDetailLoading);
-const getSelectedHero = createSelector(getHeroDetailState, selectedHero);
 
 export const heroDetailSelectors = {
-  getHero,
+  getSelectedHero,
   getHeroLoaded,
-  getHeroLoading,
-  getSelectedHero
+  getHeroLoading
 };

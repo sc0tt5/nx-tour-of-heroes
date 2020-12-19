@@ -7,19 +7,17 @@ import { heroDetailActions } from './hero-detail.actions';
 
 export const heroDetailFeatureKey = 'hero-detail';
 
-export interface HeroDetailState extends EntityState<Hero> {
-  selectedHeroId: number | null;
+export interface HeroDetailState {
+  hero: Hero;
   loaded: boolean;
   loading: boolean;
 }
 
-const adapter: EntityAdapter<Hero> = createEntityAdapter<Hero>();
-
-export const heroDetailInitialState: HeroDetailState = adapter.getInitialState({
-  selectedHeroId: null,
+export const heroDetailInitialState: HeroDetailState = {
+  hero: null,
   loaded: false,
   loading: false
-});
+};
 
 // helpers ?
 const LOADING = { loading: true, loaded: false };
@@ -29,21 +27,18 @@ const RESET = { loading: false, loaded: false };
 const reducer = createReducer(
   heroDetailInitialState,
   on(heroDetailActions.createHero, state => ({ ...state, ...LOADING })),
-  on(heroDetailActions.createHeroSuccess, (state, { hero }) =>
-    adapter.updateOne(hero, { ...state, ...LOADED })
-  ),
+  on(heroDetailActions.createHeroSuccess, (state, { hero }) => ({ ...state, ...hero, ...LOADED })),
   on(heroDetailActions.createHeroFail, state => ({ ...state, ...RESET })),
   on(heroDetailActions.loadHero, state => ({ ...state, ...LOADING })),
-  on(heroDetailActions.loadHeroSuccess, (state, payload) =>
-    adapter.setOne(payload.hero, { ...state, ...LOADED })
-  ),
+  on(heroDetailActions.loadHeroSuccess, (state, payload) => ({
+    ...state,
+    ...{ hero: payload.hero },
+    ...LOADED
+  })),
   on(heroDetailActions.loadHeroFail, state => ({ ...state, ...RESET })),
-  on(heroDetailActions.selectHeroId, (state, { id }) => ({ ...state, selectedHeroId: id })),
   on(heroDetailActions.resetHeroState, state => ({ ...state, ...heroDetailInitialState })),
   on(heroDetailActions.updateHero, state => ({ ...state, ...LOADING })),
-  on(heroDetailActions.updateHeroSuccess, (state, { hero }) =>
-    adapter.updateOne(hero, { ...state, ...LOADED })
-  ),
+  on(heroDetailActions.updateHeroSuccess, (state, { hero }) => ({ ...state, ...hero, ...LOADED })),
   on(heroDetailActions.updateHeroFail, state => ({ ...state, ...RESET }))
 );
 

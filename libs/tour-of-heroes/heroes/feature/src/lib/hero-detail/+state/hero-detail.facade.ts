@@ -31,10 +31,6 @@ export class HeroDetailFacade {
     this.store.dispatch(heroDetailActions.createHero({ hero }));
   }
 
-  selectHeroId(id: number): void {
-    this.store.dispatch(heroDetailActions.selectHeroId({ id }));
-  }
-
   updateHero(hero: Hero): void {
     this.store.dispatch(heroDetailActions.updateHero({ hero }));
   }
