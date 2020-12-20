@@ -1,6 +1,6 @@
 <ng-container
-  *ngIf="!(params$ | async); else contentLoader"
-  [ngTemplateOutlet]="heroNew"
+  *ngIf="params$ | async; else heroNew"
+  [ngTemplateOutlet]="contentLoader"
 ></ng-container>
 
 <!--
