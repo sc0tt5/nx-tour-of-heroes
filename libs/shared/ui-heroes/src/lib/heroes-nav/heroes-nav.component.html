@@ -1,8 +1,6 @@
 <!-- todo: improve this -->
 <nav>
-  <a (click)="goToHeroDashboard()" [ngClass]="{ active: currentRoute === HERO_DASHBOARD }"
-    >Dashboard</a
-  >
+  <a (click)="goToHeroSearch()" [ngClass]="{ active: currentRoute === HERO_SEARCH }">Dashboard</a>
   <a (click)="goToHeroList()" [ngClass]="{ active: currentRoute === HERO_LIST }">Heroes</a>
   <a (click)="goToHeroNew()" [ngClass]="{ active: currentRoute === HERO_NEW }">New Hero</a>
 </nav>

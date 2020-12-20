@@ -17,8 +17,10 @@ export class TourOfHeroesService {
     return this.http.post(`${this.BASE_URL}heroes`, hero).pipe(map(response => response.data));
   }
 
-  findAll(): Observable<Hero[]> {
-    return this.http.get(`${this.BASE_URL}heroes`).pipe(map(response => response.data));
+  findAll(heroName?: any): Observable<Hero[]> {
+    const { name } = heroName;
+    const filter = name ? `?name_like=${name}` : ''; // for demo purposes (json-server)
+    return this.http.get(`${this.BASE_URL}heroes${filter}`).pipe(map(response => response.data));
   }
 
   findOne(id: number): Observable<Hero> {

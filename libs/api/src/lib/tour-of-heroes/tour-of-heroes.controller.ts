@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
@@ -15,8 +15,8 @@ export class TourOfHeroesController {
   }
 
   @Get()
-  findAll(): Observable<Hero[]> {
-    return this.tourOfHeroesService.findAll();
+  findAll(@Query() name?: object): Observable<Hero[]> {
+    return this.tourOfHeroesService.findAll(name);
   }
 
   @Get(':id')

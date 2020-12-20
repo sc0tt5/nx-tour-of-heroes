@@ -7,6 +7,8 @@ import { HeroDetailEffects } from '../hero-detail/+state/hero-detail.effects';
 import { HeroDetailFacade } from '../hero-detail/+state/hero-detail.facade';
 import { HeroListEffects } from '../hero-list/+state/hero-list.effects';
 import { HeroListFacade } from '../hero-list/+state/hero-list.facade';
+import { HeroSearchEffects } from '../hero-search/+state/hero-search.effects';
+import { HeroSearchFacade } from './../hero-search/+state/hero-search.facade';
 import { heroesReducer } from './heroes.reducer';
 import { heroesFeatureKey, heroesInitialState } from './heroes.state';
 
@@ -16,9 +18,9 @@ import { heroesFeatureKey, heroesInitialState } from './heroes.state';
     StoreModule.forFeature(heroesFeatureKey, heroesReducer, {
       initialState: heroesInitialState
     }),
-    EffectsModule.forFeature([HeroDetailEffects, HeroListEffects])
+    EffectsModule.forFeature([HeroDetailEffects, HeroListEffects, HeroSearchEffects])
   ],
   exports: [StoreModule, EffectsModule],
-  providers: [HeroDetailFacade, HeroListFacade]
+  providers: [HeroDetailFacade, HeroListFacade, HeroSearchFacade]
 })
 export class HeroesStoreModule {}

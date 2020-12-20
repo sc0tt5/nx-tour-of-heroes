@@ -7,13 +7,12 @@ import { ContentLoaderModule, LoadingIndicatorModule } from '@nx-toh/shared/ui-c
 import { HeroesCardModule, HeroesEditorModule } from '@nx-toh/shared/ui-heroes';
 import { RouterStoreModule } from '@nx-toh/shared/utils';
 
-// import { HeroDetailStoreModule } from './hero-detail/+state/hero-detail.store.module';
 import { HeroesStoreModule } from './+state/heroes.store.module';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroDetailResolver } from './hero-detail/hero-detail.resolver';
-// import { HeroListStoreModule } from './hero-list/+state/hero-list.store.module';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroListResolver } from './hero-list/hero-list.resolver';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
 
 const ROUTES: Routes = [
   {
@@ -24,6 +23,10 @@ const ROUTES: Routes = [
   {
     path: 'new',
     component: HeroDetailComponent
+  },
+  {
+    path: 'search',
+    component: HeroSearchComponent
   },
   {
     path: ':id',
@@ -38,13 +41,12 @@ const ROUTES: Routes = [
     ContentLoaderModule,
     FormsModule,
     HeroesStoreModule,
-    // HeroListStoreModule,
     RouterStoreModule,
     HeroesCardModule,
     HeroesEditorModule,
     LoadingIndicatorModule,
     RouterModule.forChild(ROUTES)
   ],
-  declarations: [HeroListComponent, HeroDetailComponent]
+  declarations: [HeroDetailComponent, HeroListComponent, HeroSearchComponent]
 })
 export class HeroesFeatureModule {}

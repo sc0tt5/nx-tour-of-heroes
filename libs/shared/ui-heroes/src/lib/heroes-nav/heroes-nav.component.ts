@@ -8,16 +8,16 @@ import { RouterFacade } from '@nx-toh/shared/utils';
   styleUrls: ['./heroes-nav.component.scss']
 })
 export class HeroesNavComponent {
-  HERO_DASHBOARD = ['heroes', 'dashboard'];
   HERO_LIST = ['heroes'];
   HERO_NEW = ['heroes', 'new'];
+  HERO_SEARCH = ['heroes', 'search'];
 
   currentRoute: string[] = [];
 
   constructor(private facade: RouterFacade) {}
 
-  goToHeroDashboard(): void {
-    this.currentRoute = this.HERO_DASHBOARD;
+  goToHeroSearch(): void {
+    this.currentRoute = this.HERO_SEARCH;
     this.goTo();
   }
 

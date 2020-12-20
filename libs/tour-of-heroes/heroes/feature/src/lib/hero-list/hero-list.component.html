@@ -9,7 +9,6 @@
   <ng-container *ngIf="heroes$ | async as heroes">
     <ul class="heroes">
       <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index">
-        <!-- card main content -->
         <shrd-ui-toh-heroes-card
           [name]="hero.name"
           [rating]="hero.rating"

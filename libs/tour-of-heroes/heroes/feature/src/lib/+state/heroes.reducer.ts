@@ -2,6 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 
 import { heroDetailActions } from '../hero-detail/+state/hero-detail.actions';
 import { heroListActions } from '../hero-list/+state/hero-list.actions';
+import { heroSearchActions } from '../hero-search/+state/hero-search.actions';
 import { adapter, heroesInitialState, HeroesState } from './heroes.state';
 
 const LOADING = { loading: true, loaded: false };
@@ -40,7 +41,18 @@ const reducer = createReducer(
     adapter.removeOne(id, { ...state, ...LOADED })
   ),
   on(heroListActions.removeHeroFail, state => ({ ...state, ...RESET })),
-  on(heroListActions.selectHero, state => ({ ...state, ...RESET }))
+  on(heroListActions.selectHero, state => ({ ...state, ...RESET })),
+  // hero-search
+  on(heroSearchActions.searchHeroes, (state, { name }) => ({
+    ...state,
+    ...LOADING,
+    searchTerm: name
+  })),
+  on(heroSearchActions.searchHeroesSuccess, (state, payload) =>
+    adapter.setAll(payload.heroes, { ...state, ...LOADED })
+  ),
+  on(heroSearchActions.searchHeroesFail, state => ({ ...state, ...RESET })),
+  on(heroSearchActions.selectHero, state => ({ ...state, ...RESET }))
 );
 
 export function heroesReducer(state: HeroesState | undefined, action: Action): HeroesState {

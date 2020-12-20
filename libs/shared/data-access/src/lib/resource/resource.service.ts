@@ -82,13 +82,14 @@ export class ResourceService<T extends Resource> {
   /**
    * Fetches all items.
    */
-  list(): Observable<T[] | undefined> {
+  list(params?: any): Observable<T[] | undefined> {
     const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
     const getFromApi = this.isServer || (this.isBrowser && !transferStateHasKey);
     const getFromTransferState = this.isBrowser && transferStateHasKey;
+    const parameters = params ? { params } : {};
 
     if (getFromApi) {
-      return this.http.get(this.endpoint).pipe(
+      return this.http.get(this.endpoint, parameters).pipe(
         map((data: any) => {
           if (this.isServer) {
             this.transferState.set<T[]>(this.itemsKey, data);
