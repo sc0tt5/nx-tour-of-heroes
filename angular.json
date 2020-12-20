@@ -824,6 +824,9 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "jest",
       "strict": true
+    },
+    "@schematics/angular:component": {
+      "displayBlock": true
     }
   },
   "defaultProject": "tour-of-heroes"
