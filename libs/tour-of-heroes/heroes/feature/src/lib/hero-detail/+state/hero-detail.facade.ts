@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import { Hero } from '@nx-toh/shared/models';
 import { routerActions } from '@nx-toh/shared/utils';
 
+import { HeroesState } from '../../+state/heroes.state';
 import { heroDetailActions } from './hero-detail.actions';
-import { HeroDetailState } from './hero-detail.reducer';
 import { heroDetailSelectors } from './hero-detail.selectors';
 
 @Injectable({ providedIn: 'root' })
@@ -13,7 +13,7 @@ export class HeroDetailFacade {
   hero$ = this.store.select(heroDetailSelectors.getSelectedHero);
   heroLoaded$ = this.store.select(heroDetailSelectors.getHeroLoaded);
 
-  constructor(private store: Store<HeroDetailState>) {}
+  constructor(private store: Store<HeroesState>) {}
 
   goBack(): void {
     this.store.dispatch(routerActions.back());
@@ -24,7 +24,7 @@ export class HeroDetailFacade {
   }
 
   resetHeroState(): void {
-    this.store.dispatch(heroDetailActions.resetHeroState());
+    this.store.dispatch(heroDetailActions.resetSelectedHeroId());
   }
 
   saveHero(hero: Hero): void {

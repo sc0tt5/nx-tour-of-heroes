@@ -38,12 +38,10 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   saveHero(): void {
     this.facade.saveHero(this.heroToSave);
-    this.closeEditor();
   }
 
   updateHero(): void {
     this.facade.updateHero(this.heroToSave);
-    this.closeEditor();
   }
 
   private loadHero(): void {

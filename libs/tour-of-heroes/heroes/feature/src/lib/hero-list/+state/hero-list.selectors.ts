@@ -1,27 +1,15 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 
-import { heroListFeatureKey, HeroListState } from './hero-list.reducer';
+// prettier-ignore
+import { getHeroesState,heroEntities, heroIds, loaded, loading } from '../../+state/heroes.selectors';
 
-// from reducer
-const heroesIds = (state: HeroListState) => state.ids;
-const heroesEntities = (state: HeroListState) => state.entities;
-const heroesLoaded = (state: HeroListState) => state.loaded;
-const heroesLoading = (state: HeroListState) => state.loading;
-
-// feature
-const heroesFeatureSelector = createFeatureSelector<HeroListState>(heroListFeatureKey);
-
-// heroes state and entities
-const getHeroListState = createSelector(heroesFeatureSelector, (state: HeroListState) => state);
-const getHeroListIds = createSelector(getHeroListState, heroesIds);
-const getHeroListEntities = createSelector(getHeroListState, heroesEntities);
-
-// list
-const getHeroes = createSelector(getHeroListIds, getHeroListEntities, (ids: number[], entities) =>
+const getHeroIds = createSelector(getHeroesState, heroIds);
+const getHeroEntities = createSelector(getHeroesState, heroEntities);
+const getHeroes = createSelector(getHeroIds, getHeroEntities, (ids: number[], entities) =>
   ids.map(id => entities[id])
 );
-const getHeroesLoaded = createSelector(getHeroListState, heroesLoaded);
-const getHeroesLoading = createSelector(getHeroListState, heroesLoading);
+const getHeroesLoaded = createSelector(getHeroesState, loaded);
+const getHeroesLoading = createSelector(getHeroesState, loading);
 
 export const heroListSelectors = {
   getHeroes,

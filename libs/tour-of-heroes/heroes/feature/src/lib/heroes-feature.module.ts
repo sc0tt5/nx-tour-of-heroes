@@ -7,10 +7,11 @@ import { ContentLoaderModule, LoadingIndicatorModule } from '@nx-toh/shared/ui-c
 import { HeroesCardModule, HeroesEditorModule } from '@nx-toh/shared/ui-heroes';
 import { RouterStoreModule } from '@nx-toh/shared/utils';
 
-import { HeroDetailStoreModule } from './hero-detail/+state/hero-detail.store.module';
+// import { HeroDetailStoreModule } from './hero-detail/+state/hero-detail.store.module';
+import { HeroesStoreModule } from './+state/heroes.store.module';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroDetailResolver } from './hero-detail/hero-detail.resolver';
-import { HeroListStoreModule } from './hero-list/+state/hero-list.store.module';
+// import { HeroListStoreModule } from './hero-list/+state/hero-list.store.module';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroListResolver } from './hero-list/hero-list.resolver';
 
@@ -36,8 +37,8 @@ const ROUTES: Routes = [
     CommonModule,
     ContentLoaderModule,
     FormsModule,
-    HeroDetailStoreModule,
-    HeroListStoreModule,
+    HeroesStoreModule,
+    // HeroListStoreModule,
     RouterStoreModule,
     HeroesCardModule,
     HeroesEditorModule,
