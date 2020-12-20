@@ -3,6 +3,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { Hero } from '@nx-toh/shared/models';
 
+// action constants
 const CREATE_HERO = '[Hero Detail] Create Hero';
 const CREATE_HERO_FAIL = '[Hero Detail] Create Hero Fail';
 const CREATE_HERO_SUCCESS = '[Hero Detail] Create Hero Success';
@@ -15,6 +16,7 @@ const UPDATE_HERO = '[Hero Detail] Update Hero';
 const UPDATE_HERO_FAIL = '[Hero Detail] Update Hero Fail';
 const UPDATE_HERO_SUCCESS = '[Hero Detail] Update Hero Success';
 
+// actions
 const createHero = createAction(CREATE_HERO, props<{ hero: Hero }>());
 const createHeroFail = createAction(CREATE_HERO_FAIL, props<{ error: any }>());
 const createHeroSuccess = createAction(CREATE_HERO_SUCCESS, props<{ hero: Update<Hero> }>());
@@ -27,6 +29,7 @@ const updateHero = createAction(UPDATE_HERO, props<{ hero: Hero }>());
 const updateHeroFail = createAction(UPDATE_HERO_FAIL, props<{ error: any }>());
 const updateHeroSuccess = createAction(UPDATE_HERO_SUCCESS, props<{ hero: Update<Hero> }>());
 
+// public
 export const heroDetailActions = {
   createHero,
   createHeroFail,

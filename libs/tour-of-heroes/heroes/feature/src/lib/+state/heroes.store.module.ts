@@ -8,8 +8,6 @@ import { HeroDetailFacade } from '../hero-detail/+state/hero-detail.facade';
 import { HeroListEffects } from '../hero-list/+state/hero-list.effects';
 import { HeroListFacade } from '../hero-list/+state/hero-list.facade';
 import { heroesReducer } from './heroes.reducer';
-// import { heroDetailReducer } from '../hero-detail/+state/hero-detail.reducer';
-// import { reducers } from './heroes.reducer';
 import { heroesFeatureKey, heroesInitialState } from './heroes.state';
 
 @NgModule({

@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { Hero } from '@nx-toh/shared/models';
 
-// hero list actions
+// action constants
 const LOAD_HEROES = '[Hero List] Load Heroes';
 const LOAD_HEROES_FAIL = '[Hero List] Load Heroes Fail';
 const LOAD_HEROES_SUCCESS = '[Hero List] Load Heroes Success';
@@ -11,7 +11,7 @@ const REMOVE_HERO_FAIL = '[Hero List] Remove Hero Fail';
 const REMOVE_HERO_SUCCESS = '[Hero List] Remove Hero Success';
 const SELECT_HERO = '[Hero List] Select Hero';
 
-// load all heroes
+// actions
 const loadHeroes = createAction(LOAD_HEROES);
 const loadHeroesFail = createAction(LOAD_HEROES_FAIL, props<{ error: any }>());
 const loadHeroesSuccess = createAction(LOAD_HEROES_SUCCESS, props<{ heroes: Hero[] }>());
@@ -20,6 +20,7 @@ const removeHeroFail = createAction(REMOVE_HERO_FAIL, props<{ error: any }>());
 const removeHeroSuccess = createAction(REMOVE_HERO_SUCCESS, props<{ id: number }>());
 const selectHero = createAction(SELECT_HERO, props<{ id: number }>());
 
+// public
 export const heroListActions = {
   loadHeroes,
   loadHeroesFail,

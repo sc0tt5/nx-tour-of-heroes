@@ -1,7 +1,4 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
-
-import { Hero } from '@nx-toh/shared/models';
 
 import { heroDetailActions } from '../hero-detail/+state/hero-detail.actions';
 import { heroListActions } from '../hero-list/+state/hero-list.actions';
