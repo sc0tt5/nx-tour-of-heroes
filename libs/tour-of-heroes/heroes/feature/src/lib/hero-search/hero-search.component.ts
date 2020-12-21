@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
@@ -10,16 +10,19 @@ import { HeroSearchFacade } from '../hero-search/+state/hero-search.facade';
   styleUrls: ['./hero-search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeroSearchComponent implements OnInit {
+export class HeroSearchComponent implements OnInit, OnDestroy {
   heroes$: Observable<Hero[]>;
   heroesLoaded$: Observable<boolean>;
 
   constructor(private facade: HeroSearchFacade) {}
 
   ngOnInit() {
-    // todo: add filtered property to each hero in store and new selector for filtered results
     this.heroes$ = this.facade.heroes$;
     this.heroesLoaded$ = this.facade.heroesLoaded$;
+  }
+
+  ngOnDestroy(): void {
+    this.facade.resetSearchTerm();
   }
 
   search(name: string): void {

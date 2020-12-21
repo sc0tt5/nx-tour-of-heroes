@@ -1,13 +1,12 @@
 import { createSelector } from '@ngrx/store';
 
-import { getHeroesState, loaded, loading, selectedHero } from '../../+state/heroes.selectors';
+import { heroesSelectors } from '../../+state/heroes.selectors';
+import { HeroesState } from '../../+state/heroes.state';
 
-const getHeroLoaded = createSelector(getHeroesState, loaded);
-const getHeroLoading = createSelector(getHeroesState, loading);
-const getSelectedHero = createSelector(getHeroesState, selectedHero);
+// projectors
+const selectedHero = (state: HeroesState) => state.entities[state.selectedHeroId];
 
-export const heroDetailSelectors = {
-  getHeroLoaded,
-  getHeroLoading,
-  getSelectedHero
-};
+// selectors
+const getSelectedHero = createSelector(heroesSelectors.getHeroesState, selectedHero);
+
+export const heroDetailSelectors = { getSelectedHero };

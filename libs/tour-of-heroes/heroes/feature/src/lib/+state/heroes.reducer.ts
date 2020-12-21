@@ -9,7 +9,7 @@ const LOADING = { loading: true, loaded: false };
 const LOADED = { loading: false, loaded: true };
 const RESET = { loading: false, loaded: false };
 
-// todo: how to create two reducers with single state???
+// todo: how to create multiple reducers with single state???
 const reducer = createReducer(
   heroesInitialState,
   // hero-detail
@@ -43,13 +43,14 @@ const reducer = createReducer(
   on(heroListActions.removeHeroFail, state => ({ ...state, ...RESET })),
   on(heroListActions.selectHero, state => ({ ...state, ...RESET })),
   // hero-search
+  on(heroSearchActions.resetSearchTerm, state => ({ ...state, ...{ searchTerm: null } })),
   on(heroSearchActions.searchHeroes, (state, { name }) => ({
     ...state,
     ...LOADING,
-    searchTerm: name
+    searchTerm: name ? name.toLowerCase() : null
   })),
   on(heroSearchActions.searchHeroesSuccess, (state, payload) =>
-    adapter.setAll(payload.heroes, { ...state, ...LOADED })
+    adapter.upsertMany(payload.heroes, { ...state, ...LOADED })
   ),
   on(heroSearchActions.searchHeroesFail, state => ({ ...state, ...RESET })),
   on(heroSearchActions.selectHero, state => ({ ...state, ...RESET }))

@@ -2,14 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { NGXLogger } from 'ngx-logger';
 import { of } from 'rxjs';
-import {
-  catchError,
-  debounceTime,
-  distinctUntilChanged,
-  map,
-  switchMap,
-  tap
-} from 'rxjs/operators';
+// prettier-ignore
+import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 
 import { routerActions } from '@nx-toh/shared/utils';
 import { HeroesService } from '@nx-toh/tour-of-heroes/heroes/data-access';
@@ -27,8 +21,9 @@ export class HeroSearchEffects {
   searchHeroes$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroSearchActions.searchHeroes),
-      // debounceTime(300), // wait 300ms after each keystroke
-      // distinctUntilChanged(), // ignore if same
+      debounceTime(300), // wait 300ms after each keystroke
+      distinctUntilChanged(), // ignore if same
+      filter(action => !!action.name), // only call api if not empty
       map(({ name }) => name),
       switchMap(name =>
         this.heroesService.list({ name }).pipe(

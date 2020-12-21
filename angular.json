@@ -291,6 +291,9 @@
             "proxyConfig": "apps/tour-of-heroes/proxy.conf.json"
           },
           "configurations": {
+            "local": {
+              "browserTarget": "tour-of-heroes:build:local"
+            },
             "production": {
               "browserTarget": "tour-of-heroes:build:production"
             }

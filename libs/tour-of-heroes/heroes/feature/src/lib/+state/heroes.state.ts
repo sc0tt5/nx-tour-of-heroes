@@ -11,7 +11,13 @@ export interface HeroesState extends EntityState<Hero> {
   loading: boolean;
 }
 
-export const adapter: EntityAdapter<Hero> = createEntityAdapter<Hero>();
+function sortByRating(a: Hero, b: Hero) {
+  return a.rating === b.rating ? 0 : a.rating > b.rating ? 1 : -1;
+}
+
+export const adapter: EntityAdapter<Hero> = createEntityAdapter<Hero>({
+  sortComparer: sortByRating
+});
 
 export const heroesInitialState: HeroesState = adapter.getInitialState({
   searchTerm: null,

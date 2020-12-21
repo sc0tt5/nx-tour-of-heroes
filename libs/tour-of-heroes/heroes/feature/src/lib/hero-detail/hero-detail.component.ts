@@ -12,16 +12,18 @@ import { HeroDetailFacade } from './+state/hero-detail.facade';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
-  heroToSave: Hero;
-
   hero$: Observable<Hero>;
   heroLoaded$: Observable<boolean>;
   params$: Observable<boolean>;
 
+  private heroToSave: Hero;
+
   constructor(private facade: HeroDetailFacade, private router: RouterFacade) {}
 
   ngOnInit(): void {
-    this.loadHero();
+    this.hero$ = this.facade.hero$;
+    this.heroLoaded$ = this.facade.heroLoaded$;
+    this.params$ = this.router.params$;
   }
 
   ngOnDestroy(): void {
@@ -42,11 +44,5 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   updateHero(): void {
     this.facade.updateHero(this.heroToSave);
-  }
-
-  private loadHero(): void {
-    this.hero$ = this.facade.hero$;
-    this.heroLoaded$ = this.facade.heroLoaded$;
-    this.params$ = this.router.params$;
   }
 }
