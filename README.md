@@ -53,7 +53,7 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 ├── apps
 │   ├── api
 │   ├── demo-one
-│   └── tour-of-heroes # maybe do in ionic???
+│   └── tour-of-heroes
 ├── libs
 │   ├── demo-one # app namespace, e.g. gmail, hangouts, etc.
 │   │   ├── feature-one # an app feature, e.g. inbox, search, etc.

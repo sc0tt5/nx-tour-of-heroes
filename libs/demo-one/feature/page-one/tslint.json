@@ -1,7 +1,0 @@
-{
-  "extends": "../../../../tslint.json",
-  "rules": {
-    "directive-selector": [true, "attribute", "demoOneFtPgo", "camelCase"],
-    "component-selector": [true, "element", "demo-one-ft-pgo", "kebab-case"]
-  }
-}

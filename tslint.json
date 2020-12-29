@@ -90,15 +90,6 @@
             "onlyDependOnLibsWithTags": ["scope:api", "type:data-access", "type:types"]
           },
           {
-            "sourceTag": "scope:demo-one",
-            "onlyDependOnLibsWithTags": [
-              "scope:demo-one",
-              "scope:demo-one-shell",
-              "scope:shared",
-              "type:utils"
-            ]
-          },
-          {
             "sourceTag": "scope:tour-of-heroes",
             "onlyDependOnLibsWithTags": ["scope:tour-of-heroes", "scope:shared", "type:utils"]
           },

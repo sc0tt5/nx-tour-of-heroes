@@ -1,6 +1,6 @@
 {
   "name": "nx-tour-of-heroes",
-  "version": "1.0.0",
+  "version": "10.2.0-alpha.1",
   "author": "Scott Robertson (https://github.com/sc0tt5)",
   "license": "SEE LICENSE",
   "scripts": {
@@ -36,7 +36,7 @@
     "dev:ssr:production": "ng run tour-of-heroes:serve-ssr:production",
     "build:ssr:production": "ng build --prod && ng run tour-of-heroes:server:production",
     "serve:ssr:production": "node dist/tour-of-heroes/server/main.js",
-    "prerender": "ng run demo-one:prerender",
+    "prerender": "ng run tour-of-heroes:prerender",
     "prebuild:ssr": "ngcc",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },

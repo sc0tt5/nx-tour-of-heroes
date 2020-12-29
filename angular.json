@@ -51,164 +51,6 @@
         }
       }
     },
-    "demo-one": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "apps/demo-one",
-      "sourceRoot": "apps/demo-one/src",
-      "prefix": "demo-one",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/demo-one/browser",
-            "index": "apps/demo-one/src/index.html",
-            "main": "apps/demo-one/src/main.ts",
-            "polyfills": "apps/demo-one/src/polyfills.ts",
-            "tsConfig": "apps/demo-one/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "apps/demo-one/src/favicon.ico",
-              "apps/demo-one/src/assets",
-              {
-                "glob": "**/*",
-                "input": "../libs/shared/theme",
-                "output": "./assets/"
-              }
-            ],
-            "styles": ["apps/demo-one/src/styles.scss"],
-            "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/theme/src/lib/styles"]
-            },
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/demo-one/src/environments/environment.ts",
-                  "with": "apps/demo-one/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "demo-one:build",
-            "proxyConfig": "apps/demo-one/proxy.conf.json"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "demo-one:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "demo-one:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/demo-one/tsconfig.app.json", "apps/demo-one/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/demo-one/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/demo-one/jest.config.js",
-            "tsConfig": "apps/demo-one/tsconfig.spec.json",
-            "setupFile": "apps/demo-one/src/test-setup.ts"
-          }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/demo-one/server",
-            "main": "apps/demo-one/server.ts",
-            "tsConfig": "apps/demo-one/tsconfig.server.json",
-            "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/theme/src/lib/styles"]
-            },
-            "externalDependencies": [
-              "@nestjs/microservices",
-              "@nestjs/microservices/microservices-module",
-              "@nestjs/websockets",
-              "@nestjs/websockets/socket-module",
-              "cache-manager",
-              "class-transformer",
-              "class-validator"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "apps/demo-one/src/environments/environment.ts",
-                  "with": "apps/demo-one/src/environments/environment.prod.ts"
-                }
-              ],
-              "sourceMap": false,
-              "optimization": false
-            }
-          }
-        },
-        "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
-          "options": {
-            "browserTarget": "demo-one:build",
-            "serverTarget": "demo-one:server"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "demo-one:build:production",
-              "serverTarget": "demo-one:server:production"
-            }
-          }
-        },
-        "prerender": {
-          "builder": "@nguniversal/builders:prerender",
-          "options": {
-            "browserTarget": "demo-one:build:production",
-            "serverTarget": "demo-one:server:production",
-            "routes": ["/demo/page-one", "/demo/page-two"]
-          },
-          "configurations": {
-            "production": {}
-          }
-        }
-      }
-    },
     "tour-of-heroes": {
       "projectType": "application",
       "schematics": {
@@ -416,99 +258,6 @@
         }
       }
     },
-    "demo-one-feature-page-one": {
-      "projectType": "library",
-      "root": "libs/demo-one/feature/page-one",
-      "sourceRoot": "libs/demo-one/feature/page-one/src",
-      "prefix": "demo-one-ft-pgo",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/demo-one/feature/page-one/tsconfig.lib.json",
-              "libs/demo-one/feature/page-one/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/demo-one/feature/page-one/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/demo-one/feature/page-one/jest.config.js",
-            "tsConfig": "libs/demo-one/feature/page-one/tsconfig.spec.json",
-            "setupFile": "libs/demo-one/feature/page-one/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "demo-one-feature-page-two": {
-      "projectType": "library",
-      "root": "libs/demo-one/feature/page-two",
-      "sourceRoot": "libs/demo-one/feature/page-two/src",
-      "prefix": "demo-one-ft-pgt",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/demo-one/feature/page-two/tsconfig.lib.json",
-              "libs/demo-one/feature/page-two/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/demo-one/feature/page-two/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/demo-one/feature/page-two/jest.config.js",
-            "tsConfig": "libs/demo-one/feature/page-two/tsconfig.spec.json",
-            "setupFile": "libs/demo-one/feature/page-two/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "demo-one-feature-shell": {
-      "projectType": "library",
-      "root": "libs/demo-one/feature/shell",
-      "sourceRoot": "libs/demo-one/feature/shell/src",
-      "prefix": "demo-one-ft-sh",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/demo-one/feature/shell/tsconfig.lib.json",
-              "libs/demo-one/feature/shell/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/demo-one/feature/shell/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/demo-one/feature/shell/jest.config.js",
-            "tsConfig": "libs/demo-one/feature/shell/tsconfig.spec.json",
-            "setupFile": "libs/demo-one/feature/shell/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "shared-animations": {
       "projectType": "library",
       "root": "libs/shared/animations",
@@ -627,7 +376,7 @@
         }
       }
     },
-    "shared-ui-core": {
+    "shared-ui": {
       "projectType": "library",
       "root": "libs/shared/ui-core",
       "sourceRoot": "libs/shared/ui-core/src",
@@ -693,41 +442,6 @@
         }
       }
     },
-    "shared-ui-heroes": {
-      "projectType": "library",
-      "root": "libs/shared/ui-heroes",
-      "sourceRoot": "libs/shared/ui-heroes/src",
-      "prefix": "shrd-ui-toh",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/ui-heroes/tsconfig.lib.json",
-              "libs/shared/ui-heroes/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui-heroes/**/*"],
-            "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/theme/src/lib/styles/"]
-            }
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/shared/ui-heroes/jest.config.js",
-            "tsConfig": "libs/shared/ui-core/tsconfig.spec.json",
-            "setupFile": "libs/shared/ui-core/src/test-setup.ts",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "shared-utils": {
       "root": "libs/shared/utils",
       "sourceRoot": "libs/shared/utils/src",
@@ -754,7 +468,97 @@
         }
       }
     },
-    "tour-of-heroes-heroes-data-access": {
+    "tour-of-heroes-feature-detail": {
+      "projectType": "library",
+      "root": "libs/tour-of-heroes/feature/detail",
+      "sourceRoot": "libs/tour-of-heroes/feature/detail/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/tour-of-heroes/feature/detail/tsconfig.lib.json",
+              "libs/tour-of-heroes/feature/detail/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/tour-of-heroes/feature/detail/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/tour-of-heroes/feature/detail/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "tour-of-heroes-feature-list": {
+      "projectType": "library",
+      "root": "libs/tour-of-heroes/feature/list",
+      "sourceRoot": "libs/tour-of-heroes/feature/list/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/tour-of-heroes/feature/list/tsconfig.lib.json",
+              "libs/tour-of-heroes/feature/list/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/tour-of-heroes/feature/list/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/tour-of-heroes/feature/list/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "tour-of-heroes-feature-search": {
+      "projectType": "library",
+      "root": "libs/tour-of-heroes/feature/search",
+      "sourceRoot": "libs/tour-of-heroes/feature/search/src",
+      "prefix": "nx-demo",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/tour-of-heroes/feature/search/tsconfig.lib.json",
+              "libs/tour-of-heroes/feature/search/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/tour-of-heroes/feature/search/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/tour-of-heroes/feature/search/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "tour-of-heroes-shared-data-access": {
       "projectType": "library",
       "root": "libs/tour-of-heroes/heroes/data-access",
       "sourceRoot": "libs/tour-of-heroes/heroes/data-access/src",
@@ -784,26 +588,31 @@
         }
       }
     },
-    "tour-of-heroes-heroes-feature": {
+    "tour-of-heroes-shared-ui": {
       "projectType": "library",
-      "root": "libs/tour-of-heroes/heroes/feature",
-      "sourceRoot": "libs/tour-of-heroes/heroes/feature/src",
-      "prefix": "toh-ft-heroes",
+      "root": "libs/shared/ui-heroes",
+      "sourceRoot": "libs/shared/ui-heroes/src",
+      "prefix": "shrd-ui-toh",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/tour-of-heroes/heroes/feature/tsconfig.lib.json",
-              "libs/tour-of-heroes/heroes/feature/tsconfig.spec.json"
+              "libs/shared/ui-heroes/tsconfig.lib.json",
+              "libs/shared/ui-heroes/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/tour-of-heroes/heroes/feature/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/shared/ui-heroes/**/*"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/theme/src/lib/styles/"]
+            }
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/tour-of-heroes/heroes/feature/jest.config.js",
+            "jestConfig": "libs/shared/ui-heroes/jest.config.js",
+            "tsConfig": "libs/shared/ui-core/tsconfig.spec.json",
+            "setupFile": "libs/shared/ui-core/src/test-setup.ts",
             "passWithNoTests": true
           }
         }
