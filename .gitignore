@@ -12,3 +12,5 @@
 # vscode
 .vscode/*
 
+# other
+.DS_Store

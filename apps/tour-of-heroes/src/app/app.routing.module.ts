@@ -30,6 +30,7 @@ const ROUTES: Routes = [
       initialNavigation: 'enabled' // will become enabledBlocking in ng11
     }),
     RouterStoreModule
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
