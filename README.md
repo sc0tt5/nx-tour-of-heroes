@@ -1,4 +1,10 @@
-# Nx Demo
+# Nx Tour of Heroes
+
+Currently transitioning the project from the original "demo" to using the Angular Tour of Heroes. This is currently a work in progress. Additional updates coming soon. See issues for details.
+
+</br>
+
+# Nx Demo (original README)
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -47,56 +53,6 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 
 ## Nx Demo Project Directory (work in progress...)
 
-```bash
-<project-root>
-
-├── apps
-│   ├── api
-│   ├── demo-one
-│   └── tour-of-heroes
-├── libs
-│   ├── demo-one # app namespace, e.g. gmail, hangouts, etc.
-│   │   ├── feature-one # an app feature, e.g. inbox, search, etc.
-│   │   │   └── data-access # feature-level shared data-access
-│   │   │   └── feature # components, e.g. email list, email view, etc.
-│   │   │       └── component-one # could include service, state, etc.
-│   │   │       │   └── +state
-│   │   │       │   └── ...
-│   │   │       └── component-two
-│   │   │       └── ...
-│   │   ├── feature-two
-│   │   └── ...
-│   ├── tour-of-heroes
-│   │   ├── heroes
-│   │   │   └── data-access
-│   │   │       └── +state
-│   │   │       └── ...
-│   │   │   └── feature
-│   │   │       └── hero-detail
-│   │   │       └── hero-list
-│   │   │       └── ...
-│   │   ├── villains
-│   │   │   └── data-access
-│   │   │       └── +state
-│   │   │       └── ...
-│   │   │   └── feature
-│   │   │       └── villain-detail
-│   │   │       └── villain-list
-│   │   │       └── ...
-│   │   └── ...
-│   └── shared
-│       └── animations
-│       └── data-access
-│       └── models
-│       └── theme
-│       ├── ui
-│       │   └── accordion
-│       │   └── ...
-│       └── utils
-├── tools
-└── ...
-```
-
 Here's a [great article](https://medium.com/showpad-engineering/how-to-organize-and-name-applications-and-libraries-in-an-nx-monorepo-for-immediate-team-wide-9876510dbe28) used for this project structure and naming convention.
 
 ```bash
@@ -111,19 +67,6 @@ Here's a [great article](https://medium.com/showpad-engineering/how-to-organize-
 /libs/<scope-2>/<type-1>/<lib-name>
 /libs/<scope-2>/<type-2>/<lib-name>
 ```
-
-Scopes
-
-- demo-one
-- demo-two
-- shared
-
-Types
-
-- data-access
-- feature
-- ui
-- utils
 
 ## NGRX
 
