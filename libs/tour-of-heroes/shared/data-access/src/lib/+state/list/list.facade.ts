@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { heroesSelectors, HeroesState } from '@nx-toh/tour-of-heroes/shared/data-access';
-
+import { heroesSelectors } from '../heroes.selectors';
+import { HeroesState } from '../heroes.state';
 import { heroListActions } from './list.actions';
 
 @Injectable({ providedIn: 'root' })

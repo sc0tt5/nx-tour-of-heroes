@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
-
-import { HeroSearchFacade } from './+state/search.facade';
+import { HeroSearchFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 
 @Component({
   templateUrl: './search.component.html',
@@ -17,7 +16,6 @@ export class HeroSearchComponent implements OnInit, OnDestroy {
   constructor(private facade: HeroSearchFacade) {}
 
   ngOnInit() {
-    console.log('HeroSearchComponent > ngOnInit');
     this.heroes$ = this.facade.heroes$;
     this.heroesLoaded$ = this.facade.heroesLoaded$;
   }
@@ -27,8 +25,6 @@ export class HeroSearchComponent implements OnInit, OnDestroy {
   }
 
   search(name: string): void {
-    // todo: problem here is search term not updating...
-    console.log('[A] search term:::', name);
     this.facade.searchHeroes(name);
   }
 

@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeroesService } from '@nx-toh/tour-of-heroes/shared/data-access';
 import { HeroesCardModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
-import { HeroSearchStoreModule } from './+state/search.store.module';
 import { HeroSearchComponent } from './search.component';
 
 const ROUTES: Routes = [
@@ -16,7 +15,7 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, HeroesCardModule, HeroSearchStoreModule, RouterModule.forChild(ROUTES)],
+  imports: [CommonModule, HeroesCardModule, RouterModule.forChild(ROUTES)],
   declarations: [HeroSearchComponent],
   providers: [HeroesService]
 })

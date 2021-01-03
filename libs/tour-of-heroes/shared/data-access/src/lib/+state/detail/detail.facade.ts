@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store';
 
 import { Hero } from '@nx-toh/shared/models';
 import { routerActions } from '@nx-toh/shared/utils';
-import { heroesSelectors, HeroesState } from '@nx-toh/tour-of-heroes/shared/data-access';
 
+import { heroesSelectors } from '../heroes.selectors';
+import { HeroesState } from '../heroes.state';
 import { heroDetailActions } from './detail.actions';
 import { heroDetailSelectors } from './detail.selectors';
 

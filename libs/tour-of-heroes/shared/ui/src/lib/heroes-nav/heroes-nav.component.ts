@@ -31,6 +31,8 @@ export class HeroesNavComponent {
     this.goTo();
   }
 
+  // todo: scenario for hero detail
+
   private goTo(): void {
     this.facade.goTo(this.currentRoute);
   }

@@ -5,8 +5,8 @@ import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 import { routerActions } from '@nx-toh/shared/utils';
-import { HeroesService } from '@nx-toh/tour-of-heroes/shared/data-access';
 
+import { HeroesService } from '../../services/heroes.service';
 import { heroListActions } from './list.actions';
 
 @Injectable()

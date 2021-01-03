@@ -193,7 +193,6 @@ describe('ResourceService', () => {
         let response = null;
 
         service.read(params).subscribe((receivedResponse: any) => {
-          console.log({ receivedResponse });
           response = receivedResponse;
         });
 

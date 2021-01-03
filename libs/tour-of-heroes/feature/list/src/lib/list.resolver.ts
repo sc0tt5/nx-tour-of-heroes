@@ -3,8 +3,7 @@ import { Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
-
-import { HeroListFacade } from './+state/list.facade';
+import { HeroListFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 
 @Injectable({ providedIn: 'root' })
 export class HeroListResolver implements Resolve<Hero[]> {

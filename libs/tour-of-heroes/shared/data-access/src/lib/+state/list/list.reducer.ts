@@ -1,13 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { on, On } from '@ngrx/store';
 
-// prettier-ignore
-import { adapter, heroesInitialState, HeroesState, LOADED, LOADING, RESET } from '@nx-toh/tour-of-heroes/shared/data-access';
-
+import { adapter, LOADED, LOADING, RESET } from '../heroes.state';
 import { heroListActions } from './list.actions';
 
-// todo: how to create multiple reducers with single state???
-const reducer = createReducer(
-  heroesInitialState,
+export const listReducerOns: On<any>[] = [
   on(heroListActions.loadHeroes, state => ({ ...state, ...LOADING })),
   on(heroListActions.loadHeroesSuccess, (state, payload) =>
     adapter.setAll(payload.heroes, { ...state, ...LOADED })
@@ -19,8 +15,4 @@ const reducer = createReducer(
   ),
   on(heroListActions.removeHeroFail, state => ({ ...state, ...RESET })),
   on(heroListActions.selectHero, state => ({ ...state, ...RESET }))
-);
-
-export function heroListReducer(state: HeroesState | undefined, action: Action): HeroesState {
-  return reducer(state, action);
-}
+];

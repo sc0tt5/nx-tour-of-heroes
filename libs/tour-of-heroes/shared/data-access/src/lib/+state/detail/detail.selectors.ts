@@ -1,6 +1,7 @@
 import { createSelector } from '@ngrx/store';
 
-import { heroesSelectors, HeroesState } from '@nx-toh/tour-of-heroes/shared/data-access';
+import { heroesSelectors } from '../heroes.selectors';
+import { HeroesState } from '../heroes.state';
 
 // projectors
 const selectedHero = (state: HeroesState) => state.entities[state.selectedHeroId];

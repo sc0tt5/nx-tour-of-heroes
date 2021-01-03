@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { heroesSelectors, HeroesState } from '@nx-toh/tour-of-heroes/shared/data-access';
-
+import { heroesSelectors } from '../heroes.selectors';
+import { HeroesState } from '../heroes.state';
 import { heroSearchActions } from './search.actions';
 import { heroSearchSelectors } from './search.selectors';
 
@@ -18,7 +18,6 @@ export class HeroSearchFacade {
   }
 
   searchHeroes(name: string): void {
-    console.log('[B] search term:::', name); // todo: never leaves B ...
     this.store.dispatch(heroSearchActions.searchHeroes({ name }));
   }
 

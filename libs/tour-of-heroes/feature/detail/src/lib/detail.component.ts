@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
 import { RouterFacade } from '@nx-toh/shared/utils';
-
-import { HeroDetailFacade } from './+state/detail.facade';
+import { HeroDetailFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 
 @Component({
   templateUrl: './detail.component.html',

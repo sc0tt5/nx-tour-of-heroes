@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
-
-import { HeroListFacade } from './+state/list.facade';
+import { HeroListFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 
 @Component({
   templateUrl: './list.component.html',
