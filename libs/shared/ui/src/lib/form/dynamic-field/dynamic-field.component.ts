@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective } from '@angular/forms';
 
-import { Field, FieldType } from '@nx-demo/shared/models';
+import { Field, FieldType } from '@nx-toh/shared/models';
 
 // kudos to Bonnie (https://github.com/bcarson/dynamic-reactive-form)
 
 @Component({
-  selector: 'nx-demo-field',
+  selector: 'shrd-ui-field',
   templateUrl: './dynamic-field.component.html',
   styleUrls: ['./dynamic-field.component.scss']
 })

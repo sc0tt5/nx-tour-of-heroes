@@ -5,13 +5,26 @@
       {{ field.placeholder }}
     </ng-container>
 
-    <!-- todo: radio -->
+    <!-- number -->
     <ng-container *ngSwitchCase="1">
+      <label for="field.name" [innerHTML]="field.label"></label>
+      <input
+        type="number"
+        [formControl]="control"
+        [placeholder]="field.placeholder"
+        (errorHandler)="(control.errors)"
+      />
+      <!-- todo: errors component -->
+      <div *ngIf="control.errors" class="dynamic-field__error">{{ control.errors | json }}</div>
+    </ng-container>
+
+    <!-- todo: radio -->
+    <ng-container *ngSwitchCase="2">
       {{ field.placeholder }}
     </ng-container>
 
     <!-- select -->
-    <ng-container *ngSwitchCase="2">
+    <ng-container *ngSwitchCase="3">
       <label for="field.name" [innerHTML]="field.label"></label>
       <select [formControl]="control">
         <option
@@ -29,12 +42,13 @@
     </ng-container>
 
     <!-- textarea -->
-    <ng-container *ngSwitchCase="3">
+    <ng-container *ngSwitchCase="4">
       <textarea type="text" [formControl]="control" [placeholder]="field.placeholder"></textarea>
     </ng-container>
 
     <!-- input -->
-    <ng-container *ngSwitchCase="4">
+    <ng-container *ngSwitchCase="5">
+      <label for="field.name" [innerHTML]="field.label"></label>
       <input
         type="text"
         [formControl]="control"

@@ -1,7 +1,7 @@
 import { withKnobs } from '@storybook/addon-knobs';
 import { moduleMetadata, storiesOf } from '@storybook/angular';
 
-import { ContentType } from '@nx-demo/shared/models';
+import { ContentType } from '@nx-toh/shared/models';
 
 import { AccordionModule } from './accordion.module';
 
@@ -22,23 +22,23 @@ export const stories = storiesOf('Accordion Component', module)
 stories.add('Accordion One', () => ({
   props: { accordionItems },
   template: `
-    <nx-demo-accordion>
-      <nx-demo-accordion-one
+    <shrd-ui-accordion>
+      <shrd-ui-accordion-one
         *ngFor="let item of accordionItems"
         [item]="item"
-      ></nx-demo-accordion-one>
-    </nx-demo-accordion>
+      ></shrd-ui-accordion-one>
+    </shrd-ui-accordion>
       `
 }));
 
 stories.add('Accordion Two', () => ({
   props: { accordionItems },
   template: `
-    <nx-demo-accordion>
-      <nx-demo-accordion-two
+    <shrd-ui-accordion>
+      <shrd-ui-accordion-two
         *ngFor="let item of accordionItems"
         [item]="item"
-      ></nx-demo-accordion-two>
-    </nx-demo-accordion>
+      ></shrd-ui-accordion-two>
+    </shrd-ui-accordion>
       `
 }));

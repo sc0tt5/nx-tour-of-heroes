@@ -22,17 +22,11 @@
     "api": {
       "tags": ["scope:api", "type:api"]
     },
-    "demo-one": {
-      "tags": ["scope:demo-one", "type:app"]
+    "tour-of-heroes": {
+      "tags": ["scope:tour-of-heroes", "type:app"]
     },
-    "demo-one-feature-page-one": {
-      "tags": ["scope:demo-one", "type:feature"]
-    },
-    "demo-one-feature-page-two": {
-      "tags": ["scope:demo-two", "type:feature"]
-    },
-    "demo-one-feature-shell": {
-      "tags": ["scope:demo-one", "type:feature"]
+    "api-data-access": {
+      "tags": ["scope:api", "type:api"]
     },
     "shared-animations": {
       "tags": ["scope:shared", "type:animations"]
@@ -51,6 +45,21 @@
     },
     "shared-utils": {
       "tags": ["type:utils"]
+    },
+    "tour-of-heroes-feature-detail": {
+      "tags": ["scope:tour-of-heroes", "type:feature"]
+    },
+    "tour-of-heroes-feature-list": {
+      "tags": ["scope:tour-of-heroes", "type:feature"]
+    },
+    "tour-of-heroes-feature-search": {
+      "tags": ["scope:tour-of-heroes", "type:feature"]
+    },
+    "tour-of-heroes-shared-data-access": {
+      "tags": ["scope:tour-of-heroes", "type:data-access"]
+    },
+    "tour-of-heroes-shared-ui": {
+      "tags": ["scope:shared", "type:ui"]
     }
   }
 }

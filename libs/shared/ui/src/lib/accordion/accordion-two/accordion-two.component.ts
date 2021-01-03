@@ -3,7 +3,7 @@ import { Component, EventEmitter, forwardRef, Input } from '@angular/core';
 import { AccordionItem, ACCORDION_ITEM } from '../accordion.model';
 
 @Component({
-  selector: 'nx-demo-accordion-two',
+  selector: 'shrd-ui-accordion-two',
   templateUrl: './accordion-two.component.html',
   styleUrls: ['./accordion-two.component.scss'],
   providers: [{ provide: ACCORDION_ITEM, useExisting: forwardRef(() => AccordionTwoComponent) }]

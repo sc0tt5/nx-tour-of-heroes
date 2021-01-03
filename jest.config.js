@@ -21,5 +21,6 @@ module.exports = {
   transform: {
     '^.+\\.(ts|js|html)$': 'ts-jest'
   },
-  verbose: false
+  verbose: false,
+  projects: '<rootDir>/libs/tour-of-heroes/feature/detail'
 };

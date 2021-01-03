@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
-import { GoogleAnalyticsEvent, GoogleAnalyticsEventGroup } from '@nx-demo/shared/models';
+import { GoogleAnalyticsEvent, GoogleAnalyticsEventGroup } from '@nx-toh/shared/models';
 
 /**
  * Google Analytics event tracking via Google Tag Manager dataLayer.

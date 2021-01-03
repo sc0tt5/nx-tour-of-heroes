@@ -1,3 +1,4 @@
 export interface Resource {
-  param: string;
+  id?: number;
+  param?: string;
 }

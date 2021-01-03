@@ -1,0 +1,42 @@
+<ng-container
+  *ngIf="params$ | async; else heroNew"
+  [ngTemplateOutlet]="contentLoader"
+></ng-container>
+
+<!--
+<ng-container
+  [ngTemplateOutlet]="heroDetail"
+  [ngTemplateOutletContext]="{ hero: hero$ | async">
+</ng-container>
+ -->
+
+<!-- content loader for hero detail -->
+<ng-template #contentLoader>
+  <shrd-ui-content-loader
+    [pageLoaded]="heroLoaded$ | async"
+    [templateRef]="heroDetail"
+  ></shrd-ui-content-loader>
+</ng-template>
+
+<!-- view existing hero -->
+<ng-template #heroDetail>
+  <ng-container *ngIf="hero$ | async as hero">
+    <h2 [innerHTML]="hero.name"></h2>
+    <shrd-ui-toh-editor
+      [hero]="hero"
+      (cancel)="closeEditor()"
+      (save)="updateHero()"
+      (edit)="onHeroChange($event)"
+    ></shrd-ui-toh-editor>
+  </ng-container>
+</ng-template>
+
+<!-- create new hero -->
+<ng-template #heroNew>
+  <h2>Create new hero</h2>
+  <shrd-ui-toh-editor
+    (cancel)="closeEditor()"
+    (save)="saveHero()"
+    (edit)="onHeroChange($event)"
+  ></shrd-ui-toh-editor>
+</ng-template>

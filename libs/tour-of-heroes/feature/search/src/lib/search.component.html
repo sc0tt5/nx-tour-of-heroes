@@ -1,0 +1,15 @@
+<h2>Hero Search</h2>
+
+<input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+<ng-container *ngIf="heroes$ | async as heroes">
+  <ul class="search-result">
+    <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index">
+      <shrd-ui-toh-heroes-card
+        [name]="hero.name"
+        [rating]="hero.rating"
+        (selected)="select(hero)"
+      ></shrd-ui-toh-heroes-card>
+    </li>
+  </ul>
+</ng-container>

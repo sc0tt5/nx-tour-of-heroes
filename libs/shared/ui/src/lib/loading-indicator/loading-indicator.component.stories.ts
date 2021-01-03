@@ -11,6 +11,6 @@ export const stories = storiesOf('Loading Indicator', module).addDecorator(
 // todo: fix this
 stories.add('Loading Indicator', () => ({
   template: `
-    <nx-demo-loading-indicator [pageLoaded]="false"></nx-demo-loading-indicator>
+    <shrd-ui-loading-indicator [pageLoaded]="false"></shrd-ui-loading-indicator>
   `
 }));

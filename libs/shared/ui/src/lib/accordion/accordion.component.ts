@@ -1,11 +1,11 @@
 import { AfterContentInit, Component, ContentChildren, ViewEncapsulation } from '@angular/core';
 
-import { AnalyticsService } from '@nx-demo/shared/utils';
+import { AnalyticsService } from '@nx-toh/shared/utils';
 
 import { AccordionItem, AccordionWrapper, ACCORDION_ITEM } from './accordion.model';
 
 @Component({
-  selector: 'nx-demo-accordion',
+  selector: 'shrd-ui-accordion',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
   encapsulation: ViewEncapsulation.None // required to update accordion shared styles

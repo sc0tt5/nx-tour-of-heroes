@@ -1,4 +1,10 @@
-# Nx Demo
+# Nx Tour of Heroes
+
+Currently transitioning the project from the original "demo" to using the Angular Tour of Heroes. This is currently a work in progress. Additional updates coming soon. See issues for details.
+
+</br>
+
+# Nx Demo (original README)
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -47,43 +53,6 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 
 ## Nx Demo Project Directory (work in progress...)
 
-```bash
-<project-root>
-
-├── apps
-│   ├── api
-│   ├── demo-one
-│   └── demo-two
-├── libs
-│   ├── demo-one
-│   │   └── feature
-│   │       └── page-one
-│   │       │   └── +state
-│   │       │   └── ...
-│   │       └── page-two
-│   │           └── +state
-│   │           └── ...
-│   ├── demo-two
-│   │   └── feature
-│   │       └── page-one
-│   │       │   └── +state
-│   │       │   └── ...
-│   │       └── page-two
-│   │           └── +state
-│   │           └── ...
-│   └── shared
-│       └── animations
-│       └── data-access
-│       └── models
-│       └── theme
-│       ├── ui
-│       │   └── accordion
-│       │   └── ...
-│       └── utils
-├── tools
-└── ...
-```
-
 Here's a [great article](https://medium.com/showpad-engineering/how-to-organize-and-name-applications-and-libraries-in-an-nx-monorepo-for-immediate-team-wide-9876510dbe28) used for this project structure and naming convention.
 
 ```bash
@@ -98,19 +67,6 @@ Here's a [great article](https://medium.com/showpad-engineering/how-to-organize-
 /libs/<scope-2>/<type-1>/<lib-name>
 /libs/<scope-2>/<type-2>/<lib-name>
 ```
-
-Scopes
-
-- demo-one
-- demo-two
-- shared
-
-Types
-
-- data-access
-- feature
-- ui
-- utils
 
 ## NGRX
 

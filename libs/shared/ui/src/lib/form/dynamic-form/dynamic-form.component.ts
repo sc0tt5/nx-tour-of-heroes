@@ -1,14 +1,15 @@
+// prettier-ignore
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
-import { Field } from '@nx-demo/shared/models';
+import { Field } from '@nx-toh/shared/models';
 
 // kudos to Bonnie (https://github.com/bcarson/dynamic-reactive-form)
 
 @Component({
-  selector: 'nx-demo-form',
+  selector: 'shrd-ui-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss']
 })

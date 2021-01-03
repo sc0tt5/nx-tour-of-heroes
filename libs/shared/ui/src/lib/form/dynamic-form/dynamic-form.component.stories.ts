@@ -1,6 +1,6 @@
 import { moduleMetadata, storiesOf } from '@storybook/angular';
 
-import { FieldType } from '@nx-demo/shared/models';
+import { FieldType } from '@nx-toh/shared/models';
 
 import { DynamicReactiveFormModule } from '../dynamic-reactive-form.module';
 
@@ -30,6 +30,6 @@ export const stories = storiesOf('Dynamic Reactive Form', module).addDecorator(
 stories.add('Dynamic Reactive Form', () => ({
   props: { fieldset },
   template: `
-    <nx-demo-form [fieldset]="fieldset"></nx-demo-form>
+    <shrd-ui-form [fieldset]="fieldset"></shrd-ui-form>
   `
 }));

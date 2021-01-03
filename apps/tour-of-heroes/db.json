@@ -1,0 +1,54 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Mr. Nice",
+      "rating": 1
+    },
+    {
+      "id": 2,
+      "name": "Narco",
+      "rating": 2
+    },
+    {
+      "id": 3,
+      "name": "Bombasto",
+      "rating": 3
+    },
+    {
+      "id": 4,
+      "name": "Celeritas",
+      "rating": 4
+    },
+    {
+      "id": 5,
+      "name": "Magneta",
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "name": "RubberMan",
+      "rating": 6
+    },
+    {
+      "id": 7,
+      "name": "Dynama",
+      "rating": 7
+    },
+    {
+      "id": 8,
+      "name": "Dr IQ",
+      "rating": 8
+    },
+    {
+      "id": 9,
+      "name": "Magma",
+      "rating": 9
+    },
+    {
+      "id": 10,
+      "name": "Tornado",
+      "rating": 10
+    }
+  ]
+}
