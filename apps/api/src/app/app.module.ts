@@ -4,7 +4,8 @@ import { join } from 'path';
 
 import { ApiModule } from '@nx-toh/api';
 
-import { AppServerModule } from '../../../tour-of-heroes/src/main.server'; // todo: ?
+// tslint:disable-next-line: nx-enforce-module-boundaries // todo: how not to import this from app
+import { AppServerModule } from '../../../tour-of-heroes/src/main.server';
 
 // todo: multiple apps
 

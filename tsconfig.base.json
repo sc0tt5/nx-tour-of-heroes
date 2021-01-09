@@ -21,7 +21,6 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@nx-toh/api": ["libs/api/src/index.ts"],
-
       "@nx-toh/shared/animations": ["libs/shared/animations/src/index.ts"],
       "@nx-toh/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@nx-toh/shared/models": ["libs/shared/models/src/index.ts"],

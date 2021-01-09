@@ -69,7 +69,7 @@
             "outputHashing": "all",
             "sourceMap": false,
             "extractCss": true,
-            "namedChunks": false,
+            "namedChunks": true,
             "extractLicenses": true,
             "vendorChunk": false,
             "buildOptimizer": true,
@@ -232,6 +232,12 @@
           },
           "configurations": {
             "production": {}
+          }
+        },
+        "analyze": {
+          "builder": "@ngx-builders/analyze:analyze",
+          "options": {
+            "outputPath": "dist/tour-of-heroes/browser"
           }
         }
       }
