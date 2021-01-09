@@ -24,9 +24,6 @@ const ROUTES: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(ROUTES, {
-      // todo: preload with lazy loaded ngrx features?
-      // preloadingStrategy: PreloadAllModules,
-      // not good for slower/3G connections
       initialNavigation: 'enabled' // will become enabledBlocking in ng11
     }),
     RouterStoreModule

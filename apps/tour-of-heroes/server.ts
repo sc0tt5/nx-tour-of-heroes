@@ -1,4 +1,5 @@
 import 'zone.js/dist/zone-node';
 
-import '../api/src/main'; // todo: how to run this without importing
+// tslint:disable-next-line: nx-enforce-module-boundaries // todo: how not to import this from app
+import '../api/src/main';
 export * from './src/main.server';
