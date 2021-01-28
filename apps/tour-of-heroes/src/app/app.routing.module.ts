@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { RouterStoreModule } from '@nx-toh/shared/utils';
 
@@ -24,7 +24,8 @@ const ROUTES: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(ROUTES, {
-      initialNavigation: 'enabled' // will become enabledBlocking in ng11
+      initialNavigation: 'enabled', // will become enabledBlocking in ng11
+      scrollPositionRestoration: 'enabled'
     }),
     RouterStoreModule
   ],

@@ -33,10 +33,9 @@
     "serve:database": "json-server --watch apps/tour-of-heroes/db.json --port 8800 --middlewares ./node_modules/json-server-reset",
     "build:storybook": "build-storybook -o dist/storybook",
     "serve:storybook": "start-storybook",
-    "dev:ssr:local": "ng run tour-of-heroes:serve-ssr:local",
-    "dev:ssr:production": "ng run tour-of-heroes:serve-ssr:production",
-    "build:ssr:production": "ng build --prod && ng run tour-of-heroes:server:production",
-    "serve:ssr:production": "node dist/tour-of-heroes/server/main.js",
+    "dev:ssr": "concurrently --names 'DATABASE,DEV:SSR' --prefix-colors 'blue,yellow,' --kill-others \"npm:serve:database\" \"ng run tour-of-heroes:serve-ssr:local\" ",
+    "build:ssr": "ng build --prod && ng run tour-of-heroes:server:production",
+    "serve:ssr": "node dist/tour-of-heroes/server/main.js",
     "prerender": "ng run tour-of-heroes:prerender",
     "prebuild:ssr": "ngcc",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
