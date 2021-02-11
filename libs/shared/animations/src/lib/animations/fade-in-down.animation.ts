@@ -14,7 +14,7 @@ const fadeInDown = animation([animate('{{ timings }}', keyframes([startStyle, en
  */
 export function fadeInDownAnimation(options?: any): AnimationTriggerMetadata {
   return trigger(options || 'fadeInDown', [
-    transition('0 => 1', useAnimation(fadeInDown), {
+    transition(':enter', useAnimation(fadeInDown), {
       params: {
         timings: (options && options.timings) || DEFAULT_TIMINGS,
         translate: (options && options.translate) || '5%'

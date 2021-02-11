@@ -4,7 +4,7 @@
 <!-- page content -->
 <section>
   <div class="content-loader">
-    <div [@fadeInDown]="pageLoaded">
+    <div *ngIf="pageLoaded" [@fadeInDown]>
       <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
     </div>
   </div>
