@@ -88,6 +88,9 @@
                 "output": "./assets/"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/theme/src/lib/styles"]
+            },
             "styles": ["apps/tour-of-heroes/src/styles.scss"],
             "scripts": []
           },
