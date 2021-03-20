@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "nx",
     "nx": "nx",
-    "start": "concurrently --names 'DATABASE,API,CLIENT' --prefix-colors 'blue,green,yellow,' --kill-others \"npm:serve:database\"  \"npm:serve:api\" \"npm:serve\" ",
+    "start": "concurrently --names 'JSONDB,NESTJS,ANGULAR' --prefix-colors 'blue,green,yellow,' --kill-others \"npm:serve:database\"  \"npm:serve:api\" \"npm:serve\" ",
     "serve": "ng serve --configuration=local --open --watch",
     "build": "ng build",
     "test": "npx jest --coverage",
@@ -33,7 +33,7 @@
     "serve:database": "json-server --watch apps/tour-of-heroes/db.json --port 8800 --middlewares ./node_modules/json-server-reset",
     "build:storybook": "build-storybook -o dist/storybook",
     "serve:storybook": "start-storybook",
-    "dev:ssr": "concurrently --names 'DATABASE,DEV:SSR' --prefix-colors 'blue,yellow,' --kill-others \"npm:serve:database\" \"ng run tour-of-heroes:serve-ssr:local\" ",
+    "dev:ssr": "concurrently --names 'JSONDB,NESTJS' --prefix-colors 'blue,yellow,' --kill-others \"npm:serve:database\" \"ng run tour-of-heroes:serve-ssr:local\" ",
     "build:ssr": "ng build --prod && ng run tour-of-heroes:server:production",
     "serve:ssr": "node dist/tour-of-heroes/server/main.js",
     "prerender": "ng run tour-of-heroes:prerender",
