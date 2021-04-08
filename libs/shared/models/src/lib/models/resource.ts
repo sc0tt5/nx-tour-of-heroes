@@ -1,4 +1,4 @@
 export interface Resource {
-  id?: number;
+  readonly id?: number;
   param?: string;
 }

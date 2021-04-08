@@ -12,7 +12,7 @@ const SELECT_HERO = '[Hero Search] Select Hero';
 // actions
 const resetSearchTerm = createAction(RESET_SEARCH_TERM);
 const searchHeroes = createAction(SEARCH_HEROES, props<{ name: string }>());
-const searchHeroesFail = createAction(SEARCH_HEROES_FAIL, props<{ error: any }>());
+const searchHeroesFail = createAction(SEARCH_HEROES_FAIL, props<{ error: Error }>());
 const searchHeroesSuccess = createAction(SEARCH_HEROES_SUCCESS, props<{ heroes: Hero[] }>());
 const selectHero = createAction(SELECT_HERO, props<{ id: number }>());
 
