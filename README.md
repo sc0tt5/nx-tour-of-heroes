@@ -27,3 +27,32 @@ This project was generated using [Nx](https://nx.dev).
 - `npm run build:ssr && npm run serve:ssr`
 
 - Compiles the application and serves it with Universal on the Nest server
+
+### Project Structure
+
+```bash
+<project-root>
+
+├── apps
+│   ├── api
+│   └── tour-of-heroes
+├── libs
+│   ├── api # api app scope/library
+│   ├── tour-of-heroes # toh app scope
+│   │   ├── feature # toh feature libraries
+│   │   │   ├── detail
+│   │   │   ├── list
+│   │   │   └── search
+│   │   └── shared # shared for toh app
+│   │       ├── data-access
+│   │       └── ui
+│   └── shared # shared with all apps
+│       ├── animations
+│       ├── data-access
+│       ├── models
+│       ├── theme
+│       ├── ui
+│       └── utils
+├── tools
+└── ...
+```

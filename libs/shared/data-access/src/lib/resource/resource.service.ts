@@ -82,7 +82,7 @@ export class ResourceService<T extends Resource> {
   /**
    * Fetches all items.
    */
-  list(params?: any): Observable<T[] | undefined> {
+  list(params?: any): Observable<T[]> {
     const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
     const getFromApi = this.isServer || (this.isBrowser && !transferStateHasKey);
     const getFromTransferState = this.isBrowser && transferStateHasKey;
@@ -99,7 +99,7 @@ export class ResourceService<T extends Resource> {
         catchError(this.handleError)
       );
     } else if (getFromTransferState) {
-      const items = this.transferState.get<T[] | undefined>(this.itemsKey, undefined);
+      const items = this.transferState.get<T[]>(this.itemsKey, []);
       this.transferState.remove<T>(this.itemsKey);
       return of(items);
     }
