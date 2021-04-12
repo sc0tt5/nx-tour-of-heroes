@@ -45,8 +45,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/api/jest.config.js",
-            "tsConfig": "apps/api/tsconfig.spec.json"
+            "jestConfig": "apps/api/jest.config.js"
           }
         }
       }
@@ -287,9 +286,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/shared/animations/jest.config.js",
-            "tsConfig": "libs/shared/animations/tsconfig.spec.json",
-            "setupFile": "libs/shared/animations/src/test-setup.ts"
+            "jestConfig": "libs/shared/animations/jest.config.js"
           }
         }
       },
@@ -318,9 +315,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/shared/data-access/jest.config.js",
-            "tsConfig": "libs/shared/data-access/tsconfig.spec.json",
-            "setupFile": "libs/shared/data-access/src/test-setup.ts"
+            "jestConfig": "libs/shared/data-access/jest.config.js"
           }
         }
       },
@@ -349,9 +344,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/shared/models/jest.config.js",
-            "tsConfig": "libs/shared/models/tsconfig.spec.json",
-            "setupFile": "libs/shared/models/src/test-setup.ts"
+            "jestConfig": "libs/shared/models/jest.config.js"
           }
         }
       },
@@ -380,8 +373,7 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/shared/theme/jest.config.js",
-            "tsConfig": "libs/shared/theme/tsconfig.spec.json"
+            "jestConfig": "libs/shared/theme/jest.config.js"
           }
         }
       }
@@ -410,8 +402,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/ui/jest.config.js",
-            "tsConfig": "libs/shared/ui/tsconfig.spec.json",
-            "setupFile": "libs/shared/ui/src/test-setup.ts",
             "passWithNoTests": true
           }
         },
@@ -471,9 +461,22 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/shared/utils/jest.config.js",
-            "tsConfig": "libs/shared/utils/tsconfig.spec.json",
-            "setupFile": "libs/shared/utils/src/test-setup.ts"
+            "jestConfig": "libs/shared/utils/jest.config.js"
+          }
+        }
+      }
+    },
+    "tools-scripts": {
+      "root": "tools/scripts",
+      "sourceRoot": "tools/scripts",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "tools/scripts/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
@@ -621,8 +624,6 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/tour-of-heroes/shared/ui/jest.config.js",
-            "tsConfig": "libs/tour-of-heroes/shared/ui/tsconfig.spec.json",
-            "setupFile": "libs/tour-of-heroes/shared/ui/src/test-setup.ts",
             "passWithNoTests": true
           }
         }

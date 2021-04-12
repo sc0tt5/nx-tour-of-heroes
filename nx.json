@@ -46,6 +46,9 @@
     "shared-utils": {
       "tags": ["type:utils"]
     },
+    "tools-scripts": {
+      "tags": ["scope:tools", "type:tools"]
+    },
     "tour-of-heroes-feature-detail": {
       "tags": ["scope:tour-of-heroes", "type:feature"]
     },
