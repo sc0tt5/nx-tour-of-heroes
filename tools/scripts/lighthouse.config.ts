@@ -1,6 +1,6 @@
 import { Options } from 'chrome-launcher';
 
-import { mobileBudgets } from './budgets';
+import { mobileBudget } from './budget';
 
 export const options: Options = {
   chromeFlags: ['--no-sandbox', '--headless']
@@ -9,7 +9,7 @@ export const options: Options = {
 export const perfConfig = {
   extends: 'lighthouse:default',
   settings: {
-    budgets: mobileBudgets,
+    budgets: [mobileBudget],
     emulatedFormFactor: 'mobile',
     onlyCategories: ['performance'],
     output: ['html', 'json']

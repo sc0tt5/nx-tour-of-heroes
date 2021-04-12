@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'scripts',
+  name: 'tools-scripts',
   preset: '../../jest.config.js',
   coverageDirectory: '../../tmp/coverage/tools/scripts'
 };

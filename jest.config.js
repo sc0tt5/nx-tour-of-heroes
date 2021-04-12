@@ -1,6 +1,6 @@
 module.exports = {
   coverageDirectory: './tmp/coverage',
-  coverageReporters: ['html'],
+  coverageReporters: ['html', 'lcov'],
   moduleFileExtensions: ['ts', 'js', 'html'],
   passWithNoTests: true,
   reporters: [
@@ -10,7 +10,7 @@ module.exports = {
       {
         publicPath: './tmp/results',
         filename: 'index.html',
-        expand: true,
+        expand: false,
         hideIcon: true,
         pageTitle: 'Results'
       }
@@ -22,5 +22,5 @@ module.exports = {
     '^.+\\.(ts|js|html)$': 'ts-jest'
   },
   verbose: false,
-  projects: ['<rootDir>/libs/tour-of-heroes/feature/detail']
+  projects: ['<rootDir>']
 };
