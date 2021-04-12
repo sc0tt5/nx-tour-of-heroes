@@ -13,7 +13,7 @@
     "lint": "nx workspace-lint && ng lint",
     "doc:api": "compodoc -p apps/api/tsconfig.json -d tmp/documentation/api -s -o",
     "doc:tour-of-heroes": "compodoc -p apps/tour-of-heroes/tsconfig.json -d tmp/documentation/tour-of-heroes -s -o",
-    "lighthouse": "lighthouse http://localhost:3333/heroes --config-path=lighthouse.js --only-categories=performance --budget-path=budget.json --output=json --output-path=tmp/lighthouse.json --chrome-flags='--headless'",
+    "lighthouse": "ts-node tools/scripts/lighthouse.run.ts",
     "analyze:bundles": "ng run tour-of-heroes:analyze --diffLoading=false",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
@@ -36,10 +36,10 @@
     "serve:storybook": "start-storybook",
     "dev:ssr": "concurrently --names 'JSONDB,NESTJS' --prefix-colors 'blue,yellow,' --kill-others \"npm:serve:database\" \"ng run tour-of-heroes:serve-ssr:local\" ",
     "build:ssr": "ng build --prod && ng run tour-of-heroes:server:production",
-    "serve:ssr": "node dist/tour-of-heroes/server/main.js",
+    "serve:ssr": "concurrently --names 'JSONDB,SERVER' --prefix-colors 'blue,yellow,' --kill-others \"npm:serve:database\" \"node dist/tour-of-heroes/server/main.js\"",
     "prerender": "ng run tour-of-heroes:prerender",
     "prebuild:ssr": "ngcc",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "postinstall": "node ./tools/scripts/decorate-angular-cli.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "sideEffects": [
     "**/main.ts",
@@ -112,6 +112,7 @@
     "@types/json-server": "0.14.2",
     "@types/node": "14.14.5",
     "@types/webpack": "4.41.21",
+    "chrome-launcher": "0.13.4",
     "codelyzer": "6.0.1",
     "concurrently": "5.3.0",
     "dotenv": "8.2.0",
@@ -127,6 +128,7 @@
     "lighthouse": "7.3.0",
     "lint-staged": "10.5.1",
     "ngrx-store-freeze": "0.2.4",
+    "ora": "5.4.0",
     "prettier": "2.1.2",
     "ts-jest": "26.4.3",
     "ts-node": "9.0.0",
