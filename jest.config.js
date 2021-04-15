@@ -1,6 +1,6 @@
 module.exports = {
   coverageDirectory: './tmp/coverage',
-  coverageReporters: ['html', 'lcov'],
+  coverageReporters: ['html', 'text'],
   moduleFileExtensions: ['ts', 'js', 'html'],
   passWithNoTests: true,
   reporters: [
