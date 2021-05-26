@@ -83,7 +83,6 @@
     "@ngrx/store": "10.1.2",
     "@ngrx/store-devtools": "10.1.2",
     "@nrwl/angular": "10.4.15",
-    "core-js": "3.10.1",
     "ngx-logger": "4.2.1",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.6.3",
