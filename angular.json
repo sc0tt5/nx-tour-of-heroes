@@ -27,7 +27,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@nrwl/node:execute",
@@ -46,7 +47,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/api/jest.config.js"
-          }
+          },
+          "outputs": ["coverage/apps/api"]
         }
       }
     },
@@ -67,7 +69,6 @@
             "optimization": true,
             "outputHashing": "all",
             "sourceMap": false,
-            "extractCss": true,
             "namedChunks": false,
             "extractLicenses": true,
             "vendorChunk": false,
@@ -127,7 +128,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -166,7 +168,8 @@
           "options": {
             "jestConfig": "apps/tour-of-heroes/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/tour-of-heroes"]
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
@@ -263,7 +266,8 @@
           "options": {
             "jestConfig": "libs/api/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/api"]
         }
       }
     },
@@ -287,7 +291,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/animations/jest.config.js"
-          }
+          },
+          "outputs": ["coverage/libs/shared/animations"]
         }
       },
       "schematics": {
@@ -316,7 +321,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/data-access/jest.config.js"
-          }
+          },
+          "outputs": ["coverage/libs/shared/data-access"]
         }
       },
       "schematics": {
@@ -345,7 +351,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/models/jest.config.js"
-          }
+          },
+          "outputs": ["coverage/libs/shared/models"]
         }
       },
       "schematics": {
@@ -374,7 +381,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/theme/jest.config.js"
-          }
+          },
+          "outputs": ["coverage/libs/shared/theme"]
         }
       }
     },
@@ -403,7 +411,8 @@
           "options": {
             "jestConfig": "libs/shared/ui/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/shared/ui"]
         },
         "storybook": {
           "builder": "@nrwl/storybook:storybook",
@@ -433,7 +442,8 @@
             "ci": {
               "quiet": true
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       },
       "schematics": {
@@ -462,7 +472,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/utils/jest.config.js"
-          }
+          },
+          "outputs": ["coverage/libs/shared/utils"]
         }
       }
     },
@@ -477,7 +488,8 @@
           "options": {
             "jestConfig": "tools/scripts/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/tools/scripts"]
         }
       }
     },
@@ -502,7 +514,8 @@
           "options": {
             "jestConfig": "libs/tour-of-heroes/feature/detail/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/tour-of-heroes/feature/detail"]
         }
       },
       "schematics": {
@@ -532,7 +545,8 @@
           "options": {
             "jestConfig": "libs/tour-of-heroes/feature/list/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/tour-of-heroes/feature/list"]
         }
       },
       "schematics": {
@@ -562,7 +576,8 @@
           "options": {
             "jestConfig": "libs/tour-of-heroes/feature/search/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/tour-of-heroes/feature/search"]
         }
       },
       "schematics": {
@@ -592,7 +607,8 @@
           "options": {
             "jestConfig": "libs/tour-of-heroes/shared/data-access/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/tour-of-heroes/shared/data-access"]
         }
       },
       "schematics": {
@@ -625,7 +641,8 @@
           "options": {
             "jestConfig": "libs/tour-of-heroes/shared/ui/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/tour-of-heroes/shared/ui"]
         }
       },
       "schematics": {

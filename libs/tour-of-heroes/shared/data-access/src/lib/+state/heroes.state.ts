@@ -1,4 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { ActionCreator, ReducerTypes } from '@ngrx/store';
 
 import { Hero } from '@nx-toh/shared/models';
 
@@ -10,6 +11,8 @@ export interface HeroesState extends EntityState<Hero> {
   loaded: boolean;
   loading: boolean;
 }
+
+export interface HeroesReducerTypes extends ReducerTypes<HeroesState, ActionCreator[]> {}
 
 function sortByRating(a: Hero, b: Hero) {
   return a.rating === b.rating ? 0 : a.rating > b.rating ? 1 : -1;
