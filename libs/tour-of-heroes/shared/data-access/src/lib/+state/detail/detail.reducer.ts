@@ -1,9 +1,9 @@
-import { on, On } from '@ngrx/store';
+import { on } from '@ngrx/store';
 
-import { adapter, LOADED, LOADING, RESET } from '../heroes.state';
+import { adapter, HeroesReducerTypes, LOADED, LOADING, RESET } from '../heroes.state';
 import { heroDetailActions } from './detail.actions';
 
-export const detailReducerOns: On<any>[] = [
+export const detailReducerOns: HeroesReducerTypes[] = [
   on(heroDetailActions.createHero, state => ({ ...state, ...LOADING })),
   on(heroDetailActions.createHeroSuccess, (state, { hero }) =>
     adapter.updateOne(hero, { ...state, ...LOADED })

@@ -1,9 +1,9 @@
-import { on, On } from '@ngrx/store';
+import { on } from '@ngrx/store';
 
-import { adapter, LOADED, LOADING, RESET } from '../heroes.state';
+import { adapter, HeroesReducerTypes, LOADED, LOADING, RESET } from '../heroes.state';
 import { heroSearchActions } from './search.actions';
 
-export const searchReducerOns: On<any>[] = [
+export const searchReducerOns: HeroesReducerTypes[] = [
   on(heroSearchActions.resetSearchTerm, state => ({ ...state, ...{ searchTerm: null } })),
   on(heroSearchActions.searchHeroes, (state, { name }) => ({
     ...state,
