@@ -15,3 +15,5 @@ module.exports = {
     return config;
   }
 };
+
+module.exports.core = { ...module.exports.core, builder: 'webpack5' };
