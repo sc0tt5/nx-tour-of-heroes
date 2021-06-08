@@ -6,16 +6,31 @@
 <ng-template #heroList>
   <h2>Heroes</h2>
 
-  <ng-container *ngIf="heroes$ | async as heroes">
-    <ul class="heroes">
-      <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index">
-        <shrd-ui-toh-heroes-card
-          [name]="hero.name"
-          [rating]="hero.rating"
-          (deleted)="delete(hero.id)"
-          (selected)="select(hero)"
-        ></shrd-ui-toh-heroes-card>
-      </li>
-    </ul>
-  </ng-container>
+  <!-- todo: issue-44 -- delete button and add modal prompt  -->
+  <section class="bx--structured-list bx--structured-list--selection bx--css-grid">
+    <!-- head -->
+    <div class="bx--structured-list-thead">
+      <div class="bx--structured-list-row bx--structured-list-row--header-row">
+        <div class="bx--structured-list-th">Rating</div>
+        <div class="bx--structured-list-th">Name</div>
+      </div>
+    </div>
+
+    <!-- body -->
+    <div class="bx--structured-list-tbody bx--col-span-4">
+      <ng-container *ngIf="heroes$ | async as heroes">
+        <!-- todo: todo: issue-44 -- shrd-ui-toh-heroes-card -->
+        <label
+          *ngFor="let hero of heroes; trackBy: trackByHero; let i = index"
+          class="bx--structured-list-row"
+        >
+          <div
+            class="bx--structured-list-td bx--structured-list-content--nowrap"
+            [innerText]="hero.rating"
+          ></div>
+          <div class="bx--structured-list-td" [innerText]="hero.name" (click)="select(hero)"></div>
+        </label>
+      </ng-container>
+    </div>
+  </section>
 </ng-template>

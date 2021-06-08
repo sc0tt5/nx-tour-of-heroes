@@ -9,6 +9,7 @@ import { routerSelectors } from './router.selectors';
 @Injectable({ providedIn: 'root' })
 export class RouterFacade {
   params$ = this.store.select(routerSelectors.getParams);
+  url$ = this.store.select(routerSelectors.getUrl);
 
   constructor(private store: Store<RouterState>) {}
 

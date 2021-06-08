@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 import { Hero } from '@nx-toh/shared/models';
-import { Field, FieldType } from '@nx-toh/shared/models';
+import { FieldType } from '@nx-toh/shared/models';
 
 @Component({
   selector: 'shrd-ui-toh-editor',
@@ -13,18 +13,25 @@ import { Field, FieldType } from '@nx-toh/shared/models';
 })
 export class HeroesEditorComponent implements OnInit {
   @Input() hero: Hero;
+
   @Output() cancel = new EventEmitter();
   @Output() edit = new EventEmitter();
   @Output() save = new EventEmitter();
 
   editorHeader: string;
   fieldset = [];
+  formIsValid: boolean;
   heroToSave: Hero;
 
   ngOnInit(): void {
     this.editorHeader = this.hero ? this.hero.name : 'Create a new hero';
     this.heroesFieldset = this.hero;
     this.heroToSave = { ...this.heroToSave, ...this.hero };
+  }
+
+  setFormValidation(valid: boolean): void {
+    console.log({ valid });
+    this.formIsValid = valid;
   }
 
   closeEditor(): void {
@@ -47,7 +54,7 @@ export class HeroesEditorComponent implements OnInit {
       this.fieldset.push({
         name: 'id',
         type: FieldType.TEXTFIELD,
-        label: 'id:',
+        label: 'Id',
         value: hero ? hero.id : null,
         disabled: true
       });
@@ -57,16 +64,16 @@ export class HeroesEditorComponent implements OnInit {
       {
         name: 'name',
         type: FieldType.TEXTFIELD,
-        label: 'name:',
-        placeholder: 'hero name',
+        label: 'Name',
+        placeholder: 'Hero name',
         value: hero ? hero.name : null,
         required: true
       },
       {
         name: 'rating',
         type: FieldType.NUMBER,
-        label: 'rating:',
-        placeholder: 'hero rating',
+        label: 'Rating',
+        placeholder: 'Hero rating',
         value: hero ? hero.rating : null,
         required: true
       }

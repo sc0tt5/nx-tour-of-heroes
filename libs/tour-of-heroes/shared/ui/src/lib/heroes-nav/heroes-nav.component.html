@@ -1,6 +1,53 @@
-<!-- todo: improve this -->
-<nav>
-  <a (click)="goToHeroSearch()" [ngClass]="{ active: currentRoute === HERO_SEARCH }">Dashboard</a>
-  <a (click)="goToHeroList()" [ngClass]="{ active: currentRoute === HERO_LIST }">Heroes</a>
-  <a (click)="goToHeroNew()" [ngClass]="{ active: currentRoute === HERO_NEW }">New Hero</a>
+<nav class="bx--header__nav">
+  <ul class="bx--header__menu-bar" role="menubar">
+    <li style="height: 100%">
+      <a
+        class="bx--header__menu-item"
+        [ngClass]="{ 'bx--header__menu-item--current': (url$ | async) === HERO_SEARCH }"
+        role="menuitem"
+        tabindex="0"
+        (click)="goToHeroSearch()"
+        >Dashboard</a
+      >
+    </li>
+    <li style="height: 100%">
+      <a
+        class="bx--header__menu-item"
+        [ngClass]="{ 'bx--header__menu-item--current': (url$ | async) === HERO_LIST }"
+        role="menuitem"
+        tabindex="1"
+        (click)="goToHeroList()"
+        >Heroes</a
+      >
+    </li>
+    <li style="height: 100%">
+      <a
+        class="bx--header__menu-item"
+        [ngClass]="{ 'bx--header__menu-item--current': (url$ | async) === HERO_NEW }"
+        role="menuitem"
+        tabindex="2"
+        (click)="goToHeroNew()"
+        >New Hero</a
+      >
+    </li>
+  </ul>
 </nav>
+
+<!-- todo: issue-44 -- side-nav  -->
+<!-- <nav
+  class="bx--side-nav__navigation bx--side-nav bx--side-nav--expanded"
+  aria-label="Side navigation"
+>
+  <ul class="bx--side-nav__items">
+    <li class="bx--side-nav__item">
+      <a href="javascript:void(0)" class="bx--side-nav__link"
+        ><span class="bx--side-nav__link-text">L0 link</span></a
+      >
+    </li>
+    <li class="bx--side-nav__item">
+      <a href="javascript:void(0)" class="bx--side-nav__link"
+        ><span class="bx--side-nav__link-text">L0 link</span></a
+      >
+    </li>
+  </ul>
+</nav> -->

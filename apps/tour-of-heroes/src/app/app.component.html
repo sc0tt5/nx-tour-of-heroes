@@ -1,2 +1,13 @@
+<!-- header and nav -->
 <shrd-ui-toh-header></shrd-ui-toh-header>
-<router-outlet (activate)="onActivate()"></router-outlet>
+
+<!-- main content -->
+<main>
+  <div class="bx--grid toh-main">
+    <div class="bx--row">
+      <div class="bx--offset-lg-4 bx--col-lg-8">
+        <router-outlet (activate)="onActivate()"></router-outlet>
+      </div>
+    </div>
+  </div>
+</main>

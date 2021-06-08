@@ -16,7 +16,9 @@ import { Field } from '@nx-toh/shared/models';
 export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() fieldset: Field[];
   @Input() readOnly = false;
+
   @Output() formValues = new EventEmitter();
+  @Output() formIsValid = new EventEmitter();
 
   public form: FormGroup;
   public formReady = false;
@@ -43,12 +45,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       this.form.addControl(field.name, this.initializeFormControl(field));
     });
 
-    this.form.valueChanges
-      .pipe(debounceTime(100))
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(data => {
-        this.formValues.emit(data);
-      });
+    this.form.valueChanges.pipe(debounceTime(100), takeUntil(this.unsubscribe$)).subscribe(data => {
+      this.formValues.emit(data);
+      this.formIsValid.emit(this.form.valid);
+    });
 
     this.formReady = true;
   }

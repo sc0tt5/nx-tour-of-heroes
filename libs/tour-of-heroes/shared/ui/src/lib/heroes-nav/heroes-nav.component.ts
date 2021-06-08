@@ -8,11 +8,12 @@ import { RouterFacade } from '@nx-toh/shared/utils';
   styleUrls: ['./heroes-nav.component.scss']
 })
 export class HeroesNavComponent {
-  HERO_LIST = ['heroes'];
-  HERO_NEW = ['hero', 'new'];
-  HERO_SEARCH = ['heroes', 'search'];
+  HERO_LIST = '/heroes';
+  HERO_NEW = '/hero/new';
+  HERO_SEARCH = '/heroes/search';
 
-  currentRoute: string[] = [];
+  currentRoute: string;
+  url$ = this.facade.url$;
 
   constructor(private facade: RouterFacade) {}
 
@@ -34,6 +35,6 @@ export class HeroesNavComponent {
   // todo: scenario for hero detail
 
   private goTo(): void {
-    this.facade.goTo(this.currentRoute);
+    this.facade.goTo([this.currentRoute]);
   }
 }

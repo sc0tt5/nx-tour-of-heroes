@@ -1,15 +1,24 @@
 <h2>Hero Search</h2>
 
-<input #searchBox id="search-box" (input)="search(searchBox.value)" />
+<div data-search role="search" class="bx--search bx--search--xl">
+  <input
+    #searchBox
+    class="bx--search-input"
+    type="text"
+    placeholder="Search"
+    (input)="search(searchBox.value)"
+  />
+</div>
 
-<ng-container *ngIf="heroes$ | async as heroes">
-  <ul class="search-result">
-    <li *ngFor="let hero of heroes; trackBy: trackByHero; let i = index">
-      <shrd-ui-toh-heroes-card
-        [name]="hero.name"
-        [rating]="hero.rating"
-        (selected)="select(hero)"
-      ></shrd-ui-toh-heroes-card>
-    </li>
-  </ul>
-</ng-container>
+<section class="bx--structured-list bx--structured-list--selection" data-structured-list>
+  <div class="bx--structured-list-tbody">
+    <ng-container *ngIf="heroes$ | async as heroes">
+      <label
+        *ngFor="let hero of heroes; trackBy: trackByHero; let i = index"
+        class="bx--structured-list-row"
+      >
+        <div class="bx--structured-list-td" [innerText]="hero.name" (click)="select(hero)"></div>
+      </label>
+    </ng-container>
+  </div>
+</section>
