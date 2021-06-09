@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { LoggerModule } from 'ngx-logger';
 
-import { HeroesHeaderModule } from '@nx-toh/tour-of-heroes/shared/ui';
+import { HeroesHeaderModule, HeroesMainModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { AppStoreModule } from './app.store.module';
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'tour-of-heroes' }),
     HeroesHeaderModule,
+    HeroesMainModule,
     HttpClientModule,
     LoggerModule.forRoot({
       serverLoggingUrl: `${environment.apiUrl}/log`,

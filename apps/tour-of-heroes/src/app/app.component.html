@@ -2,12 +2,6 @@
 <shrd-ui-toh-header></shrd-ui-toh-header>
 
 <!-- main content -->
-<main>
-  <div class="bx--grid toh-main">
-    <div class="bx--row">
-      <div class="bx--offset-lg-4 bx--col-lg-8">
-        <router-outlet (activate)="onActivate()"></router-outlet>
-      </div>
-    </div>
-  </div>
-</main>
+<shrd-ui-toh-main>
+  <router-outlet (activate)="onActivate()"></router-outlet>
+</shrd-ui-toh-main>
