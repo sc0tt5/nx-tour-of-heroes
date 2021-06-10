@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ContentLoaderModule } from '@nx-toh/shared/ui';
-import { HeroesService } from '@nx-toh/tour-of-heroes/shared/data-access';
 import { HeroesEditorModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
 import { HeroDetailComponent } from './detail.component';
@@ -24,7 +23,6 @@ const ROUTES: Routes = [
 
 @NgModule({
   imports: [CommonModule, ContentLoaderModule, HeroesEditorModule, RouterModule.forChild(ROUTES)],
-  declarations: [HeroDetailComponent],
-  providers: [HeroDetailResolver, HeroesService]
+  declarations: [HeroDetailComponent]
 })
 export class HeroDetailModule {}

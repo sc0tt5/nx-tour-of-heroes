@@ -24,7 +24,7 @@ const ROUTES: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(ROUTES, {
-      initialNavigation: 'enabled', // will become enabledBlocking in ng11
+      initialNavigation: 'enabledBlocking',
       scrollPositionRestoration: 'enabled'
     }),
     RouterStoreModule

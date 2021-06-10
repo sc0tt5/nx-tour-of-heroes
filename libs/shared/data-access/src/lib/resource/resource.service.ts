@@ -33,7 +33,7 @@ export class ResourceService<T extends Resource> {
    */
   create(item: T): Observable<T> {
     return this.http.post<T>(this.endpoint, item).pipe(
-      delay(200), // for demonstration purposes only, simulate slower server response
+      delay(500), // for demonstration purposes only, simulate slower server response
       map(data => data as T),
       catchError(this.handleError)
     );
@@ -45,7 +45,7 @@ export class ResourceService<T extends Resource> {
    */
   update(item: T): Observable<T> {
     return this.http.put<T>(`${this.endpoint}/${item.param || item.id}`, item).pipe(
-      delay(200), // for demonstration purposes only, simulate slower server response
+      delay(500), // for demonstration purposes only, simulate slower server response
       map(data => data as T),
       catchError(this.handleError)
     );
@@ -114,7 +114,7 @@ export class ResourceService<T extends Resource> {
    */
   delete(id: string | number): Observable<any> {
     return this.http.delete(`${this.endpoint}/${id}`).pipe(
-      delay(200), // for demonstration purposes only, simulate slower server response
+      delay(500), // for demonstration purposes only, simulate slower server response
       catchError(this.handleError)
     );
   }
@@ -125,6 +125,6 @@ export class ResourceService<T extends Resource> {
    */
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.log('error from the resource service', error);
-    return throwError(error); // NGXLogger will automatically trigger here
+    return throwError(() => new HttpErrorResponse(error)); // NGXLogger will automatically trigger here
   }
 }

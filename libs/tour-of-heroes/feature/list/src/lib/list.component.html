@@ -1,11 +1,11 @@
+<h2>Heroes</h2>
+
 <shrd-ui-content-loader
   [pageLoaded]="heroesLoaded$ | async"
   [templateRef]="heroList"
 ></shrd-ui-content-loader>
 
 <ng-template #heroList>
-  <h2>Heroes</h2>
-
   <!-- todo: issue-44 -- delete button and add modal prompt  -->
   <section class="bx--structured-list bx--structured-list--selection bx--css-grid">
     <!-- head -->
