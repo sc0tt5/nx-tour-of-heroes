@@ -49,17 +49,6 @@ export class HeroesEditorComponent implements OnInit {
   }
 
   private set heroesFieldset(hero: Hero) {
-    // hero-detail, show id, exclude for hero-new
-    if (hero) {
-      this.fieldset.push({
-        name: 'id',
-        type: FieldType.TEXTFIELD,
-        label: 'Id',
-        value: hero ? hero.id : null,
-        disabled: true
-      });
-    }
-
     this.fieldset.push(
       {
         name: 'name',

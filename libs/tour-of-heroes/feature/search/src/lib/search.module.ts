@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { CloseModule, SearchModule } from '@carbon/icons-angular';
 
 import { HeroesCardModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
@@ -14,7 +16,14 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, HeroesCardModule, RouterModule.forChild(ROUTES)],
+  imports: [
+    CloseModule,
+    CommonModule,
+    FormsModule,
+    HeroesCardModule,
+    RouterModule.forChild(ROUTES),
+    SearchModule
+  ],
   declarations: [HeroSearchComponent]
 })
 export class HeroSearchModule {}

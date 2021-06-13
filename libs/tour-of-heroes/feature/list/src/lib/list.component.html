@@ -6,7 +6,6 @@
 ></shrd-ui-content-loader>
 
 <ng-template #heroList>
-  <!-- todo: issue-44 -- delete button and add modal prompt  -->
   <section class="bx--structured-list bx--structured-list--selection bx--css-grid">
     <!-- head -->
     <div class="bx--structured-list-thead">
@@ -20,17 +19,19 @@
     <div class="bx--structured-list-tbody bx--col-span-4">
       <ng-container *ngIf="heroes$ | async as heroes">
         <!-- todo: todo: issue-44 -- shrd-ui-toh-heroes-card -->
-        <label
+        <div
           *ngFor="let hero of heroes; trackBy: trackByHero; let i = index"
           class="bx--structured-list-row"
         >
-          <div
-            class="bx--structured-list-td bx--structured-list-content--nowrap"
-            [innerText]="hero.rating"
-          ></div>
+          <div class="bx--structured-list-td" [innerText]="hero.rating"></div>
           <div class="bx--structured-list-td" [innerText]="hero.name" (click)="select(hero)"></div>
-        </label>
+          <div class="bx--structured-list-td">
+            <svg ibmIconClose class="icon-close" size="24" (click)="showModal(hero)"></svg>
+          </div>
+        </div>
       </ng-container>
     </div>
   </section>
 </ng-template>
+
+<shrd-ui-modal [show]="heroToDelete" (confirm)="delete($event)"></shrd-ui-modal>

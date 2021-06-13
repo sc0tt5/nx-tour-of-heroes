@@ -1,7 +1,7 @@
 <nav class="bx--header__nav">
   <ul class="bx--header__menu-bar">
     <ng-container *ngFor="let navigationItem of navigationItems">
-      <li style="height: 100%">
+      <li>
         <a
           class="bx--header__menu-item"
           [ngClass]="{ 'bx--header__menu-item--current': (url$ | async) === navigationItem.href }"
@@ -13,21 +13,20 @@
   </ul>
 </nav>
 
-<!-- todo: issue-44 -- side-nav  -->
-<!-- <nav
-  class="bx--side-nav__navigation bx--side-nav bx--side-nav--expanded"
-  aria-label="Side navigation"
->
+<!-- todo: issue-44 -- shrd-ui-toh-side-nav  -->
+<!-- <nav class="bx--side-nav__navigation">
   <ul class="bx--side-nav__items">
-    <li class="bx--side-nav__item">
-      <a href="javascript:void(0)" class="bx--side-nav__link"
-        ><span class="bx--side-nav__link-text">L0 link</span></a
-      >
-    </li>
-    <li class="bx--side-nav__item">
-      <a href="javascript:void(0)" class="bx--side-nav__link"
-        ><span class="bx--side-nav__link-text">L0 link</span></a
-      >
-    </li>
+    <ng-container *ngFor="let navigationItem of navigationItems">
+      <li class="bx--side-nav__item">
+        <a
+          class="bx--side-nav__link"
+          [ngClass]="{ 'bx--side-nav__link--current': (url$ | async) === navigationItem.href }"
+          [href]="navigationItem.href"
+          (click)="navigate($event, navigationItem)"
+          [innerHtml]="navigationItem.name"
+        >
+        </a>
+      </li>
+    </ng-container>
   </ul>
 </nav> -->

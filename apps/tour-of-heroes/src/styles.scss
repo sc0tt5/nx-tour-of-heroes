@@ -1,57 +1,30 @@
+// ?? https://medium.com/carbondesign/minimal-css-with-carbon-b0c089ccfa71
+
+@import 'carbon-components/scss/globals/scss/theme';
+// cds comes with 4 themes
+// $carbon--theme: $carbon--theme--g10;
+$carbon--theme: $carbon--theme--g90;
+// $carbon--theme: $carbon--theme--g100;
+@include carbon--theme();
+// todo: issue-44 -- create custom theme
+// ?? https://www.carbondesignsystem.com/guidelines/themes/overview/#customizing-a-theme
+
+// future prefix will be cds
 // $prefix: 'cds';
 
 $feature-flags: (
   grid-columns-16: true
 );
 
+$carbon--font-display: swap;
+
+// $css--font-face: true;
+// $css--helpers: true;
+// $css--body: true;
+// $css--use-layer: true;
+// $css--reset: true;
+// $css--typography: true;
+// $css--plex: true;
+
 @import 'carbon-components/scss/globals/scss/styles.scss';
 @import 'carbon-components/scss/globals/grid/grid';
-
-$angular: #b52e31;
-$angular-light: #eb7a7c;
-$primary: $angular;
-$primary-light: $angular-light;
-$link: $primary;
-
-/** Variables **/
-
-/* angular */
-/* todo: move these to main variables below */
-$angular: #b52e31;
-$angular-light: #eb7a7c;
-$primary: $angular;
-$primary-light: $angular-light;
-$link: $primary; // #00b3e6; // #ff4081;
-$shade-light: #fafafa;
-
-/** primary **/
-$color-primary: #3880ff;
-$color-primary-contrast: #ffffff;
-$color-primary-shade: #3171e0;
-$color-primary-tint: #4c8dff;
-
-/** secondary **/
-$color-secondary: #3dc2ff;
-$color-secondary-contrast: #ffffff;
-$color-secondary-shade: #36abe0;
-$color-secondary-tint: #50c8ff;
-
-/** dark **/
-$color-dark: #222428;
-$color-dark-contrast: #ffffff;
-$color-dark-shade: #1e2023;
-$color-dark-tint: #383a3e;
-
-/** medium **/
-$color-medium: #92949c;
-$color-medium-contrast: #ffffff;
-$color-medium-shade: #808289;
-$color-medium-tint: #9d9fa6;
-
-/** light **/
-$color-light: #f4f5f8;
-$color-light-contrast: #000000;
-$color-light-shade: #d7d8da;
-$color-light-tint: #f5f6f9;
-
-/* cds overrides */

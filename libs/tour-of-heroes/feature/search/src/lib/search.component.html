@@ -1,13 +1,23 @@
 <h2>Hero Search</h2>
 
 <div data-search role="search" class="bx--search bx--search--xl">
+  <div class="bx--search-magnifier">
+    <svg ibmIconSearch size="16" class="bx--search-magnifier-icon"></svg>
+  </div>
   <input
-    #searchBox
     class="bx--search-input"
     type="text"
     placeholder="Search"
-    (input)="search(searchBox.value)"
+    [(ngModel)]="searchBoxValue"
+    (input)="search()"
   />
+  <button
+    class="bx--search-close"
+    [ngClass]="{ 'bx--search-close--hidden': !searchBoxValue }"
+    (click)="clearSearch()"
+  >
+    <svg ibmIconClose size="16"></svg>
+  </button>
 </div>
 
 <section class="bx--structured-list bx--structured-list--selection" data-structured-list>
