@@ -16,20 +16,17 @@
     </div>
 
     <!-- body -->
-    <div class="bx--structured-list-tbody bx--col-span-4">
-      <ng-container *ngIf="heroes$ | async as heroes">
-        <!-- todo: todo: issue-44 -- shrd-ui-toh-heroes-card -->
-        <div
-          *ngFor="let hero of heroes; trackBy: trackByHero; let i = index"
-          class="bx--structured-list-row"
-        >
-          <div class="bx--structured-list-td" [innerText]="hero.rating"></div>
-          <div class="bx--structured-list-td" [innerText]="hero.name" (click)="select(hero)"></div>
-          <div class="bx--structured-list-td">
-            <svg ibmIconClose class="icon-close" size="24" (click)="showModal(hero)"></svg>
-          </div>
-        </div>
-      </ng-container>
+    <div *ngIf="heroes$ | async as heroes" class="bx--structured-list-tbody bx--col-span-4">
+      <!-- todo: todo: issue-44 -- shrd-ui-toh-card <----------------------------------------stopped here -->
+
+      <shrd-ui-toh-card
+        *ngFor="let hero of heroes; trackBy: trackByHero; let i = index"
+        class="bx--structured-list-row"
+        [name]="hero.name"
+        [rating]="hero.rating"
+        (selected)="select(hero)"
+        (deleted)="showModal(hero)"
+      ></shrd-ui-toh-card>
     </div>
   </section>
 </ng-template>

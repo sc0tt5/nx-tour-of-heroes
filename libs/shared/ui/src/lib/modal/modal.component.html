@@ -3,7 +3,7 @@
   <div class="bx--modal-container bx--modal-container--xs">
     <div class="bx--modal-header">
       <!-- heading -->
-      <p class="bx--modal-header__heading bx--type-beta" [innerText]="header"></p>
+      <p class="bx--modal-header__heading bx--type-beta" [innerHTML]="header"></p>
 
       <!-- modal close button (X) -->
       <button class="bx--modal-close" (click)="closeModal()">
@@ -12,7 +12,7 @@
 
       <!-- message -->
       <div class="bx--modal-content">
-        <p [innerText]="message"></p>
+        <p [innerHTML]="message"></p>
       </div>
     </div>
 
@@ -21,12 +21,12 @@
       <button
         class="bx--btn bx--btn--secondary"
         (click)="closeModal()"
-        [innerText]="secondaryBtn"
+        [innerHTML]="secondaryBtn"
       ></button>
       <button
         class="bx--btn bx--btn--danger"
         (click)="confirmAction()"
-        [innerText]="primaryBtn"
+        [innerHTML]="primaryBtn"
       ></button>
     </div>
   </div>

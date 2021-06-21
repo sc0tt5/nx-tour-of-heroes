@@ -17,7 +17,7 @@
     <h2 [innerHTML]="hero.name"></h2>
     <shrd-ui-toh-editor
       [hero]="hero"
-      (cancel)="closeEditor()"
+      (cancel)="showModal(hero)"
       (save)="updateHero()"
       (edit)="onHeroChange($event)"
     ></shrd-ui-toh-editor>
@@ -28,8 +28,18 @@
 <ng-template #heroNew>
   <h2>Create new hero</h2>
   <shrd-ui-toh-editor
-    (cancel)="closeEditor()"
+    (cancel)="showModal()"
     (save)="saveHero()"
     (edit)="onHeroChange($event)"
   ></shrd-ui-toh-editor>
 </ng-template>
+
+<!-- modal for cancel button -->
+<shrd-ui-modal
+  primaryBtn="Abandon changes"
+  secondaryBtn="Continue editing"
+  header="Abandon changes"
+  message="Continue editing or abandon changes?"
+  [show]="heroToCancel"
+  (confirm)="closeEditor()"
+></shrd-ui-modal>

@@ -1,4 +1,4 @@
-import { NavigationItem } from './heroes-nav.interface';
+import { NavigationItem } from './nav.interface';
 
 const HERO_LIST: NavigationItem = {
   href: '/heroes',

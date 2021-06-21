@@ -118,13 +118,11 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "10kb"
                 }
               ]
             }
@@ -175,7 +173,10 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "sourceMap": false,
-            "optimization": false,
+            "optimization": {
+              "scripts": false,
+              "styles": true
+            },
             "outputHashing": "media",
             "outputPath": "dist/tour-of-heroes/server",
             "main": "apps/tour-of-heroes/server.ts",

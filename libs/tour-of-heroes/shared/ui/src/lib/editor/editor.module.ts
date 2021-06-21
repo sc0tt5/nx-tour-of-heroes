@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { DynamicReactiveFormModule } from '@nx-toh/shared/ui';
 
-import { HeroesEditorComponent } from './heroes-editor.component';
+import { EditorComponent } from './editor.component';
 
 @NgModule({
-  declarations: [HeroesEditorComponent],
+  declarations: [EditorComponent],
   imports: [CommonModule, DynamicReactiveFormModule],
-  exports: [HeroesEditorComponent]
+  exports: [EditorComponent]
 })
-export class HeroesEditorModule {}
+export class EditorModule {}

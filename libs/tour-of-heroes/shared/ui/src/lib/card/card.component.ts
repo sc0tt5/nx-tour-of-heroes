@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'shrd-ui-toh-heroes-card',
-  templateUrl: './heroes-card.component.html',
-  styleUrls: ['./heroes-card.component.scss']
+  selector: 'shrd-ui-toh-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.scss']
 })
-export class HeroesCardComponent {
+export class CardComponent {
   @Input() name: string;
   @Input() rating: number;
   @Output() deleted = new EventEmitter();

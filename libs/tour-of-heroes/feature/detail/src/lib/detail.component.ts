@@ -13,6 +13,7 @@ import { HeroDetailFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 export class HeroDetailComponent implements OnInit, OnDestroy {
   hero$: Observable<Hero>;
   heroLoaded$: Observable<boolean>;
+  heroToCancel: Hero;
   params$: Observable<boolean>;
 
   private heroToSave: Hero;
@@ -39,6 +40,14 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
   saveHero(): void {
     this.facade.saveHero(this.heroToSave);
+  }
+
+  showModal(hero?: Hero): void {
+    this.heroToCancel = hero || this.heroToSave; // todo: fix cd for second try
+
+    if (!this.heroToCancel) {
+      this.closeEditor();
+    }
   }
 
   updateHero(): void {

@@ -6,12 +6,12 @@ import { FieldType } from '@nx-toh/shared/models';
 
 @Component({
   selector: 'shrd-ui-toh-editor',
-  templateUrl: './heroes-editor.component.html',
-  styleUrls: ['./heroes-editor.component.scss'],
+  templateUrl: './editor.component.html',
+  styleUrls: ['./editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None // required to apply custom styles to form
 })
-export class HeroesEditorComponent implements OnInit {
+export class EditorComponent implements OnInit {
   @Input() hero: Hero;
 
   @Output() cancel = new EventEmitter();

@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { RouterStoreModule } from '@nx-toh/shared/utils';
 
-import { HeroesNavComponent } from './heroes-nav.component';
+import { NavComponent } from './nav.component';
 
 @NgModule({
   imports: [CommonModule, RouterStoreModule],
-  declarations: [HeroesNavComponent],
-  exports: [HeroesNavComponent]
+  declarations: [NavComponent],
+  exports: [NavComponent]
 })
-export class HeroesNavModule {}
+export class NavModule {}

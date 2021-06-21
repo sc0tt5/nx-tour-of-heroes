@@ -3,6 +3,7 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
 @Component({
   selector: 'shrd-ui-modal',
   templateUrl: './modal.component.html',
+  styleUrls: ['modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent<T> {

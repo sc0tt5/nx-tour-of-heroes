@@ -1,7 +1,9 @@
 // ?? https://medium.com/carbondesign/minimal-css-with-carbon-b0c089ccfa71
 
+// todo: fix theme
 @import 'carbon-components/scss/globals/scss/theme';
 // cds comes with 4 themes
+// default is "white
 // $carbon--theme: $carbon--theme--g10;
 $carbon--theme: $carbon--theme--g90;
 // $carbon--theme: $carbon--theme--g100;
@@ -26,5 +28,14 @@ $carbon--font-display: swap;
 // $css--typography: true;
 // $css--plex: true;
 
-@import 'carbon-components/scss/globals/scss/styles.scss';
-@import 'carbon-components/scss/globals/grid/grid';
+// @import 'carbon-components/scss/globals/scss/styles.scss';
+// @import 'carbon-components/scss/globals/grid/grid';
+
+// @import 'carbon-components/scss/globals/scss/css--reset';
+// @import 'carbon-components/scss/globals/scss/css--body';
+// @import 'carbon-components/scss/globals/scss/typography';
+@import 'carbon-components/scss/globals/scss/css--font-face';
+// @import 'carbon-components/scss/globals/scss/styles.scss';
+
+// if replace fonts
+// font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CloseModule, SearchModule } from '@carbon/icons-angular';
 
-import { HeroesCardModule } from '@nx-toh/tour-of-heroes/shared/ui';
+import { CardModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
 import { HeroSearchComponent } from './search.component';
 
@@ -20,7 +20,7 @@ const ROUTES: Routes = [
     CloseModule,
     CommonModule,
     FormsModule,
-    HeroesCardModule,
+    CardModule,
     RouterModule.forChild(ROUTES),
     SearchModule
   ],

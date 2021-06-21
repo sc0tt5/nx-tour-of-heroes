@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CloseModule } from '@carbon/icons-angular';
 
 import { ContentLoaderModule, ModalModule } from '@nx-toh/shared/ui';
-import { HeroesCardModule } from '@nx-toh/tour-of-heroes/shared/ui';
+import { CardModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
 import { HeroListComponent } from './list.component';
 import { HeroListResolver } from './list.resolver';
@@ -19,10 +18,9 @@ const ROUTES: Routes = [
 
 @NgModule({
   imports: [
-    CloseModule,
     CommonModule,
     ContentLoaderModule,
-    HeroesCardModule,
+    CardModule,
     ModalModule,
     RouterModule.forChild(ROUTES)
   ],

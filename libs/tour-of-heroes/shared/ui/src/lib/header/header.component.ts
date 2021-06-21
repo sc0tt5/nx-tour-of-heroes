@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { NAV } from '../heroes-nav/heroes-nav.constants';
+import { NAV } from '../nav/nav.constants';
 
 @Component({
   selector: 'shrd-ui-toh-header',
-  templateUrl: './heroes-header.component.html',
-  styleUrls: ['./heroes-header.component.scss'],
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeroesHeaderComponent {
+export class HeaderComponent {
   href: string = NAV.HERO_SEARCH.href;
 }
