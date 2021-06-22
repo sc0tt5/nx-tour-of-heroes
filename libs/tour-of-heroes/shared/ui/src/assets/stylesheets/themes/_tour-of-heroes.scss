@@ -1,16 +1,30 @@
+// ?? full list of color usage here: https://www.carbondesignsystem.com/guidelines/color/usage/
+
 $toh--light: (
+  // primary interactive color, primary button
   interactive-01: #0062ff,
+  // secondary interactive color, secondary button
   interactive-02: #171717,
+  // tertiary button
   interactive-03: #0062ff,
+  // selected elements, active elements, accent icons
   interactive-04: #0062ff,
+  // page background
   ui-background: #ffffff,
+  // container background on ui-background
   ui-01: #f3f3f3,
+  // container background on ui-01 ("light" variant background)
   ui-02: #ffffff,
+  // subtle border - tertiary background
   ui-03: #dcdcdc,
+  // medium contrast border
   ui-04: #8c8c8c,
+  // high contrast border - emphasis elements
   ui-05: #171717,
-  text-01: #4f2a2a,
-  text-02: #b8cd6f,
+  // h2, etc.
+  text-01: #ff1100,
+  // #171717,
+  text-02: #565656,
   text-03: #8c8c8c,
   text-04: #ffffff,
   icon-01: #171717,
@@ -44,7 +58,14 @@ $toh--light: (
   selected-ui: #dcdcdc,
   hover-selected-ui: #cacaca,
   hover-danger: #ba1b23,
-  active-danger: #750e13,
+  // danger button background
+  danger-01: #dad41e,
+  // #da1e28,
+  // danger button variant
+  danger-02: #dad41e,
+  // #da1e28,
+  active-danger: #dad41e,
+  // #750e13,
   hover-row: #e5e5e5,
   visited-link: #8a3ffc,
   disabled-01: #f3f3f3,

@@ -2,11 +2,14 @@
 // Base
 //-------------------------
 
+// todo: issue-44 -- change to `cds--` and maybe the theme will apply everywhere.... ??
 // future prefix will be cds
 // $prefix: 'cds';
 
 $feature-flags: (
-  grid-columns-16: true
+  grid-columns-16: true,
+  enable-css-custom-properties: true,
+  // enable-v11-release: true
 );
 
 $carbon--font-display: swap;
@@ -16,9 +19,9 @@ If you want to go for an even smaller CSS artifact, then messing around with the
 $css- flags provided above would be a great start!
 */
 // * all flags are true by default
-// $css--font-face: true;
+// $css--font-face: false;
 $css--helpers: false;
-// $css--body: true;
+// $css--body: false;
 $css--use-layer: false;
 $css--reset: false;
 $css--typography: false;

@@ -1,7 +1,7 @@
 import * as chromeLauncher from 'chrome-launcher';
 import { LaunchedChrome } from 'chrome-launcher';
 import * as lighthouse from 'lighthouse';
-import * as ora from 'ora';
+import ora from 'ora';
 
 import { options, perfConfig } from './lighthouse.config';
 import { LighthouseReport } from './lighthouse.report';
