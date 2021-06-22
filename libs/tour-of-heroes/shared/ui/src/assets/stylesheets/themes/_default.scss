@@ -1,0 +1,14 @@
+@import 'carbon-components/scss/globals/scss/theme';
+@import 'tour-of-heroes';
+
+// cds comes with 4 themes
+// default is "white
+// $carbon--theme: $carbon--theme--g10;
+// $carbon--theme: $carbon--theme--g90;
+// $carbon--theme: $carbon--theme--g100;
+$carbon--theme: $toh--light;
+@include carbon--theme();
+
+// todo: issue-44 -- create custom theme
+// ?? https://www.carbondesignsystem.com/guidelines/themes/overview/#customizing-a-theme
+// ?? https://medium.com/carbondesign/minimal-css-with-carbon-b0c089ccfa71

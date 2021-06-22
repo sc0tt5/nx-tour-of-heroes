@@ -1,32 +1,4 @@
-// ?? https://medium.com/carbondesign/minimal-css-with-carbon-b0c089ccfa71
-
-// todo: fix theme
-@import 'carbon-components/scss/globals/scss/theme';
-// cds comes with 4 themes
-// default is "white
-// $carbon--theme: $carbon--theme--g10;
-$carbon--theme: $carbon--theme--g90;
-// $carbon--theme: $carbon--theme--g100;
-@include carbon--theme();
-// todo: issue-44 -- create custom theme
-// ?? https://www.carbondesignsystem.com/guidelines/themes/overview/#customizing-a-theme
-
-// future prefix will be cds
-// $prefix: 'cds';
-
-$feature-flags: (
-  grid-columns-16: true
-);
-
-$carbon--font-display: swap;
-
-// $css--font-face: true;
-// $css--helpers: true;
-// $css--body: true;
-// $css--use-layer: true;
-// $css--reset: true;
-// $css--typography: true;
-// $css--plex: true;
+@import 'main';
 
 // @import 'carbon-components/scss/globals/scss/styles.scss';
 // @import 'carbon-components/scss/globals/grid/grid';
@@ -34,7 +6,7 @@ $carbon--font-display: swap;
 // @import 'carbon-components/scss/globals/scss/css--reset';
 // @import 'carbon-components/scss/globals/scss/css--body';
 // @import 'carbon-components/scss/globals/scss/typography';
-@import 'carbon-components/scss/globals/scss/css--font-face';
+// @import 'carbon-components/scss/globals/scss/css--font-face';
 // @import 'carbon-components/scss/globals/scss/styles.scss';
 
 // if replace fonts

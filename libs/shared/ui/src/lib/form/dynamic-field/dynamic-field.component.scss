@@ -1,7 +1,8 @@
+@import 'components/form';
+@import 'components/select';
+@import 'components/text-area';
+@import 'components/text-input';
+
 .bx--form-item {
   margin-bottom: 2rem;
 }
-@import 'carbon-components/scss/components/form/form';
-@import 'carbon-components/scss/components/select/select';
-@import 'carbon-components/scss/components/text-area/text-area';
-@import 'carbon-components/scss/components/text-input/text-input';
