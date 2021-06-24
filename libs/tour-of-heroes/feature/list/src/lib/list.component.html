@@ -17,8 +17,6 @@
 
     <!-- body -->
     <div *ngIf="heroes$ | async as heroes" class="bx--structured-list-tbody bx--col-span-4">
-      <!-- todo: todo: issue-44 -- shrd-ui-toh-card <----------------------------------------stopped here -->
-
       <shrd-ui-toh-card
         *ngFor="let hero of heroes; trackBy: trackByHero; let i = index"
         class="bx--structured-list-row"
