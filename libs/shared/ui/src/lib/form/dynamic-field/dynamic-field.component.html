@@ -12,15 +12,18 @@
       <input
         type="number"
         class="bx--text-input"
-        [attr.data-invalid]="control.errors"
+        [attr.data-invalid]="(control.errors && control.touched) || null"
         [formControl]="control"
         [placeholder]="field.placeholder"
-        (errorHandler)="(control.errors)"
       />
 
       <!-- todo: nicer number controls  -->
       <!-- todo: errors component -->
-      <div *ngIf="control.errors" class="bx--form-requirement">{{ control.errors | json }}</div>
+      <div class="bx--form-requirement">
+        <ng-container *ngIf="control.errors?.required">
+          {{ field.label }} is required.
+        </ng-container>
+      </div>
     </ng-container>
 
     <!-- todo: radio -->
@@ -31,7 +34,10 @@
     <!-- select -->
     <ng-container *ngSwitchCase="3">
       <label for="field.name" class="bx--label" [innerHTML]="field.label"></label>
-      <div class="bx--select-input__wrapper" [attr.data-invalid]="control.errors">
+      <div
+        class="bx--select-input__wrapper"
+        [attr.data-invalid]="(control.errors && control.touched) || null"
+      >
         <select [formControl]="control" class="bx--select-input">
           <option
             *ngIf="field.placeholder"
@@ -50,7 +56,11 @@
       </div>
 
       <!-- todo: errors component -->
-      <div *ngIf="control.errors" class="bx--form-requirement">{{ control.errors | json }}</div>
+      <div class="bx--form-requirement">
+        <ng-container *ngIf="control.errors?.required">
+          {{ field.label }} is required.
+        </ng-container>
+      </div>
     </ng-container>
 
     <!-- textarea -->
@@ -69,14 +79,17 @@
       <input
         type="text"
         class="bx--text-input"
-        [attr.data-invalid]="control.errors"
+        [attr.data-invalid]="(control.errors && control.touched) || null"
         [formControl]="control"
         [placeholder]="field.placeholder"
-        (errorHandler)="(control.errors)"
       />
 
       <!-- todo: errors component -->
-      <div *ngIf="control.errors" class="bx--form-requirement">{{ control.errors | json }}</div>
+      <div class="bx--form-requirement">
+        <ng-container *ngIf="control.errors?.required">
+          {{ field.label }} is required.
+        </ng-container>
+      </div>
     </ng-container>
   </ng-container>
 </div>
