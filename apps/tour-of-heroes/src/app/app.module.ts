@@ -2,11 +2,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_ID, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { LoggerModule } from 'ngx-logger';
 
-import { HeroesHeaderModule } from '@nx-toh/tour-of-heroes/shared/ui';
+import { HeaderModule, MainModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -17,9 +16,9 @@ import { AppStoreModule } from './app.store.module';
   declarations: [AppComponent],
   imports: [
     AppRoutingModule,
-    BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'tour-of-heroes' }),
-    HeroesHeaderModule,
+    HeaderModule,
+    MainModule,
     HttpClientModule,
     LoggerModule.forRoot({
       serverLoggingUrl: `${environment.apiUrl}/log`,

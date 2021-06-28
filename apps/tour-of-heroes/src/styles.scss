@@ -1,71 +1,13 @@
-$angular: #b52e31;
-$angular-light: #eb7a7c;
-$primary: $angular;
-$primary-light: $angular-light;
-$link: $primary;
+@import 'main';
 
-/** Variables **/
+// @import 'carbon-components/scss/globals/scss/styles.scss';
+// @import 'carbon-components/scss/globals/grid/grid';
 
-/* angular */
-/* todo: move these to main variables below */
-$angular: #b52e31;
-$angular-light: #eb7a7c;
-$primary: $angular;
-$primary-light: $angular-light;
-$link: $primary; // #00b3e6; // #ff4081;
-$shade-light: #fafafa;
+// @import 'carbon-components/scss/globals/scss/css--reset';
+// @import 'carbon-components/scss/globals/scss/css--body';
+// @import 'carbon-components/scss/globals/scss/typography';
+// @import 'carbon-components/scss/globals/scss/css--font-face';
+// @import 'carbon-components/scss/globals/scss/styles.scss';
 
-/** primary **/
-$color-primary: #3880ff;
-$color-primary-contrast: #ffffff;
-$color-primary-shade: #3171e0;
-$color-primary-tint: #4c8dff;
-
-/** secondary **/
-$color-secondary: #3dc2ff;
-$color-secondary-contrast: #ffffff;
-$color-secondary-shade: #36abe0;
-$color-secondary-tint: #50c8ff;
-
-/** dark **/
-$color-dark: #222428;
-$color-dark-contrast: #ffffff;
-$color-dark-shade: #1e2023;
-$color-dark-tint: #383a3e;
-
-/** medium **/
-$color-medium: #92949c;
-$color-medium-contrast: #ffffff;
-$color-medium-shade: #808289;
-$color-medium-tint: #9d9fa6;
-
-/** light **/
-$color-light: #f4f5f8;
-$color-light-contrast: #000000;
-$color-light-shade: #d7d8da;
-$color-light-tint: #f5f6f9;
-
-/* Global Styles */
-
-h2,
-h3 {
-  color: $color-dark;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-}
-body {
-  margin: 2em;
-}
-body,
-input[text],
-button {
-  color: $color-dark;
-  font-family: Cambria, Georgia;
-}
-a {
-  cursor: pointer;
-}
-
-* {
-  font-family: Arial, Helvetica, sans-serif;
-}
+// if replace fonts
+// font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

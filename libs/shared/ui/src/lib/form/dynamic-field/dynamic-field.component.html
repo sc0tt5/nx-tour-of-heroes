@@ -1,4 +1,5 @@
-<div class="dynamic-field">
+<!-- <div class="dynamic-field"> -->
+<div class="bx--form-item">
   <ng-container [ngSwitch]="field.type">
     <!-- todo: checkbox -->
     <ng-container *ngSwitchCase="0">
@@ -7,15 +8,22 @@
 
     <!-- number -->
     <ng-container *ngSwitchCase="1">
-      <label for="field.name" [innerHTML]="field.label"></label>
+      <label for="field.name" class="bx--label" [innerHTML]="field.label"></label>
       <input
         type="number"
+        class="bx--text-input"
+        [attr.data-invalid]="(control.errors && control.touched) || null"
         [formControl]="control"
         [placeholder]="field.placeholder"
-        (errorHandler)="(control.errors)"
       />
+
+      <!-- todo: nicer number controls  -->
       <!-- todo: errors component -->
-      <div *ngIf="control.errors" class="dynamic-field__error">{{ control.errors | json }}</div>
+      <div class="bx--form-requirement">
+        <ng-container *ngIf="control.errors?.required">
+          {{ field.label }} is required.
+        </ng-container>
+      </div>
     </ng-container>
 
     <!-- todo: radio -->
@@ -25,38 +33,64 @@
 
     <!-- select -->
     <ng-container *ngSwitchCase="3">
-      <label for="field.name" [innerHTML]="field.label"></label>
-      <select [formControl]="control">
-        <option
-          *ngIf="field.placeholder"
-          [ngValue]="null"
-          [innerHTML]="field.placeholder"
-          disabled
-        ></option>
-        <option
-          *ngFor="let option of field.options"
-          [ngValue]="option"
-          [innerHTML]="option"
-        ></option>
-      </select>
+      <label for="field.name" class="bx--label" [innerHTML]="field.label"></label>
+      <div
+        class="bx--select-input__wrapper"
+        [attr.data-invalid]="(control.errors && control.touched) || null"
+      >
+        <select [formControl]="control" class="bx--select-input">
+          <option
+            *ngIf="field.placeholder"
+            class="bx--select-option"
+            [ngValue]="null"
+            [innerHTML]="field.placeholder"
+            disabled
+          ></option>
+          <option
+            *ngFor="let option of field.options"
+            class="bx--select-option"
+            [ngValue]="option"
+            [innerHTML]="option"
+          ></option>
+        </select>
+      </div>
+
+      <!-- todo: errors component -->
+      <div class="bx--form-requirement">
+        <ng-container *ngIf="control.errors?.required">
+          {{ field.label }} is required.
+        </ng-container>
+      </div>
     </ng-container>
 
     <!-- textarea -->
     <ng-container *ngSwitchCase="4">
-      <textarea type="text" [formControl]="control" [placeholder]="field.placeholder"></textarea>
+      <textarea
+        type="text"
+        class="bx--text-area"
+        [formControl]="control"
+        [placeholder]="field.placeholder"
+      ></textarea>
     </ng-container>
 
     <!-- input -->
     <ng-container *ngSwitchCase="5">
-      <label for="field.name" [innerHTML]="field.label"></label>
+      <label for="field.name" class="bx--label" [innerHTML]="field.label"></label>
       <input
         type="text"
+        class="bx--text-input"
+        [attr.data-invalid]="(control.errors && control.touched) || null"
         [formControl]="control"
         [placeholder]="field.placeholder"
-        (errorHandler)="(control.errors)"
       />
+
       <!-- todo: errors component -->
-      <div *ngIf="control.errors" class="dynamic-field__error">{{ control.errors | json }}</div>
+      <div class="bx--form-requirement">
+        <ng-container *ngIf="control.errors?.required">
+          {{ field.label }} is required.
+        </ng-container>
+      </div>
     </ng-container>
   </ng-container>
 </div>
+<!-- </div> -->

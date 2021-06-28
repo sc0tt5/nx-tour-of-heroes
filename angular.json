@@ -85,12 +85,12 @@
               "apps/tour-of-heroes/src/assets",
               {
                 "glob": "**/*",
-                "input": "../libs/shared/theme",
+                "input": "../libs/tour-of-heroes/shared/ui/src/assets",
                 "output": "./assets/"
               }
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/theme/src/lib/styles"]
+              "includePaths": ["libs/tour-of-heroes/shared/ui/src/assets/stylesheets"]
             },
             "styles": ["apps/tour-of-heroes/src/styles.scss"],
             "scripts": []
@@ -118,13 +118,11 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "10kb"
                 }
               ]
             }
@@ -175,13 +173,16 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "sourceMap": false,
-            "optimization": false,
+            "optimization": {
+              "scripts": false,
+              "styles": true
+            },
             "outputHashing": "media",
             "outputPath": "dist/tour-of-heroes/server",
             "main": "apps/tour-of-heroes/server.ts",
             "tsConfig": "apps/tour-of-heroes/tsconfig.server.json",
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/theme/src/lib/styles"]
+              "includePaths": ["libs/tour-of-heroes/shared/ui/src/assets/stylesheets"]
             },
             "externalDependencies": [
               "@nestjs/microservices",
@@ -235,9 +236,6 @@
             "browserTarget": "tour-of-heroes:build:production",
             "serverTarget": "tour-of-heroes:server:production",
             "routes": ["/heroes"]
-          },
-          "configurations": {
-            "production": {}
           }
         },
         "analyze": {
@@ -400,10 +398,7 @@
               "libs/shared/ui/tsconfig.spec.json",
               ".storybook/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/**"],
-            "stylePreprocessorOptions": {
-              "includePaths": ["libs/shared/theme/src/lib/styles/"]
-            }
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/**"]
           }
         },
         "test": {
@@ -630,10 +625,7 @@
               "libs/tour-of-heroes/shared/ui/tsconfig.lib.json",
               "libs/tour-of-heroes/shared/ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/**/*"],
-            "stylePreprocessorOptions": {
-              "includePaths": ["libs/tour-of-heroes/shared/theme/src/lib/styles/"]
-            }
+            "exclude": ["**/node_modules/**", "!libs/tour-of-heroes/shared/ui/**/*"]
           }
         },
         "test": {

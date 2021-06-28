@@ -12,6 +12,7 @@ import { HeroSearchFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 export class HeroSearchComponent implements OnInit, OnDestroy {
   heroes$: Observable<Hero[]>;
   heroesLoaded$: Observable<boolean>;
+  searchBoxValue = '';
 
   constructor(private facade: HeroSearchFacade) {}
 
@@ -24,8 +25,13 @@ export class HeroSearchComponent implements OnInit, OnDestroy {
     this.facade.resetSearchTerm();
   }
 
-  search(name: string): void {
-    this.facade.searchHeroes(name);
+  clearSearch(): void {
+    this.searchBoxValue = '';
+    this.facade.resetSearchTerm();
+  }
+
+  search(): void {
+    this.facade.searchHeroes(this.searchBoxValue);
   }
 
   select(hero: Hero): void {

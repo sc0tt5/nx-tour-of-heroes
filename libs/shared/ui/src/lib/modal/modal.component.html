@@ -1,0 +1,33 @@
+<!-- modal -->
+<div class="bx--modal bx--modal--danger" [ngClass]="{ 'is-visible': modalIsVisible }">
+  <div class="bx--modal-container bx--modal-container--xs">
+    <div class="bx--modal-header">
+      <!-- heading -->
+      <p class="bx--modal-header__heading bx--type-beta" [innerHTML]="header"></p>
+
+      <!-- modal close button (X) -->
+      <button class="bx--modal-close" (click)="closeModal()">
+        <svg ibmIconClose size="20"></svg>
+      </button>
+
+      <!-- message -->
+      <div class="bx--modal-content">
+        <p [innerHTML]="message"></p>
+      </div>
+    </div>
+
+    <!-- buttons - cancel and delete-->
+    <div class="bx--modal-footer">
+      <button
+        class="bx--btn bx--btn--secondary"
+        (click)="closeModal()"
+        [innerHTML]="secondaryBtn"
+      ></button>
+      <button
+        class="bx--btn bx--btn--danger"
+        (click)="confirmAction()"
+        [innerHTML]="primaryBtn"
+      ></button>
+    </div>
+  </div>
+</div>

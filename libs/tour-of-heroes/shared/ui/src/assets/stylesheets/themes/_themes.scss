@@ -1,0 +1,26 @@
+@import 'carbon-components/scss/globals/scss/theme';
+@import 'tour-of-heroes';
+
+.toh-light-theme {
+  @include carbon--theme($toh--light, true);
+}
+
+.light-theme {
+  @include carbon--theme($carbon--theme--white, true);
+}
+
+.dark-theme {
+  @include carbon--theme($carbon--theme--g90, true);
+}
+
+.darker-theme {
+  @include carbon--theme($carbon--theme--g100, true);
+}
+
+// cds comes with 4 themes
+// default is "white
+// $carbon--theme: $carbon--theme--g10;
+// $carbon--theme: $carbon--theme--g90;
+// $carbon--theme: $carbon--theme--g100;
+// $carbon--theme: $toh--light; // custom theme
+// @include carbon--theme();

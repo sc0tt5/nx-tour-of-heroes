@@ -12,6 +12,7 @@ import { HeroListFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 export class HeroListComponent implements OnInit {
   heroes$: Observable<Hero[]>;
   heroesLoaded$: Observable<boolean>;
+  heroToDelete: Hero;
 
   constructor(private facade: HeroListFacade) {}
 
@@ -20,8 +21,12 @@ export class HeroListComponent implements OnInit {
     this.heroesLoaded$ = this.facade.heroesLoaded$;
   }
 
-  delete(id: number): void {
-    this.facade.removeHero(id);
+  delete(hero: Hero): void {
+    this.facade.removeHero(hero.id);
+  }
+
+  showModal(hero: Hero): void {
+    this.heroToDelete = hero;
   }
 
   select(hero: Hero): void {

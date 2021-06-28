@@ -1,3 +1,4 @@
-export * from './lib/heroes-card/heroes-card.module';
-export * from './lib/heroes-editor/heroes-editor.module';
-export * from './lib/heroes-header/heroes-header.module';
+export * from './lib/card/card.module';
+export * from './lib/editor/editor.module';
+export * from './lib/header/header.module';
+export * from './lib/main/main.module';

@@ -1,0 +1,5 @@
+@import 'base/motion';
+
+.fade-in {
+  @include carbon--motion(entrance, productive);
+}

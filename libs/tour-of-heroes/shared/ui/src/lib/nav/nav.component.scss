@@ -1,0 +1,23 @@
+@import 'layout/ui-shell';
+
+:host {
+  height: 100%;
+}
+
+a.bx--header__menu-item {
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+
+  &:focus {
+    border-color: transparent;
+    user-select: none;
+  }
+
+  &.bx--header__menu-item--current {
+    border-bottom: 3px solid #4589ff !important; // bug? ::after
+  }
+}
+
+li {
+  height: 100%;
+}

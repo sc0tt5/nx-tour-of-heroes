@@ -2,9 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ContentLoaderModule } from '@nx-toh/shared/ui';
-import { HeroesService } from '@nx-toh/tour-of-heroes/shared/data-access';
-import { HeroesCardModule } from '@nx-toh/tour-of-heroes/shared/ui';
+import { ContentLoaderModule, ModalModule } from '@nx-toh/shared/ui';
+import { CardModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
 import { HeroListComponent } from './list.component';
 import { HeroListResolver } from './list.resolver';
@@ -18,8 +17,13 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ContentLoaderModule, HeroesCardModule, RouterModule.forChild(ROUTES)],
-  declarations: [HeroListComponent],
-  providers: [HeroListResolver, HeroesService]
+  imports: [
+    CommonModule,
+    ContentLoaderModule,
+    CardModule,
+    ModalModule,
+    RouterModule.forChild(ROUTES)
+  ],
+  declarations: [HeroListComponent]
 })
 export class HeroListModule {}
