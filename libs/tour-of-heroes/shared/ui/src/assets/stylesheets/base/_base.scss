@@ -2,7 +2,7 @@
 // Base
 //-------------------------
 
-// todo: issue-44 -- change to `cds--` and maybe the theme will apply everywhere.... ??
+// todo: issue-44 -- change to `cds--`
 // future prefix will be cds
 // $prefix: 'cds';
 
@@ -16,9 +16,10 @@ $carbon--font-display: swap;
 
 /*
 If you want to go for an even smaller CSS artifact, then messing around with the
-$css- flags provided above would be a great start!
+$css- flags would be a great start!
+
+All flags are true by default.
 */
-// * all flags are true by default
 // $css--font-face: false;
 $css--helpers: false;
 // $css--body: false;

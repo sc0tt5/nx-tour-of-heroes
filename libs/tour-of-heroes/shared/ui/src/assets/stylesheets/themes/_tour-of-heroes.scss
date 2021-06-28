@@ -1,4 +1,7 @@
-// ?? full list of color usage here: https://www.carbondesignsystem.com/guidelines/color/usage/
+//-------------------------
+// Custom Theme
+// --> full list of color usage here: https://www.carbondesignsystem.com/guidelines/color/usage/
+//-------------------------
 
 $toh--light: (
   // primary interactive color, primary button
@@ -22,8 +25,7 @@ $toh--light: (
   // high contrast border - emphasis elements
   ui-05: #171717,
   // h2, etc.
-  text-01: #ff1100,
-  // #171717,
+  text-01: #171717,
   text-02: #565656,
   text-03: #8c8c8c,
   text-04: #ffffff,
@@ -59,13 +61,10 @@ $toh--light: (
   hover-selected-ui: #cacaca,
   hover-danger: #ba1b23,
   // danger button background
-  danger-01: #dad41e,
-  // #da1e28,
+  danger-01: #da1e28,
   // danger button variant
-  danger-02: #dad41e,
-  // #da1e28,
-  active-danger: #dad41e,
-  // #750e13,
+  danger-02: #da1e28,
+  active-danger: #750e13,
   hover-row: #e5e5e5,
   visited-link: #8a3ffc,
   disabled-01: #f3f3f3,
