@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
+import { ModalComponent } from '@nx-toh/shared/ui';
 import { HeroListFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 
 @Component({
@@ -10,9 +11,10 @@ import { HeroListFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroListComponent implements OnInit {
+  @ViewChild('deleteModal') deleteModal: ModalComponent<Hero>;
+
   heroes$: Observable<Hero[]>;
   heroesLoaded$: Observable<boolean>;
-  heroToDelete: Hero;
 
   constructor(private facade: HeroListFacade) {}
 
@@ -26,7 +28,7 @@ export class HeroListComponent implements OnInit {
   }
 
   showModal(hero: Hero): void {
-    this.heroToDelete = hero;
+    this.deleteModal.open(hero);
   }
 
   select(hero: Hero): void {

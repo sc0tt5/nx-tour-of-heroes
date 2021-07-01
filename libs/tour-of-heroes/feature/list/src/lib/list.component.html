@@ -29,4 +29,4 @@
   </section>
 </ng-template>
 
-<shrd-ui-modal [show]="heroToDelete" (confirm)="delete($event)"></shrd-ui-modal>
+<shrd-ui-modal #deleteModal (confirm)="delete($event)"></shrd-ui-modal>

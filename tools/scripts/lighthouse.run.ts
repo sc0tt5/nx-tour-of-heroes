@@ -3,7 +3,7 @@ import { LaunchedChrome } from 'chrome-launcher';
 import * as lighthouse from 'lighthouse';
 import * as ora from 'ora';
 
-import { options, perfConfig } from './lighthouse.config';
+import { options, perfConfigDesktop, perfConfigMobile } from './lighthouse.config';
 import { LighthouseReport } from './lighthouse.report';
 
 const page = 'http://localhost:3333/heroes';
@@ -66,4 +66,5 @@ export class Lighthouse {
   }
 }
 
-Lighthouse.runLighthouse(page, perfConfig);
+Lighthouse.runLighthouse(page, perfConfigDesktop);
+// Lighthouse.runLighthouse(page, perfConfigMobile);

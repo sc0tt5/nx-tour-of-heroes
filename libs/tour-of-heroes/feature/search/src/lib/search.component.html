@@ -2,7 +2,9 @@
 
 <div data-search role="search" class="bx--search bx--search--xl">
   <div class="bx--search-magnifier">
-    <svg ibmIconSearch size="16" class="bx--search-magnifier-icon"></svg>
+    <span class="bx--search-magnifier-icon"
+      ><shrd-ui-svg-icon iconName="search" [iconSize]="16"></shrd-ui-svg-icon
+    ></span>
   </div>
   <input
     class="bx--search-input"
@@ -16,7 +18,7 @@
     [ngClass]="{ 'bx--search-close--hidden': !searchBoxValue }"
     (click)="clearSearch()"
   >
-    <svg ibmIconClose size="16"></svg>
+    <shrd-ui-svg-icon [iconSize]="16"></shrd-ui-svg-icon>
   </button>
 </div>
 

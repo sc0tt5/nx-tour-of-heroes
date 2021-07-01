@@ -1,6 +1,6 @@
 {
   "name": "nx-tour-of-heroes",
-  "version": "12.0.0-alpha.1",
+  "version": "12.0.0-alpha.2",
   "author": "Scott Robertson (https://github.com/sc0tt5)",
   "license": "SEE LICENSE",
   "scripts": {
@@ -47,22 +47,6 @@
     "**/main.server.ts",
     "**/polyfills.ts"
   ],
-  "lint-staged": {
-    "*.ts": [
-      "tslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,html,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "12.0.2",
@@ -74,7 +58,7 @@
     "@angular/platform-browser-dynamic": "12.0.2",
     "@angular/platform-server": "12.0.2",
     "@angular/router": "12.0.2",
-    "@carbon/icons-angular": "11.2.2",
+    "@carbon/icons": "10.34.0",
     "@nestjs/common": "7.6.17",
     "@nestjs/core": "7.6.17",
     "@nestjs/ng-universal": "4.3.0",

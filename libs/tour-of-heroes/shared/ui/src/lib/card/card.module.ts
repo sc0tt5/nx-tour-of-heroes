@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CloseModule } from '@carbon/icons-angular';
+
+import { SvgIconModule } from '@nx-toh/shared/ui';
 
 import { CardComponent } from './card.component';
 
 @NgModule({
   declarations: [CardComponent],
-  imports: [CloseModule, CommonModule],
+  imports: [CommonModule, SvgIconModule],
   exports: [CardComponent]
 })
 export class CardModule {}

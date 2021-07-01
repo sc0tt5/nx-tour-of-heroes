@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
 import { RouterFacade } from '@nx-toh/shared/utils';
 import { HeroDetailFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
+import { ModalComponent } from '@nx-toh/shared/ui';
 
 @Component({
   templateUrl: './detail.component.html',
@@ -11,6 +12,8 @@ import { HeroDetailFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
+  @ViewChild('cancelModal') cancelModal: ModalComponent<Hero>;
+
   hero$: Observable<Hero>;
   heroLoaded$: Observable<boolean>;
   heroToCancel: Hero;
@@ -47,6 +50,8 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
 
     if (!this.heroToCancel) {
       this.closeEditor();
+    } else {
+      this.cancelModal.open(this.heroToCancel);
     }
   }
 

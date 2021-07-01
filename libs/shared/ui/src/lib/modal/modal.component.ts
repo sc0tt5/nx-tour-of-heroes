@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectorRef
+} from '@angular/core';
 
 @Component({
   selector: 'shrd-ui-modal',
@@ -11,15 +18,13 @@ export class ModalComponent<T> {
   @Input() secondaryBtn = 'Cancel';
   @Input() header = 'Delete hero?';
   @Input() message = 'Select delete to remove the hero from the database';
-  @Input() set show(item: T) {
-    this.item = item;
-    this.modalIsVisible = !!this.item;
-  }
 
   @Output() confirm: EventEmitter<T> = new EventEmitter<T>();
 
   item: T;
   modalIsVisible = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   closeModal(): void {
     this.modalIsVisible = false;
@@ -28,5 +33,11 @@ export class ModalComponent<T> {
   confirmAction(): void {
     this.confirm.emit(this.item);
     this.modalIsVisible = false;
+  }
+
+  open(item: T): void {
+    this.item = item;
+    this.modalIsVisible = !!this.item;
+    this.cdr.markForCheck();
   }
 }

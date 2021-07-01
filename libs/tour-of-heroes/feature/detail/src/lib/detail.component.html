@@ -36,10 +36,10 @@
 
 <!-- modal for cancel button -->
 <shrd-ui-modal
+  #cancelModal
   primaryBtn="Abandon changes"
   secondaryBtn="Continue editing"
   header="Abandon changes"
   message="Continue editing or abandon changes?"
-  [show]="heroToCancel"
   (confirm)="closeEditor()"
 ></shrd-ui-modal>

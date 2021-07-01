@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CloseModule, MenuModule } from '@carbon/icons-angular';
+
+import { SvgIconModule } from '@nx-toh/shared/ui';
 
 import { HamburgerComponent } from './hamburger.component';
 
 @NgModule({
   declarations: [HamburgerComponent],
-  imports: [CommonModule, CloseModule, MenuModule],
+  imports: [CommonModule, SvgIconModule],
   exports: [HamburgerComponent]
 })
 export class HamburgerModule {}

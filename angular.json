@@ -87,6 +87,11 @@
                 "glob": "**/*",
                 "input": "../libs/tour-of-heroes/shared/ui/src/assets",
                 "output": "./assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@carbon/icons/svg",
+                "output": "./assets/icons/"
               }
             ],
             "stylePreprocessorOptions": {
