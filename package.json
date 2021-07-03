@@ -66,7 +66,8 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "post-commit": "git update-index --again"
+      “pre-commit”: “echo \”[Husky] pre-commit\””,
+      "post-commit": "git update-index --again",
     }
   },
   "private": true,
