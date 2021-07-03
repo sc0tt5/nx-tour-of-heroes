@@ -33,7 +33,6 @@ export class ResourceService<T extends Resource> {
    */
   create(item: T): Observable<T> {
     return this.http.post<T>(this.endpoint, item).pipe(
-      delay(500), // for demonstration purposes only, simulate slower server response
       map(data => data as T),
       catchError(this.handleError)
     );
@@ -45,7 +44,6 @@ export class ResourceService<T extends Resource> {
    */
   update(item: T): Observable<T> {
     return this.http.put<T>(`${this.endpoint}/${item.param || item.id}`, item).pipe(
-      delay(500), // for demonstration purposes only, simulate slower server response
       map(data => data as T),
       catchError(this.handleError)
     );
@@ -63,7 +61,6 @@ export class ResourceService<T extends Resource> {
 
     if (getFromApi) {
       return this.http.get(`${this.endpoint}${path ? '/' + path : ''}`, parameters).pipe(
-        delay(200), // for demonstration purposes only, simulate slower server response
         map((data: any) => {
           if (this.isServer) {
             this.transferState.set<T>(this.itemKey, data);
@@ -91,7 +88,6 @@ export class ResourceService<T extends Resource> {
 
     if (getFromApi) {
       return this.http.get(this.endpoint, parameters).pipe(
-        delay(200), // for demonstration purposes only, simulate slower server response
         map((data: any) => {
           if (this.isServer) {
             this.transferState.set<T[]>(this.itemsKey, data);
@@ -113,10 +109,7 @@ export class ResourceService<T extends Resource> {
    * @param {string} param
    */
   delete(id: string | number): Observable<any> {
-    return this.http.delete(`${this.endpoint}/${id}`).pipe(
-      delay(500), // for demonstration purposes only, simulate slower server response
-      catchError(this.handleError)
-    );
+    return this.http.delete(`${this.endpoint}/${id}`).pipe(catchError(this.handleError));
   }
 
   /**

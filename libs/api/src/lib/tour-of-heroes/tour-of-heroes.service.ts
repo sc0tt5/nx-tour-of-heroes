@@ -1,6 +1,6 @@
 import { HttpService, Injectable, UseFilters } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 import { Hero } from '@nx-toh/shared/models';
 
@@ -14,24 +14,39 @@ export class TourOfHeroesService {
   constructor(private http: HttpService) {}
 
   create(hero: Hero): Observable<Hero> {
-    return this.http.post(`${this.BASE_URL}heroes`, hero).pipe(map(response => response.data));
+    return this.http.post(`${this.BASE_URL}heroes`, hero).pipe(
+      delay(200), // for demonstration purposes only, simulate slower server response
+      map(response => response.data)
+    );
   }
 
   findAll(heroName?: any): Observable<Hero[]> {
     const { name } = heroName;
     const filter = name ? `?name_like=${name}` : ''; // for demo purposes (json-server)
-    return this.http.get(`${this.BASE_URL}heroes${filter}`).pipe(map(response => response.data));
+    return this.http.get(`${this.BASE_URL}heroes${filter}`).pipe(
+      delay(200),
+      map(response => response.data)
+    );
   }
 
   findOne(id: number): Observable<Hero> {
-    return this.http.get(`${this.BASE_URL}heroes/${id}`).pipe(map(response => response.data));
+    return this.http.get(`${this.BASE_URL}heroes/${id}`).pipe(
+      delay(200),
+      map(response => response.data)
+    );
   }
 
   update(id: number, hero: Hero): Observable<Hero> {
-    return this.http.put(`${this.BASE_URL}heroes/${id}`, hero).pipe(map(response => response.data));
+    return this.http.put(`${this.BASE_URL}heroes/${id}`, hero).pipe(
+      delay(200),
+      map(response => response.data)
+    );
   }
 
   remove(id: number): Observable<number> {
-    return this.http.delete(`${this.BASE_URL}heroes/${id}`).pipe(map(() => id));
+    return this.http.delete(`${this.BASE_URL}heroes/${id}`).pipe(
+      delay(200),
+      map(() => id)
+    );
   }
 }
