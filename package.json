@@ -47,6 +47,22 @@
     "**/main.server.ts",
     "**/polyfills.ts"
   ],
+  "lint-staged": {
+    "*.ts": [
+      "tslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,html,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "12.0.2",
@@ -120,6 +136,7 @@
     "ora": "5.4.0",
     "prettier": "2.2.1",
     "purgecss": "^4.0.3",
+    "sass-lint": "^1.13.1",
     "ts-jest": "26.5.5",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
