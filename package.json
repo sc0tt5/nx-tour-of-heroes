@@ -47,28 +47,6 @@
     "**/main.server.ts",
     "**/polyfills.ts"
   ],
-  "lint-staged": {
-    "*.ts": [
-      "tslint --fix",
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,html,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.scss": [
-      "sass-lint --fix",
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": ["lint-staged", "echo \"husky pre-commit\""],
-      "post-commit": "git update-index --again"
-    }
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "12.0.2",
