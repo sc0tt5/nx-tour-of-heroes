@@ -53,14 +53,20 @@
       "prettier --write",
       "git add"
     ],
-    "*.{js,html,json,css,scss,md}": [
+    "*.{js,html,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.scss": [
+      "sass-lint --fix",
       "prettier --write",
       "git add"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
     }
   },
   "private": true,
