@@ -31,7 +31,7 @@ export class TourOfHeroesService {
 
   findOne(id: number): Observable<Hero> {
     return this.http.get(`${this.BASE_URL}heroes/${id}`).pipe(
-      delay(200),
+      delay(200), // for demonstration purposes only, simulate slower server response
       map(response => response.data)
     );
   }
