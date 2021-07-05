@@ -120,7 +120,7 @@
     "ora": "5.4.0",
     "prettier": "2.2.1",
     "purgecss": "^4.0.3",
-    "sass-lint": "^1.13.1",
+    "sass-lint": "1.13.1",
     "ts-jest": "26.5.5",
     "ts-node": "9.1.1",
     "tslint": "6.1.3",
