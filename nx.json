@@ -18,51 +18,31 @@
       }
     }
   },
-  "projects": {
-    "api": {
-      "tags": ["scope:api", "type:api"]
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "tour-of-heroes",
+  "generators": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none",
+      "strict": true
     },
-    "tour-of-heroes": {
-      "tags": ["scope:tour-of-heroes", "type:app"]
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest",
+      "strict": true
     },
-    "api-data-access": {
-      "tags": ["scope:api", "type:api"]
-    },
-    "shared-animations": {
-      "tags": ["scope:shared", "type:animations"]
-    },
-    "shared-data-access": {
-      "tags": ["scope:shared", "type:data-access"]
-    },
-    "shared-models": {
-      "tags": ["scope:shared", "type:types"]
-    },
-    "shared-theme": {
-      "tags": ["type:theme"]
-    },
-    "shared-ui": {
-      "tags": ["scope:shared", "type:ui"]
-    },
-    "shared-utils": {
-      "tags": ["type:utils"]
-    },
-    "tools-scripts": {
-      "tags": ["scope:tools", "type:tools"]
-    },
-    "tour-of-heroes-feature-detail": {
-      "tags": ["scope:tour-of-heroes", "type:feature"]
-    },
-    "tour-of-heroes-feature-list": {
-      "tags": ["scope:tour-of-heroes", "type:feature"]
-    },
-    "tour-of-heroes-feature-search": {
-      "tags": ["scope:tour-of-heroes", "type:feature"]
-    },
-    "tour-of-heroes-shared-data-access": {
-      "tags": ["scope:tour-of-heroes", "type:data-access"]
-    },
-    "tour-of-heroes-shared-ui": {
-      "tags": ["scope:shared", "type:ui"]
+    "@schematics/angular:component": {
+      "displayBlock": true,
+      "style": "scss"
     }
   }
 }

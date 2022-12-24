@@ -13,7 +13,11 @@
     "moduleResolution": "node",
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "plugins": [{ "name": "typescript-tslint-plugin" }],
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ],
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
@@ -31,9 +35,7 @@
       "@nx-toh/tour-of-heroes/feature/detail": ["libs/tour-of-heroes/feature/detail/src/index.ts"],
       "@nx-toh/tour-of-heroes/feature/list": ["libs/tour-of-heroes/feature/list/src/index.ts"],
       "@nx-toh/tour-of-heroes/feature/search": ["libs/tour-of-heroes/feature/search/src/index.ts"],
-      "@nx-toh/tour-of-heroes/shared/data-access": [
-        "libs/tour-of-heroes/shared/data-access/src/index.ts"
-      ],
+      "@nx-toh/tour-of-heroes/shared/data-access": ["libs/tour-of-heroes/shared/data-access/src/index.ts"],
       "@nx-toh/tour-of-heroes/shared/ui": ["libs/tour-of-heroes/shared/ui/src/index.ts"]
     }
   },

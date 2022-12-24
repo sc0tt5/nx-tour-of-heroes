@@ -1,3 +1,5 @@
+const { getJestProjects } = require('@nrwl/jest');
+
 module.exports = {
   coverageDirectory: './tmp/coverage',
   coverageReporters: ['html', 'text'],
@@ -22,5 +24,5 @@ module.exports = {
     '^.+\\.(ts|js|html)$': 'ts-jest'
   },
   verbose: false,
-  projects: ['<rootDir>']
+  projects: [...getJestProjects(), '<rootDir>']
 };
