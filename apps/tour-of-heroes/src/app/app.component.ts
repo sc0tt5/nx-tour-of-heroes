@@ -5,16 +5,12 @@ import { WindowRefService } from '@nx-toh/shared/utils';
 
 @Component({
   selector: 'toh-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'Tour of Heroes';
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: object,
-    private windowRef: WindowRefService
-  ) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: object, private windowRef: WindowRefService) {}
 
   onActivate() {
     if (isPlatformBrowser(this.platformId)) {
