@@ -19,18 +19,17 @@ describe('growWidthAnimation', () => {
   let fixture: ComponentFixture<TestComponent>;
   const componentDiv = () => fixture.debugElement.queryAll(By.css('div'))[0].nativeElement;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [CommonModule, NoopAnimationsModule],
-        declarations: [TestComponent]
-      })
-        .overrideComponent(TestComponent, {
-          set: { changeDetection: ChangeDetectionStrategy.Default }
-        })
-        .compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [CommonModule, NoopAnimationsModule],
+      declarations: [TestComponent],
+      teardown: { destroyAfterEach: false }
     })
-  );
+      .overrideComponent(TestComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
+      .compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
@@ -39,14 +38,11 @@ describe('growWidthAnimation', () => {
   });
 
   describe('growWidth transition :enter', () => {
-    it(
-      'should animate width to 95%',
-      waitForAsync(() => {
-        fixture.whenRenderingDone().then(() => {
-          expect(componentDiv().style.width).not.toBe('');
-        });
-      })
-    );
+    it('should animate width to 95%', waitForAsync(() => {
+      fixture.whenRenderingDone().then(() => {
+        expect(componentDiv().style.width).not.toBe('');
+      });
+    }));
   });
 
   // TODO: width on :leave

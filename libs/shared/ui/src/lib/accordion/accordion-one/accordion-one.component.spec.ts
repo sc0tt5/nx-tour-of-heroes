@@ -6,13 +6,12 @@ describe('AccordionOneComponent', () => {
   let component: AccordionOneComponent;
   let fixture: ComponentFixture<AccordionOneComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [AccordionOneComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [AccordionOneComponent],
+      teardown: { destroyAfterEach: false }
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AccordionOneComponent);

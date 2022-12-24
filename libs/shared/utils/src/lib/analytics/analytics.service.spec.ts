@@ -8,7 +8,8 @@ describe('AnalyticsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AnalyticsService]
+      providers: [AnalyticsService],
+      teardown: { destroyAfterEach: false }
     });
     service = TestBed.inject(AnalyticsService);
     dataLayer = service['dataLayer']; // hack to access dataLayer prop

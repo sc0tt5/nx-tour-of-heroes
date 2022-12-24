@@ -18,14 +18,13 @@ describe('fadeInDownAnimation', () => {
   let fixture: ComponentFixture<TestComponent>;
   const componentDiv = () => fixture.debugElement.queryAll(By.css('div'))[0].nativeElement;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [NoopAnimationsModule],
-        declarations: [TestComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule],
+      declarations: [TestComponent],
+      teardown: { destroyAfterEach: false }
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
@@ -35,26 +34,20 @@ describe('fadeInDownAnimation', () => {
   });
 
   describe('fadeInDown transition 0 => 1', () => {
-    it(
-      'should update the element opacity from 0 to 1',
-      waitForAsync(() => {
-        fixture.whenRenderingDone().then(() => {
-          expect(componentDiv().style.opacity).toBe('1');
-        });
-      })
-    );
+    it('should update the element opacity from 0 to 1', waitForAsync(() => {
+      fixture.whenRenderingDone().then(() => {
+        expect(componentDiv().style.opacity).toBe('1');
+      });
+    }));
   });
 
   describe('fadeInDown transition 1 => 0', () => {
-    it(
-      'should update the element opacity from 1 to 0',
-      waitForAsync(() => {
-        component.pageLoaded = false;
-        fixture.detectChanges();
-        fixture.whenRenderingDone().then(() => {
-          expect(componentDiv().style.opacity).toBe('0');
-        });
-      })
-    );
+    it('should update the element opacity from 1 to 0', waitForAsync(() => {
+      component.pageLoaded = false;
+      fixture.detectChanges();
+      fixture.whenRenderingDone().then(() => {
+        expect(componentDiv().style.opacity).toBe('0');
+      });
+    }));
   });
 });

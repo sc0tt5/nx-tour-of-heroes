@@ -12,9 +12,10 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "build-storybook"]
+        "cacheableOperations": ["build", "lint", "test", "build-storybook"],
+        "parallel": 1
       }
     }
   },

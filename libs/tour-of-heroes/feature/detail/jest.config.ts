@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'tour-of-heroes-feature-list',
-  preset: '../../../../jest.preset.js',
+  displayName: 'tour-of-heroes-feature-detail',
+
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,11 +9,15 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.spec.json'
     }
   },
-  coverageDirectory: '../../../../coverage/libs/tour-of-heroes/feature/list',
+  coverageDirectory: '../../../../coverage/libs/tour-of-heroes/feature/detail',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment'
   ],
-  transform: { '^.+\\.(ts|js|html)$': 'jest-preset-angular' }
+  transform: {
+    '^.+.(ts|mjs|js|html)$': 'jest-preset-angular'
+  },
+  transformIgnorePatterns: ['node_modules/(?!.*.mjs$)'],
+  preset: '../../../../jest.preset.ts'
 };

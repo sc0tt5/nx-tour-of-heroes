@@ -6,13 +6,12 @@ describe('AccordionTwoComponent', () => {
   let component: AccordionTwoComponent;
   let fixture: ComponentFixture<AccordionTwoComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [AccordionTwoComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [AccordionTwoComponent],
+      teardown: { destroyAfterEach: false }
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AccordionTwoComponent);

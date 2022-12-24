@@ -54,22 +54,19 @@ describe('ResourceService', () => {
   let service: MockService;
   let httpMock: HttpTestingController;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [HttpClientModule, HttpClientTestingModule],
-        providers: [MockService]
-      });
-      service = TestBed.inject(MockService);
-      httpMock = TestBed.inject(HttpTestingController);
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule, HttpClientTestingModule],
+      providers: [MockService],
+      teardown: { destroyAfterEach: false }
+    });
+    service = TestBed.inject(MockService);
+    httpMock = TestBed.inject(HttpTestingController);
+  }));
 
-  afterEach(
-    waitForAsync(() => {
-      httpMock.verify();
-    })
-  );
+  afterEach(waitForAsync(() => {
+    httpMock.verify();
+  }));
 
   describe('create', () => {
     const url = `/api/pages`;

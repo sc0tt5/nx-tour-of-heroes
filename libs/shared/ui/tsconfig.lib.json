@@ -4,6 +4,6 @@
     "outDir": "../../../dist/out-tsc",
     "types": []
   },
-  "exclude": ["**/*.spec.ts", "**/*.stories.ts", "**/*.stories.js"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.stories.ts", "**/*.stories.js", "jest.config.ts"],
   "include": ["**/*.ts"]
 }
