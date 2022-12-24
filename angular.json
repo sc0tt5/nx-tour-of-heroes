@@ -9,14 +9,16 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@nrwl/node:webpack",
+          "builder": "@nrwl/webpack:webpack",
           "options": {
             "extractLicenses": true,
             "inspect": false,
             "main": "apps/api/src/main.ts",
             "optimization": true,
             "outputPath": "dist/api",
-            "tsConfig": "apps/api/tsconfig.app.json"
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "target": "node",
+            "compiler": "tsc"
           },
           "configurations": {
             "production": {
@@ -41,7 +43,7 @@
           "options": {
             "jestConfig": "apps/api/jest.config.ts"
           },
-          "outputs": ["coverage/apps/api"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/apps/api"]
         }
       },
       "tags": ["scope:api", "type:api"]
@@ -58,7 +60,7 @@
             "jestConfig": "libs/api/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/api"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/api"]
         }
       },
       "tags": ["scope:api", "type:api"]
@@ -74,7 +76,7 @@
           "options": {
             "jestConfig": "libs/shared/animations/jest.config.ts"
           },
-          "outputs": ["coverage/libs/shared/animations"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/animations"]
         }
       },
       "schematics": {
@@ -95,7 +97,7 @@
           "options": {
             "jestConfig": "libs/shared/data-access/jest.config.ts"
           },
-          "outputs": ["coverage/libs/shared/data-access"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/data-access"]
         }
       },
       "schematics": {
@@ -116,7 +118,7 @@
           "options": {
             "jestConfig": "libs/shared/models/jest.config.ts"
           },
-          "outputs": ["coverage/libs/shared/models"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/models"]
         }
       },
       "schematics": {
@@ -137,7 +139,7 @@
           "options": {
             "jestConfig": "libs/shared/theme/jest.config.ts"
           },
-          "outputs": ["coverage/libs/shared/theme"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/theme"]
         }
       },
       "tags": ["type:theme"]
@@ -154,17 +156,15 @@
             "jestConfig": "libs/shared/ui/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/shared/ui"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/ui"]
         },
         "storybook": {
-          "builder": "@nrwl/storybook:storybook",
+          "builder": "@storybook/angular:start-storybook",
           "options": {
-            "uiFramework": "@storybook/angular",
             "port": 4400,
-            "config": {
-              "configFolder": ".storybook"
-            },
-            "projectBuildConfig": "shared-ui:build-storybook"
+            "configDir": ".storybook",
+            "browserTarget": "shared-ui:build-storybook",
+            "compodoc": false
           },
           "configurations": {
             "ci": {
@@ -173,21 +173,19 @@
           }
         },
         "build-storybook": {
-          "builder": "@nrwl/storybook:build",
+          "builder": "@storybook/angular:build-storybook",
+          "outputs": ["{options.outputPath}"],
           "options": {
-            "uiFramework": "@storybook/angular",
-            "outputPath": "dist/storybook/shared-ui",
-            "config": {
-              "configFolder": ".storybook"
-            },
-            "projectBuildConfig": "shared-ui:build-storybook"
+            "outputDir": "dist/storybook/shared-ui",
+            "configDir": ".storybook",
+            "browserTarget": "shared-ui:build-storybook",
+            "compodoc": false
           },
           "configurations": {
             "ci": {
               "quiet": true
             }
-          },
-          "outputs": ["{options.outputPath}"]
+          }
         }
       },
       "schematics": {
@@ -208,7 +206,7 @@
           "options": {
             "jestConfig": "libs/shared/utils/jest.config.ts"
           },
-          "outputs": ["coverage/libs/shared/utils"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/utils"]
         }
       },
       "tags": ["type:utils"]
@@ -225,7 +223,7 @@
             "jestConfig": "tools/scripts/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/tools/scripts"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/tools/scripts"]
         }
       },
       "tags": ["scope:tools", "type:tools"]
@@ -339,7 +337,7 @@
             "jestConfig": "apps/tour-of-heroes/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/apps/tour-of-heroes"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/apps/tour-of-heroes"]
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
@@ -431,7 +429,7 @@
             "jestConfig": "libs/tour-of-heroes/feature/detail/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/tour-of-heroes/feature/detail"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/tour-of-heroes/feature/detail"]
         }
       },
       "schematics": {
@@ -453,7 +451,7 @@
             "jestConfig": "libs/tour-of-heroes/feature/list/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/tour-of-heroes/feature/list"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/tour-of-heroes/feature/list"]
         }
       },
       "schematics": {
@@ -475,7 +473,7 @@
             "jestConfig": "libs/tour-of-heroes/feature/search/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/tour-of-heroes/feature/search"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/tour-of-heroes/feature/search"]
         }
       },
       "schematics": {
@@ -497,7 +495,7 @@
             "jestConfig": "libs/tour-of-heroes/shared/data-access/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/tour-of-heroes/shared/data-access"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/tour-of-heroes/shared/data-access"]
         }
       },
       "schematics": {
@@ -519,7 +517,7 @@
             "jestConfig": "libs/tour-of-heroes/shared/ui/jest.config.ts",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/tour-of-heroes/shared/ui"]
+          "outputs": ["{workspaceRoot}/tmp/coverage/libs/tour-of-heroes/shared/ui"]
         }
       },
       "schematics": {

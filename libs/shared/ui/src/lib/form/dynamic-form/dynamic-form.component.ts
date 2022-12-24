@@ -1,6 +1,6 @@
 // prettier-ignore
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
@@ -20,12 +20,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Output() formValues = new EventEmitter();
   @Output() formIsValid = new EventEmitter();
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
   public formReady = false;
 
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     if (this.fieldset) {
@@ -53,7 +53,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.formReady = true;
   }
 
-  private initializeFormControl(field: Field): FormControl {
+  private initializeFormControl(field: Field): UntypedFormControl {
     const value = field.value;
     const validators = field.required ? Validators.required : [];
     const disabled = field.disabled || this.readOnly ? true : false;

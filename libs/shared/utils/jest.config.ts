@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   name: 'shared-utils',
   preset: '../../../jest.config.js',
   coverageDirectory: '../../../tmp/coverage/libs/shared/utils',

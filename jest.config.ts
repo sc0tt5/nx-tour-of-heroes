@@ -1,6 +1,6 @@
 const { getJestProjects } = require('@nrwl/jest');
 
-module.exports = {
+export default {
   coverageDirectory: './tmp/coverage',
   coverageReporters: ['html', 'text'],
   moduleFileExtensions: ['ts', 'js', 'html'],
