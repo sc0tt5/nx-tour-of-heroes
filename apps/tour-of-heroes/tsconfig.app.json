@@ -4,5 +4,6 @@
     "outDir": "../../dist/out-tsc",
     "types": []
   },
-  "files": ["src/main.ts", "src/polyfills.ts"]
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "exclude": ["**/*.mock.ts", "src/test-setup.ts", "**/*.spec.ts", "jest.config.ts"]
 }

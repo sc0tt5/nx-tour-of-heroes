@@ -6,24 +6,18 @@ import { ContentLoaderModule, ModalModule } from '@nx-toh/shared/ui';
 import { CardModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
 import { HeroListComponent } from './list.component';
-import { HeroListResolver } from './list.resolver';
+import { HeroListGuard } from './list.guard';
 
 const ROUTES: Routes = [
   {
     path: '',
     component: HeroListComponent,
-    resolve: { HeroListResolver }
+    canActivate: [HeroListGuard]
   }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ContentLoaderModule,
-    CardModule,
-    ModalModule,
-    RouterModule.forChild(ROUTES)
-  ],
+  imports: [CommonModule, ContentLoaderModule, CardModule, ModalModule, RouterModule.forChild(ROUTES)],
   declarations: [HeroListComponent]
 })
 export class HeroListModule {}

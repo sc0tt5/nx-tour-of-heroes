@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 
-function _window(): any {
+import { GoogleAnalyticsEvent } from '@nx-toh/shared/models';
+
+declare global {
+  interface Window {
+    dataLayer: GoogleAnalyticsEvent[];
+  }
+}
+
+function _window(): Window {
+  window.dataLayer = window.dataLayer || [];
   return window;
 }
 
@@ -8,7 +17,7 @@ function _window(): any {
   providedIn: 'root'
 })
 export class WindowRefService {
-  get nativeWindow(): any {
+  get nativeWindow(): Window {
     return _window();
   }
 }

@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
+import { ModalComponent } from '@nx-toh/shared/ui';
 import { RouterFacade } from '@nx-toh/shared/utils';
 import { HeroDetailFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
-import { ModalComponent } from '@nx-toh/shared/ui';
 
 @Component({
   templateUrl: './detail.component.html',
@@ -17,7 +18,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   hero$: Observable<Hero>;
   heroLoaded$: Observable<boolean>;
   heroToCancel: Hero;
-  params$: Observable<boolean>;
+  params$: Observable<Record<string, string>>;
 
   private heroToSave: Hero;
 

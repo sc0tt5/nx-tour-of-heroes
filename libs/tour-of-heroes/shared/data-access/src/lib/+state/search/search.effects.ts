@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { NGXLogger } from 'ngx-logger';
 import { of } from 'rxjs';
@@ -8,15 +9,12 @@ import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap 
 import { routerActions } from '@nx-toh/shared/utils';
 
 import { HeroesService } from '../../services/heroes.service';
+
 import { heroSearchActions } from './search.actions';
 
 @Injectable()
 export class HeroSearchEffects {
-  constructor(
-    private actions$: Actions,
-    private heroesService: HeroesService,
-    private log: NGXLogger
-  ) {}
+  constructor(private actions$: Actions, private heroesService: HeroesService, private log: NGXLogger) {}
 
   searchHeroes$ = createEffect(() =>
     this.actions$.pipe(
@@ -28,9 +26,9 @@ export class HeroSearchEffects {
       switchMap(name =>
         this.heroesService.list({ name }).pipe(
           map(heroes => heroSearchActions.searchHeroesSuccess({ heroes })),
-          catchError(error => {
+          catchError((error: unknown) => {
             this.log.error(error);
-            return of(heroSearchActions.searchHeroesFail(error));
+            return of(heroSearchActions.searchHeroesFail({ error }));
           })
         )
       )
@@ -42,7 +40,7 @@ export class HeroSearchEffects {
       ofType(heroSearchActions.selectHero),
       switchMap(action => [
         heroSearchActions.resetSearchTerm(),
-        routerActions.go({ path: ['/hero', action.id] })
+        routerActions.go({ path: ['/hero', action.id.toString()] })
       ])
     )
   );

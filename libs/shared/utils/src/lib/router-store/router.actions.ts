@@ -1,4 +1,5 @@
 import { NavigationExtras } from '@angular/router';
+
 import { createAction, props } from '@ngrx/store';
 
 // router actions
@@ -10,7 +11,7 @@ const ROUTER_FORWARD = '[Router] Forward';
 const go = createAction(
   ROUTER_GO,
   props<{
-    path: any[];
+    path: string[];
     query?: object;
     extras?: NavigationExtras;
   }>()

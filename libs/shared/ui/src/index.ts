@@ -1,5 +1,3 @@
-export * from './lib/accordion/accordion.component';
-export * from './lib/accordion/accordion.module';
 export * from './lib/content-loader/content-loader.module';
 export * from './lib/form/dynamic-reactive-form.module';
 export * from './lib/loading-indicator/loading-indicator.component';

@@ -1,0 +1,21 @@
+{
+  "sourceRoot": "libs/shared/theme/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/shared/theme/jest.config.ts"
+      },
+      "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/theme"]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/shared/theme/**/*.ts", "libs/shared/theme/**/*.html"]
+      }
+    }
+  },
+  "tags": ["scope:tour-of-heroes-shared", "type:util"]
+}

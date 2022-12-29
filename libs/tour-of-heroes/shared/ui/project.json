@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/tour-of-heroes/shared/ui/src",
+  "prefix": "shrd-ui-toh",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/tour-of-heroes/shared/ui/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["{workspaceRoot}/tmp/coverage/libs/tour-of-heroes/shared/ui"]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/tour-of-heroes/shared/ui/**/*.ts", "libs/tour-of-heroes/shared/ui/**/*.html"]
+      }
+    }
+  },
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "tags": ["scope:tour-of-heroes-shared", "type:ui"]
+}

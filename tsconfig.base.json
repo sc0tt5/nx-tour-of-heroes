@@ -1,19 +1,19 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": ".",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["es2017", "dom"],
+    "lib": ["es2018", "dom", "esnext.asynciterable"],
     "importHelpers": true,
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "plugins": [{ "name": "typescript-tslint-plugin" }],
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
@@ -22,7 +22,6 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@nx-toh/api": ["libs/api/src/index.ts"],
-      "@nx-toh/shared/animations": ["libs/shared/animations/src/index.ts"],
       "@nx-toh/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@nx-toh/shared/models": ["libs/shared/models/src/index.ts"],
       "@nx-toh/shared/theme": ["libs/shared/theme/src/index.ts"],
@@ -31,16 +30,9 @@
       "@nx-toh/tour-of-heroes/feature/detail": ["libs/tour-of-heroes/feature/detail/src/index.ts"],
       "@nx-toh/tour-of-heroes/feature/list": ["libs/tour-of-heroes/feature/list/src/index.ts"],
       "@nx-toh/tour-of-heroes/feature/search": ["libs/tour-of-heroes/feature/search/src/index.ts"],
-      "@nx-toh/tour-of-heroes/shared/data-access": [
-        "libs/tour-of-heroes/shared/data-access/src/index.ts"
-      ],
+      "@nx-toh/tour-of-heroes/shared/data-access": ["libs/tour-of-heroes/shared/data-access/src/index.ts"],
       "@nx-toh/tour-of-heroes/shared/ui": ["libs/tour-of-heroes/shared/ui/src/index.ts"]
     }
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "strictTemplates": true
   },
   "exclude": ["node_modules", "tmp"]
 }

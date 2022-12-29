@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class HamburgerComponent {
   @Input() active = false;
-  @Output() selected: EventEmitter<Object> = new EventEmitter<Object>();
+  @Output() selected = new EventEmitter(false);
 
   doClick() {
     this.selected.emit(this.active);

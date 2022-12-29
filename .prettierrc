@@ -1,6 +1,12 @@
 {
   "arrowParens": "avoid",
   "bracketSpacing": true,
+  "printWidth": 120,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "useTabs": false,
   "overrides": [
     {
       "files": "*.test.js",
@@ -9,14 +15,8 @@
       }
     },
     {
-      "files": ".prettierrc",
+      "files": [".eslintrc", ".huskyrc", ".lintstagedrc", ".prettierrc", ".stylelintrc"],
       "options": { "parser": "json" }
     }
-  ],
-  "printWidth": 100,
-  "semi": true,
-  "singleQuote": true,
-  "tabWidth": 2,
-  "trailingComma": "none",
-  "useTabs": false
+  ]
 }

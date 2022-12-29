@@ -2,12 +2,14 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_ID, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { LoggerModule } from 'ngx-logger';
 
 import { HeaderModule, MainModule } from '@nx-toh/tour-of-heroes/shared/ui';
 
 import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { AppStoreModule } from './app.store.module';
@@ -32,10 +34,7 @@ import { AppStoreModule } from './app.store.module';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: object,
-    @Inject(APP_ID) private appId: string
-  ) {
+  constructor(@Inject(PLATFORM_ID) private platformId: object, @Inject(APP_ID) private appId: string) {
     const platform = isPlatformBrowser(platformId) ? 'in the browser' : 'on the server';
     console.log(`Running ${platform} with appId=${appId}`);
   }

@@ -1,0 +1,52 @@
+{
+  "sourceRoot": "apps/api/src",
+  "projectType": "application",
+  "prefix": "api",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "options": {
+        "extractLicenses": true,
+        "inspect": false,
+        "main": "apps/api/src/main.ts",
+        "optimization": true,
+        "outputPath": "dist/api",
+        "tsConfig": "apps/api/tsconfig.app.json",
+        "target": "node",
+        "compiler": "tsc"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/api/src/environments/environment.ts",
+              "with": "apps/api/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "api:build"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/api/jest.config.ts"
+      },
+      "outputs": ["{workspaceRoot}/tmp/coverage/apps/api"]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/api/**/*.ts", "apps/api/**/*.html"]
+      }
+    }
+  },
+  "tags": ["scope:api"]
+}

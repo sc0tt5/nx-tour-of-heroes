@@ -1,15 +1,21 @@
 {
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "types": ["node", "jest"]
+    "types": ["node", "jest"],
+    "target": "es2020"
   },
   "include": ["**/*.ts"],
   "references": [
-      {
-        "path": "./tsconfig.lib.json"
-      },
-      {
-        "path": "./tsconfig.spec.json"
-      }
-  ]
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }

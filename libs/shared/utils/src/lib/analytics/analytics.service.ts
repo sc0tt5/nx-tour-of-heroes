@@ -3,6 +3,8 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { GoogleAnalyticsEvent, GoogleAnalyticsEventGroup } from '@nx-toh/shared/models';
 
+import { WindowRefService } from '../window-ref/window-ref.service';
+
 /**
  * Google Analytics event tracking via Google Tag Manager dataLayer.
  * @class AnalyticsService
@@ -11,15 +13,14 @@ import { GoogleAnalyticsEvent, GoogleAnalyticsEventGroup } from '@nx-toh/shared/
   providedIn: 'root'
 })
 export class AnalyticsService {
-  private readonly dataLayer: any[];
+  private readonly dataLayer: GoogleAnalyticsEvent[];
 
   /**
    * Should not run server-side, but in case it does this. will return an empty array.
    */
-  constructor(@Inject(PLATFORM_ID) protected platformId: Object) {
-    this.dataLayer = isPlatformBrowser(this.platformId)
-      ? ((<any>window).dataLayer = (<any>window).dataLayer || [])
-      : [];
+  constructor(@Inject(PLATFORM_ID) protected platformId: unknown, private windowRef: WindowRefService) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    this.dataLayer = (isPlatformBrowser(this.platformId) && windowRef.nativeWindow.dataLayer) || [];
   }
 
   /**

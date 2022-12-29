@@ -1,0 +1,194 @@
+{
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/tour-of-heroes/src",
+  "prefix": "toh",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "optimization": true,
+        "outputHashing": "all",
+        "sourceMap": false,
+        "namedChunks": false,
+        "extractLicenses": true,
+        "vendorChunk": false,
+        "buildOptimizer": true,
+        "outputPath": "dist/tour-of-heroes/browser",
+        "index": "apps/tour-of-heroes/src/index.html",
+        "main": "apps/tour-of-heroes/src/main.ts",
+        "polyfills": "apps/tour-of-heroes/src/polyfills.ts",
+        "tsConfig": "apps/tour-of-heroes/tsconfig.app.json",
+        "aot": true,
+        "assets": [
+          "apps/tour-of-heroes/src/favicon.ico",
+          "apps/tour-of-heroes/src/robots.txt",
+          "apps/tour-of-heroes/src/assets",
+          {
+            "glob": "**/*",
+            "input": "../libs/tour-of-heroes/shared/ui/src/assets",
+            "output": "./assets/"
+          },
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@carbon/icons/svg",
+            "output": "./assets/icons/"
+          }
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/tour-of-heroes/shared/ui/src/assets/stylesheets"]
+        },
+        "styles": ["apps/tour-of-heroes/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "local": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/tour-of-heroes/src/environments/environment.ts",
+              "with": "apps/tour-of-heroes/src/environments/environment.local.ts"
+            }
+          ]
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/tour-of-heroes/src/environments/environment.ts",
+              "with": "apps/tour-of-heroes/src/environments/environment.prod.ts"
+            }
+          ],
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "10kb"
+            }
+          ]
+        }
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "tour-of-heroes:build",
+        "proxyConfig": "apps/tour-of-heroes/proxy.conf.json"
+      },
+      "configurations": {
+        "local": {
+          "browserTarget": "tour-of-heroes:build:local"
+        },
+        "production": {
+          "browserTarget": "tour-of-heroes:build:production"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "tour-of-heroes:build"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/tour-of-heroes/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["{workspaceRoot}/tmp/coverage/apps/tour-of-heroes"]
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "sourceMap": false,
+        "optimization": {
+          "scripts": false,
+          "styles": true
+        },
+        "outputHashing": "media",
+        "outputPath": "dist/tour-of-heroes/server",
+        "main": "apps/tour-of-heroes/server.ts",
+        "tsConfig": "apps/tour-of-heroes/tsconfig.server.json",
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/tour-of-heroes/shared/ui/src/assets/stylesheets"]
+        },
+        "externalDependencies": [
+          "@nestjs/microservices",
+          "@nestjs/microservices/microservices-module",
+          "@nestjs/websockets",
+          "@nestjs/websockets/socket-module",
+          "cache-manager",
+          "class-transformer",
+          "class-validator"
+        ]
+      },
+      "configurations": {
+        "local": {
+          "fileReplacements": [
+            {
+              "replace": "apps/tour-of-heroes/src/environments/environment.ts",
+              "with": "apps/tour-of-heroes/src/environments/environment.local.ts"
+            }
+          ]
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/tour-of-heroes/src/environments/environment.ts",
+              "with": "apps/tour-of-heroes/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "options": {
+        "browserTarget": "tour-of-heroes:build",
+        "serverTarget": "tour-of-heroes:server"
+      },
+      "configurations": {
+        "local": {
+          "browserTarget": "tour-of-heroes:build:local",
+          "serverTarget": "tour-of-heroes:server:local"
+        },
+        "production": {
+          "browserTarget": "tour-of-heroes:build:production",
+          "serverTarget": "tour-of-heroes:server:production"
+        }
+      }
+    },
+    "prerender": {
+      "executor": "@nguniversal/builders:prerender",
+      "options": {
+        "browserTarget": "tour-of-heroes:build:production",
+        "serverTarget": "tour-of-heroes:server:production",
+        "routes": ["/heroes"]
+      }
+    },
+    "analyze": {
+      "executor": "@ngx-builders/analyze:analyze",
+      "options": {
+        "outputPath": "dist/tour-of-heroes/browser"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/tour-of-heroes/**/*.ts", "apps/tour-of-heroes/**/*.html"]
+      }
+    }
+  },
+  "tags": ["scope:tour-of-heroes"]
+}

@@ -6,13 +6,12 @@ describe('DynamicFieldComponent', () => {
   let component: DynamicFieldComponent;
   let fixture: ComponentFixture<DynamicFieldComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [DynamicFieldComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [DynamicFieldComponent],
+      teardown: { destroyAfterEach: false }
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DynamicFieldComponent);

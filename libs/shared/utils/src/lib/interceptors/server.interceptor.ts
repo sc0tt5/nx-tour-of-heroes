@@ -5,7 +5,7 @@ import { Inject, Injectable, Optional } from '@angular/core';
 export class ServerInterceptor implements HttpInterceptor {
   constructor(@Optional() @Inject('serverUrl') private serverUrl: string) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
+  intercept(req: HttpRequest<unknown>, next: HttpHandler) {
     console.log('[AngularUniversal]', `SSR: Server intercepting the url ${req.url}`);
 
     const serverReq = !this.serverUrl

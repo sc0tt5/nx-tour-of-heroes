@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective } from '@angular/forms';
+import { FormGroupDirective, UntypedFormControl } from '@angular/forms';
 
 import { Field, FieldType } from '@nx-toh/shared/models';
 
@@ -12,7 +12,7 @@ import { Field, FieldType } from '@nx-toh/shared/models';
 })
 export class DynamicFieldComponent implements OnInit {
   @Input() field: Field;
-  public control: FormControl;
+  public control: UntypedFormControl;
   public FieldType = FieldType;
   constructor(private formGroupDir: FormGroupDirective) {}
 
@@ -26,6 +26,6 @@ export class DynamicFieldComponent implements OnInit {
      * We can easily access Reactive Forms functionality from this component in our
      * parent component without the need to pass our own inputs or event emitters.
      */
-    this.control = this.formGroupDir.control.get(this.field.name) as FormControl;
+    this.control = this.formGroupDir.control.get(this.field.name) as UntypedFormControl;
   }
 }

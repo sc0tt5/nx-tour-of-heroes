@@ -1,0 +1,249 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": ["@nrwl/nx"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["rxjs-angular"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@nrwl/nx/typescript",
+        "plugin:rxjs/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/recommended--extra",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:ngrx/recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "prettier"
+      ],
+      "parserOptions": {
+        "project": ["./tsconfig.*?.json"]
+      },
+      "rules": {
+        "arrow-body-style": "error",
+        "constructor-super": "error",
+        "dot-notation": "off",
+        "eqeqeq": ["error", "smart"],
+        "guard-for-in": "error",
+        "id-denylist": "off",
+        "id-match": "off",
+        "no-bitwise": "error",
+        "no-caller": "error",
+        "no-console": [
+          "error",
+          {
+            "allow": [
+              "log",
+              "warn",
+              "dir",
+              "timeLog",
+              "assert",
+              "clear",
+              "count",
+              "countReset",
+              "group",
+              "groupEnd",
+              "table",
+              "dirxml",
+              "error",
+              "groupCollapsed",
+              "Console",
+              "profile",
+              "profileEnd",
+              "timeStamp",
+              "context"
+            ]
+          }
+        ],
+        "no-debugger": "error",
+        "no-empty": "off",
+        "no-empty-function": "off",
+        "no-eval": "error",
+        "no-fallthrough": "error",
+        "no-new-wrappers": "error",
+        "no-restricted-imports": ["error", "rxjs/Rx"],
+        "no-shadow": "off",
+        "no-throw-literal": "error",
+        "no-undef-init": "error",
+        "no-underscore-dangle": "off",
+        "no-unused-expressions": "error",
+        "no-var": "error",
+        "prefer-const": "error",
+        "radix": "error",
+
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "off",
+          {
+            "accessibility": "explicit"
+          }
+        ],
+        "@typescript-eslint/member-ordering": "error",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "enumMember",
+            "format": ["UPPER_CASE"]
+          }
+        ],
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-empty-interface": "error",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/no-inferrable-types": [
+          "error",
+          {
+            "ignoreParameters": true
+          }
+        ],
+        "@typescript-eslint/no-misused-new": "error",
+        "@typescript-eslint/no-non-null-assertion": "error",
+        "@typescript-eslint/no-shadow": [
+          "error",
+          {
+            "hoist": "all"
+          }
+        ],
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unused-expressions": "error",
+        "@typescript-eslint/prefer-function-type": "error",
+        "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/unified-signatures": "error",
+
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "depConstraints": [
+              {
+                "sourceTag": "scope:tour-of-heroes",
+                "onlyDependOnLibsWithTags": ["scope:tour-of-heroes", "scope:tour-of-heroes-shared", "scope:shared"],
+                "bannedExternalImports": ["@nestjs/*"]
+              },
+              {
+                "sourceTag": "scope:tour-of-heroes-shared",
+                "onlyDependOnLibsWithTags": ["scope:tour-of-heroes-shared", "scope:shared"],
+                "bannedExternalImports": ["@nestjs/*"]
+              },
+              {
+                "sourceTag": "scope:api",
+                "onlyDependOnLibsWithTags": ["scope:api", "scope:shared"],
+                "bannedExternalImports": ["@angular/*"]
+              },
+              {
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "type:data-access",
+                "onlyDependOnLibsWithTags": ["type:data-access", "type:util"]
+              },
+              {
+                "sourceTag": "type:ui",
+                "onlyDependOnLibsWithTags": ["type:ui", "type:util"]
+              },
+              {
+                "sourceTag": "type:util",
+                "onlyDependOnLibsWithTags": ["type:util"]
+              }
+            ],
+            "enforceBuildableLibDependency": true
+          }
+        ],
+
+        "rxjs/no-implicit-any-catch": "off",
+        "rxjs/no-unsafe-takeuntil": "error",
+        "rxjs-angular/prefer-async-pipe": "warn",
+        "rxjs-angular/prefer-takeuntil": ["error"],
+
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/no-conflicting-lifecycle": "error",
+        "@angular-eslint/no-host-metadata-property": "error",
+        "@angular-eslint/no-input-rename": "error",
+        "@angular-eslint/no-inputs-metadata-property": "error",
+        "@angular-eslint/no-output-native": "error",
+        "@angular-eslint/no-output-on-prefix": "error",
+        "@angular-eslint/no-output-rename": "error",
+        "@angular-eslint/no-outputs-metadata-property": "error",
+        "@angular-eslint/use-lifecycle-interface": "error",
+        "@angular-eslint/use-pipe-transform-interface": "error",
+
+        "ngrx/prefer-effect-callback-in-block-statement": "off",
+
+        "import/no-deprecated": "off",
+        "import/order": [
+          "error",
+          {
+            "newlines-between": "always",
+            "alphabetize": { "order": "asc" },
+            "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object"],
+            "pathGroups": [
+              {
+                "pattern": "@angular/**",
+                "group": "builtin"
+              },
+              {
+                "pattern": "@nestjs/**",
+                "group": "builtin"
+              },
+              {
+                "pattern": "@nx-toh/**",
+                "group": "internal"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["builtin"]
+          }
+        ]
+      },
+      "settings": {
+        "import/parsers": {
+          "@typescript-eslint/parser": [".ts"]
+        },
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true,
+            "project": ["./tsconfig.*?.json"]
+          }
+        }
+      }
+    },
+    {
+      "files": ["*.html"],
+      "plugins": ["@angular-eslint/eslint-plugin-template"],
+      "rules": {
+        "@angular-eslint/template/banana-in-box": "error",
+        "@angular-eslint/template/eqeqeq": "error",
+        "@angular-eslint/template/no-negated-async": "error"
+      }
+    },
+    {
+      "files": ["*.js"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"]
+    }
+  ]
+}

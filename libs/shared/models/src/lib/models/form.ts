@@ -1,5 +1,3 @@
-import { Validators } from '@angular/forms';
-
 export enum FieldType {
   CHECKBOX,
   NUMBER,
@@ -19,11 +17,11 @@ export interface Field {
   parent?: string;
   placeholder?: string;
   required?: boolean;
-  value?: any;
+  value?: number | string;
   visible?: boolean;
 }
 
 export interface KeyValuePair {
   key: string;
-  value: any;
+  value: number | string;
 }

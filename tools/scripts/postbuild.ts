@@ -1,18 +1,19 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-member-access
 const exec = require('child_process').exec;
 
 export class PostBuild {
   private static directory: string;
-  private static data = [];
+  private static data: any[] = [];
   private static files: string[];
 
   public static run(dir = './dist/tour-of-heroes/browser'): void {
     this.directory = dir;
     this.files = this.getFilesFromPath();
 
-    if (!this.files && this.files.length <= 0) {
+    if (!this.files || this.files.length <= 0) {
       console.log('Nothing to purge');
       return;
     }

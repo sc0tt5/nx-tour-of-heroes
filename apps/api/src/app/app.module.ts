@@ -4,11 +4,8 @@ import { join } from 'path';
 
 import { ApiModule } from '@nx-toh/api';
 
-// tslint:disable-next-line: nx-enforce-module-boundaries // todo: how not to import this from app
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { AppServerModule } from '../../../tour-of-heroes/src/main.server';
-
-// todo: multiple apps
-
 @Module({
   imports: [
     AngularUniversalModule.forRoot({

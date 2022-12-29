@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+
 import { EffectsModule } from '@ngrx/effects';
 // prettier-ignore
 import { routerReducer, RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';

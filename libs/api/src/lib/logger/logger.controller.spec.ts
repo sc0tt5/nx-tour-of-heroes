@@ -6,7 +6,7 @@ import { LoggerController } from './logger.controller';
 describe('LoggerController', () => {
   let clientService: Logger;
   let module: TestingModule;
-  let clientController: LoggerController;
+  let logger: LoggerController;
 
   beforeAll(async () => {
     module = await Test.createTestingModule({
@@ -15,9 +15,7 @@ describe('LoggerController', () => {
     }).compile();
 
     clientService = module.get<Logger>(Logger);
-    clientController = module.get(LoggerController);
-
-    jest.spyOn(clientService, 'error');
+    logger = module.get(LoggerController);
   });
 
   afterEach(() => {
@@ -26,8 +24,9 @@ describe('LoggerController', () => {
 
   describe('logError', () => {
     it('should log error when called', () => {
-      clientController.logError('test');
-      expect(clientController.logError).toHaveBeenCalled();
+      const err = jest.spyOn(clientService, 'error');
+      logger.logError('test');
+      expect(err).toHaveBeenCalled();
     });
   });
 });

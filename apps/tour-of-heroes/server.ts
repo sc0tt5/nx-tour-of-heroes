@@ -1,5 +1,5 @@
 import 'zone.js/dist/zone-node';
 
-// tslint:disable-next-line: nx-enforce-module-boundaries // todo: how not to import this from app
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import '../api/src/main';
 export * from './src/main.server';

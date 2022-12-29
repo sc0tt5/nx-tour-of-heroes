@@ -3,66 +3,59 @@
   "affected": {
     "defaultBase": "master"
   },
-  "implicitDependencies": {
-    "angular.json": "*",
-    "package.json": "*",
-    "tsconfig.base.json": "*",
-    "tslint.json": "*",
-    "nx.json": "*"
-  },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "build-storybook"]
+        "cacheableOperations": ["build", "lint", "test"],
+        "parallel": 1
       }
     }
   },
-  "projects": {
-    "api": {
-      "tags": ["scope:api", "type:api"]
+  "defaultProject": "tour-of-heroes",
+  "generators": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none",
+      "strict": true
     },
-    "tour-of-heroes": {
-      "tags": ["scope:tour-of-heroes", "type:app"]
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest",
+      "strict": true
     },
-    "api-data-access": {
-      "tags": ["scope:api", "type:api"]
-    },
-    "shared-animations": {
-      "tags": ["scope:shared", "type:animations"]
-    },
-    "shared-data-access": {
-      "tags": ["scope:shared", "type:data-access"]
-    },
-    "shared-models": {
-      "tags": ["scope:shared", "type:types"]
-    },
-    "shared-theme": {
-      "tags": ["type:theme"]
-    },
-    "shared-ui": {
-      "tags": ["scope:shared", "type:ui"]
-    },
-    "shared-utils": {
-      "tags": ["type:utils"]
-    },
-    "tools-scripts": {
-      "tags": ["scope:tools", "type:tools"]
-    },
-    "tour-of-heroes-feature-detail": {
-      "tags": ["scope:tour-of-heroes", "type:feature"]
-    },
-    "tour-of-heroes-feature-list": {
-      "tags": ["scope:tour-of-heroes", "type:feature"]
-    },
-    "tour-of-heroes-feature-search": {
-      "tags": ["scope:tour-of-heroes", "type:feature"]
-    },
-    "tour-of-heroes-shared-data-access": {
-      "tags": ["scope:tour-of-heroes", "type:data-access"]
-    },
-    "tour-of-heroes-shared-ui": {
-      "tags": ["scope:shared", "type:ui"]
+    "@schematics/angular:component": {
+      "displayBlock": true,
+      "style": "scss"
     }
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "test": {
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+    },
+    "build-storybook": {
+      "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**/*"]
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [
+      "{workspaceRoot}/angular.json",
+      "{workspaceRoot}/tsconfig.base.json",
+      "{workspaceRoot}/tslint.json",
+      "{workspaceRoot}/nx.json"
+    ],
+    "production": [
+      "default",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+    ]
   }
 }

@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
+
 import { Store } from '@ngrx/store';
 
 import { routerActions } from './router.actions';
-import { RouterState } from './router.reducer';
 import { routerSelectors } from './router.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class RouterFacade {
-  params$ = this.store.select(routerSelectors.getParams);
-  url$ = this.store.select(routerSelectors.getUrl);
+  params$ = this.store.select(routerSelectors.selectParams);
+  url$ = this.store.select(routerSelectors.selectUrl);
 
-  constructor(private store: Store<RouterState>) {}
+  constructor(private store: Store) {}
 
   goBack(): void {
     this.store.dispatch(routerActions.back());
@@ -21,7 +21,7 @@ export class RouterFacade {
     this.store.dispatch(routerActions.forward());
   }
 
-  goTo(path: any[], query?: object, extras?: NavigationExtras): void {
+  goTo(path: string[], query?: object, extras?: NavigationExtras): void {
     this.store.dispatch(routerActions.go({ path, query, extras }));
   }
 }
