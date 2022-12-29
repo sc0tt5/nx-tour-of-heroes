@@ -7,11 +7,9 @@ import { HeroesState } from '../heroes.state';
 const searchTerm = (state: HeroesState) => state.searchTerm;
 
 // selectors
-const getSearchTerm = createSelector(heroesSelectors.getHeroesState, searchTerm);
-const getFilteredHeroes = createSelector(
-  heroesSelectors.getHeroes,
-  getSearchTerm,
-  (heroes, term: string) => heroes.filter(hero => hero.name.toLowerCase().includes(term))
+const selectSearchTerm = createSelector(heroesSelectors.selectHeroesState, searchTerm);
+const selectFilteredHeroes = createSelector(heroesSelectors.selectHeroes, selectSearchTerm, (heroes, term: string) =>
+  heroes.filter(hero => hero.name.toLowerCase().includes(term))
 );
 
-export const heroSearchSelectors = { getFilteredHeroes };
+export const heroSearchSelectors = { selectFilteredHeroes };

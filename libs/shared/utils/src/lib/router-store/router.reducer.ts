@@ -1,5 +1,6 @@
 // prettier-ignore
 import { ActivatedRouteSnapshot, Params, RouterStateSnapshot } from '@angular/router';
+
 import { RouterReducerState, RouterStateSerializer } from '@ngrx/router-store';
 
 export const routerFeatureKey = 'router';

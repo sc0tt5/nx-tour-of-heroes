@@ -1,8 +1,7 @@
 // prettier-ignore
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
-import { Hero } from '@nx-toh/shared/models';
-import { FieldType } from '@nx-toh/shared/models';
+import { Hero, FieldType } from '@nx-toh/shared/models';
 
 @Component({
   selector: 'shrd-ui-toh-editor',

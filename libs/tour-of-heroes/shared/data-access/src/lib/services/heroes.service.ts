@@ -11,9 +11,8 @@ const HEROES_LIST = 'heroes';
 
 @Injectable({ providedIn: 'root' })
 export class HeroesService extends ResourceService<Hero> {
-  // todo: change from any
   constructor(
-    @Inject(PLATFORM_ID) protected platformId: Object,
+    @Inject(PLATFORM_ID) protected platformId: unknown,
     protected httpClient: HttpClient,
     protected transferState: TransferState
   ) {

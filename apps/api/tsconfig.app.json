@@ -3,9 +3,9 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "types": ["node"],
-    "emitDecoratorMetadata": true,
-    "target": "es2015"
+    "target": "es2016",
+    "sourceMap": true,
+    "inlineSources": true
   },
-  "exclude": ["**/*.spec.ts", "**/*.test.ts", "jest.config.ts"],
-  "include": ["**/*.ts"]
+  "exclude": ["**/*.spec.ts", "**/*.mock.ts", "jest.config.ts"]
 }

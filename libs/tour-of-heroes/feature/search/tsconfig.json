@@ -12,5 +12,10 @@
   ],
   "compilerOptions": {
     "target": "es2020"
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
   }
 }

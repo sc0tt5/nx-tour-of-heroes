@@ -2,8 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../../dist/out-tsc",
-    "types": []
+    "types": [],
+    "target": "es2016"
   },
-  "exclude": ["**/*.spec.ts", "**/*.test.ts", "jest.config.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.mock.ts", "src/test-setup.ts", "jest.config.ts"],
   "include": ["**/*.ts"]
 }

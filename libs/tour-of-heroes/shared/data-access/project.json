@@ -1,0 +1,30 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/tour-of-heroes/shared/data-access/src",
+  "prefix": "toh-da-heroes",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/tour-of-heroes/shared/data-access/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["{workspaceRoot}/tmp/coverage/libs/tour-of-heroes/shared/data-access"]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/tour-of-heroes/shared/data-access/**/*.ts",
+          "libs/tour-of-heroes/shared/data-access/**/*.html"
+        ]
+      }
+    }
+  },
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "tags": ["scope:tour-of-heroes-shared", "type:data-access"]
+}

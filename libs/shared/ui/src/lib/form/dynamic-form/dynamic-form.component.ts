@@ -1,6 +1,7 @@
 // prettier-ignore
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
@@ -45,6 +46,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       this.form.addControl(field.name, this.initializeFormControl(field));
     });
 
+    // eslint-disable-next-line rxjs-angular/prefer-async-pipe
     this.form.valueChanges.pipe(debounceTime(100), takeUntil(this.unsubscribe$)).subscribe(data => {
       this.formValues.emit(data);
       this.formIsValid.emit(this.form.valid);
@@ -54,7 +56,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   private initializeFormControl(field: Field): UntypedFormControl {
-    const value = field.value;
+    const value: number | string = field.value;
     const validators = field.required ? Validators.required : [];
     const disabled = field.disabled || this.readOnly ? true : false;
     return this.formBuilder.control({ value, disabled }, validators);

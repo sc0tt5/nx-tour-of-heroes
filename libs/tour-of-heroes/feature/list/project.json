@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/tour-of-heroes/feature/list/src",
+  "prefix": "nx-demo",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/tour-of-heroes/feature/list/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["{workspaceRoot}/tmp/coverage/libs/tour-of-heroes/feature/list"]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/tour-of-heroes/feature/list/**/*.ts", "libs/tour-of-heroes/feature/list/**/*.html"]
+      }
+    }
+  },
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "tags": ["scope:tour-of-heroes", "type:feature"]
+}

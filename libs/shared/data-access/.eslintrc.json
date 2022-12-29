@@ -1,0 +1,28 @@
+{
+  "extends": ["../../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@nrwl/nx/angular"],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "shrdDa",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "shrd-da",
+            "style": "kebab-case"
+          }
+        ]
+      }
+    }
+  ]
+}

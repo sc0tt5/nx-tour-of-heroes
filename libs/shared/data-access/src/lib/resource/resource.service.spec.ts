@@ -1,18 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // todo: update unit test for client and server
-import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { TransferState } from '@angular/platform-browser';
+
+import { Response } from 'express';
 
 import { PageOne } from '@nx-toh/shared/models';
 
 import { ResourceService } from './resource.service';
 
 @Injectable()
-export class MockService extends ResourceService<PageOne> {
+class MockService extends ResourceService<PageOne> {
   constructor(
-    @Inject(PLATFORM_ID) protected platformId: Object,
+    @Inject(PLATFORM_ID) protected platformId: unknown,
     protected httpClient: HttpClient,
     protected transferState: TransferState
   ) {
@@ -84,8 +87,8 @@ describe('ResourceService', () => {
       expect(request.method).not.toEqual('GET');
     });
 
-    it('should emit "true" for 200 Ok', () => {
-      let response = null;
+    it('should return 200 status code when successful', () => {
+      let response: Response;
 
       service.create(mockPage).subscribe((receivedResponse: any) => {
         response = receivedResponse;
@@ -99,22 +102,24 @@ describe('ResourceService', () => {
       expect(response.status).toBe(200);
     });
 
-    it('should emit "false" for 400 error', () => {
-      let response = null;
+    it('should handle errors', fakeAsync(() => {
+      let response: HttpErrorResponse;
 
-      service.create(mockPage).subscribe(
-        (receivedResponse: any) => receivedResponse,
-        (error: any) => {
+      service.create(mockPage).subscribe({
+        next: () => null,
+        error: error => {
           response = error;
         }
-      );
+      });
+
+      tick();
 
       const requestWrapper = httpMock.expectOne(url);
       requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);
-    });
+    }));
   });
 
   describe('update', () => {
@@ -134,7 +139,7 @@ describe('ResourceService', () => {
     });
 
     it('should emit "true" for 200 Ok', () => {
-      let response = null;
+      let response: Response;
 
       service.update(mockPage).subscribe((receivedResponse: any) => {
         response = receivedResponse;
@@ -148,22 +153,24 @@ describe('ResourceService', () => {
       expect(response.status).toBe(200);
     });
 
-    it('should emit failure for 400 error', () => {
-      let response = null;
+    it('should handle errors', fakeAsync(() => {
+      let response: HttpErrorResponse;
 
-      service.update(mockPage).subscribe(
-        (receivedResponse: any) => receivedResponse,
-        (error: any) => {
+      service.update(mockPage).subscribe({
+        next: () => null,
+        error: error => {
           response = error;
         }
-      );
+      });
+
+      tick();
 
       const requestWrapper = httpMock.expectOne(url);
       requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);
-    });
+    }));
   });
 
   describe('read', () => {
@@ -184,41 +191,42 @@ describe('ResourceService', () => {
       expect(request.method).not.toEqual('POST');
     });
 
-    it(
-      'should emit "true" for 200 Ok',
-      fakewaitForAsync(() => {
-        let response = null;
+    it('should emit "true" for 200 Ok', fakeAsync(() => {
+      let response: Response;
 
-        service.read(params).subscribe((receivedResponse: any) => {
-          response = receivedResponse;
-        });
+      service.read(params).subscribe((receivedResponse: any) => {
+        response = receivedResponse;
+      });
 
-        const requestWrapper = httpMock.expectOne(url);
-        requestWrapper.flush({ status: 200, statusText: 'Ok' });
-        const request = requestWrapper.request;
+      tick();
 
-        expect(request.method).toEqual('GET');
-        tick(1500); // the service has a mocked delay of 1000 (add 500 buffer here)
-        expect(response.status).toBe(200);
-      })
-    );
+      const requestWrapper = httpMock.expectOne(url);
+      requestWrapper.flush({ status: 200, statusText: 'Ok' });
+      const request = requestWrapper.request;
 
-    it('should emit failure for 400 error', () => {
-      let response = null;
+      expect(request.method).toEqual('GET');
+      tick(1500); // the service has a mocked delay of 1000 (add 500 buffer here)
+      expect(response.status).toBe(200);
+    }));
 
-      service.read(params).subscribe(
-        (receivedResponse: any) => receivedResponse,
-        (error: any) => {
+    it('should handle errors', fakeAsync(() => {
+      let response: HttpErrorResponse;
+
+      service.read(mockPage).subscribe({
+        next: () => null,
+        error: error => {
           response = error;
         }
-      );
+      });
+
+      tick();
 
       const requestWrapper = httpMock.expectOne(url);
       requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);
-    });
+    }));
   });
 
   describe('list', () => {
@@ -238,7 +246,7 @@ describe('ResourceService', () => {
     });
 
     it('should emit "true" for 200 Ok', () => {
-      let response = null;
+      let response: Response;
 
       service.list().subscribe((receivedResponse: any) => {
         response = receivedResponse;
@@ -252,22 +260,24 @@ describe('ResourceService', () => {
       expect(response.status).toBe(200);
     });
 
-    it('should emit failure for 400 error', () => {
-      let response = null;
+    it('should handle errors', fakeAsync(() => {
+      let response: HttpErrorResponse;
 
-      service.list().subscribe(
-        (receivedResponse: any) => receivedResponse,
-        (error: any) => {
+      service.list(mockPage).subscribe({
+        next: () => null,
+        error: error => {
           response = error;
         }
-      );
+      });
+
+      tick();
 
       const requestWrapper = httpMock.expectOne(url);
       requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);
-    });
+    }));
   });
 
   describe('delete', () => {
@@ -287,7 +297,7 @@ describe('ResourceService', () => {
     });
 
     it('should emit "true" for 200 Ok', () => {
-      let response = null;
+      let response: Response;
 
       service.delete(mockPage.param).subscribe((receivedResponse: any) => {
         response = receivedResponse;
@@ -301,21 +311,23 @@ describe('ResourceService', () => {
       expect(response.status).toBe(200);
     });
 
-    it('should emit failure for 400 error', () => {
-      let response = null;
+    it('should handle errors', fakeAsync(() => {
+      let response: HttpErrorResponse;
 
-      service.delete(mockPage.param).subscribe(
-        (receivedResponse: any) => receivedResponse,
-        (error: any) => {
+      service.delete(1).subscribe({
+        next: () => null,
+        error: error => {
           response = error;
         }
-      );
+      });
+
+      tick();
 
       const requestWrapper = httpMock.expectOne(url);
       requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);
-    });
+    }));
   });
 });

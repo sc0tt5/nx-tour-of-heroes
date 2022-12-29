@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ContentLoaderComponent } from './content-loader.component';
 
 describe('ContentLoaderComponent', () => {
-  let component: ContentLoaderComponent<any>;
-  let fixture: ComponentFixture<ContentLoaderComponent<any>>;
+  let component: ContentLoaderComponent<unknown>;
+  let fixture: ComponentFixture<ContentLoaderComponent<unknown>>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({

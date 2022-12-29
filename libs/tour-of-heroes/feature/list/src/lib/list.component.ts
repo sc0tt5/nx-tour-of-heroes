@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';

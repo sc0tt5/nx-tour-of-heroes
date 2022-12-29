@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs/operators';
 
@@ -15,9 +16,9 @@ export class RouterEffects {
       this.action$.pipe(
         ofType(routerActions.go),
         // map(action => action.to),
-        tap(({ path, query: queryParams, extras }) =>
-          this.router.navigate(path, { queryParams, ...extras })
-        )
+        tap(({ path, query: queryParams, extras }) => {
+          this.router.navigate(path, { queryParams, ...extras });
+        })
       ),
     { dispatch: false }
   );

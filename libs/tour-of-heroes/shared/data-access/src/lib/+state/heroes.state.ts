@@ -12,7 +12,7 @@ export interface HeroesState extends EntityState<Hero> {
   loading: boolean;
 }
 
-export interface HeroesReducerTypes extends ReducerTypes<HeroesState, ActionCreator[]> {}
+export type HeroesReducerTypes = ReducerTypes<HeroesState, ActionCreator[]>;
 
 function sortByRating(a: Hero, b: Hero) {
   return a.rating === b.rating ? 0 : a.rating > b.rating ? 1 : -1;

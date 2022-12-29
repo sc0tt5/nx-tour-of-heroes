@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/shared/data-access/src",
+  "prefix": "shrd-da",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/shared/data-access/jest.config.ts"
+      },
+      "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/data-access"]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/shared/data-access/**/*.ts", "libs/shared/data-access/**/*.html"]
+      }
+    }
+  },
+  "generators": {
+    "@nrwl/angular:component": {
+      "styleext": "scss"
+    }
+  },
+  "tags": ["scope:tour-of-heroes-shared", "type:data-access"]
+}

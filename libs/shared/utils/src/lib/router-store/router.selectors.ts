@@ -1,22 +1,22 @@
 import { RouterReducerState } from '@ngrx/router-store';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { routerFeatureKey, RouterState, RouterStateUrl } from './router.reducer';
+import { routerFeatureKey, RouterStateUrl } from './router.reducer';
 
 // feature
-const routerFeatureSelector = createFeatureSelector<RouterReducerState<RouterStateUrl>>(routerFeatureKey);
+const selectRouterFeature = createFeatureSelector<RouterReducerState<RouterStateUrl>>(routerFeatureKey);
 
-const PARAMS = params => (Object.keys(params).length ? params : undefined);
+const PARAMS = (params: Record<string, string>) => (Object.keys(params).length ? params : undefined);
 
 // selectors
-const getRouterState = createSelector(routerFeatureSelector, router => router.state);
-const getParams = createSelector(getRouterState, routerState => PARAMS(routerState.params));
-const getQueryParams = createSelector(getRouterState, routerState => PARAMS(routerState.queryParams));
-const getUrl = createSelector(getRouterState, routerState => routerState.url);
+const selectRouterState = createSelector(selectRouterFeature, router => router.state);
+const selectParams = createSelector(selectRouterState, routerState => PARAMS(routerState.params));
+const selectQueryParams = createSelector(selectRouterState, routerState => PARAMS(routerState.queryParams));
+const selectUrl = createSelector(selectRouterState, routerState => routerState.url);
 
 // public
 export const routerSelectors = {
-  getParams,
-  getQueryParams,
-  getUrl
+  selectParams,
+  selectQueryParams,
+  selectUrl
 };

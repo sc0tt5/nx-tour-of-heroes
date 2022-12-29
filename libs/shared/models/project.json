@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/shared/models/src",
+  "prefix": "shrd-mdl",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/shared/models/jest.config.ts"
+      },
+      "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/models"]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/shared/models/**/*.ts", "libs/shared/models/**/*.html"]
+      }
+    }
+  },
+  "generators": {
+    "@nrwl/angular:component": {
+      "styleext": "scss"
+    }
+  },
+  "tags": ["scope:shared", "type:util"]
+}

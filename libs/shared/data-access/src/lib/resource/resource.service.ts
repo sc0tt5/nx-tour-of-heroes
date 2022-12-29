@@ -2,8 +2,10 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { makeStateKey, StateKey, TransferState } from '@angular/platform-browser';
+import { Params } from '@angular/router';
+
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, delay, map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { Resource } from '@nx-toh/shared/models';
 
@@ -14,7 +16,7 @@ export class ResourceService<T extends Resource> {
   public isServer: boolean;
 
   constructor(
-    @Inject(PLATFORM_ID) protected platformId: Object,
+    @Inject(PLATFORM_ID) protected platformId: unknown,
     protected http: HttpClient,
     protected transferState: TransferState,
     private endpoint: string,
@@ -33,8 +35,8 @@ export class ResourceService<T extends Resource> {
    */
   create(item: T): Observable<T> {
     return this.http.post<T>(this.endpoint, item).pipe(
-      map(data => data as T),
-      catchError(this.handleError)
+      map(data => data),
+      catchError((error: HttpErrorResponse) => this.handleError(error))
     );
   }
 
@@ -44,16 +46,16 @@ export class ResourceService<T extends Resource> {
    */
   update(item: T): Observable<T> {
     return this.http.put<T>(`${this.endpoint}/${item.param || item.id}`, item).pipe(
-      map(data => data as T),
-      catchError(this.handleError)
+      map(data => data),
+      catchError((error: HttpErrorResponse) => this.handleError(error))
     );
   }
 
   /**
    * Fetches an existing item.
-   * @param {any} params
+   * @param {Params} params
    */
-  read(params?: any, path?: string): Observable<T | undefined> {
+  read(params?: Params, path?: string): Observable<T | undefined> {
     const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
     const getFromApi = this.isServer || (this.isBrowser && !transferStateHasKey);
     const getFromTransferState = this.isBrowser && transferStateHasKey;
@@ -61,13 +63,13 @@ export class ResourceService<T extends Resource> {
 
     if (getFromApi) {
       return this.http.get(`${this.endpoint}${path ? '/' + path : ''}`, parameters).pipe(
-        map((data: any) => {
+        map((data: T) => {
           if (this.isServer) {
             this.transferState.set<T>(this.itemKey, data);
           }
-          return data as T;
+          return data;
         }),
-        catchError(this.handleError)
+        catchError((error: HttpErrorResponse) => this.handleError(error))
       );
     } else if (getFromTransferState) {
       const item = this.transferState.get<T | undefined>(this.itemKey, undefined);
@@ -80,7 +82,7 @@ export class ResourceService<T extends Resource> {
   /**
    * Fetches all items.
    */
-  list(params?: any): Observable<T[]> {
+  list(params?: Params): Observable<T[]> {
     const transferStateHasKey = this.transferState.hasKey<T>(this.itemKey);
     const getFromApi = this.isServer || (this.isBrowser && !transferStateHasKey);
     const getFromTransferState = this.isBrowser && transferStateHasKey;
@@ -88,17 +90,17 @@ export class ResourceService<T extends Resource> {
 
     if (getFromApi) {
       return this.http.get(this.endpoint, parameters).pipe(
-        map((data: any) => {
+        map((data: T[]) => {
           if (this.isServer) {
             this.transferState.set<T[]>(this.itemsKey, data);
           }
-          return data as T[];
+          return data;
         }),
-        catchError(this.handleError)
+        catchError((error: HttpErrorResponse) => this.handleError(error))
       );
     } else if (getFromTransferState) {
       const items = this.transferState.get<T[]>(this.itemsKey, []);
-      this.transferState.remove<T>(this.itemsKey);
+      this.transferState.remove<T[]>(this.itemsKey);
       return of(items);
     }
     return of();
@@ -108,8 +110,10 @@ export class ResourceService<T extends Resource> {
    * Deletes an item.
    * @param {string} param
    */
-  delete(id: string | number): Observable<any> {
-    return this.http.delete(`${this.endpoint}/${id}`).pipe(catchError(this.handleError));
+  delete<M = unknown>(id: string | number): Observable<M> {
+    return this.http
+      .delete<M>(`${this.endpoint}/${id}`)
+      .pipe(catchError((error: HttpErrorResponse) => this.handleError(error)));
   }
 
   /**

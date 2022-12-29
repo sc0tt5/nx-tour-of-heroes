@@ -1,7 +1,6 @@
 /* eslint-disable */
 export default {
   displayName: 'tour-of-heroes-feature-detail',
-
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -10,7 +9,7 @@ export default {
       tsconfig: '<rootDir>/tsconfig.spec.json'
     }
   },
-  coverageDirectory: '../../../../coverage/libs/tour-of-heroes/feature/detail',
+  coverageDirectory: '../../../../tmp/coverage/libs/tour-of-heroes/feature/detail',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',

@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+
 import { Store } from '@ngrx/store';
 
 import { heroesSelectors } from '../heroes.selectors';
-import { HeroesState } from '../heroes.state';
+
 import { heroListActions } from './list.actions';
 
 @Injectable({ providedIn: 'root' })
 export class HeroListFacade {
-  heroes$ = this.store.select(heroesSelectors.getHeroes);
-  heroesLoaded$ = this.store.select(heroesSelectors.getHeroesLoaded);
+  heroes$ = this.store.select(heroesSelectors.selectHeroes);
+  heroesLoaded$ = this.store.select(heroesSelectors.selectHeroesLoaded);
 
-  constructor(private store: Store<HeroesState>) {}
+  constructor(private store: Store) {}
 
   loadHeroes(): void {
     this.store.dispatch(heroListActions.loadHeroes());

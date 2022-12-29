@@ -18,15 +18,15 @@ const UPDATE_HERO_SUCCESS = '[Hero Detail] Update Hero Success';
 
 // actions
 const createHero = createAction(CREATE_HERO, props<{ hero: Hero }>());
-const createHeroFail = createAction(CREATE_HERO_FAIL, props<{ error: any }>());
+const createHeroFail = createAction(CREATE_HERO_FAIL, props<{ error: unknown }>());
 const createHeroSuccess = createAction(CREATE_HERO_SUCCESS, props<{ hero: Update<Hero> }>());
 const loadHero = createAction(LOAD_HERO, props<{ id: number }>());
-const loadHeroFail = createAction(LOAD_HERO_FAIL, props<{ error: any }>());
+const loadHeroFail = createAction(LOAD_HERO_FAIL, props<{ error: unknown }>());
 const loadHeroSuccess = createAction(LOAD_HERO_SUCCESS, props<{ hero: Hero }>());
 const resetSelectedHeroId = createAction(RESET_SELECTED_HERO_ID);
 const selectHeroId = createAction(SELECT_HERO_ID, props<{ id: number }>());
 const updateHero = createAction(UPDATE_HERO, props<{ hero: Hero }>());
-const updateHeroFail = createAction(UPDATE_HERO_FAIL, props<{ error: any }>());
+const updateHeroFail = createAction(UPDATE_HERO_FAIL, props<{ error: unknown }>());
 const updateHeroSuccess = createAction(UPDATE_HERO_SUCCESS, props<{ hero: Update<Hero> }>());
 
 // public

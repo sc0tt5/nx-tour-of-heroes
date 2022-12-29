@@ -7,6 +7,6 @@ import { HeroesState } from '../heroes.state';
 const selectedHero = (state: HeroesState) => state.entities[state.selectedHeroId];
 
 // selectors
-const getSelectedHero = createSelector(heroesSelectors.getHeroesState, selectedHero);
+const selectSelectedHero = createSelector(heroesSelectors.selectHeroesState, selectedHero);
 
-export const heroDetailSelectors = { getSelectedHero };
+export const heroDetailSelectors = { selectSelectedHero };

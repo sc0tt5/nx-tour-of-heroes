@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
+import { GoogleAnalyticsEvent } from '@nx-toh/shared/models';
+
 import { AnalyticsService } from './analytics.service';
 
 describe('AnalyticsService', () => {
   let service: AnalyticsService;
-  let dataLayer: any[];
+  let dataLayer: GoogleAnalyticsEvent[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -12,7 +14,7 @@ describe('AnalyticsService', () => {
       teardown: { destroyAfterEach: false }
     });
     service = TestBed.inject(AnalyticsService);
-    dataLayer = service['dataLayer']; // hack to access dataLayer prop
+    dataLayer = service['dataLayer'] || []; // hack to access dataLayer prop
   });
 
   describe('trackEvent', () => {
