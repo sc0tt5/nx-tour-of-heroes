@@ -1,6 +1,6 @@
-//-------------------------
+// -------------------------
 // Base
-//-------------------------
+// -------------------------
 
 // todo: issue-44 -- change to `cds--`
 // future prefix will be cds
@@ -11,7 +11,6 @@ $feature-flags: (
   enable-css-custom-properties: true,
   // enable-v11-release: true
 );
-
 $carbon--font-display: swap;
 
 /*
@@ -22,11 +21,12 @@ All flags are true by default.
 */
 // $css--font-face: false;
 $css--helpers: false;
+
 // $css--body: false;
 $css--use-layer: false;
 $css--reset: false;
 $css--typography: false;
-$css--plex: false;
+$css--plex: true;
 
 // <-- @import 'carbon-components/scss/globals/scss/styles.scss'; -->
 // @import 'carbon-components/scss/globals/scss/feature-flags';
@@ -41,6 +41,7 @@ $css--plex: false;
 // @import 'carbon-components/scss/globals/scss/vendor/@carbon/elements/scss/import-once/import-once';
 @import 'reset';
 @import 'fonts';
+
 // @import 'carbon-components/scss/globals/scss/css--helpers';
 @import 'body';
-// @import 'carbon-components/scss/globals/grid/grid';
+@import 'grid';

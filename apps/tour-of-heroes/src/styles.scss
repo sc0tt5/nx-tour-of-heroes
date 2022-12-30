@@ -14,7 +14,5 @@ $bxGray: #8d8d8d;
 .bx--search-input:focus,
 .bx--text-input:focus {
   border-bottom: 1px solid transparent !important;
-  outline-width: 1px !important;
-  outline-style: solid !important;
-  outline-color: $bxGray !important;
+  outline: 1px solid $bxGray !important;
 }

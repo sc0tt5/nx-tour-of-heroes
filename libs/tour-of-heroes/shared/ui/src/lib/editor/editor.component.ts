@@ -6,7 +6,6 @@ import { Hero, FieldType } from '@nx-toh/shared/models';
 @Component({
   selector: 'shrd-ui-toh-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None // required to apply custom styles to form
 })

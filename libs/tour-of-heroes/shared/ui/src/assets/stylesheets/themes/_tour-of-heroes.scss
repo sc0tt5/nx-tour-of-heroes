@@ -1,7 +1,7 @@
-//-------------------------
+// -------------------------
 // Custom Theme
 // --> full list of color usage here: https://www.carbondesignsystem.com/guidelines/color/usage/
-//-------------------------
+// -------------------------
 
 $toh--light: (
   // primary interactive color, primary button
@@ -13,11 +13,11 @@ $toh--light: (
   // selected elements, active elements, accent icons
   interactive-04: #0062ff,
   // page background
-  ui-background: #ffffff,
+  ui-background: #fff,
   // container background on ui-background
   ui-01: #f3f3f3,
   // container background on ui-01 ("light" variant background)
-  ui-02: #ffffff,
+  ui-02: #fff,
   // subtle border - tertiary background
   ui-03: #dcdcdc,
   // medium contrast border
@@ -28,15 +28,15 @@ $toh--light: (
   text-01: #171717,
   text-02: #565656,
   text-03: #8c8c8c,
-  text-04: #ffffff,
+  text-04: #fff,
   icon-01: #171717,
   icon-02: #565656,
-  icon-03: #ffffff,
+  icon-03: #fff,
   link-01: #0062ff,
   link-02: #0043ce,
   field-01: #f3f3f3,
-  field-02: #ffffff,
-  inverse-01: #ffffff,
+  field-02: #fff,
+  inverse-01: #fff,
   inverse-02: #3d3d3d,
   support-01: #da1e28,
   support-02: #24a148,
@@ -46,7 +46,7 @@ $toh--light: (
   inverse-support-02: #3dbb61,
   inverse-support-03: #fdd13a,
   inverse-support-04: #408bfc,
-  overlay-01: rgba(23, 23, 23, 0.5),
+  overlay-01: #1717177a,
   focus: #0062ff,
   hover-primary: #0353e9,
   active-primary: #0530ad,
