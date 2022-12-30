@@ -2,11 +2,7 @@
 
 An [Nx Monorepo](https://nx.dev/latest/angular/core-concepts/why-monorepos) with [Angular](https://github.com/angular/angular) and [Nest](https://github.com/nestjs/nest), Nest being used for [Angular server-side rendering](https://github.com/angular/universal) and as an API to fetch data from the database. This project repurposes the official [Tour of Heroes](https://angular.io/tutorial) tutorial with the intent of demonstrating the aforementioned setup.
 
-</br>
-
 ## Getting Started
-
----
 
 This project was generated using [Nx](https://nx.dev).
 
