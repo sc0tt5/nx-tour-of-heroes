@@ -1,16 +1,8 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'shrd-ui-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent<T> {

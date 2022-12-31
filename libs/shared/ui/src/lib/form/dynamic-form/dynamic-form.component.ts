@@ -11,8 +11,7 @@ import { Field } from '@nx-toh/shared/models';
 
 @Component({
   selector: 'shrd-ui-form',
-  templateUrl: './dynamic-form.component.html',
-  styleUrls: ['./dynamic-form.component.scss']
+  templateUrl: './dynamic-form.component.html'
 })
 export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() fieldset: Field[];
