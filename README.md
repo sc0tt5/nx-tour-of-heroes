@@ -45,7 +45,6 @@ This project was generated using [Nx](https://nx.dev).
 │   └── shared # shared with all apps
 │       ├── data-access
 │       ├── models
-│       ├── theme
 │       ├── ui
 │       └── utils
 ├── tools
