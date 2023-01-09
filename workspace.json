@@ -5,7 +5,6 @@
     "api-data-access": "libs/api",
     "shared-data-access": "libs/shared/data-access",
     "shared-models": "libs/shared/models",
-    "shared-theme": "libs/shared/theme",
     "shared-ui": "libs/shared/ui",
     "shared-utils": "libs/shared/utils",
     "tour-of-heroes": "apps/tour-of-heroes",
