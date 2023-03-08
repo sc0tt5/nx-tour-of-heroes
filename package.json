@@ -62,7 +62,7 @@
     "@carbon/icons": "11.13.0",
     "@nestjs/axios": "1.0.1",
     "@nestjs/common": "^8",
-    "@nestjs/core": "^8",
+    "@nestjs/core": "^9",
     "@nestjs/ng-universal": "6.1.0",
     "@nestjs/platform-express": "^8",
     "@ngrx/effects": "14.0.2",
