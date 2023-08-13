@@ -1,8 +1,8 @@
 export interface GoogleAnalyticsEvent {
-  event?: string;
   action: string;
   category: string;
   label: string;
+  event?: string;
   eventCallback?: () => void;
 }
 

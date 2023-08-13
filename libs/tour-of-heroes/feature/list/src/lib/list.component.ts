@@ -28,12 +28,12 @@ export class HeroListComponent implements OnInit {
     this.facade.removeHero(hero.id);
   }
 
-  showModal(hero: Hero): void {
-    this.deleteModal.open(hero);
-  }
-
   select(hero: Hero): void {
     this.facade.selectHero(hero.id);
+  }
+
+  showModal(hero: Hero): void {
+    this.deleteModal.open(hero);
   }
 
   trackByHero(index: number, hero: Hero): number {

@@ -1,5 +1,4 @@
 {
-  "npmScope": "nx-demo",
   "affected": {
     "defaultBase": "master"
   },
@@ -14,12 +13,12 @@
   },
   "defaultProject": "tour-of-heroes",
   "generators": {
-    "@nrwl/angular:application": {
+    "@nx/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "none",
       "strict": true
     },
-    "@nrwl/angular:library": {
+    "@nx/angular:library": {
       "unitTestRunner": "jest",
       "strict": true
     },
@@ -34,28 +33,24 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
     "test": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
-    },
-    "build-storybook": {
-      "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**/*"]
     }
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": [
-      "{workspaceRoot}/angular.json",
-      "{workspaceRoot}/tsconfig.base.json",
-      "{workspaceRoot}/tslint.json",
-      "{workspaceRoot}/nx.json"
-    ],
+    "sharedGlobals": ["{workspaceRoot}/tsconfig.base.json", "{workspaceRoot}/nx.json"],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/jest.config.[jt]s",
       "!{projectRoot}/.storybook/**/*",
-      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/src/test-setup.[jt]s"
     ]
   }
 }

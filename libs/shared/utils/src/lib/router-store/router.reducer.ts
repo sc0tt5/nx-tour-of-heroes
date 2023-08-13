@@ -6,9 +6,9 @@ import { RouterReducerState, RouterStateSerializer } from '@ngrx/router-store';
 export const routerFeatureKey = 'router';
 
 export interface RouterStateUrl {
-  url: string;
-  queryParams: Params;
   params: Params;
+  queryParams: Params;
+  url: string;
 }
 
 export interface RouterState {

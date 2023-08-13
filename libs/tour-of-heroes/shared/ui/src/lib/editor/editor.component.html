@@ -10,15 +10,13 @@
   <!-- todo: issue-44 -- fix btn-set on mobile -->
   <div class="bx--btn-set bx--btn-set--sm" role="group" aria-label="Cancel or save">
     <!-- cancel -->
-    <button class="bx--btn bx--btn--secondary" attr.aria-label="Back" (click)="closeEditor()">
-      Cancel
-    </button>
+    <button class="bx--btn bx--btn--secondary" aria-label="Back" (click)="closeEditor()">Cancel</button>
 
     <!-- save -->
     <button
       [ngClass]="{ 'bx--btn--disabled': !formIsValid }"
       class="bx--btn bx--btn--primary"
-      attr.aria-label="Save"
+      aria-label="Save"
       (click)="saveHero()"
       [disabled]="!formIsValid"
     >

@@ -25,13 +25,13 @@ export class TourOfHeroesController {
     return this.tourOfHeroesService.findOne(id);
   }
 
-  @Put(':id')
-  update(@Param('id') id: number, @Body() hero: Hero): Observable<Hero> {
-    return this.tourOfHeroesService.update(id, hero);
-  }
-
   @Delete(':id')
   remove(@Param('id') id: number): Observable<number> {
     return this.tourOfHeroesService.remove(id);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: number, @Body() hero: Hero): Observable<Hero> {
+    return this.tourOfHeroesService.update(id, hero);
   }
 }

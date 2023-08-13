@@ -1,4 +1,6 @@
 {
+  "name": "tour-of-heroes",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "generators": {
     "@schematics/angular:component": {
@@ -101,7 +103,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "apps/tour-of-heroes/jest.config.ts",
         "passWithNoTests": true
@@ -131,7 +133,8 @@
           "cache-manager",
           "class-transformer",
           "class-validator"
-        ]
+        ],
+        "buildOptimizer": true
       },
       "configurations": {
         "local": {

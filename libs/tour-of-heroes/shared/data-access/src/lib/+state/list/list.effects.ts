@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { NGXLogger } from 'ngx-logger';
@@ -13,9 +13,11 @@ import { heroListActions } from './list.actions';
 
 @Injectable()
 export class HeroListEffects {
-  constructor(private actions$: Actions, private heroesService: HeroesService, private log: NGXLogger) {}
+  private readonly actions$ = inject(Actions);
+  private readonly heroesService = inject(HeroesService);
+  private readonly log = inject(NGXLogger);
 
-  loadHeroes$ = createEffect(() =>
+  private readonly loadHeroes$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroListActions.loadHeroes),
       switchMap(() =>
@@ -30,7 +32,7 @@ export class HeroListEffects {
     )
   );
 
-  removeHero$ = createEffect(() =>
+  private readonly removeHero$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroListActions.removeHero),
       switchMap(action =>
@@ -45,7 +47,7 @@ export class HeroListEffects {
     )
   );
 
-  selectHero$ = createEffect(() =>
+  private readonly selectHero$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroListActions.selectHero),
       map(action => routerActions.go({ path: ['/hero', action.id.toString()] }))

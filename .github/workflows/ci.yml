@@ -1,18 +1,88 @@
 name: CI
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
 jobs:
-  lhci:
-    name: Lighthouse
+  build:
+    name: Build and Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-      - name: npm install
-        run: npm install && npm install -g @lhci/cli@0.10.x
-      - name: run Lighthouse CI
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Cache NPM dependencies
+        uses: actions/cache@v3
+        id: cache-npm
+        with:
+          path: node_modules
+          key: node-cache-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build
+        run: npm run build:ssr
+
+      - name: Cache test results
+        uses: actions/cache@v3
+        id: cache-tests
+        with:
+          path: tmp
+          key: tests-cache-${{ github.run_id }}
+
+      - name: Test
+        if: steps.cache-tests.outputs.cache-hit != 'true'
+        run: npm test
+
+  lhci:
+    name: Lighthouse
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Get cached NPM dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: node-cache-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Lighthouse CLI
+        run: npm install -g @lhci/cli@0.12.x
+
+      - name: Run Lighthouse CI
         run: lhci autorun
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+  sonarcloud:
+    name: SonarCloud
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Get cached test results
+        uses: actions/cache@v3
+        with:
+          path: tmp
+          key: tests-cache-${{ github.run_id }}
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

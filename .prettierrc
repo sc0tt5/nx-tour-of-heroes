@@ -15,7 +15,7 @@
       }
     },
     {
-      "files": [".eslintrc", ".huskyrc", ".lintstagedrc", ".prettierrc", ".stylelintrc"],
+      "files": [".huskyrc", ".lintstagedrc", ".prettierrc", ".stylelintrc"],
       "options": { "parser": "json" }
     }
   ]

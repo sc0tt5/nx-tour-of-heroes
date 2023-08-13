@@ -1,10 +1,12 @@
 {
+  "name": "shared-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/shared/ui/src",
   "prefix": "shrd-ui",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "libs/shared/ui/jest.config.ts",
         "passWithNoTests": true
@@ -48,7 +50,7 @@
     }
   },
   "generators": {
-    "@nrwl/angular:component": {
+    "@nx/angular:component": {
       "styleext": "scss"
     }
   },

@@ -1,32 +1,27 @@
 import { Logger } from '@nestjs/common';
-import { Test, TestingModule } from '@nestjs/testing';
+import { Test } from '@nestjs/testing';
 
 import { LoggerController } from './logger.controller';
 
 describe('LoggerController', () => {
-  let clientService: Logger;
-  let module: TestingModule;
-  let logger: LoggerController;
+  let controller: LoggerController;
+  let logger: Logger;
 
   beforeAll(async () => {
-    module = await Test.createTestingModule({
+    const module = await Test.createTestingModule({
       controllers: [LoggerController],
       providers: [Logger]
     }).compile();
 
-    clientService = module.get<Logger>(Logger);
-    logger = module.get(LoggerController);
-  });
-
-  afterEach(() => {
-    jest.resetAllMocks();
+    controller = module.get(LoggerController);
+    logger = module.get(Logger);
   });
 
   describe('logError', () => {
-    it('should log error when called', () => {
-      const err = jest.spyOn(clientService, 'error');
-      logger.logError('test');
-      expect(err).toHaveBeenCalled();
+    it('should log error', () => {
+      const error = jest.spyOn(logger, 'error');
+      controller.logError('test');
+      expect(error).toHaveBeenCalled();
     });
   });
 });

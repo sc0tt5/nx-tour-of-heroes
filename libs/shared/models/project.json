@@ -1,15 +1,10 @@
 {
+  "name": "shared-models",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/shared/models/src",
   "prefix": "shrd-mdl",
   "targets": {
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "options": {
-        "jestConfig": "libs/shared/models/jest.config.ts"
-      },
-      "outputs": ["{workspaceRoot}/tmp/coverage/libs/shared/models"]
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
@@ -18,7 +13,7 @@
     }
   },
   "generators": {
-    "@nrwl/angular:component": {
+    "@nx/angular:component": {
       "styleext": "scss"
     }
   },

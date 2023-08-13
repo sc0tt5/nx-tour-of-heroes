@@ -3,23 +3,33 @@
 import { HttpClient, HttpClientModule, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { TransferState } from '@angular/platform-browser';
 
 import { Response } from 'express';
+import { NGXLogger } from 'ngx-logger';
 
-import { PageOne } from '@nx-toh/shared/models';
+import { Resource } from '@nx-toh/shared/models';
 
 import { ResourceService } from './resource.service';
 
+interface Page extends Resource {
+  accordionItems: any[];
+  content: string;
+  name: string;
+}
+
+const API_PAGES = '/api/pages';
+const BAD_REQUEST = 'Bad Request';
+
 @Injectable()
-class MockService extends ResourceService<PageOne> {
+class MockService extends ResourceService<Page> {
   constructor(
     @Inject(PLATFORM_ID) protected platformId: unknown,
     protected httpClient: HttpClient,
     protected transferState: TransferState
   ) {
-    super(platformId, httpClient, transferState, '/api/pages', 'item', 'items');
+    super(platformId, httpClient, transferState, API_PAGES, 'item', 'items');
   }
 }
 
@@ -60,7 +70,7 @@ describe('ResourceService', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, HttpClientTestingModule],
-      providers: [MockService],
+      providers: [MockService, { provide: NGXLogger, useFactory: () => ({ error: jest.fn() }) }],
       teardown: { destroyAfterEach: false }
     });
     service = TestBed.inject(MockService);
@@ -79,7 +89,7 @@ describe('ResourceService', () => {
 
       const request = httpMock.expectOne(url).request;
 
-      expect(request.url).toEqual('/api/pages');
+      expect(request.url).toEqual(API_PAGES);
       expect(request.method).toEqual('POST');
       expect(request.responseType).toEqual('json');
 
@@ -102,7 +112,7 @@ describe('ResourceService', () => {
       expect(response.status).toBe(200);
     });
 
-    it('should handle errors', fakeAsync(() => {
+    it('should handle errors for create', fakeAsync(() => {
       let response: HttpErrorResponse;
 
       service.create(mockPage).subscribe({
@@ -115,7 +125,7 @@ describe('ResourceService', () => {
       tick();
 
       const requestWrapper = httpMock.expectOne(url);
-      requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
+      requestWrapper.flush('test', { status: 400, statusText: BAD_REQUEST });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);
@@ -138,7 +148,7 @@ describe('ResourceService', () => {
       expect(request.method).not.toEqual('GET');
     });
 
-    it('should emit "true" for 200 Ok', () => {
+    it('should return status 200 for update', () => {
       let response: Response;
 
       service.update(mockPage).subscribe((receivedResponse: any) => {
@@ -153,7 +163,7 @@ describe('ResourceService', () => {
       expect(response.status).toBe(200);
     });
 
-    it('should handle errors', fakeAsync(() => {
+    it('should handle errors for update', fakeAsync(() => {
       let response: HttpErrorResponse;
 
       service.update(mockPage).subscribe({
@@ -166,7 +176,7 @@ describe('ResourceService', () => {
       tick();
 
       const requestWrapper = httpMock.expectOne(url);
-      requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
+      requestWrapper.flush('test', { status: 400, statusText: BAD_REQUEST });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);
@@ -182,7 +192,7 @@ describe('ResourceService', () => {
 
       const request = httpMock.expectOne(url).request;
 
-      expect(request.url).toEqual('/api/pages');
+      expect(request.url).toEqual(API_PAGES);
       expect(request.method).toEqual('GET');
       expect(request.responseType).toEqual('json');
       expect(request.params).toEqual(params);
@@ -191,7 +201,7 @@ describe('ResourceService', () => {
       expect(request.method).not.toEqual('POST');
     });
 
-    it('should emit "true" for 200 Ok', fakeAsync(() => {
+    it('should return status 200 for read', fakeAsync(() => {
       let response: Response;
 
       service.read(params).subscribe((receivedResponse: any) => {
@@ -209,10 +219,10 @@ describe('ResourceService', () => {
       expect(response.status).toBe(200);
     }));
 
-    it('should handle errors', fakeAsync(() => {
+    it('should handle errors read', fakeAsync(() => {
       let response: HttpErrorResponse;
 
-      service.read(mockPage).subscribe({
+      service.read(params).subscribe({
         next: () => null,
         error: error => {
           response = error;
@@ -222,7 +232,7 @@ describe('ResourceService', () => {
       tick();
 
       const requestWrapper = httpMock.expectOne(url);
-      requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
+      requestWrapper.flush('test', { status: 400, statusText: BAD_REQUEST });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);
@@ -230,14 +240,14 @@ describe('ResourceService', () => {
   });
 
   describe('list', () => {
-    const url = '/api/pages';
+    const url = API_PAGES;
 
     it('should fetch a list of pages', () => {
       service.list().subscribe();
 
       const request = httpMock.expectOne(url).request;
 
-      expect(request.url).toEqual('/api/pages');
+      expect(request.url).toEqual(API_PAGES);
       expect(request.method).toEqual('GET');
       expect(request.responseType).toEqual('json');
 
@@ -245,7 +255,7 @@ describe('ResourceService', () => {
       expect(request.method).not.toEqual('POST');
     });
 
-    it('should emit "true" for 200 Ok', () => {
+    it('should return status 200 for list', () => {
       let response: Response;
 
       service.list().subscribe((receivedResponse: any) => {
@@ -260,10 +270,10 @@ describe('ResourceService', () => {
       expect(response.status).toBe(200);
     });
 
-    it('should handle errors', fakeAsync(() => {
+    it('should handle errors list', fakeAsync(() => {
       let response: HttpErrorResponse;
 
-      service.list(mockPage).subscribe({
+      service.list().subscribe({
         next: () => null,
         error: error => {
           response = error;
@@ -273,7 +283,7 @@ describe('ResourceService', () => {
       tick();
 
       const requestWrapper = httpMock.expectOne(url);
-      requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
+      requestWrapper.flush('test', { status: 400, statusText: BAD_REQUEST });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);
@@ -296,7 +306,7 @@ describe('ResourceService', () => {
       expect(request.method).not.toEqual('GET');
     });
 
-    it('should emit "true" for 200 Ok', () => {
+    it('should return status 200 for delete', () => {
       let response: Response;
 
       service.delete(mockPage.param).subscribe((receivedResponse: any) => {
@@ -311,10 +321,10 @@ describe('ResourceService', () => {
       expect(response.status).toBe(200);
     });
 
-    it('should handle errors', fakeAsync(() => {
+    it('should handle errors delete', fakeAsync(() => {
       let response: HttpErrorResponse;
 
-      service.delete(1).subscribe({
+      service.delete(mockPage.param).subscribe({
         next: () => null,
         error: error => {
           response = error;
@@ -324,7 +334,7 @@ describe('ResourceService', () => {
       tick();
 
       const requestWrapper = httpMock.expectOne(url);
-      requestWrapper.flush('test', { status: 400, statusText: 'Bad Request' });
+      requestWrapper.flush('test', { status: 400, statusText: BAD_REQUEST });
 
       expect(response.error).toBe('test');
       expect(response.status).toBe(400);

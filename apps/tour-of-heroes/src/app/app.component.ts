@@ -8,9 +8,10 @@ import { WindowRefService } from '@nx-toh/shared/utils';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
-
-  constructor(@Inject(PLATFORM_ID) private platformId: unknown, private windowRef: WindowRefService) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: unknown,
+    private windowRef: WindowRefService
+  ) {}
 
   onActivate() {
     if (isPlatformBrowser(this.platformId)) {

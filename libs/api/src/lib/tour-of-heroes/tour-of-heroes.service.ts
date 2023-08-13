@@ -37,17 +37,17 @@ export class TourOfHeroesService {
     );
   }
 
-  update(id: number, hero: Hero): Observable<Hero> {
-    return this.http.put<Hero>(`${this.BASE_URL}heroes/${id}`, hero).pipe(
-      delay(200),
-      map(response => response.data)
-    );
-  }
-
   remove(id: number): Observable<number> {
     return this.http.delete(`${this.BASE_URL}heroes/${id}`).pipe(
       delay(200),
       map(() => id)
+    );
+  }
+
+  update(id: number, hero: Hero): Observable<Hero> {
+    return this.http.put<Hero>(`${this.BASE_URL}heroes/${id}`, hero).pipe(
+      delay(200),
+      map(response => response.data)
     );
   }
 }

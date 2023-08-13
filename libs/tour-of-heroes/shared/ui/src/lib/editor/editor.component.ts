@@ -1,7 +1,7 @@
 // prettier-ignore
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
-import { Hero, FieldType } from '@nx-toh/shared/models';
+import { FieldType, Hero } from '@nx-toh/shared/models';
 
 @Component({
   selector: 'shrd-ui-toh-editor',
@@ -21,32 +21,7 @@ export class EditorComponent implements OnInit {
   formIsValid: boolean;
   heroToSave: Hero;
 
-  ngOnInit(): void {
-    this.editorHeader = this.hero ? this.hero.name : 'Create a new hero';
-    this.heroesFieldset = this.hero;
-    this.heroToSave = { ...this.heroToSave, ...this.hero };
-  }
-
-  setFormValidation(valid: boolean): void {
-    console.log({ valid });
-    this.formIsValid = valid;
-  }
-
-  closeEditor(): void {
-    this.cancel.emit();
-  }
-
-  editHero(hero: Hero): void {
-    this.heroToSave = { ...this.heroToSave, ...hero };
-    this.edit.emit(this.heroToSave);
-    this.editorHeader = hero.name || this.editorHeader;
-  }
-
-  saveHero(): void {
-    this.save.emit();
-  }
-
-  private set heroesFieldset(hero: Hero) {
+  set heroesFieldset(hero: Hero) {
     this.fieldset.push(
       {
         name: 'name',
@@ -65,5 +40,29 @@ export class EditorComponent implements OnInit {
         required: true
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.editorHeader = this.hero ? this.hero.name : 'Create a new hero';
+    this.heroesFieldset = this.hero;
+    this.heroToSave = { ...this.heroToSave, ...this.hero };
+  }
+
+  closeEditor(): void {
+    this.cancel.emit();
+  }
+
+  editHero(hero: Hero): void {
+    this.heroToSave = { ...this.heroToSave, ...hero };
+    this.edit.emit(this.heroToSave);
+    this.editorHeader = hero.name || this.editorHeader;
+  }
+
+  saveHero(): void {
+    this.save.emit();
+  }
+
+  setFormValidation(valid: boolean): void {
+    this.formIsValid = valid;
   }
 }

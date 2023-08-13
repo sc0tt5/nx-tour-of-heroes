@@ -1,9 +1,11 @@
 import { Body, Controller, Logger, Post } from '@nestjs/common';
 
-@Controller()
+@Controller('log')
 export class LoggerController {
-  @Post('log')
+  constructor(private readonly logger: Logger) {}
+
+  @Post()
   logError(@Body() error: unknown): void {
-    Logger.error(error, undefined, 'ClientError');
+    this.logger.error(error, undefined, 'ClientError');
   }
 }

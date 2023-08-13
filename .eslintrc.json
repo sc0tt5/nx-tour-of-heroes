@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "plugins": ["@nx"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -11,14 +11,14 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "plugin:@nrwl/nx/typescript",
+        "plugin:@nx/typescript",
         "plugin:rxjs/recommended",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/recommended--extra",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:ngrx/recommended",
         "plugin:import/recommended",
         "plugin:import/typescript",
+        "plugin:sonarjs/recommended",
         "prettier"
       ],
       "parserOptions": {
@@ -115,7 +115,7 @@
         "@typescript-eslint/unbound-method": "off",
         "@typescript-eslint/unified-signatures": "error",
 
-        "@nrwl/nx/enforce-module-boundaries": [
+        "@nx/enforce-module-boundaries": [
           "error",
           {
             "depConstraints": [
@@ -237,7 +237,7 @@
     },
     {
       "files": ["*.js"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
+      "extends": ["plugin:@nx/javascript"],
       "rules": {}
     },
     {

@@ -1,10 +1,12 @@
 {
+  "name": "tour-of-heroes-feature-search",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/tour-of-heroes/feature/search/src",
   "prefix": "nx-demo",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "libs/tour-of-heroes/feature/search/jest.config.ts",
         "passWithNoTests": true

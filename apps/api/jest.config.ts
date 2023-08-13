@@ -1,7 +1,5 @@
-/* eslint-disable */
 export default {
-  name: 'api',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../tmp/coverage/apps/api',
   testEnvironment: 'node'
 };
