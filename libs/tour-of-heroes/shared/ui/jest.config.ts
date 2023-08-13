@@ -1,8 +1,8 @@
 export default {
-  displayName: 'ui-heroes',
+  displayName: 'tour-of-heroes-ui',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
-  coverageDirectory: '../../tmp/coverage/libs/ui-heroes',
+  coverageDirectory: '../../../../tmp/coverage/libs/ui',
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
