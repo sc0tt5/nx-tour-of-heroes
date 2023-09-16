@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { APP_ID, Inject, NgModule, PLATFORM_ID } from '@angular/core';
+import { APP_ID, NgModule, PLATFORM_ID, inject } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { TransferHttpCacheModule } from '@nguniversal/common';
@@ -34,12 +34,12 @@ import { AppStoreModule } from './app.store.module';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: object,
-    @Inject(APP_ID) private appId: string,
-    private readonly log: NGXLogger
-  ) {
-    const platform = isPlatformBrowser(platformId) ? 'in the browser' : 'on the server';
-    this.log.info(`Running ${platform} with appId=${appId}`);
+  private readonly appId = inject(APP_ID);
+  private readonly log = inject(NGXLogger);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly platform = isPlatformBrowser(this.platformId) ? 'in the browser' : 'on the server';
+
+  constructor() {
+    console.log(`Running ${this.platform} with appId=${this.appId}`); // for demonstration purposes only
   }
 }
