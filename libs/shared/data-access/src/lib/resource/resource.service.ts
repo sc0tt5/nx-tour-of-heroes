@@ -19,12 +19,12 @@ export class ResourceService<T extends Resource> {
   private readonly log = inject(NGXLogger);
 
   constructor(
-    @Inject(PLATFORM_ID) protected platformId: unknown,
-    protected http: HttpClient,
-    protected transferState: TransferState,
-    private endpoint: string,
-    private itemKeyName?: string,
-    private itemsKeyName?: string
+    @Inject(PLATFORM_ID) protected readonly platformId: unknown,
+    protected readonly http: HttpClient,
+    protected readonly transferState: TransferState,
+    private readonly endpoint: string,
+    private readonly itemKeyName?: string,
+    private readonly itemsKeyName?: string
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     this.isServer = isPlatformServer(platformId);

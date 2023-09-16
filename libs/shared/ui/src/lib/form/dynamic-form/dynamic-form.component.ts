@@ -24,7 +24,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  constructor(private formBuilder: UntypedFormBuilder) {}
+  constructor(private readonly formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     if (this.fieldset) {

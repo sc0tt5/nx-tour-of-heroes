@@ -23,8 +23,8 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   private heroToSave: Hero;
 
   constructor(
-    private facade: HeroDetailFacade,
-    private router: RouterFacade
+    private readonly facade: HeroDetailFacade,
+    private readonly router: RouterFacade
   ) {}
 
   ngOnInit(): void {

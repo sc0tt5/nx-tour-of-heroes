@@ -11,7 +11,7 @@ export class RouterFacade {
   params$ = this.store.select(routerSelectors.selectParams);
   url$ = this.store.select(routerSelectors.selectUrl);
 
-  constructor(private store: Store) {}
+  constructor(private readonly store: Store) {}
 
   goBack(): void {
     this.store.dispatch(routerActions.back());

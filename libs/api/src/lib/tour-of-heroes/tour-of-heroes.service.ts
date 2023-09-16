@@ -13,7 +13,7 @@ import { HttpErrorFilter } from '../http-error/http-error.filter';
 export class TourOfHeroesService {
   private BASE_URL = 'http://localhost:8800/'; // json-server db for demo purposes only
 
-  constructor(private http: HttpService) {}
+  constructor(private readonly http: HttpService) {}
 
   create(hero: Hero): Observable<Hero> {
     return this.http.post<Hero>(`${this.BASE_URL}heroes`, hero).pipe(

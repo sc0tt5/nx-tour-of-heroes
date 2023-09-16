@@ -15,7 +15,7 @@ export class DynamicFieldComponent implements OnInit {
   public control: UntypedFormControl;
   public FieldType = FieldType;
 
-  constructor(private formGroupDir: FormGroupDirective) {}
+  constructor(private readonly formGroupDir: FormGroupDirective) {}
 
   ngOnInit(): void {
     /**

@@ -15,7 +15,7 @@ export class HeroSearchComponent implements OnInit, OnDestroy {
   heroesLoaded$: Observable<boolean>;
   searchBoxValue = '';
 
-  constructor(private facade: HeroSearchFacade) {}
+  constructor(private readonly facade: HeroSearchFacade) {}
 
   ngOnInit() {
     this.heroes$ = this.facade.heroes$;

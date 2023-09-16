@@ -15,7 +15,7 @@ export class NavComponent {
   navigationItems: NavigationItem[] = [NAV.HERO_SEARCH, NAV.HERO_LIST, NAV.HERO_NEW];
   url$ = this.facade.url$;
 
-  constructor(private facade: RouterFacade) {}
+  constructor(private readonly facade: RouterFacade) {}
 
   navigate(event: Event, navigationItem: NavigationItem) {
     event.preventDefault();

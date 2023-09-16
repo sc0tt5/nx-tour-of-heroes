@@ -17,7 +17,7 @@ export class HeroListComponent implements OnInit {
   heroes$: Observable<Hero[]>;
   heroesLoaded$: Observable<boolean>;
 
-  constructor(private facade: HeroListFacade) {}
+  constructor(private readonly facade: HeroListFacade) {}
 
   ngOnInit() {
     this.heroes$ = this.facade.heroes$;

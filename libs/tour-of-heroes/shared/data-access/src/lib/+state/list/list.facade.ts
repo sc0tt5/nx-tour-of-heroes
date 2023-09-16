@@ -11,7 +11,7 @@ export class HeroListFacade {
   heroes$ = this.store.select(heroesSelectors.selectHeroes);
   heroesLoaded$ = this.store.select(heroesSelectors.selectHeroesLoaded);
 
-  constructor(private store: Store) {}
+  constructor(private readonly store: Store) {}
 
   loadHeroes(): void {
     this.store.dispatch(heroListActions.loadHeroes());

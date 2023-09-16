@@ -8,7 +8,10 @@ import { HeroDetailFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 
 @Injectable({ providedIn: 'root' })
 export class HeroDetailGuard implements CanActivate {
-  constructor(private facade: HeroDetailFacade, private router: RouterFacade) {}
+  constructor(
+    private readonly facade: HeroDetailFacade,
+    private readonly router: RouterFacade
+  ) {}
 
   canActivate(): Observable<boolean> {
     this.getParams().subscribe(({ id }) => this.facade.selectHeroId(id as number));

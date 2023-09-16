@@ -25,9 +25,9 @@ const BAD_REQUEST = 'Bad Request';
 @Injectable()
 class MockService extends ResourceService<Page> {
   constructor(
-    @Inject(PLATFORM_ID) protected platformId: unknown,
-    protected httpClient: HttpClient,
-    protected transferState: TransferState
+    @Inject(PLATFORM_ID) protected readonly platformId: unknown,
+    protected readonly httpClient: HttpClient,
+    protected readonly transferState: TransferState
   ) {
     super(platformId, httpClient, transferState, API_PAGES, 'item', 'items');
   }

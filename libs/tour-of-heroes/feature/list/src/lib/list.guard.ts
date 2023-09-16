@@ -7,7 +7,7 @@ import { HeroListFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
 
 @Injectable({ providedIn: 'root' })
 export class HeroListGuard implements CanActivate {
-  constructor(private facade: HeroListFacade) {}
+  constructor(private readonly facade: HeroListFacade) {}
 
   canActivate(): Observable<boolean> {
     this.facade.loadHeroes();
