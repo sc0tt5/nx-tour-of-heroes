@@ -8,7 +8,7 @@ describe('ContentLoaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ContentLoaderComponent],
+      imports: [ContentLoaderComponent],
       teardown: { destroyAfterEach: false }
     }).compileComponents();
   }));

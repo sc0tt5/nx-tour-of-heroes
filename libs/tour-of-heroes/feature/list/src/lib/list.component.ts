@@ -1,12 +1,16 @@
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
-import { ModalComponent } from '@nx-toh/shared/ui';
+import { ContentLoaderComponent, ModalComponent } from '@nx-toh/shared/ui';
 import { HeroListFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
+import { CardComponent } from '@nx-toh/tour-of-heroes/shared/ui';
 
 @Component({
+  standalone: true,
+  imports: [AsyncPipe, CardComponent, ContentLoaderComponent, ModalComponent, NgFor, NgIf],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

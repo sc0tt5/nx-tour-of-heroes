@@ -1,9 +1,21 @@
 // prettier-ignore
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { NgClass } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 
 import { FieldType, Hero } from '@nx-toh/shared/models';
+import { DynamicFormComponent } from '@nx-toh/shared/ui';
 
 @Component({
+  standalone: true,
+  imports: [DynamicFormComponent, NgClass],
   selector: 'shrd-ui-toh-editor',
   templateUrl: './editor.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

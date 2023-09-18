@@ -1,13 +1,17 @@
+import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
 import { Hero } from '@nx-toh/shared/models';
-import { ModalComponent } from '@nx-toh/shared/ui';
+import { ContentLoaderComponent, ModalComponent } from '@nx-toh/shared/ui';
 import { RouterFacade } from '@nx-toh/shared/utils';
 import { HeroDetailFacade } from '@nx-toh/tour-of-heroes/shared/data-access';
+import { EditorComponent } from '@nx-toh/tour-of-heroes/shared/ui';
 
 @Component({
+  standalone: true,
+  imports: [AsyncPipe, ContentLoaderComponent, EditorComponent, ModalComponent, NgIf, NgTemplateOutlet],
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

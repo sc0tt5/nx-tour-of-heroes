@@ -8,7 +8,7 @@ describe('HamburgerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HamburgerComponent],
+      imports: [HamburgerComponent],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 

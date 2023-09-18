@@ -17,8 +17,7 @@ describe('DynamicFieldComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
-      declarations: [DynamicFieldComponent],
+      imports: [DynamicFieldComponent, ReactiveFormsModule],
       providers: [FormGroupDirective, { provide: FormGroupDirective, useValue: formGroupDirective }],
       teardown: { destroyAfterEach: false }
     }).compileComponents();

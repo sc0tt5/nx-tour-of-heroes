@@ -1,6 +1,9 @@
+import { NgStyle } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
+  standalone: true,
+  imports: [NgStyle],
   selector: 'shrd-ui-svg-icon',
   templateUrl: './svg-icon.component.html',
   styleUrls: ['./svg-icon.component.scss'],

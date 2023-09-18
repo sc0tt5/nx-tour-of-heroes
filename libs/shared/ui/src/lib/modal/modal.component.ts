@@ -1,6 +1,11 @@
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+
 @Component({
+  standalone: true,
+  imports: [NgClass, SvgIconComponent],
   selector: 'shrd-ui-modal',
   templateUrl: './modal.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
