@@ -12,7 +12,7 @@ export class HeroSearchFacade {
   heroes$ = this.store.select(heroSearchSelectors.selectFilteredHeroes);
   heroesLoaded$ = this.store.select(heroesSelectors.selectHeroesLoaded);
 
-  constructor(private store: Store) {}
+  constructor(private readonly store: Store) {}
 
   resetSearchTerm(): void {
     this.store.dispatch(heroSearchActions.resetSearchTerm());

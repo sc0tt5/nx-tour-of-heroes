@@ -15,7 +15,7 @@ export class HeroDetailFacade {
   hero$ = this.store.select(heroDetailSelectors.selectSelectedHero);
   heroLoaded$ = this.store.select(heroesSelectors.selectHeroesLoaded);
 
-  constructor(private store: Store) {}
+  constructor(private readonly store: Store) {}
 
   goBack(): void {
     this.resetHeroState();

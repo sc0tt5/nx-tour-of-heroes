@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
@@ -15,9 +15,11 @@ import { heroDetailActions } from './detail.actions';
 
 @Injectable()
 export class HeroDetailEffects {
-  constructor(private actions$: Actions, private heroesService: HeroesService, private log: NGXLogger) {}
+  private readonly actions$ = inject(Actions);
+  private readonly heroesService = inject(HeroesService);
+  private readonly log = inject(NGXLogger);
 
-  createHero$ = createEffect(() =>
+  private readonly createHero$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroDetailActions.createHero),
       switchMap(action =>
@@ -33,14 +35,14 @@ export class HeroDetailEffects {
     )
   );
 
-  goBack$ = createEffect(() =>
+  private readonly goBack$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroDetailActions.createHeroSuccess, heroDetailActions.updateHeroSuccess),
       switchMap(() => [heroDetailActions.resetSelectedHeroId(), routerActions.back()])
     )
   );
 
-  loadHero$ = createEffect(() =>
+  private readonly loadHero$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroDetailActions.loadHero),
       switchMap(action =>
@@ -55,14 +57,14 @@ export class HeroDetailEffects {
     )
   );
 
-  selectHeroId$ = createEffect(() =>
+  private readonly selectHeroId$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroDetailActions.selectHeroId),
       map(action => heroDetailActions.loadHero({ id: action.id }))
     )
   );
 
-  updateHero$ = createEffect(() =>
+  private readonly updateHero$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroDetailActions.updateHero),
       switchMap(action =>

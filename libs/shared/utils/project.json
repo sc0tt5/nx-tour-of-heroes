@@ -1,10 +1,12 @@
 {
+  "name": "shared-utils",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/utils/src",
   "projectType": "library",
   "generators": {},
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "libs/shared/utils/jest.config.ts"
       },

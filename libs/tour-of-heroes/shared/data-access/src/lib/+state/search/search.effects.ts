@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { NGXLogger } from 'ngx-logger';
@@ -14,9 +14,11 @@ import { heroSearchActions } from './search.actions';
 
 @Injectable()
 export class HeroSearchEffects {
-  constructor(private actions$: Actions, private heroesService: HeroesService, private log: NGXLogger) {}
+  private readonly actions$ = inject(Actions);
+  private readonly heroesService = inject(HeroesService);
+  private readonly log = inject(NGXLogger);
 
-  searchHeroes$ = createEffect(() =>
+  private readonly searchHeroes$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroSearchActions.searchHeroes),
       debounceTime(300), // wait 300ms after each keystroke
@@ -35,7 +37,7 @@ export class HeroSearchEffects {
     )
   );
 
-  selectHero$ = createEffect(() =>
+  private readonly selectHero$ = createEffect(() =>
     this.actions$.pipe(
       ofType(heroSearchActions.selectHero),
       switchMap(action => [

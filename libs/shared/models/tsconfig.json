@@ -5,10 +5,5 @@
     {
       "path": "./tsconfig.lib.json"
     }
-  ],
-  "angularCompilerOptions": {
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+  ]
 }

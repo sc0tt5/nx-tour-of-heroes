@@ -1,7 +1,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ServerModule, ServerTransferStateModule } from '@angular/platform-server';
+import { ServerModule } from '@angular/platform-server';
 
 import { ServerInterceptor } from '@nx-toh/shared/utils';
 
@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 
 @NgModule({
-  imports: [AppModule, ServerModule, ServerTransferStateModule, NoopAnimationsModule],
+  imports: [AppModule, ServerModule, NoopAnimationsModule],
   bootstrap: [AppComponent],
   providers: [
     {

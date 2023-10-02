@@ -3,7 +3,6 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "types": ["node"],
-    "target": "es2016",
     "sourceMap": true,
     "inlineSources": true
   },

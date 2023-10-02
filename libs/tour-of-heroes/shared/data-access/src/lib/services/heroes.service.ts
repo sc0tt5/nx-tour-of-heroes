@@ -12,9 +12,9 @@ const HEROES_LIST = 'heroes';
 @Injectable({ providedIn: 'root' })
 export class HeroesService extends ResourceService<Hero> {
   constructor(
-    @Inject(PLATFORM_ID) protected platformId: unknown,
-    protected httpClient: HttpClient,
-    protected transferState: TransferState
+    @Inject(PLATFORM_ID) protected readonly platformId: unknown,
+    protected readonly httpClient: HttpClient,
+    protected readonly transferState: TransferState
   ) {
     super(platformId, httpClient, transferState, HEROES_API, HEROES_DETAIL, HEROES_LIST);
   }

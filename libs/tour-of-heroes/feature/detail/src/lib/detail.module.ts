@@ -2,11 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ContentLoaderModule, ModalModule } from '@nx-toh/shared/ui';
-import { EditorModule } from '@nx-toh/tour-of-heroes/shared/ui';
-
 import { HeroDetailComponent } from './detail.component';
-import { HeroDetailGuard } from './detail.guard';
+import { heroDetailGuard } from './detail.guard';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'new', pathMatch: 'full' },
@@ -17,12 +14,11 @@ const ROUTES: Routes = [
   {
     path: ':id',
     component: HeroDetailComponent,
-    canActivate: [HeroDetailGuard]
+    canActivate: [heroDetailGuard]
   }
 ];
 
 @NgModule({
-  imports: [CommonModule, ContentLoaderModule, EditorModule, ModalModule, RouterModule.forChild(ROUTES)],
-  declarations: [HeroDetailComponent]
+  imports: [CommonModule, HeroDetailComponent, RouterModule.forChild(ROUTES)]
 })
 export class HeroDetailModule {}

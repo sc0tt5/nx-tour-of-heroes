@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SvgIconModule } from '@nx-toh/shared/ui';
-import { CardModule } from '@nx-toh/tour-of-heroes/shared/ui';
-
 import { HeroSearchComponent } from './search.component';
 
 const ROUTES: Routes = [
@@ -16,7 +13,6 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, CardModule, RouterModule.forChild(ROUTES), SvgIconModule],
-  declarations: [HeroSearchComponent]
+  imports: [CommonModule, FormsModule, RouterModule.forChild(ROUTES), HeroSearchComponent]
 })
 export class HeroSearchModule {}

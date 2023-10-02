@@ -12,8 +12,8 @@ const go = createAction(
   ROUTER_GO,
   props<{
     path: string[];
-    query?: object;
     extras?: NavigationExtras;
+    query?: object;
   }>()
 );
 const back = createAction(ROUTER_BACK);

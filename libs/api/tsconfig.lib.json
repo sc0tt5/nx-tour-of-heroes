@@ -1,12 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "es2016",
     "moduleResolution": "node",
     "outDir": "../../dist/out-tsc",
     "declaration": true,
-    "types": ["node"],
-    "target": "es2016"
+    "types": ["node"]
   },
   "exclude": ["**/*.spec.ts", "**/*.mock.ts", "jest.config.ts"],
   "include": ["**/*.ts"]

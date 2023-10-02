@@ -8,7 +8,7 @@ describe('SvgIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SvgIconComponent],
+      imports: [SvgIconComponent],
       teardown: { destroyAfterEach: false }
     }).compileComponents();
   });

@@ -6,16 +6,19 @@ import { Hero } from '@nx-toh/shared/models';
 export const heroesFeatureKey = 'heroes';
 
 export interface HeroesState extends EntityState<Hero> {
-  searchTerm: string | null;
-  selectedHeroId: number | null;
   loaded: boolean;
   loading: boolean;
+  searchTerm: string | null;
+  selectedHeroId: number | null;
 }
 
 export type HeroesReducerTypes = ReducerTypes<HeroesState, ActionCreator[]>;
 
+const greaterThan = (a: number, b: number) => a > b;
+const equalTo = (a: number, b: number) => a > b;
+
 function sortByRating(a: Hero, b: Hero) {
-  return a.rating === b.rating ? 0 : a.rating > b.rating ? 1 : -1;
+  return equalTo(a.rating, b.rating) ? 0 : (greaterThan(a.rating, b.rating) && 1) || -1;
 }
 
 export const adapter: EntityAdapter<Hero> = createEntityAdapter<Hero>({

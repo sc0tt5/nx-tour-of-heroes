@@ -1,11 +1,14 @@
+import { NgFor, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroupDirective, UntypedFormControl } from '@angular/forms';
+import { FormGroupDirective, ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 
 import { Field, FieldType } from '@nx-toh/shared/models';
 
 // kudos to Bonnie (https://github.com/bcarson/dynamic-reactive-form)
 
 @Component({
+  standalone: true,
+  imports: [NgFor, NgIf, NgSwitch, NgSwitchCase, ReactiveFormsModule],
   selector: 'shrd-ui-field',
   templateUrl: './dynamic-field.component.html',
   styleUrls: ['./dynamic-field.component.scss']
@@ -14,7 +17,8 @@ export class DynamicFieldComponent implements OnInit {
   @Input() field: Field;
   public control: UntypedFormControl;
   public FieldType = FieldType;
-  constructor(private formGroupDir: FormGroupDirective) {}
+
+  constructor(private readonly formGroupDir: FormGroupDirective) {}
 
   ngOnInit(): void {
     /**

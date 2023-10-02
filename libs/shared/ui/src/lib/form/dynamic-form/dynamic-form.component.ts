@@ -1,15 +1,25 @@
-// prettier-ignore
+import { NgFor, NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators
+} from '@angular/forms';
 
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import { Field } from '@nx-toh/shared/models';
 
+import { DynamicFieldComponent } from '../dynamic-field/dynamic-field.component';
+
 // kudos to Bonnie (https://github.com/bcarson/dynamic-reactive-form)
 
 @Component({
+  standalone: true,
+  imports: [DynamicFieldComponent, NgFor, NgIf, ReactiveFormsModule],
   selector: 'shrd-ui-form',
   templateUrl: './dynamic-form.component.html'
 })
@@ -25,7 +35,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   private unsubscribe$: Subject<void> = new Subject<void>();
 
-  constructor(private formBuilder: UntypedFormBuilder) {}
+  constructor(private readonly formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     if (this.fieldset) {
