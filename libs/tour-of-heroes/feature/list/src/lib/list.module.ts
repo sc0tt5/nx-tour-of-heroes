@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HeroListComponent } from './list.component';
-import { HeroListGuard } from './list.guard';
+import { heroListGuard } from './list.guard';
 
 const ROUTES: Routes = [
   {
     path: '',
     component: HeroListComponent,
-    canActivate: [HeroListGuard]
+    canActivate: [heroListGuard]
   }
 ];
 

@@ -7,13 +7,11 @@ const ROUTES: Routes = [
   { path: '', redirectTo: '/heroes', pathMatch: 'full' },
   {
     path: 'hero',
-    loadChildren: () =>
-      import('@nx-toh/tour-of-heroes/feature/detail').then(m => m.HeroDetailModule)
+    loadChildren: () => import('@nx-toh/tour-of-heroes/feature/detail').then(m => m.HeroDetailModule)
   },
   {
     path: 'heroes/search',
-    loadChildren: () =>
-      import('@nx-toh/tour-of-heroes/feature/search').then(m => m.HeroSearchModule)
+    loadChildren: () => import('@nx-toh/tour-of-heroes/feature/search').then(m => m.HeroSearchModule)
   },
   {
     path: 'heroes',

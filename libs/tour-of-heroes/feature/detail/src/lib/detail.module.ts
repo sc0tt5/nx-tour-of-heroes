@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HeroDetailComponent } from './detail.component';
-import { HeroDetailGuard } from './detail.guard';
+import { heroDetailGuard } from './detail.guard';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: 'new', pathMatch: 'full' },
@@ -14,7 +14,7 @@ const ROUTES: Routes = [
   {
     path: ':id',
     component: HeroDetailComponent,
-    canActivate: [HeroDetailGuard]
+    canActivate: [heroDetailGuard]
   }
 ];
 
